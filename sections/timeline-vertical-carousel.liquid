@@ -1,0 +1,261 @@
+{% assign ss = section.settings %}
+<div class="timeline-container">
+<h2 class=" font-cheltenham-std text-40 w-full text-center leading-tight pt-12 pb-12">{{ ss.title | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="circled_text whitespace-nowrap relative">'}}</h2>
+
+<div class="vertical-carousel__container">
+
+    <section class="splide vertical-slider">
+        <span class="vertical_line__dotted absolute left-1/2 transform -translate-x-1/2 h-full overflow-hidden">
+            <img alt="timeline dashed line" class="lazyload hs-lazyload hs-id-0cfba856" data-src="{{ 'dashed-squiggly-line.png' | asset_img_url: 'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="margin-top: -30%;">
+          </span>
+        <div class="splide__track">
+          <ul class="splide__list">
+              {% for block in section.blocks %}
+              {% assign bs = block.settings %}
+              {% assign mod = forloop.index | modulo: 2 %}
+              {% if mod == 0 %}
+                  <!-- even -->
+                  {% assign margin = 'ml-auto' %}
+              {% else %}
+                  <!-- odd -->
+                  {% assign margin = 'mr-auto' %}
+              {% endif %}
+            <li class="splide__slide">{% include 'vertical-timeline-slide', img:bs.img, title:bs.title, body:bs.body, margin_auto:margin, year:bs.year %}</li>
+            {% endfor %}
+          </ul>
+        </div>
+</section>
+</div>
+</div>
+
+<style>
+
+    .timeline-container {
+        background-color: {{ ss.bg_col }};
+    }
+    .vertical-timneline-slide *,
+    .timeline-container h2 {
+        color: {{ ss.text_col }};
+    }
+
+    .vertical-slider .splide__arrow--prev,
+    .vertical-slider .splide__arrow--next  {
+            right: 10% !important;
+            left: unset !important;
+        }
+    .vertical-slider .splide__arrow--prev {
+        background-image: url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Group_1585.svg?v=1664360894') !important;
+    }
+    .vertical-slider .splide__arrow--next {
+        background-image: url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Group_1411.svg?v=1664311187') !important;
+    }
+
+    .vertical_line__dotted {
+        left: 50%;
+        top: 0;
+    }
+    .mob-year {
+        display: none;
+    }
+    .desktop-year {
+        display: block;
+    }
+    .vertical-image-year {
+        display: contents;
+    }
+
+    .circled_text {
+        padding-left: 1.15rem;
+        padding-right: 1.15rem;
+    }
+    @media screen and (max-width:1024px) {
+        .circled_text::before {
+        content:url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Asset_17_2.png?v=1653918228');
+        position: absolute;
+        top: -0.2em;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+    @media screen and (min-width:1024px) {
+        .circled_text::before {
+        content:url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Asset_17_2.png?v=1653918228');
+        position: absolute;
+        top: -0.2em;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+</style>
+
+<script>
+
+    document.addEventListener( 'DOMContentLoaded', function() {
+
+const timelineSlider = new Splide( '.vertical-slider', {
+    type   : 'slide',
+    perPage:3,
+    perMove:2,
+    rewind:false,
+    direction: 'ttb',
+    height   : '38rem',
+    gap:'0rem',
+    arrows:true,
+    pagination:false,
+    flickMaxPages:1,
+    drag:false,
+    breakpoints: {
+        3000: {
+            direction: 'ttb',
+            height   : '38rem',
+        }
+    },
+    breakpoints: {
+        1023: {
+            destroy:true
+        }
+    },
+});
+
+
+timelineSlider.on( 'mounted', function () {
+
+    timelineSlider.on( 'updated', function () {
+  // This will be executed.
+  console.log('update')
+  timelineSlider.refresh();
+} );
+    timelineSlider.on( 'move', function(newIndex, prevIndex, destIndex) {
+    if (newIndex % 2 > 0) {
+        console.log(newIndex % 2);
+        document.querySelector('.splide__arrow--next').dispatchEvent(new MouseEvent("click",{bubbles: true, cancellable: true}));
+    }
+
+} );
+
+} );
+timelineSlider.mount();
+
+let updateCarousel = (index) => {
+    timelineSlider.go( '>' );
+    console.log('move!');
+}
+
+})
+
+
+
+</script>
+
+<style>
+    @media screen and (max-width:1023px) {
+    .vertical-carousel__container {
+    padding-bottom: 3rem;
+    }
+    .vertical-carousel__container .splide.is-initialized .splide__list {
+        display: block !important;
+    }
+    .vertical-carousel__container .splide.is-initialized .splide__list li {
+        width: 50% !important;
+    }
+    .vertical-carousel__container .splide.is-initialized .splide__list li:nth-child(odd) {
+        margin-right: auto;
+    }
+    .vertical-carousel__container .splide.is-initialized .splide__list li:nth-child(even) {
+        margin-left: auto;
+    }
+    .vertical-carousel__container {
+        background-repeat: repeat-y;
+        background-position: center;
+      background-image: url("{{ 'dashed-squiggly-line-mobile.png' | asset_img_url: 'master' }});");
+    }
+    .vertical_line__dotted {
+        display: none;
+    }
+    .vertical-image-year {
+        display: flex;
+    }
+    .mob-year {
+        display: block;
+    }
+    .desktop-year {
+        display: none;
+    }
+}
+
+@media screen and (max-width:640px) {
+    .vertical-carousel__container {
+      background-image: url("{{ 'dashed-straight-line.png' | asset_img_url: 'master' }});");
+    }
+}
+</style>
+
+
+{% schema %}
+{
+    "name": "Vertical Timeline",
+    "settings": [
+    {
+        "type":"color",
+        "id":"bg_col",
+        "label":"Background Colour"
+    },
+    {
+        "type": "color",
+        "id": "text_col",
+        "label": "Text Colour"
+    },
+    {
+        "type": "header",
+        "content": "Title"
+    },
+    {
+        "type":"richtext",
+        "label":"Title",
+        "id":"title",
+        "default":"<p>Over 10 Years And Counting</p>",
+        "info":"Bold text will show the circle"
+    },
+    {
+        "type":"image_picker",
+        "label":"Logo Image",
+        "id":"logo_img"
+    }
+    ],
+    "blocks":[
+    {
+        "type":"vertical-slide",
+        "name":"Vertical Slide",
+        "settings":[
+        {
+            "type":"image_picker",
+            "label":"Image",
+            "id":"img"
+        },
+        {
+            "type":"textarea",
+            "label":"Title",
+            "id":"title"
+        },
+        {
+            "type":"textarea",
+            "label":"Subtitle",
+            "id":"body"
+        },
+        {
+            "type":"text",
+            "label":"Year",
+            "id":"year"
+        }
+        ]
+    }
+    ],
+    "presets": [
+        {
+            "name": "Vertical Timeline",
+            "category": "Slideshow"
+        }
+    ]
+}
+
+{% endschema %}

@@ -1,0 +1,472 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-hero",
+      "blocks": {
+        "dcbbf1a3-1d26-4ea5-b696-5d256e3d59a4": {
+          "type": "USP",
+          "settings": {
+            "title": ""
+          }
+        },
+        "222af4ba-b4d3-47d5-82e1-49e7ede03d5f": {
+          "type": "USP",
+          "settings": {
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "dcbbf1a3-1d26-4ea5-b696-5d256e3d59a4",
+        "222af4ba-b4d3-47d5-82e1-49e7ede03d5f"
+      ],
+      "settings": {
+        "about_page": true,
+        "infinite_scroll": false,
+        "full_stop": true,
+        "title": "<p>Our Origin <br\/><strong>Story<\/strong><\/p>",
+        "underline_top_mob": ".7",
+        "underline_top_desktop": ".7",
+        "subtitle": "",
+        "text_colour": "#0e2559",
+        "scroll_item_text_colour": "",
+        "scroll_bg_colour": "",
+        "section_bg_colour": "",
+        "section_bg_image": "shopify:\/\/shop_images\/220622_Planera_Stills_S15_1794.jpg",
+        "section_bg_image_mobile": "shopify:\/\/shop_images\/220622_Planera_Stills_S15_1794.jpg"
+      }
+    },
+    "1664367454d3f4f993": {
+      "type": "ticker",
+      "blocks": {
+        "544c10e9-1441-4e1e-946a-43a995db87d1": {
+          "type": "item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Frame-2.png",
+            "text": "Water Dispersible"
+          }
+        },
+        "a55b6adf-bd82-477a-beb6-47380b1e1de1": {
+          "type": "item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Frame-1.png",
+            "text": "100% Flushable"
+          }
+        },
+        "dbd41dce-5830-4916-90c6-a6117f0350c8": {
+          "type": "item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Frame5.png",
+            "text": "Biodegradable"
+          }
+        },
+        "3c31ab4e-7c93-4250-88d6-7e960b2621f7": {
+          "type": "item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Frame2.png",
+            "text": "UpFlow™ Barrier"
+          }
+        },
+        "e7b27f4f-0262-4946-a878-f9749d1e1716": {
+          "type": "item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Frame4.png",
+            "text": "Zero Microplastics"
+          }
+        }
+      },
+      "block_order": [
+        "544c10e9-1441-4e1e-946a-43a995db87d1",
+        "a55b6adf-bd82-477a-beb6-47380b1e1de1",
+        "dbd41dce-5830-4916-90c6-a6117f0350c8",
+        "3c31ab4e-7c93-4250-88d6-7e960b2621f7",
+        "e7b27f4f-0262-4946-a878-f9749d1e1716"
+      ],
+      "settings": {
+        "bg_col": "",
+        "text_col": ""
+      }
+    },
+    "16539177955cc665fd": {
+      "type": "timeline-vertical-carousel",
+      "blocks": {
+        "865aae90-3b08-4332-91d6-9501043dc19f": {
+          "type": "vertical-slide",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Imperial.jpg",
+            "title": "Imperial College London",
+            "body": "Liv & Aaron meet at university. They start developing the first flushable pad prototype.",
+            "year": "2016"
+          }
+        },
+        "b88c8d05-ca4f-4ac9-8ce2-91829099527e": {
+          "type": "vertical-slide",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/28_07_21_Planera_day2_MD_Machine_02_0094_1.png",
+            "title": "Open first production site",
+            "body": "Move into our first official site at  OpenCell, where we start making pads by hand.",
+            "year": "2018"
+          }
+        },
+        "9d6029b5-6e8e-4bbf-a4fd-5ff87b7af034": {
+          "type": "vertical-slide",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/28_07_21_Planera_day2_MD_Blue_box_hands_1440.jpg",
+            "title": "Planera is born",
+            "body": "We open up our product testing and receive over 2,500 applicants in a few hours! We are blown away with the response.",
+            "year": "2019"
+          }
+        },
+        "cc6af7d7-94a4-44e0-8d1e-45ab79c37746": {
+          "type": "vertical-slide",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/28_07_21_Planera_day2_MD_Machine_02_0094_1.png",
+            "title": "Certified Flushable!",
+            "body": "Working alongside the Water Research Centre, we put our pad through the flushability tests and pass with 93%!",
+            "year": "2019"
+          }
+        },
+        "7532903f-3977-4eb7-9293-246272abb348": {
+          "type": "vertical-slide",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/220622_Planera_Stills_S2_155_f1.jpg",
+            "title": "Planera Launches in the UK",
+            "body": "Coming to a bathroom near you soon! Pre-order your pads now to be the first to try!",
+            "year": "2022"
+          }
+        },
+        "3a105583-a5c8-4075-ad6a-4e1d947678cc": {
+          "type": "vertical-slide",
+          "disabled": true,
+          "settings": {
+            "title": "",
+            "body": "",
+            "year": "2023"
+          }
+        }
+      },
+      "block_order": [
+        "865aae90-3b08-4332-91d6-9501043dc19f",
+        "b88c8d05-ca4f-4ac9-8ce2-91829099527e",
+        "9d6029b5-6e8e-4bbf-a4fd-5ff87b7af034",
+        "cc6af7d7-94a4-44e0-8d1e-45ab79c37746",
+        "7532903f-3977-4eb7-9293-246272abb348",
+        "3a105583-a5c8-4075-ad6a-4e1d947678cc"
+      ],
+      "settings": {
+        "bg_col": "#ffffff",
+        "text_col": "#0e2559",
+        "title": "<p>Our journey<\/p>",
+        "logo_img": "shopify:\/\/shop_images\/Planera_Logo_650px_Light_No_Background_1_3.png"
+      }
+    },
+    "1653991132a9d716cc": {
+      "type": "our-team",
+      "blocks": {
+        "339bd70a-dfa5-4034-a3ad-6b28bcae531e": {
+          "type": "slide",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Group_1434.png",
+            "title": "Dr. Olivia Ahn",
+            "subtitle": "CEO & Co-founder",
+            "body": "I was shocked to find out that biodegradable pads still end up in landfill. I love creating products that give us an easy and convenient way to stop permanent waste."
+          }
+        },
+        "f43402a0-64f4-4e19-b35d-b48559d673fe": {
+          "type": "slide",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Mask_group_b1cf7ca3-f1cb-4fb9-be6a-e4f7958a5936.png",
+            "title": "Aaron Koshy",
+            "subtitle": "COO & Co-founder",
+            "body": "People should not be forced to create permanent waste every month by companies that have not innovated. Our waste should not outlive us."
+          }
+        },
+        "237a5837-ee81-44d2-ba52-900770069aaa": {
+          "type": "slide",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Untitled_design_5.png",
+            "title": "Fran Morrison",
+            "subtitle": "Head of Marketing",
+            "body": "Planera is a new breed of responsible company. One that's disrupting the industry and holding others accountable."
+          }
+        },
+        "cd066cfb-484f-4303-ae03-79fcdb5ddb8b": {
+          "type": "slide",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Mask_group-2.png",
+            "title": "Sebastian Macnair-Smith",
+            "subtitle": "Engineering Lead",
+            "body": "I am astounded at the level of pollution in nature caused by people. Planera is going to finally make periods zero waste."
+          }
+        },
+        "213bf048-909d-465e-938a-140a56296c61": {
+          "type": "slide",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/VL_Headshot.jpg",
+            "title": "Vivian Lee",
+            "subtitle": "Performance Marketing Lead",
+            "body": "For too long companies have rebranded the same products, without consideration for the planet. I’m proud to be part of the team and community that will shape the future of femcare."
+          }
+        },
+        "a40c8d95-73f5-426f-8612-5c0d7ae5d22f": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "title": "Yolanda Thein",
+            "subtitle": "Community Joy Lead",
+            "body": ""
+          }
+        }
+      },
+      "block_order": [
+        "339bd70a-dfa5-4034-a3ad-6b28bcae531e",
+        "f43402a0-64f4-4e19-b35d-b48559d673fe",
+        "237a5837-ee81-44d2-ba52-900770069aaa",
+        "cd066cfb-484f-4303-ae03-79fcdb5ddb8b",
+        "213bf048-909d-465e-938a-140a56296c61",
+        "a40c8d95-73f5-426f-8612-5c0d7ae5d22f"
+      ],
+      "settings": {
+        "title": "Meet The Team",
+        "section_bg": "#d1d6e5",
+        "sec_title_col": "#0e2559",
+        "title_body_col": "#0e2559",
+        "subtitle_col": "#4546f4",
+        "team_gif_desktop": "shopify:\/\/shop_images\/Image_from_iOS.gif",
+        "team_gif_mobile": "shopify:\/\/shop_images\/Image_from_iOS.gif"
+      }
+    },
+    "16601242527ab89a39": {
+      "type": "logo-slider",
+      "blocks": {
+        "ffdf18c9-2815-424e-9adc-8a31d75865ac": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b.png"
+          }
+        },
+        "3e00bcb9-7060-442f-8eb8-2818bbd6a6df": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d.png"
+          }
+        },
+        "5b32d11d-f225-4dae-ae55-a8067fd07809": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c.png"
+          }
+        },
+        "fcc92ae1-b28d-470c-85de-4b131bd2ae21": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621.png"
+          }
+        },
+        "600f2f88-4c05-4f5e-b7bb-e81af8377cee": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7.png"
+          }
+        },
+        "67cb7bc3-f3d6-4231-b377-2b846eade835": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5.png"
+          }
+        },
+        "e9b6f106-b12a-458d-bc04-45253f69b50e": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2.png"
+          }
+        },
+        "11494f2c-1aae-4a89-a711-f24dd372b927": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d.png"
+          }
+        },
+        "3634327c-7f2d-40e2-ac16-d52c6a276b6e": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38.png"
+          }
+        },
+        "dacb2977-b8e0-434d-a38d-bc613be8ca91": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5.png"
+          }
+        },
+        "d6d3079f-afcc-4a9a-9e91-1bd0671bbb47": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/womens-health-magazine-logo-vector.png"
+          }
+        },
+        "6db5db39-091f-4f3f-a2c6-9867c09b8cdc": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Womens-Health_Logo.jpg"
+          }
+        },
+        "b92a5c51-fab1-402e-8e43-cc754ecf3890": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Main-Logo-Black.png"
+          }
+        },
+        "b3d0e343-d053-48b3-be84-7ca25eefdff9": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/OK_logo.png"
+          }
+        },
+        "2eda7194-8acd-4d3e-a420-8eca7ae1f9ef": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/cosmo_logo.png"
+          }
+        },
+        "0181df8e-eabb-4013-a04b-d1266d2d78f6": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/metro_logo.png"
+          }
+        },
+        "0e58090e-89e8-4e35-8681-3efedf1ecd93": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11.png"
+          }
+        }
+      },
+      "block_order": [
+        "ffdf18c9-2815-424e-9adc-8a31d75865ac",
+        "3e00bcb9-7060-442f-8eb8-2818bbd6a6df",
+        "5b32d11d-f225-4dae-ae55-a8067fd07809",
+        "fcc92ae1-b28d-470c-85de-4b131bd2ae21",
+        "600f2f88-4c05-4f5e-b7bb-e81af8377cee",
+        "67cb7bc3-f3d6-4231-b377-2b846eade835",
+        "e9b6f106-b12a-458d-bc04-45253f69b50e",
+        "11494f2c-1aae-4a89-a711-f24dd372b927",
+        "3634327c-7f2d-40e2-ac16-d52c6a276b6e",
+        "dacb2977-b8e0-434d-a38d-bc613be8ca91",
+        "d6d3079f-afcc-4a9a-9e91-1bd0671bbb47",
+        "6db5db39-091f-4f3f-a2c6-9867c09b8cdc",
+        "b92a5c51-fab1-402e-8e43-cc754ecf3890",
+        "b3d0e343-d053-48b3-be84-7ca25eefdff9",
+        "2eda7194-8acd-4d3e-a420-8eca7ae1f9ef",
+        "0181df8e-eabb-4013-a04b-d1266d2d78f6",
+        "0e58090e-89e8-4e35-8681-3efedf1ecd93"
+      ],
+      "settings": {
+        "title": "<p>As Seen In<\/p>",
+        "bg_col": "",
+        "text_col": ""
+      }
+    },
+    "165399717186c157a8": {
+      "type": "our-story-values",
+      "disabled": true,
+      "blocks": {
+        "d7e15f1f-a8eb-41db-be8d-7197ffe4d6d3": {
+          "type": "left_item",
+          "settings": {
+            "title": "Sustainability",
+            "body": "People should not be forced to create permanent waste every month by companies that have not innovated. Our waste should not outlive us."
+          }
+        },
+        "2c09b7d7-efd0-4c0b-8f88-b88b778480a1": {
+          "type": "left_item",
+          "settings": {
+            "title": "Supply Chain",
+            "body": "People should not be forced to create permanent waste every month by companies that have not innovated. Our waste should not outlive us."
+          }
+        },
+        "41e9968f-0af9-4d77-b4c5-140200ea0965": {
+          "type": "left_item",
+          "settings": {
+            "title": "Sourcing",
+            "body": "People should not be forced to create permanent waste every month by companies that have not innovated. Our waste should not outlive us."
+          }
+        },
+        "287d6dad-c3a3-4eba-a22c-99ce7b96881a": {
+          "type": "left_item",
+          "settings": {
+            "title": "Packaging",
+            "body": ""
+          }
+        },
+        "4e2250cc-e521-4e48-a2ba-ff2126c3611e": {
+          "type": "left_item",
+          "settings": {
+            "title": "Quality",
+            "body": ""
+          }
+        },
+        "ad7bdbd3-eb13-49a4-93e5-3eb41071d9fd": {
+          "type": "right_item",
+          "settings": {
+            "title": "Sustainability",
+            "body": "People should not be forced to create permanent waste every month by companies that have not innovated. Our waste should not outlive us."
+          }
+        },
+        "c1696115-48f7-44a7-9167-220c758260e1": {
+          "type": "right_item",
+          "settings": {
+            "title": "Supply Chain",
+            "body": "People should not be forced to create permanent waste every month by companies that have not innovated. Our waste should not outlive us."
+          }
+        },
+        "b5a28ac6-d3e2-4f94-ae32-922536361ea7": {
+          "type": "right_item",
+          "settings": {
+            "title": "Sourcing",
+            "body": "People should not be forced to create permanent waste every month by companies that have not innovated. Our waste should not outlive us."
+          }
+        },
+        "21c7e1f2-5137-4b46-ae34-307a2d8a426b": {
+          "type": "right_item",
+          "settings": {
+            "title": "Packaging",
+            "body": ""
+          }
+        },
+        "e4174658-7d63-43da-a644-bd455f40da87": {
+          "type": "right_item",
+          "settings": {
+            "title": "Quality",
+            "body": ""
+          }
+        }
+      },
+      "block_order": [
+        "d7e15f1f-a8eb-41db-be8d-7197ffe4d6d3",
+        "2c09b7d7-efd0-4c0b-8f88-b88b778480a1",
+        "41e9968f-0af9-4d77-b4c5-140200ea0965",
+        "287d6dad-c3a3-4eba-a22c-99ce7b96881a",
+        "4e2250cc-e521-4e48-a2ba-ff2126c3611e",
+        "ad7bdbd3-eb13-49a4-93e5-3eb41071d9fd",
+        "c1696115-48f7-44a7-9167-220c758260e1",
+        "b5a28ac6-d3e2-4f94-ae32-922536361ea7",
+        "21c7e1f2-5137-4b46-ae34-307a2d8a426b",
+        "e4174658-7d63-43da-a644-bd455f40da87"
+      ],
+      "settings": {
+        "title": "OUR APPROACH TO",
+        "section_bg": "#99cce9",
+        "right_image": "shopify:\/\/shop_images\/28_07_21_Planera_day2_MD_Pad_Hands_1305_1_2.png"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1664367454d3f4f993",
+    "16539177955cc665fd",
+    "1653991132a9d716cc",
+    "16601242527ab89a39",
+    "165399717186c157a8"
+  ]
+}

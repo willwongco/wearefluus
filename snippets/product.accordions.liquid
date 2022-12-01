@@ -1,0 +1,20 @@
+
+        {% assign accordion_headers = product.metafields.custom.product_accordion_title_copy | split:',' %}
+        {% assign accordion_bodies = product.metafields.custom.product_accordion_body_copy | split:'",' %}
+        {% assign accordions_size = accordion_headers | size | minus:1 %}
+
+        {% for i in (0..accordions_size) %}
+        <div class="w-full border-b py-3 border-black">
+            <div class="flex justify-between items-center cursor-pointer" @click="accordion_item == {{ i }} ? accordion_item = -1 : accordion_item = {{ i }}">
+            <h3 class=" font-sofia-pro-regular text-xl">
+                {{ accordion_headers[i] | remove: '"' | remove: ']' | remove: '[' }}
+            </h3>
+            <span class="transform transition-all" :class="accordion_item == {{ i }} ? 'rotate-180' : 'rotate-0'">
+            {% render 'icon-chevron' %}
+        </span>
+        </div>
+            <p class="transition-all font-sofia-pro text-base" :class="accordion_item == {{ i }} ? 'h-full max-h-96 pt-3 pb-2' : 'h-0 max-h-0 opacity-0 pointer-events-none'">
+                {{ accordion_bodies[i] | remove: '"' | remove: ']' | remove: '[' }}
+            </p>
+        </div>
+        {% endfor %}

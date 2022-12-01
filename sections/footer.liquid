@@ -1,0 +1,281 @@
+{% assign wave_col = section.settings.wave_col %}
+
+<div class="marquee3k -mb-2.5 sm:-mb-3 overflow-hidden" 
+data-speed="2"
+data-reverse="false">
+<div class="relative -ml-px">
+    <div class="left-0 w-full footer-wave">{% include 'icon-wave-footer-animate', wave_col:wave_col %}</div>
+</div>
+</div>
+
+<div style="background-color:{{ section.settings.bg_col }};" class="relative pt-10 pb-8">
+    <!-- <div class="absolute left-0 w-full footer-wave">{% include 'icon-wave-footer', wave_col:wave_col %}</div> -->
+    <div class="w-full">
+        <div style="color:{{ section.settings.hashtag_title_col }};" class="px-1 flex items-center text-center font-cheltenham-std w-full text-3xl md:text-6xl justify-center">
+            <div class="w-8 md:w-16">
+                {% include 'icon-hashtag' classes: 'w-full' %}
+            </div>
+            {{ section.settings.title }}
+        </div>
+        <div class="md:mt-5 mt-3">
+            <a style="background-color:{{ section.settings.insta_btn_bg }};color:{{ section.settings.insta_btn_text_col }};" href="{{ section.settings.url }}" class="mx-auto px-20 max-w-full py-3 rounded-lg shadow-lg hover:bg-black-planera hover:text-white transition-all ease-out duration-300 w-fit-content hidden md:block text-lg">
+                {{ section.settings.insta }}
+            </a>
+            <div style="color:{{ section.settings.sliding_text_col }};" class="overflow-hidden md:mt-7">
+                <div class="marquee3k" 
+                    data-speed="0.25"
+                    data-reverse="false"
+                    data-pausable="true">
+                    <p style="color:{{ section.settings.sliding_text_col }};" class="w-max pr-7 md:pr-16 text-2xl md:text-3xl">{{ section.settings.ticker }}</p>
+                </div>
+            </div>
+            <a href="{{ section.settings.url }}" class="mx-auto px-7 mt-3 max-w-full py-2 sm:py-3 bg-transparent rounded-lg border border-white sm:border-primary-blue border-solid hover:bg-white hover:border-white text-white transition-all ease-out duration-300 w-fit-content block md:hidden text-lg">
+                {{ section.settings.insta }}
+            </a>
+        </div>
+    </div>
+    <div style="color:{{ section.settings.menu_newsletter_text_col }};" class="md:flex flex-wrap mt-8 lg:mt-28 px-11 md:px-8 xl:px-16">
+        <div class="md:w-full lg:w-1/4 h-auto flex items-center justify-center xl:justify-start mb-3 lg:mb-0 pr-3">
+            {% if section.settings.logo %}
+                {% include 'lazy-image' image: section.settings.logo %}
+            {% endif %}
+        </div>
+        <div class="w-full md:w-1/2 lg:w-footer-menu h-auto md:flex hidden">
+            <div style="color:{{ section.settings.menu_newsletter_text_col }};" class="md:max-w-1/2 pr-10 lg:pr-20 text-base.5">
+                <p class="font-cheltenham-std mb-5">{{ section.settings.menu_title_1 }}</p>
+                {% if section.settings.menu_1 %}
+                <ul>
+                    {% for link in linklists[section.settings.menu_1].links %}
+                    <li class="mb-5">
+                        <a class="leading-none" href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="md:max-w-1/2 pr-2">
+                <p class="font-cheltenham-std mb-5">{{ section.settings.menu_title_2 }}</p>
+                {% if section.settings.menu_2 %}
+                <ul>
+                    {% for link in linklists[section.settings.menu_2].links %}
+                    <li class="mb-5">
+                        <a class="leading-none" href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+        <div class="w-full flex-1 h-auto lg:pl-12 md:pl-7">
+            {% if section.settings.capture_title != blank %}
+            <p class="font-cheltenham-std text-lg mb-2 md:mb-3 text-center md:text-left">{{ section.settings.capture_title }}</p>
+            {% endif %}
+            {% if section.settings.capture_content != blank %}
+            <p class="font-cheltenham-std text-xs.5 md:text-sm.5 mb-2 text-center md:text-left mx-auto max-w-capture-content sm:max-w-full">{{ section.settings.capture_content }}</p>
+            {% endif %}
+            {% form 'customer' %}
+            {{ form.errors | default_errors }}
+            {% if form.posted_successfully? %}
+            <p class="m-auto mt-3 mb-4 font-sofia-pro-regular text-base text-center">{{ 'footer.newsletter.form-success' | t }}
+            </p>
+            {% else %}
+            <div class="flex flex-row md:max-w-xl rounded-lg border-white border mt-5">
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                <input type="email" class="bg-transparent border-0 outline-none text-sm font-sofia-pro h-9 w-full text-white placeholder-white pl-4 pt-1" name="contact[email]"
+                    id="Email" value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+                    placeholder="{{ 'footer.newsletter.form_email_placeholder' | t }}" autocorrect="off" autocapitalize="off">
+                <div class="mr-auto max-w-140px w-full flex">
+                    <button type="submit" name="commit" id="Subscribe"
+                        class="max-w-max flex justify-between items-center gap-1 bg-transparent text-white text-xs font-sofia-pro-regular ml-auto mr-auto"><span
+                            class="pt-1 pr-1 tracking-widest">{{ 'footer.newsletter.signup-input-cta' | t }}</span>{% render 'icon-newsletter-plus' %}</button>
+                </div>
+            </div>
+            {% endif %}
+            {% endform %}
+            <div class="mt-4 md:mt-9 flex items-center justify-between">
+                {% for block in section.blocks %}
+                <div class="w-6">
+                    <a href="{{ block.settings.url }}">
+                        {% include 'lazy-image' image: block.settings.icon, classes: 'w-full' %}
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="block md:hidden mt-10">
+            <div x-data="{ open: false }">
+                <div class="border-b border-solid border-white w-full flex justify-between items-center pb-6 pr-2" @click="open = !open">
+                    <p class="font-cheltenham-std text-base.5 leading-none">{{ section.settings.menu_title_1 }}</p>
+                    <div :class="open == true ? 'rotate-0' : 'rotate-45'" class="w-4 transform transition-all ease-out duration-300">
+                        {% include 'icon-cross-white' classes: 'w-full' %}
+                    </div>   
+                </div>
+                <div x-ref="container1" class="transition-all ease-out duration-300 max-h-0 overflow-hidden" x-bind:style="open == true ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+                    <ul class="pt-5">
+                        {% for link in linklists[section.settings.menu_1].links %}
+                        <li class="mb-5">
+                            <a class="leading-none" href="{{ link.url }}">{{ link.title }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-4" x-data="{ open: false }">
+                <div class="border-b border-solid border-white w-full flex justify-between items-center pb-6 pr-2" @click="open = !open">
+                    <p class="font-cheltenham-std text-base.5 leading-none">{{ section.settings.menu_title_2 }}</p>
+                    <div :class="open == true ? 'rotate-0' : 'rotate-45'" class="w-4 transform transition-all ease-out duration-300">
+                        {% include 'icon-cross-white' classes: 'w-full' %}
+                    </div>   
+                </div>
+                <div x-ref="container1" class="transition-all ease-out duration-300 max-h-0 overflow-hidden" x-bind:style="open == true ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+                    <ul class="pt-5">
+                        {% for link in linklists[section.settings.menu_2].links %}
+                        <li class="mb-5">
+                            <a class="leading-none" href="{{ link.url }}">{{ link.title }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name": "Footer",
+    "settings": [
+    {
+        "type": "color",
+        "id": "bg_col",
+        "label": "Background Colour"
+    },
+    {
+        "type": "color",
+        "id": "insta_btn_bg",
+        "label": "Instagram Button Background Colour"
+    },
+    {
+        "type": "color",
+        "id": "insta_btn_text_col",
+        "label": "Instagram Button Text Colour"
+    },
+    {
+        "type": "color",
+        "id": "sliding_text_col",
+        "label": "Sliding Text Colour"
+    },
+    {
+        "type": "color",
+        "id": "hashtag_title_col",
+        "label": "Hashtag Text Colour"
+    },
+    {
+        "type": "color",
+        "id": "menu_newsletter_text_col",
+        "label": "Menu & Newsletter Text Colour"
+    },
+        {
+            "type": "header",
+            "content": "Instgram Section"
+        },
+        { 
+            "type": "text",
+            "id": "title",
+            "label": "Hashtag Title",
+            "default": "GenerationZeroWaste"
+        },
+        {
+            "type": "text",
+            "id": "insta",
+            "label": "Instagram Handle",
+            "default": "@Planeracare"
+        },
+        {
+            "type": "url",
+            "id": "url",
+            "label": "Instagram Link"
+        },
+        {
+            "type": "header",
+            "content": "Content"
+        },
+        {
+            "type": "text",
+            "id": "ticker",
+            "label": "Rolling Text",
+            "default": "Follow Us & Get 20% off"
+        },
+        {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo"
+        },
+        {
+            "type": "header",
+            "content": "Menu"
+        },
+        {
+            "type": "text",
+            "id": "menu_title_1",
+            "label": "Menu Title 1",
+            "default": "Shop"
+        },
+        {
+            "type": "link_list",
+            "id": "menu_1",
+            "label": "Menu 1"
+        },
+        {
+            "type": "text",
+            "id": "menu_title_2",
+            "label": "Menu Title 2",
+            "default": "Shop"
+        },
+        {
+            "type": "link_list",
+            "id": "menu_2",
+            "label": "Menu 2"
+        },
+        {
+            "type": "header",
+            "content": "Newsletter"
+        },
+        {
+            "type": "text",
+            "id": "capture_title",
+            "label": "Newsletter Title",
+            "default": "Sign Up For Our Newsletter"
+        },
+        {
+            "type": "textarea",
+            "id": "capture_content",
+            "label": "Newsletter Content"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "social",
+            "name": "Social Icon",
+            "settings": [
+            {
+                "type": "header",
+                "content": "recommended social media icon size is 44x44px"
+              },
+                {
+                    "type": "image_picker",
+                    "id": "icon",
+                    "label": "Icons",
+                    "info": "1:1 recommended"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "URL"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

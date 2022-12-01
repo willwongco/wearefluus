@@ -1,0 +1,348 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-hero",
+      "blocks": {
+        "b0ab842e-5bb2-41a8-9a76-f7f80369c33e": {
+          "type": "USP",
+          "settings": {
+            "icon_desktop": "shopify:\/\/shop_images\/Frame-2.png",
+            "icon_mobile": "shopify:\/\/shop_images\/Frame-2.png",
+            "title": "Water Dispersible"
+          }
+        },
+        "35999e7e-362b-4422-9bbc-321f2421f051": {
+          "type": "USP",
+          "settings": {
+            "icon_desktop": "shopify:\/\/shop_images\/Frame_17.png",
+            "icon_mobile": "shopify:\/\/shop_images\/Frame_19.png",
+            "title": "Flushable"
+          }
+        },
+        "690f582c-57de-492d-bd16-53440c821404": {
+          "type": "USP",
+          "settings": {
+            "icon_desktop": "shopify:\/\/shop_images\/Frame-3.png",
+            "icon_mobile": "shopify:\/\/shop_images\/Frame-3.png",
+            "title": "Biodegradable"
+          }
+        },
+        "43b20240-cd75-47e7-971d-f71c85189965": {
+          "type": "USP",
+          "settings": {
+            "icon_desktop": "shopify:\/\/shop_images\/Frame4.png",
+            "icon_mobile": "shopify:\/\/shop_images\/Frame4.png",
+            "title": "Zero Microplastics"
+          }
+        },
+        "2d655a1c-504a-4530-8794-1cb84ee0d9c9": {
+          "type": "USP",
+          "settings": {
+            "icon_desktop": "shopify:\/\/shop_images\/Frame2.png",
+            "icon_mobile": "shopify:\/\/shop_images\/Frame2.png",
+            "title": "UpFlow™ Barrier"
+          }
+        }
+      },
+      "block_order": [
+        "b0ab842e-5bb2-41a8-9a76-f7f80369c33e",
+        "35999e7e-362b-4422-9bbc-321f2421f051",
+        "690f582c-57de-492d-bd16-53440c821404",
+        "43b20240-cd75-47e7-971d-f71c85189965",
+        "2d655a1c-504a-4530-8794-1cb84ee0d9c9"
+      ],
+      "settings": {
+        "about_page": false,
+        "infinite_scroll": true,
+        "full_stop": false,
+        "title": "<p>Where do period products really <strong>end <\/strong>up?<\/p>",
+        "underline_top_mob": ".5",
+        "underline_top_desktop": "2",
+        "subtitle": "",
+        "text_colour": "#ffffff",
+        "scroll_item_text_colour": "#0e2559",
+        "scroll_bg_colour": "#ffffff",
+        "section_bg_colour": "#ffffff",
+        "section_bg_image": "shopify:\/\/shop_images\/220622_Planera_Stills_S5_830_f1.jpg",
+        "section_bg_image_mobile": "shopify:\/\/shop_images\/220622_Planera_Stills_S5_830_f1.jpg"
+      }
+    },
+    "16545890325b9b1220": {
+      "type": "impact-percentages",
+      "blocks": {
+        "17fadf20-8a90-493e-8489-f74983587251": {
+          "type": "block",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/UK_Landfill.jpg",
+            "width": "40",
+            "title": "56%",
+            "subtitle": "Landfill",
+            "body": "Disposal of single use menstrual products generates 200,000 tonnes of waste in the UK every year. The majority of this ends up in landfill sites where they can take up to 500 years to degrade."
+          }
+        },
+        "8ce48c35-314a-4092-88c7-6cb4b527eb83": {
+          "type": "block",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/methode-sundaytimes-prod-web-bin-40d0e40a-2180-11e9-bf10-a69b3e42a388.jpg",
+            "width": "40",
+            "title": "30%",
+            "subtitle": "Waterways",
+            "body": "In just one year in the UK, 30% of period products are flushed. This generates 3.4 tonnes of microplastic. Figures from the Marine Conservation Society also reveal that 4.8 pieces of menstrual waste are found on average per 100m of beach in the UK."
+          }
+        },
+        "5a2b11e5-9db7-4f19-b6c6-f77e2752edc0": {
+          "type": "block",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/greenhouse-gas-emissions-hit-new-record_jpg.webp",
+            "width": "40",
+            "title": "14%",
+            "subtitle": "Incineration",
+            "body": "In the UK, 14% of period waste is burnt in incinerators - this is the second dirtiest form of energy (second only to coal). Burning our waste creates greenhouse gas emissions which are responsible for climate change."
+          }
+        }
+      },
+      "block_order": [
+        "17fadf20-8a90-493e-8489-f74983587251",
+        "8ce48c35-314a-4092-88c7-6cb4b527eb83",
+        "5a2b11e5-9db7-4f19-b6c6-f77e2752edc0"
+      ],
+      "settings": {
+        "text_title_col": "#ffffff",
+        "text_card_col": "#ffffff"
+      }
+    },
+    "16545981462631421c": {
+      "type": "stats",
+      "blocks": {
+        "46f8cd00-be4f-4162-beea-ada8e56a7566": {
+          "type": "stat",
+          "settings": {
+            "num": 198,
+            "suffix": "kgCO2e",
+            "subtitle": "greenhouse gas emissions",
+            "icon": "shopify:\/\/shop_images\/Factory_Web-Icon.png",
+            "icon_mob": "shopify:\/\/shop_images\/Factory_Web-Icon.png",
+            "more_title": "Emissions",
+            "more_content": "There is currently no sustainable route of disposal for period products. Switching to Planera cuts your carbon footprint in half."
+          }
+        },
+        "3ffa92e8-549a-4316-85b4-d8b2fc87d6f5": {
+          "type": "stat",
+          "settings": {
+            "num": 238,
+            "suffix": "kg",
+            "subtitle": "microplastic from oceans",
+            "icon": "shopify:\/\/shop_images\/Water-Drop_Web-Icon.png",
+            "icon_mob": "shopify:\/\/shop_images\/Water-Drop_Web-Icon.png",
+            "more_title": "Microplastics",
+            "more_content": "30% of period products are flushed - but none are flushable until we came along.By switching to Planera, we can stop Microplastics pollution once and for all."
+          }
+        },
+        "2842879b-417f-437c-99b6-39b8583316b8": {
+          "type": "stat",
+          "settings": {
+            "num": 5877,
+            "suffix": "bags",
+            "subtitle": "worth of plastic",
+            "icon": "shopify:\/\/shop_images\/World-Leaf_Web-Icon.png",
+            "icon_mob": "shopify:\/\/shop_images\/World-Leaf_Web-Icon.png",
+            "more_title": "Plastic",
+            "more_content": "The market-leading brand contains up to 90% plastic. We don't want this in our underwear or polluting our planet."
+          }
+        },
+        "52d8cca2-506b-42a0-b528-42beed011c8c": {
+          "type": "stat",
+          "settings": {
+            "num": 264,
+            "suffix": "kg",
+            "subtitle": "period waste from landfill",
+            "icon": "shopify:\/\/shop_images\/Double-Leaf_Web-Icon.png",
+            "icon_mob": "shopify:\/\/shop_images\/Double-Leaf_Web-Icon.png",
+            "more_title": "Landfill Waste",
+            "more_content": "This is where the majority of period waste ends up - and where it will stay for up to 500 years. Flushing means no more landfills."
+          }
+        }
+      },
+      "block_order": [
+        "46f8cd00-be4f-4162-beea-ada8e56a7566",
+        "3ffa92e8-549a-4316-85b4-d8b2fc87d6f5",
+        "2842879b-417f-437c-99b6-39b8583316b8",
+        "52d8cca2-506b-42a0-b528-42beed011c8c"
+      ],
+      "settings": {
+        "bg_col": "#0e2559",
+        "stats_col": "#ffffff",
+        "more_content_text_col": "#0e2559",
+        "more_content_bg_col": "#f9f7f2",
+        "wave_col": "#0e2559",
+        "title": "By switching, together we have saved:",
+        "wave": false
+      }
+    },
+    "16545998384e3f6621": {
+      "type": "vertical-impact-timeline",
+      "disabled": true,
+      "blocks": {
+        "972b48c4-d45f-4527-ad47-8821fa259eae": {
+          "type": "vertical-slide",
+          "settings": {
+            "img_left": "shopify:\/\/shop_images\/Frame_20.png",
+            "title_left": "Sourcing Plant-Based Materials",
+            "subtitle_left": "We source our materials from the UK, Europe \nand USA, which is brought to the Planera factory.",
+            "img_right_top": "shopify:\/\/shop_images\/Screenshot_2022-04-12_at_09.47_1.png",
+            "title_right_top": "We have ditched the industry standard acrylic glue welding our layers together with friction.",
+            "subtitle_right_top": "Our Promise",
+            "subsubtitle_right_top": "<p><strong>100%<\/strong> biodegradable <strong>74%<\/strong> plant based   <strong>0%<\/strong> Microplastics<\/p>",
+            "img_right_bottom": "shopify:\/\/shop_images\/Frame_21.png",
+            "title_right_bottom": "Wearing a Flushable Pad is Just the Same",
+            "subtitle_right_bottom": "We recommend wearing our pads up to 8 hours and they are delivered directly to your door",
+            "subtitle_title_right_bottom": "Pad disposal in the UK",
+            "subtitle_title_sub_right_bottom": "<p><strong>56%<\/strong> biodegradable<br\/><strong>14%<\/strong> biodegradable<br\/><strong>30%<\/strong> biodegradable<br\/><br\/>Never touch a dirty bin again. Flush it away.<br\/><br\/><\/p>"
+          }
+        },
+        "972b48c4-d45f-4527-ad47-8821fa259eee": {
+          "type": "vertical-slide",
+          "settings": {
+            "img_left": "shopify:\/\/shop_images\/Screenshot_2022-04-12_at_09.47_1.png",
+            "title_left": "Sourcing Plant Based Materials",
+            "subtitle_left": "We source our materials from the UK, Europe \nand USA, which is brought to the Planera factory.",
+            "img_right_top": "shopify:\/\/shop_images\/Frame_20.png",
+            "title_right_top": "We have ditched the industry standard acrylic glue welding our layers together with friction.",
+            "subtitle_right_top": "Our Natural Promise",
+            "subsubtitle_right_top": "<p><strong>100%<\/strong> biodegradable <strong>74%<\/strong> plant based   <strong>0%<\/strong> Microplastics<\/p>",
+            "img_right_bottom": "shopify:\/\/shop_images\/Frame_21.png",
+            "title_right_bottom": "Wearing a Flushable Pad is Just the Same",
+            "subtitle_right_bottom": "we recommend wearing our pads up to 8 hours and they are delivered directly to your door",
+            "subtitle_title_right_bottom": "Pad disposal in the UK",
+            "subtitle_title_sub_right_bottom": "<p><strong>56%<\/strong> biodegradable<br\/><strong>14%<\/strong> biodegradable<br\/><strong>30%<\/strong> biodegradable<br\/><br\/>Never touch a dirty bin again. Flush it away.<br\/><br\/><\/p>"
+          }
+        },
+        "972b48c4-d45f-4527-ad47-8821fa259aaa": {
+          "type": "vertical-slide",
+          "settings": {
+            "img_left": "shopify:\/\/shop_images\/Screenshot_2022-04-12_at_09.47_1.png",
+            "title_left": "Sourcing Plant Based Materials",
+            "subtitle_left": "We source our materials from the UK, Europe \nand USA, which is brought to the Planera factory.",
+            "img_right_top": "shopify:\/\/shop_images\/Frame_20.png",
+            "title_right_top": "We have ditched the industry standard acrylic glue welding our layers together with friction.",
+            "subtitle_right_top": "Our Natural Promise",
+            "subsubtitle_right_top": "<p><strong>100%<\/strong> biodegradable <strong>74%<\/strong> plant based   <strong>0%<\/strong> Microplastics<\/p>",
+            "img_right_bottom": "shopify:\/\/shop_images\/Frame_21.png",
+            "title_right_bottom": "Wearing a Flushable Pad is Just the Same",
+            "subtitle_right_bottom": "we recommend wearing our pads up to 8 hours and they are delivered directly to your door",
+            "subtitle_title_right_bottom": "Pad disposal in the UK",
+            "subtitle_title_sub_right_bottom": "<p><strong>56%<\/strong> biodegradable<br\/><strong>14%<\/strong> biodegradable<br\/><strong>30%<\/strong> biodegradable<br\/><br\/>Never touch a dirty bin again. Flush it away.<br\/><br\/><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "972b48c4-d45f-4527-ad47-8821fa259eae",
+        "972b48c4-d45f-4527-ad47-8821fa259eee",
+        "972b48c4-d45f-4527-ad47-8821fa259aaa"
+      ],
+      "settings": {
+        "bg_col": "#f9f7f2",
+        "title_col": "#0e2559",
+        "slide_text_col": "#0e2559",
+        "title": "<p>Our <strong>Solution<\/strong> To The Plastic Crisis<\/p>",
+        "subtitle": ""
+      }
+    },
+    "1654607456bdf882ae": {
+      "type": "testimonials",
+      "blocks": {
+        "8cade5d9-de72-4184-a0ac-83d2668780b7": {
+          "type": "testimonial",
+          "settings": {
+            "bg_col": "#f8f1ed",
+            "text_col": "#0e2559",
+            "img": "shopify:\/\/shop_images\/Mask_group_5.png",
+            "stars": 5,
+            "quote": "The comfort and all round convenience of Planera pads makes them the perfect add-on to my cup at home and on the go.",
+            "name": "Margaux, 29"
+          }
+        },
+        "9eacd6d1-9f44-4aec-8485-ec94a2ccbe5f": {
+          "type": "testimonial",
+          "settings": {
+            "bg_col": "#f8f1ed",
+            "text_col": "#0e2559",
+            "img": "shopify:\/\/shop_images\/Mask_group_6.png",
+            "stars": 5,
+            "quote": "It just makes sense to make pads flushable. I don't need to deal with dirty bins anymore.",
+            "name": "Chloe, 28"
+          }
+        },
+        "125b817f-b331-4ca0-a6e9-819e1e4ba502": {
+          "type": "testimonial",
+          "settings": {
+            "bg_col": "#f8f1ed",
+            "text_col": "#0e2559",
+            "img": "shopify:\/\/shop_images\/Mask_group_4.png",
+            "stars": 5,
+            "quote": "10\/10 for comfort. Super soft and comfortable - I forgot I was wearing a pad.",
+            "name": "Mary, 33"
+          }
+        }
+      },
+      "block_order": [
+        "8cade5d9-de72-4184-a0ac-83d2668780b7",
+        "9eacd6d1-9f44-4aec-8485-ec94a2ccbe5f",
+        "125b817f-b331-4ca0-a6e9-819e1e4ba502"
+      ],
+      "settings": {
+        "bg_col": "#ffffff",
+        "text_col": "",
+        "title": "Hear why our community found XX",
+        "underlined_title": "love at first flush"
+      }
+    },
+    "1654607558eb6ca579": {
+      "type": "article-slider",
+      "disabled": true,
+      "blocks": {
+        "b752bb57-e062-4281-9ee2-13fb441d2bc6": {
+          "type": "article",
+          "settings": {
+            "article": "blogs\/no-more-dirty-bins"
+          }
+        },
+        "b21d37f8-ca95-43b0-9b61-dd04b6cd577f": {
+          "type": "article",
+          "settings": {
+            "article": "blogs\/protecting-our-planet"
+          }
+        },
+        "a81342d7-b454-457b-9322-896882acb611": {
+          "type": "article",
+          "settings": {
+            "article": "blogs\/developed-with-people"
+          }
+        }
+      },
+      "block_order": [
+        "b752bb57-e062-4281-9ee2-13fb441d2bc6",
+        "b21d37f8-ca95-43b0-9b61-dd04b6cd577f",
+        "a81342d7-b454-457b-9322-896882acb611"
+      ],
+      "settings": {
+        "bg_col": "#ffffff",
+        "title_text_col": "#0e2559",
+        "article_text_col": "#0e2559",
+        "article_bg_col": "#ffffff",
+        "title": "<p>Interested in <strong>learning more?<\/strong><\/p>",
+        "btn": "READ ARTICLE",
+        "all_btn": "SEE ALL",
+        "all_url": "shopify:\/\/blogs\/blogs"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16545890325b9b1220",
+    "16545981462631421c",
+    "16545998384e3f6621",
+    "1654607456bdf882ae",
+    "1654607558eb6ca579"
+  ]
+}

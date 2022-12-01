@@ -1,0 +1,14 @@
+
+<div class="vertical-timneline-slide w-full {% if margin == 'mr-auto' %} justify-end {% endif %} lg:w-1/2 flex flex-col p-1 {{ margin }} {% if margin == 'ml-auto' %} pr-3 pl-6 sm:pl-20 {% else %} pl-3 pr-6 sm:pr-20 {% endif %} lg:flex-row">
+
+<div class="vertical-image-year flex-col-reverse">
+<img alt="{{ img.alt }}" class="w-25 h-25 transform border-6 border-yellow-planera p-0.5 bg-white lg:w-40 lg:h-40 {% if margin == 'ml-auto' %} mr-auto lg:mr-0 lg:order-1 rotate-2 {% else %} ml-auto lg:ml-0 lg:order-2 -rotate-2 {% endif %} lazyload hs-lazyload hs-id-b86df7ad" data-src="{{ img.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+<span class="mob-year font-cheltenham-std text-3xl {% if margin == 'mr-auto' %} text-right {% endif %}">{{ year }}</span>
+</div>
+<div class="pt-4 {% if margin == 'ml-auto' %} lg:order-2 text-left lg:pl-6 {% else %} lg:order-1 text-right lg:pr-6 {% endif %}">
+<h3 class=" text-small font-cheltenham-std sm:text-sm mb-4">{{ title }}</h3>
+<p class="text-small font-sofia-pro sm:text-xs.5">{{ body }}</p>
+<!-- <img class="absolute transform top-10 left-1/2 -translate-x-1/2" src="{{ section.settings.logo_img.src | img_url:'master' }}" alt="{{ section.settings.logo_img.alt }}"> -->
+<span class="desktop-year {% if margin == 'ml-auto' %}left-53% xl:left-52%{% else %}left-47% xl:left-48%{% endif %}  absolute font-cheltenham-std text-3xl -translate-x-1/2 transform top-10">{{ year }}</span>
+</div>
+</div>

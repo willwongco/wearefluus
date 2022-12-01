@@ -1,0 +1,155 @@
+
+{% if template contains 'cart' %}<div class="cart-slider_cart--page pb-6">{% endif %}
+<div {% if template != "cart" %} style="background-color:{{ section.settings.bg_col }};color:{{ section.settings.text_col }};" {% endif %} x-cloak x-data="{ template: '{{ template }}' }" id="cart-slider" {% unless template contains 'cart' %} :class="{'translate-x-full': !cartSlider, 'translate-x-0': cartSlider}" {% endunless %} data-js-section-id="cart-slider" data-section-name="cart" class="h-full {% if template contains 'cart' %} cart-slider_cart--page z-10 relative w-full max-w-screen-2xl m-auto {% else %} z-40 lg:w-1/2 md:w-2/3 w-full fixed translate-x-full pb-12 {% endif %} top-0 overflow-t-scroll ease-out duration-500 transform transition-all right-0 md:px-14 px-12 pt-5 js-init">
+    <div style="display: none;" class="absolute top-0 left-0 w-full h-full bg-white z-30 opacity-50 cart-loader"></div>
+   <div class="close-cart-icon-el">
+    <svg @click="cartSlider = false" class="icon-close-cart" width="20" height="20" class="" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L10 10M19 19L10 10M10 10L19 1L1 19" stroke="#0E2559" stroke-width="2"></path>
+        </svg>
+   </div>
+  
+    <div class="flex justify-between pt-7">
+        {% assign target_count = 0 | minus: 1 | times: 1.0 %}
+        {% assign target_total = section.blocks.size | minus: 1 | times: 1.0 %}
+        {% for block in section.blocks %}
+            <div {{block.settings.num}} {{cart.total_price}}>
+                {% if block.settings.num > cart.total_price %}
+                    <div class="relative">
+                        <div class="absolute max-w-110 w-44 left-1/2 transform -translate-x-1/2 text-xs text-center -top-8">{{ block.settings.text }}</div>
+                        {% include 'icon-circle' %}
+                    </div>
+                {% else %}
+                    {% assign target_count = target_count | plus: 1 %}
+                    <div class="relative">
+                        <div class="absolute max-w-110 w-44 left-1/2 transform -translate-x-1/2 text-xs text-center -top-8">{{ block.settings.text }}</div>
+                        <div>{% include 'icon-circle-tick' %}</div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    {% assign target_percent = target_count | divided_by: target_total | times: 100.0  %}
+    <div class="w-full relative bg-purple-planera bg-opacity-30 h-1.5 mt-1">
+        <div {% if target_percent > 0 %}style="width: {{ target_percent }}%;"{% endif %} class="h-full bg-purple-planera absolute left-0 top-0"></div>
+    </div>
+    <div class='' :class="template == 'cart' ? 'hidden' : ''">
+        <h3 class="text-xl md:text-3xl font-cheltenham-std mt-10">{{ section.settings.title }}</h3>
+    </div>
+    <div class="overflow-y-scroll max-h-full pb-72 no-scrollbar" :class="template == 'cart' ? 'hidden' : ''">
+        <p class="cartIsEmptyText font-cheltenham-std mt-4 text-xl hidden"><a href="{{ section.settings.empty_text_link }}">{{ section.settings.empty_text }}</a></p>
+        {% for line_item in cart.items %}
+        {% assign plan = line_item.selling_plan_allocation.selling_plan.name %}
+        <div class="flex mt-5">
+            <div class="w-1/4">
+                <a href="{{ line_item.product.url }}">
+                    {% include 'lazy-image' with image: line_item.image, additional_classes: 'w-full' %}
+                </a>
+            </div>
+            <div class="w-3/4 pb-2 pt-2 pl-5 relative">
+                <div onclick="window['quantity-selector']('remove', {{ forloop.index }}, null);" class="absolute right-0 top-0 cursor-pointer">{% include 'icon-cross' %}</div>
+                <div class="absolute right-0 bottom-0 cursor-pointer">{% include 'quantity-selector' quantity: line_item.quantity, lineId: forloop.index %}</div>
+                <p class="text-lg md:text-2xl font-cheltenham-std max-h max-w-tiny"><a href="{{ line_item.product.url }}">{{ line_item.product.title }}</a></p>
+                {% if plan != blank %}<p class="font-cheltenham-std">{{ plan }}</p>{% endif %}
+                <p class="text-base font-bold mt-8 xl:mt-12">{{ line_item.final_price | money }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% if cart.item_count > 0%}
+    <div {% if template != "cart" %} style="background-color:{{ section.settings.bg_col }};color:{{ section.settings.text_col }};" {% endif %} class="absolute bottom-0 left-0 h-40 w-full md:px-14 px-12" :class="template == 'cart' ? 'hidden' : ''">
+        <div class="border-t border-b border-primary-blue h-9 px-2 flex items-center justify-between w-full">
+            <p>Total</p>
+            <p>{{ cart.total_price | money }}</p>
+        </div>
+        <div class="mt-7 md:flex justify-between">
+            <div class="md:mr-2 w-full md:w-1/2 mb-2 md:mb-0" @click="cartSlider = false">
+                {% include 'secondary-purchase-cta' secondary: true, btn_text: section.settings.continue, classes: 'w-full', btn_link: '#', styles: ''  %}
+            </div>
+            {% include 'secondary-purchase-cta' secondary: false, btn_text: section.settings.checkout, classes: 'md:ml-2 w-full md:w-1/2', btn_link: '/checkout', styles: ''  %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% if template contains 'cart' %}</div>{% endif %}
+<div class="fixed w-screen h-screen top-0 z-30" style="display: none;"  
+x-transition:leave="delay-500 transition ease-out duration-0"
+x-show="cartSlider">
+    <div class="relative w-full h-full">
+        <div @click="cartSlider = false" style="display: none;"  
+            {% include 'fade' %}
+            x-show="cartSlider" 
+            class="absolute top-0 left-0 h-full w-full bg-black bg-opacity-50"></div>
+    </div>
+</div>
+{% schema %}
+{
+    "name": "Cart Slider",
+    "settings": [ 
+    {
+        "type": "header",
+        "content": "Colours - SIDE CART ONLY"
+    },
+    {
+        "type": "color",
+        "id": "bg_col",
+        "label": "Background Colour"
+    },
+    {
+        "type": "color",
+        "id": "text_col",
+        "label": "Text Colour"
+    },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Order Summary"
+        },
+        {
+            "type": "text",
+            "id": "empty_text",
+            "label": "Empty Cart Text",
+            "default": "Your cart is now empty - return to shop"
+        },        {
+            "type": "url",
+            "id": "empty_text_link",
+            "label": "Empty Cart Link"
+        },
+        {
+            "type": "header",
+            "content": "Buttons"
+        },
+        {
+            "type": "text",
+            "id": "continue",
+            "label": "Continue Shopping Button",
+            "default": "Continue To Shopping"
+        },
+        {
+            "type": "text",
+            "id": "checkout",
+            "label": "Checkout Button",
+            "default": "Proceed To Checkout"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "milestone",
+            "name": "Milestone",
+            "settings": [
+                {
+                    "type": "number",
+                    "id": "num",
+                    "label": "Cart Amount",
+                    "info": "The amount the cart's value needs to be to hit this milestone (in pence)"
+                },
+                {
+                    "type": "richtext",
+                    "id": "text",
+                    "label": "Milestone Name"
+                }
+            ]
+        }
+    ] 
+}
+{% endschema %}

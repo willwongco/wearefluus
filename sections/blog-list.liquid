@@ -1,0 +1,518 @@
+{% assign heading = section.settings.heading %}
+{% assign subheading = section.settings.subheading %}
+{% assign description = section.settings.description %}
+{% assign paginate_number = section.settings.paginate_number %}
+
+<div class="blog_list relative blog_list_container">
+ 
+  <div class="relative">
+
+    <div style="background-color:{{ section.settings.section_top_bg_colour }};" class="relative pt-20 pb-14 px-4 | sm:px-6 md:px-10 lg:px-14 xl:px-24">
+      <div class="flex">
+        <div class="w-full max-w-2xl | md:w-8/12">
+      {% comment %} heading {% endcomment %}
+      {% if heading != blank %}
+        <h2 style="color:{{ section.settings.topHalf_text_col }};" class="text-3xl font-cheltenham-std mb-6 | sm:mb-10 sm:text-section-title-small">{{ heading | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="text-purple-planera">' }}</h2>
+      {% endif %}
+            {% comment %} subheading {% endcomment %}
+            {% if subheading != blank %}
+            <div style="color:{{ section.settings.topHalf_text_col }};" class="blog_list__desc leading-6 font-sofia-pro-bold mb-2 sm:text-sm.5">{{ subheading }}</div>
+          {% endif %}
+      {% comment %} description {% endcomment %}
+      {% if description != blank %}
+        <div style="color:{{ section.settings.topHalf_text_col }};" class="blog_list__desc font-sofia-pro-regular mb-8 sm:text-sm.5">{{ description }}</div>
+      {% endif %}
+            {% comment %} cta button {% endcomment %}
+            {% if section.settings.cta_btn_text != blank %}
+      <a class="flex mb-10 text-center w-full justify-center max-w-200 tracking-widest items-center mt-5 uppercase rounded-lg pt-4 pb-3 px-2 font-sofia-pro-regular bg-purple-planera text-white text-sm" href="{{ section.settings.cta_btn_link }}">{{ section.settings.cta_btn_text }}</a>
+            {% endif %}
+    </div>
+      </div>
+
+      {% comment %} search input {% endcomment %}
+{% comment %} search {% endcomment %}
+<script defer src="{{ 'predictive-search-articles.min.js' | asset_url }}"></script>
+<predictive-search-articles class="article_predictive_search w-full h-mobile-menu z-50 transform -translate-x-full transition duration-200">
+  <form action="{{ routes.search_url }}" method="get" role="search" class="relative mb-8">
+    <div class="relative w-full sm:w-max">
+      <input
+      class="search-articles pl-5 pr-10 font-sofia-pro-regular border-black rounded-lg border h-9 outline-none appearance-none text-sm w-full transition-all duration-150 | md:w-52"
+      id="Search"
+      type="search"
+      name="q"
+      value="{{ search.terms | escape }}"
+      placeholder="Search..."
+        role="combobox"
+        aria-expanded="false"
+        aria-owns="predictive-search-results-list"
+        aria-controls="predictive-search-results-list"
+        aria-haspopup="listbox"
+        aria-autocomplete="list"
+        autocorrect="off"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+      >
+      <input name="options[prefix]" type="hidden" value="last">
+      <div class="absolute top-1/2 right-4 transform -translate-y-1/2">
+        {% render 'icon-desktop-search' %}
+      </div>
+    </div>
+
+      <div id="predictive-search-articles" class="px-5 max-h-75vh overflow-hidden overflow-y-scroll absolute z-10 w-full bg-white shadow-xl | md:w-96 md:max-h-96" tabindex="-1"></div>
+ 
+  </form>
+</predictive-search-articles>
+
+      {% comment %} tags {% endcomment %}
+      <div class="blog_filters_container flex flex-wrap mt-9 | lg:max-w-4xl">
+        <span style="color:{{ section.settings.topHalf_text_col }};" class=" font-cheltenham-std text-lg mr-4 mt-3">FILTER BY:</span>
+        <div class="filter select_all_filter mr-3 my-3 relative rounded-md cursor-pointer transition-all duration-200">
+          <span data-filter="{{ 'All' }}" class="hypen_text font-sofia-pro-regular relative filter_coll_prod__btn filter_{{ 'All' }} border border-black pt-2 pb-1 px-6 rounded-md | md:mb-0">{{ 'All' | camelcase }}<span class="filter_cross hidden absolute -top-1.5 -right-1.5">{% render 'icon-filter-cross' %}</span></span>
+        </div> 
+        {% assign tag_filters = '' %}
+        {% for article in blog.articles %} 
+          {% for tag in article.tags %}
+            {% if tag contains 'filter_' %}
+            {% assign tag_filters = tag_filters | append:tag %}
+            {% assign tag_filters = tag_filters | append:',' %}
+            {% assign tag_filters = tag_filters | split:',' %}
+            {% unless tag_filters contains tag %}
+              <div class="transition-all filter mr-3 my-3 relative rounded-md cursor-pointer duration-200" data-tag_name="{{tag}}">
+                {% assign tag_split = tag | split: 'filter_' | last %}
+                <span data-filter="{{ tag_split }}" class="hypen_text relative font-sofia-pro-regular filter_coll_prod__btn filter_{{ tag_split }} border border-black pt-2 pb-1 px-6 rounded-md mb-3 | md:mb-0">{{ tag_split | camelcase }}<span class="transition-all hidden filter_cross absolute -top-1.5 -right-1.5">{% render 'icon-filter-cross' %}</span></span>
+              </div>
+              {% endunless %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </div>
+      <!-- <div class="test_button flex-100 text-center py-2 relative mr-3 transition-all duration-200 mt-3 pb-6 | lg:mr-4">
+        <button type="button" class="text-white font-trajan font-bold text-xxs-11 uppercase px-6 cursor-pointer py-2 rounded-md bg-black">{{ section.settings.filter_tag_btn }}</button>
+        <p class="no_tags_selected_text hidden mt-7 text-center font-futuraMedium text-base"> No tags selected... </p>
+      </div> -->
+    </div>
+    <div style="{% if section.settings.section_bottom_bg_colour != blank %} background-color:{{section.settings.section_bottom_bg_colour}}; {% endif %}" class="pt-6 px-4 pb-12 | sm:px-6 md:pb-24 md:px-10 lg:px-14 xl:px-24">
+    {% paginate blog.articles by paginate_number %}
+        {% comment %} blogs {% endcomment %}
+        <div class=" blog-posts-on-page pb-14 pt-10 grid gap-10 | md:grid-cols-2 md:mt-7 | lg:grid-cols-3 " data-next-url="{{ paginate.next.url }}" data-items="{{ paginate.items }}">
+          {% for article in blog.articles %}
+          <div style="background-color:{{ section.settings.article_bg_col }};color:{{ section.settings.article_text_col }}" class="rounded-md">
+            <a href="{{ article.url }}">
+                <div class="p-3 pb-6 sm:p-5 md:pb-10">
+                    <div class="mb-4 md:mb-5">
+                        {% if article.image %}
+                            {% comment %}
+                                Set aspect ratio so slides are not the wrong height on slider init
+                            {% endcomment %}
+                            {% assign aspect_ratio = 'aspect-ratio: ' | append: article.image.aspect_ratio | append: '/ 1;' %}
+                            {% include 'lazy-image' image: article.image, additional_classes: 'w-full', inline_style: aspect_ratio %}
+                        {% endif %}
+                        </div>
+                        <div class="pl-3">
+                            <p class="text-xs mb-3.5 md:mb-4 sm:text-sm font-sofia-pro">{{ article.updated_at | date: format: 'abbreviated_date' }}</p>
+                            <p class="font-cheltenham-std text-sm mb-2 md:text-base md:mb-3">{{ article.title }}</p>
+                            <p class="text-xs.5 mb-5 md:mb-8 md:text-sm">
+                                {{ article.excerpt_or_content | truncatewords: 15, '...' }}
+                            </p>
+                            <p class="flex items-end text-xs font-semibold md:text-sm.5"><span class="mr-2">READ ARTICLE</span> {% include 'icon-circle-plus-blog-slider' %}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+          {% endfor %}
+        </div>
+
+        {% comment %} pagination {% endcomment %}
+        {% if paginate.pages > 1 %}
+          <div class="pb-8 mt-0">
+            <button class="flex mx-auto load_more_blogs_btn mb-10 text-center w-full justify-center max-w-200 tracking-widest items-center mt-5 uppercase rounded-lg pt-4 pb-3 px-2 font-sofia-pro-regular bg-purple-planera text-white text-sm">READ MORE</button>
+          </div>
+        {% endif %}
+      </div>
+       {% comment %} back to top arrow {% endcomment %}
+       <!-- <div class="scrollTop hidden sm:block py-3.5 px-7px rounded-full absolute bottom-3 right-12 cursor-pointer">
+        {% render 'icon-back-to-top' %}
+      </div> -->
+      </div>
+    {% endpaginate %}
+    <!-- loading spinner gif -->
+    <span class="loadingSpinner fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2  hidden">
+      <img alt="Loading Spinner" class="w-full h-auto lazyload hs-lazyload hs-id-251a8b99" data-src="{{ 'Spinner-1s-300px.gif' | asset_img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    </span>
+  </div>
+
+  <style>
+    input.search-articles {
+      color:{{ section.settings.topHalf_text_col }} !important;
+    }
+    ::placeholder {
+      color:{{ section.settings.topHalf_text_col }} !important;
+      opacity:1 !important;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color:{{ section.settings.topHalf_text_col }} !important;
+      opacity:1 !important;
+    }
+    ::-ms-input-placeholder { /* Microsoft Edge */
+      color:{{ section.settings.topHalf_text_col }};
+    }
+    /* blog filtering styles */
+    .filter span {
+    background-color: {{ section.settings.filter_bg_col }};
+    color:{{ section.settings.filter_text_col }};
+}
+    .filter.active span {
+    background-color: {{ section.settings.filter_active_bg_col }};
+    color:{{ section.settings.filter_active_text_col }};
+}
+  </style>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+
+      // gif
+      let loadingSpinner = document.querySelector('.loadingSpinner');
+
+        function debounce(func, wait, immediate) {
+  var timeout;
+
+  return function executedFunction() {
+    var context = this;
+    var args = arguments;
+	    
+    var later = function() {
+      timeout = null;
+      if (!immediate) {
+        func.apply(context, args);
+                    // show loading gif
+                    loadingSpinner.classList.remove('hidden');
+      }
+    };
+
+    var callNow = immediate && !timeout;
+	
+    clearTimeout(timeout);
+
+    timeout = setTimeout(later, wait);
+	
+    if (callNow) func.apply(context, args);
+  };
+};
+
+// remove hyphens 
+const removeUnderscores  = () => {
+  setTimeout( () => {
+    let text = document.querySelectorAll(".hyphen_text");
+  
+    text.forEach(a =>{
+      if(a !== undefined || a !== null){
+        a.innerHTML = a.innerHTML.split("_").join(" ");
+        console.log('hyphen update')
+      }
+    });
+  }, 1000);
+}
+/* load more function */
+const loadMore = (load_more_btn, container, items) => {
+    let products_on_page = document.querySelector(container);
+    let next_url = products_on_page.dataset.nextUrl;
+    
+    if(products_on_page != null || products_on_page != undefined){
+    $.ajax({
+        url: next_url,
+        type: "GET",
+        dataType: "html",
+        beforeSend: function(){
+            load_more_btn.style.display = "none";
+        }
+    }).done(function(next_page){
+        let new_products = $(next_page).find(container);
+        let new_url = new_products.data("next-url");
+
+        if(new_url){
+            load_more_btn.style.display = "flex";
+        }
+        products_on_page.dataset.nextUrl = new_url;   
+        products_on_page.innerHTML += new_products[0].innerHTML;
+        console.log(new_products[0]);
+        num_of_products_on_page = document.querySelectorAll(items);
+    }); 
+    setTimeout(() => {
+        removeUnderscores();
+    }, 500);
+    }
+}
+/* initLoadMoreBlogs */
+const initLoadMoreBlogs = () => {
+    let loadMoreBlogsButton = document.querySelector(".load_more_blogs_btn");
+    if(loadMoreBlogsButton != null && loadMore != undefined){
+        loadMoreBlogsButton.addEventListener("click", () => {
+            loadMore(loadMoreBlogsButton, '.blog-posts-on-page', '.blog-post');
+        });
+    }   
+}
+
+removeUnderscores();
+initLoadMoreBlogs();
+      /* remove duplicate filters from blog page */
+      let seen = {};
+      let sub_category_container = $(".blog_filters_container .filter");
+      sub_category_container.each(function(){
+        let text = $(this).text();
+        if(seen[text]){
+          $(this).remove();
+        } else {
+          seen[text] = true;
+        }
+      });
+      /* get selected tags */
+      const getSelectedTags = () => {
+        let filters = document.querySelectorAll(".blog_filters_container .filter");
+        let button = document.querySelector(".test_button");
+        let select_all_filter = document.querySelector(".select_all_filter");
+        let no_tags_selected_text = document.querySelector(".no_tags_selected_text");
+        let selected_arr = [];
+        filters.forEach((filter,index) => {
+          let filter_tag = filter.dataset.tag_name;
+          filter.addEventListener("click", () => {
+            if(filter.classList.contains("active")){
+              filter.classList.remove("active");
+              filters[index].querySelector("span.filter_cross").classList.add("hidden");
+              let filter_index = selected_arr.indexOf(filter_tag);
+              selected_arr.splice(filter_index, 1);
+              if(!filter.classList.contains("select_all_filter")){
+                select_all_filter.classList.remove("active");
+                select_all_filter.querySelector("span.filter_cross").classList.add("hidden");
+              }
+            } else {
+              filter.classList.add("active");
+              console.log(filters[index]);
+              filters[index].querySelector("span.filter_cross").classList.remove("hidden");
+              // filterBtns[i].classList.toggle("filter_active");
+              selected_arr.push(filter_tag);
+            }
+          });
+          select_all_filter.addEventListener("click", () => {
+            if(select_all_filter.classList.contains("active")){
+              filter.classList.add("active");
+              filters[index].querySelector("span.filter_cross").classList.remove("hidden");
+              if(filter_tag !== undefined && filter_tag !== null){
+                selected_arr.push(filter_tag);
+              }
+            } else {
+              filter.classList.remove("active");
+              filters[index].querySelector("span.filter_cross").classList.add("hidden");
+              selected_arr = [];
+            }
+          });
+        });
+
+        filters.forEach(element => {
+            element.addEventListener('click', debounce((event) => {
+          if(selected_arr.length > 0){
+            console.log('searching blog articles')
+            setTimeout(() => {
+              generateTaggedPosts('.blog-posts-on-page', selected_arr, '.load_more_blogs_btn');
+              loadingSpinner.classList.add('hidden')
+            }, 300);
+            // hide loading gif
+            console.log('end searching blog articles')
+          } else {
+            location.reload();
+          }
+    }, 1800));
+        });
+
+
+      }
+      getSelectedTags();
+      /* generate new tagged blog posts */
+      const generateTaggedPosts = (container, items, load_button) => {
+        let url = "https://941eb7c1e3d976bdc0ddc5a968441e59:988621cfe4fae6ee1d7011c192e54f10@{{ shop.domain }}/admin/api/2022-04/blogs/{{blog.id}}/articles.json";
+        console.log(url);
+        let products_on_page = document.querySelector(container);
+        let load_more_blogs_btn = document.querySelector(load_button);
+        console.log("LOADED");
+        axios.get('{{ shop.url }}/admin/api/2022-04/blogs/{{blog.id}}/articles.json')
+        .then(function (response) {
+          let tagged_products = "";
+              $.each(response.data, function(){
+                $.each(this, function(k,v){
+                  console.log(v);
+                  /* get blog category title and read time tag */
+                  let tags = v.tags.split(", ");
+                  let category_tag = "";
+                  tags.forEach(tag => {
+                    if(tag.includes("category_")){
+                      category_tag = tag.split("category_")[1];
+                    }
+                  });
+                  if(tags.some(r=> items.includes(r))){
+
+                      /* get blog date */
+                      const monthNames = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nove", "Dec"];
+                      let created_at = new Date(v.created_at);
+                      let month = monthNames[created_at.getMonth()];
+                      let final_date = ((created_at.getDate() > 9) ? created_at.getDate() : ('0' + created_at.getDate())) + ' ' + (month) + ' ' + created_at.getFullYear();
+                      /* title */
+                      let title = v.title.split(" ").splice(0, 5).join(" ");
+                      let finished_title = "";
+                      
+                      if(title.split(" ").length > 5){
+                        finished_title = title + "...";
+                      } else {
+                        finished_title = title;
+                      }
+                      /* content */
+                      let content = v.body_html.replace(/<[^>]*>?/gm, '');
+                      let finished_content = v.summary_html.split('<span>')[1]
+                      /* article url */
+                      let url = "/blogs/{{blog.handle}}/" + v.handle;
+                      let read_time = "";
+
+                      /* regular blog items */
+                        tagged_products += 
+                        
+                        `<div style="background-color:{{ section.settings.article_bg_col }};color:{{ section.settings.article_text_col }}" class="rounded-md">
+            <a href='${url}'>
+                <div class="p-3 pb-6 sm:p-5 md:pb-10">
+                    <div class="mb-4 md:mb-5">
+                            <img src="${v.image.src}" alt="${v.title}" class="w-full lazyload lazyload-fade"/>
+                        </div>
+                        <div class="pl-3">
+                            <p class="text-xs mb-3.5 md:mb-4 sm:text-sm font-sofia-pro">${final_date}</p>
+                            <p class="font-cheltenham-std text-sm mb-2 md:text-base md:mb-3">${finished_title}</p>
+                            <p class="text-xs.5 mb-5 md:mb-8 md:text-sm">
+                                ${finished_content}
+                            </p>
+                            <p class="flex items-end text-xs font-semibold md:text-sm.5"><span class="mr-2">READ ARTICLE</span> {% include 'icon-circle-plus-blog-slider' %}</p>
+                    </div>
+                </div>
+            </a>
+        </div>`;
+                  }
+                });
+              });
+              products_on_page.innerHTML = tagged_products;
+              load_more_blogs_btn.classList.add('hidden');
+        })
+        .catch(function (error) {
+          console.log("error", error);
+        });
+        removeUnderscores();
+      }
+    });
+  </script>
+
+{% schema %}
+  {
+    "name": "Blog List",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "Sub Heading"
+      },
+      { 
+        "type": "richtext",
+        "id": "description",
+        "label": "Description"
+      },
+      { 
+        "type": "text",
+        "id": "cta_btn_text",
+        "label": "CTA Button Text"
+      },
+      { 
+        "type": "url",
+        "id": "cta_btn_link",
+        "label": "CTA Button Link"
+      },
+      {
+        "type": "header",
+        "content": "Choose colours for the top"
+    },
+    {
+      "type":"color",
+      "label":"Section Top Background Colour",
+      "id":"section_top_bg_colour"
+    },
+    {
+      "type":"color",
+      "label":"Top Half Text Colour",
+      "id":"topHalf_text_col"
+    },
+    {
+      "type": "header",
+      "content": "Filter Colours"
+  },
+  {
+    "type":"color",
+    "label":"Background Colour",
+    "id":"filter_bg_col"
+  },
+  {
+    "type":"color",
+    "label":"Text Colour",
+    "id":"filter_text_col"
+  },
+  {
+    "type":"color",
+    "label":"Active Background Colour",
+    "id":"filter_active_bg_col"
+  },
+  {
+    "type":"color",
+    "label":"Active Text Colour",
+    "id":"filter_active_text_col"
+  },
+    {
+        "type": "header",
+        "content": "Choose colours for the bottom"
+    },
+    {
+        "type":"color",
+        "label":"Section Bottom Background Colour",
+        "id":"section_bottom_bg_colour",
+        "default":"#000"
+    },
+    {
+      "type":"color",
+      "id":"article_bg_col",
+      "label":"Article Item Background Colour"
+  },
+  {
+      "type":"color",
+      "id":"article_text_col",
+      "label":"Article Item Text Colour"
+  },
+      {
+        "type": "text",
+        "id": "filter_tag_btn",
+        "label": "Filter Button Text",
+        "default":"Update Filters"
+      },
+      {
+        "type": "range",
+        "id": "paginate_number",
+        "label": "Paginate Number",
+        "min": 2,
+        "max": 16, 
+        "default": 4
+      }
+    ],
+    "presets":[
+    {
+    "name":"Blog List"
+    }
+    ]
+  }
+{% endschema %}

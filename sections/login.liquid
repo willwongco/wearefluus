@@ -1,0 +1,203 @@
+
+<div id="template" class="max-w-lg m-auto text-center px-4 relative | pb-14 sm:pb-28 xl:pb-52">
+
+    <div id="customer" class="pb-16">
+      <div class="template_header pb-2">
+        <h1 class="text-center font-cheltenham-std text-4xl tracking-wider pt-10 pb-8 | sm:text-40 lg:pt-24 lg:pb-12">{{ section.settings.title }}</h1>
+      </div>
+  
+      {% form 'customer_login' %}
+      <div class=" font-cheltenham-std pb-6 text-base">
+        {{ form.errors | default_errors }}
+      </div>
+  
+        <div id="login_email" class="">
+          <input type="email" placeholder="{{ "customer.email" | t }}" name="customer[email]" id="customer_email" class=" font-sofia-pro rounded-xl outline-none py-3 w-full px-4 border border-primary-blue opacity-75" size="30" />
+        </div>
+  
+        {% if form.password_needed %}
+  
+          {% comment %}
+            Customer Account Login
+          {% endcomment %}
+  
+          <div id="login_password" class="pt-4 font-sofia-pro">
+            <input type="password" placeholder="{{ "customer.password" | t }}" name="customer[password]" id="customer_password" class=" font-sofia-pro rounded-xl outline-none py-3 w-full px-4 border border-primary-blue opacity-75" size="30" />
+          </div>
+  
+        {% endif %}
+  
+        <div class="action_bottom pt-6 m-auto">
+            <div class="flex text-sm sm:text-base gap-2 font-sofia-pro-light justify-center items-center py-4 my-4 ">
+            <p>{{ "customer.need_account" | t }}</p> <a class=" underline font-sofia-pro-bold text-sm sm:text-base" href="{{ routes.account_register_url }}" data-create-account-link>{{ "customer.sign_up_now" | t }}</a>
+          </div>
+          <div class="submit__button">
+            <!-- CTA button -->
+            <div class=" m-auto w-full">
+              <button type="submit" value="Sign in" class="flex items-center m-auto bg-primary-blue font-sofia-pro text-white text-sm rounded-lg uppercase mr-auto tracking-widest py-4 pb-3 px-16"><span class="flex justify-center items-center">{{ 'customer.log_in' | t }}</span></button>
+              </div>
+        </div>
+        </div>
+  
+        {% if form.password_needed %}
+        <div id="forgot_password" class="font-sofia-pro pt-4 text-sm sm:text-base">
+          <a href="#" onclick="showRecoverPasswordForm();return false;" class=" underline text-sm tracking-wide">Forgot your password?</a>
+        </div>
+        {% endif %}
+      {% endform %}
+    </div>
+  
+    {% comment %}
+      Recover Password Form
+    {% endcomment %}
+  
+    <div id="recover-password" class="py-16 w-full px-4" style='display:none'>
+      <div class="template_header">
+        <h2 class="text-center font-cheltenham-std text-4xl tracking-wider pt-10 pb-8 | sm:text-40 lg:pt-24 lg:pb-12">{{ "customer.reset_password" | t }}</h2>
+        <p class="text-sm sm:text-base font-sofia-pro pb-6">{{ "customer.reset_password_label" | t }}</p>
+      </div>
+  
+      {% form 'recover_customer_password' %}
+        {{ form.errors | default_errors }}
+        <div id="recover_email" class="clearfix large_form">
+          <input type="email" value="" placeholder="Email" size="30" name="email" id="recover-email" class="font-sofia-pro rounded-xl outline-none py-3 w-full px-4 border border-primary-blue opacity-75" size="30" />
+        </div>
+        <div class="action_bottom flex justify-center items-center sm:flex-row gap-2 pt-5">
+          <div class="submit__button">
+            <!-- CTA button -->
+            <div class=" m-auto w-full">
+              <button type="submit" class="flex items-center m-auto bg-primary-blue font-sofia-pro text-white text-sm rounded-lg uppercase mr-auto tracking-widest py-4 pb-3 px-10 | sm:px-16"><span class="flex justify-center items-center">{{ 'customer.submit' | t }}</span></button>
+              </div>
+        </div>
+        <div class="submit__button">
+          <!-- CTA button -->
+          <div class=" m-auto w-full">
+            <button onclick="hideRecoverPasswordForm();return false;" class="flex items-center m-auto bg-white font-sofia-pro text-primary-blue text-sm rounded-lg uppercase mr-auto tracking-widest py-4 pb-3 px-10 border border-primary-blue | sm:px-16"><span class="flex justify-center items-center">{{ 'customer.cancel' | t }}</span></button>
+            </div>
+      </div>
+        </div>
+      {% endform %}
+    </div>
+  
+  
+    {% comment %}
+      Guest Login form for shops with optional customer accounts. This form is displayed only when users click on the checkout link
+      on the cart page.
+    {% endcomment %}
+  
+    {% if shop.checkout.guest_login %}
+    <div id="guest">
+      <div class="template_header">
+        <h3 class="title">Guest Login</h3>
+      </div>
+      {% form 'guest_login' %}
+        <input class="btn" type="submit" value="Continue as Guest" />
+      {% endform %}
+    </div>
+    {% endif %}
+  </div>
+  
+  
+  <script type="text/javascript">
+    function showRecoverPasswordForm() {
+      document.getElementById('recover-password').style.display = 'inline-block';
+      document.getElementById('customer').style.display='none';
+    }
+  
+    function hideRecoverPasswordForm() {
+      document.getElementById('recover-password').style.display = 'none';
+      document.getElementById('customer').style.display = 'block';
+    }
+  
+    if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+  </script>
+
+<script>
+  (function(){
+    let queryString = window.location.search.replace(`%2F`, `/`).replace(`%3F`, `&`).replace(`%40`, `@`).replace(`%3D`, `=`);
+    const urlParams = new URLSearchParams(queryString);
+    const email = urlParams.get('email');
+    if( email !== null ) {
+      document.querySelector(`[name="customer[email]"]`).value = email;
+      let createAccountLink = document.querySelector(`[data-create-account-link]`);
+      createAccountLink.setAttribute( `href`, `${createAccountLink.getAttribute('href')}${window.location.search}` ) 
+    }
+  }());
+</script>
+
+
+  <style>
+  
+  #shopify-section-login {
+    color: {{ section.settings.text_col }};
+  }
+  #shopify-section-login input {
+    background-color: {{ section.settings.text_input_bg_col }};
+    color: {{ section.settings.text_input_col }};
+  }
+  #shopify-section-login ::placeholder {
+    color: {{ section.settings.text_input_col }};
+    opacity:1;
+  }
+
+{% if section.settings.section_bg_image != blank or section.settings.section_bg_colour != blank %}
+
+    #shopify-section-login {
+        {% if section.settings.section_bg_image != blank %}
+        background-image:url(' {{- section.settings.section_bg_image.src | img_url:'master' -}}');
+        background-size:cover;
+        {% else %}
+        background-color: {{- section.settings.section_bg_colour -}};
+        {% endif %}
+    }
+
+{% endif %}
+
+</style>
+
+  {% schema %}
+{
+  "name": "Login",
+  "settings": [
+  {
+    "type": "header",
+    "content": "Title"
+},
+{
+    "type":"textarea",
+    "label":"Title",
+    "id":"title",
+    "default":"Log in"
+},
+  {
+    "type": "header",
+    "content": "Section colours/image"
+},
+{
+  "type":"color",
+  "label":"Text Colour",
+  "id":"text_col"
+},
+{
+  "type":"color",
+  "label":"Text Input Colour",
+  "id":"text_input_col"
+},
+{
+  "type":"color",
+  "label":"Text Input Background Colour",
+  "id":"text_input_bg_col"
+},
+{
+    "type":"color",
+    "label":"Section Background Colour",
+    "id":"section_bg_colour"
+},
+{
+    "type":"image_picker",
+    "label":"Section Background Image",
+    "id":"section_bg_image"
+}
+  ]
+}
+{% endschema %}

@@ -1,0 +1,152 @@
+{% assign FAQ_Headers = section.blocks | where: 'type', "faq-top-header" %}
+{% assign FAQ_Items = section.blocks | where: 'type', "faq-item" %}
+{% assign ss = section.settings %}
+
+<div class="faqs pt-12 pb-20 relative {% if ss.img_desktop != blank %} min-h-900  | sm:pb-56 md:min-h-1050 {% endif %}">
+    <div class="flex justify-between">
+    <div class="z-10 px-4 flex flex-col justify-center w-full | sm:block sm:w-auto sm:px-10 lg:w-5/6 lg:m-auto" x-data="{ topHeaderTab:1 }">
+        <h2 class=" text-8xl leading-tight font-cheltenham-std | sm:text-9xl lg:text-171">{{ ss.title }}</h2>
+        <div class="flex flex-col justify-center sm:justify-start sm:flex-row sm:flex-wrap | sm:mx-px sm:max-w-none lg:flex-nowrap">
+            {% for block in FAQ_Headers %}
+              <!-- get a unique identifier as we're using the same svg multiple times -->
+              {% assign faq_svg_id = 'faq_underline_' | append:forloop.index %}
+              {% assign faq_svg_small_id = 'faq_underline_small' | append:forloop.index %}
+              <div @click="topHeaderTab = {{ forloop.index }}" class="{% unless forloop.last %}mr-4{% endunless %}{% if block.settings.show_top_header == false %}hidden{% endif %} mt-5 flex items-center font-cheltenham-std cursor-pointer text-4xl | sm:mr-10 lg:mt-0 md:text-6xl"><img alt="{{ block.settings.icon.alt }}" class="-mt-4 pr-3 transform scale-75 md:scale-100 lazyload hs-lazyload hs-id-a503d456" data-src="{{ block.settings.icon.src | img_url:'51x51' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><p class="relative">{{ block.settings.title_text }}<span class="absolute bottom-0 left-0 w-full" :class="topHeaderTab == {{ forloop.index }} ? 'block':'hidden'">{% render 'icon-underline-faq', id:faq_svg_id %}{% render 'icon-faq-underline-small', id:faq_svg_small_id %}</span></p></div>
+            {% endfor %} 
+        </div> 
+        {% for faq_header in FAQ_Headers %}
+        {% assign bs_header = faq_header.settings %}
+        <div class=" font-sofia-pro-regular w-full" x-data="{faq_item:0}" x-show="topHeaderTab == {{ forloop.index }}">
+            <div class="flex flex-col mt-8 w-full mx-auto | sm:mx-px sm:max-w-3xl">
+            {% for faq_item in FAQ_Items %}
+              {% assign bs_content = faq_item.settings %}
+              {% if bs_content.tab_content_header == bs_header.title_text %}
+                {% assign icon_pattern = 'faq_point' | append:forloop.index %}
+                <div @click="faq_item == {{ forloop.index }} ? faq_item = 0 : faq_item = {{ forloop.index }}" class="flex justify-between items-center cursor-pointer mb-5 mt-3 | sm:mb-6 sm:mt-5"><p class=" text-xl pr-2 w-full">{{ bs_content.title_text }}</p><span  class=" transform transition-all" :class="faq_item == {{ forloop.index }} ? 'rotate-45' : ''">{% include 'icon-plus-uses', pattern:icon_pattern %}</span></div>
+                <div class=" border-b-2 border-primary-blue">
+                    <p :class="faq_item == {{ forloop.index }} ? 'max-h-full mb-5 md:mt-2' : 'max-h-0 h-0 opacity-0 mb-0 pointer-events-none mt-0'" class="transform transition-all text-base font-sofia-pro-medium pr-2 mx-auto | sm:mx-px md:max-w-2xl" x-transition >{{ bs_content.body_text }}</p>
+                </div>
+              {% endif %}
+            {% endfor %}
+        </div>
+        </div> 
+        {% endfor %}
+        <!-- <button class=" transition-all font-sofia-pro tracking-wide text-sm px-12 mt-8 pb-1 pt-2 border rounded-lg border-primary-blue mb-12 hover:bg-primary-blue hover:text-white | sm:pb-2 sm:pt-3 lg:mb-0 lg:mt-12"><a href="{{ ss.cta_url }}">{{ ss.cta_text }}</a></button> -->
+    </div>
+    {% if ss.img_desktop != blank %}
+    <div class="">
+        <img alt="{{ ss.img_desktop.alt }}" class="absolute min-w-350 bottom-0 right-0 w-auto hidden md:block lazyload hs-lazyload hs-id-3a2be27d" data-src="{{ ss.img_desktop.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+        <img alt="{{ ss.img_mobile.alt }}" class="absolute top-0 right-0 w-auto mt-20 block md:hidden lazyload hs-lazyload hs-id-5e153e0a" data-src="{{ ss.img_mobile.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    </div>
+    {% endif %}
+</div>
+</div>
+
+<style>
+    .faqs {
+        background-color: {{ ss.bg_col }};
+    }
+    .faqs h2,
+    .faqs div,
+    .faqs p {
+        color: {{ ss.text_col }};
+    }
+</style>
+
+{% schema %}
+{
+    "name": "product FAQ",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Main Title",
+            "default":"FAQ"
+        },
+        {
+            "type": "text",
+            "id": "cta_text",
+            "label": "CTA Text",
+            "default":"LEARN MORE"
+        },
+        {
+            "type": "url",
+            "id": "cta_link",
+            "label": "CTA Link"
+        },
+        {
+            "type":"color",
+            "id":"bg_col",
+            "label":"Background Colour"
+        },
+        {
+            "type": "color",
+            "id": "text_col",
+            "label": "Text Colour"
+        },
+        {
+            "type":"image_picker",
+            "id":"img_desktop",
+            "label":"Desktop Image",
+            "info":"Image Dimensions (IMPORTANT): 300W x 880H"
+        },
+        {
+            "type":"image_picker",
+            "id":"img_mobile",
+            "label":"Mobile Image",
+            "info":"Image Dimensions (IMPORTANT): 150W x 800H" 
+        }
+    ],
+    "blocks": [
+    {
+        "type": "faq-top-header",
+        "name": "FAQ Top Header",
+        "settings": [
+            {
+                "type":"image_picker",
+                "id":"icon",
+                "label":"Icon Image"
+            },
+            {
+                "type": "text",
+                "id": "title_text",
+                "label": "Title"
+            },
+            {
+              "type": "checkbox",
+              "id": "show_top_header",
+              "label": "Show this element",
+              "default": true
+            }
+        ]
+    },
+        {
+            "type": "faq-item",
+            "name": "FAQ",
+            "settings": [
+            {
+                "type": "text",
+                "id": "tab_content_header",
+                "info":"This text is used to group the items into their specific tab heading. This must be the exact text of the FAQ header that you want this under ",
+                "label": "Which Tab To Show This FAQ Item Under"
+            },
+                {
+                    "type": "text",
+                    "id": "title_text",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "body_text",
+                    "label": "Body"
+                }
+            ]
+        }
+    ],
+    "presets": [
+    {
+        "name": "Product FAQ"
+    }
+]
+}
+{% endschema %}

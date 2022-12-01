@@ -1,0 +1,87 @@
+{
+  "general": {
+    "404": {
+      "title": "404 - Page not found",
+      "subtext_html": "The page you were looking for does not exist",
+      "link_html": "<a href='\/'>Go Back Home<\/a>"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "subject": "Subject",
+      "message": "Message",
+      "success": "Your message has been sent successfully!"
+    }
+  },
+  "customer": {
+    "login": "Login",
+    "log_in": "Log In",
+    "need_account": "Don't have an account yet?",
+    "login_sign_up": "Sign Up",
+    "reset_password": "Reset Password",
+    "reset_password_label": "We will send you an email to reset your password.",
+    "submit": "SUBMIT",
+    "cancel": "CANCEL",
+    "register": "CREATE AN ACCOUNT",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "error_heading": "ERROR",
+    "sign_up": "SIGN UP",
+    "sign_up_now": "Sign Up Now",
+    "send": "send",
+    "already_has_account": "Already have an account?",
+    "my_account": "My Account",
+    "account_subtitle": "Healthy food has its roots in healthy soil. Which is why at Biona Organic, we continually reinvest in the organic farming industry.",
+    "addresses": {
+      "name": "Name:",
+      "country": "Country:",
+      "phone": "Mobile\/Phone Number:",
+      "zip": "Postal Code:",
+      "update": "Update Account",
+      "addresses": "Addresses",
+      "add_new_address": "Add new address",
+      "default": "Default Address",
+      "edit": "Edit",
+      "delete": "Delete",
+      "edit_address": "Edit address",
+      "company": "Company",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "set_as_default": "Set as default",
+      "delete_confirm": "Confirm"
+    }
+  },
+  "line-item-table": {
+    "heading": {
+      "product": "Product",
+      "price": "Price",
+      "quantity": "Quantity",
+      "qty": "Qty",
+      "order-total": "Order Total"
+    }
+  },
+  "cart": {
+    "heading": "My Cart",
+    "shipping": "Shipping",
+    "shipping_calculated": "Calculated at checkout",
+    "subtotal": "Subtotal",
+    "continue": "Continue shopping",
+    "checkout": "Checkout",
+    "total": "Total",
+    "empty": {
+      "copy": "Looks like your cart is empty!",
+      "continue_shopping": "Continue Shopping"
+    }
+  },
+  "footer": {
+    "newsletter": {
+      "signup-input-cta": "SIGN ME UP",
+      "form_email_placeholder": "Email address..."
+    }
+  }
+}

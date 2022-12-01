@@ -1,0 +1,256 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-hero",
+      "blocks": {
+        "b0ab842e-5bb2-41a8-9a76-f7f80369c33e": {
+          "type": "USP",
+          "settings": {
+            "icon_desktop": "shopify:\/\/shop_images\/Frame-2.png",
+            "icon_mobile": "shopify:\/\/shop_images\/Frame-2.png",
+            "title": "Water Dispersible"
+          }
+        },
+        "35999e7e-362b-4422-9bbc-321f2421f051": {
+          "type": "USP",
+          "settings": {
+            "icon_desktop": "shopify:\/\/shop_images\/Frame_17.png",
+            "icon_mobile": "shopify:\/\/shop_images\/Frame_19.png",
+            "title": "Flushable"
+          }
+        },
+        "690f582c-57de-492d-bd16-53440c821404": {
+          "type": "USP",
+          "settings": {
+            "icon_desktop": "shopify:\/\/shop_images\/Frame-3.png",
+            "icon_mobile": "shopify:\/\/shop_images\/Frame-3.png",
+            "title": "Biodegradable"
+          }
+        },
+        "43b20240-cd75-47e7-971d-f71c85189965": {
+          "type": "USP",
+          "settings": {
+            "icon_desktop": "shopify:\/\/shop_images\/Frame4.png",
+            "icon_mobile": "shopify:\/\/shop_images\/Frame4.png",
+            "title": "Zero Microplastics"
+          }
+        },
+        "2d655a1c-504a-4530-8794-1cb84ee0d9c9": {
+          "type": "USP",
+          "settings": {
+            "icon_desktop": "shopify:\/\/shop_images\/Frame2.png",
+            "icon_mobile": "shopify:\/\/shop_images\/Frame2.png",
+            "title": "UpFlow™ Barrier"
+          }
+        }
+      },
+      "block_order": [
+        "b0ab842e-5bb2-41a8-9a76-f7f80369c33e",
+        "35999e7e-362b-4422-9bbc-321f2421f051",
+        "690f582c-57de-492d-bd16-53440c821404",
+        "43b20240-cd75-47e7-971d-f71c85189965",
+        "2d655a1c-504a-4530-8794-1cb84ee0d9c9"
+      ],
+      "settings": {
+        "about_page": false,
+        "infinite_scroll": true,
+        "full_stop": false,
+        "title": "<p><strong>Subscribe<\/strong> and Save<\/p>",
+        "underline_top_mob": ".5",
+        "underline_top_desktop": "2",
+        "subtitle": "<p>Ready for the best period of your life?<\/p>",
+        "text_colour": "#ffffff",
+        "scroll_item_text_colour": "#0e2559",
+        "scroll_bg_colour": "#ffffff",
+        "section_bg_colour": "#ffffff",
+        "section_bg_image": "shopify:\/\/shop_images\/Group_1203.png",
+        "section_bg_image_mobile": "shopify:\/\/shop_images\/274911631_1640169176352690_1444133884060871772_n_1.png"
+      }
+    },
+    "e40c4e90-3a1b-4ab6-b131-8cc78f50278d": {
+      "type": "call-to-action",
+      "settings": {
+        "section_title": "Try 3 pads for only £2.00",
+        "section_text": "We'll tailor the trial for you. Take our questionnaire.",
+        "button_text": "Start Questionnaire",
+        "button_link": "pre-trial-questionnaire"
+      }
+    },
+    "f1ad4765-d020-4941-912e-0830219b8f8b": {
+      "type": "text-image-split",
+      "settings": {
+        "bg_col": "",
+        "text_col": "",
+        "border_bottom_color": "#d1d6e5",
+        "section_direction": "text_right",
+        "fixed_height": "true",
+        "main_text": "<p>Get <strong>5% off<\/strong>. For life.<\/p>",
+        "body_text": "[lorem ipsum dolor sit amet consectetur]",
+        "cta_text": "",
+        "cta_url": "",
+        "section_image": "shopify:\/\/shop_images\/28_07_21_Planera_day2_MD_Cream_pad_hands_1596_copy_1.png",
+        "video_url": ""
+      }
+    },
+    "c841e4dd-f228-4477-ad95-10f2de66b49f": {
+      "type": "text-image-split",
+      "settings": {
+        "bg_col": "",
+        "text_col": "",
+        "border_bottom_color": "#d1d6e5",
+        "section_direction": "text_left",
+        "fixed_height": "true",
+        "main_text": "<p><strong>Never run out<\/strong> of pads again<\/p>",
+        "body_text": "",
+        "cta_text": "",
+        "cta_url": "",
+        "section_image": "shopify:\/\/shop_images\/220622_Planera_Stills_S15_1747_f4_72b71fa8-46d5-4108-81e8-b11da86b6098.jpg",
+        "video_url": ""
+      }
+    },
+    "4462eb88-83a3-4543-b510-d61208104e30": {
+      "type": "text-image-split",
+      "settings": {
+        "bg_col": "",
+        "text_col": "",
+        "border_bottom_color": "#d1d6e5",
+        "section_direction": "text_right",
+        "fixed_height": "true",
+        "main_text": "<p>Skip, pause, or cancel, at any time<\/p>",
+        "body_text": "",
+        "cta_text": "",
+        "cta_url": "",
+        "section_image": "shopify:\/\/shop_images\/28_07_21_Planera_day2_MD_Group_0550_1.jpg",
+        "video_url": ""
+      }
+    },
+    "df8f862d-367d-4ea5-8d3c-d960e5a050f5": {
+      "type": "text-image-split",
+      "settings": {
+        "bg_col": "",
+        "text_col": "",
+        "border_bottom_color": "#d1d6e5",
+        "section_direction": "text_left",
+        "fixed_height": "true",
+        "main_text": "<p><strong>Free<\/strong> surprise gifts & samples<\/p>",
+        "body_text": "",
+        "cta_text": "",
+        "cta_url": "",
+        "section_image": "shopify:\/\/shop_images\/Story_Navigation.jpg",
+        "video_url": ""
+      }
+    },
+    "6ce55eb6-ac13-44b0-a0f6-e6a7f02b72c8": {
+      "type": "text-image-split",
+      "settings": {
+        "bg_col": "",
+        "text_col": "",
+        "border_bottom_color": "rgba(0,0,0,0)",
+        "section_direction": "text_right",
+        "fixed_height": "true",
+        "main_text": "<p>Earn loyalty points for <strong>free samples<\/strong><\/p>",
+        "body_text": "",
+        "cta_text": "",
+        "cta_url": "",
+        "section_image": "shopify:\/\/shop_images\/Screenshot_2022-08-17_at_15.32.22.png",
+        "video_url": ""
+      }
+    },
+    "b69f2fc2-f2d9-4576-b409-b84ab95e25ac": {
+      "type": "spinner-btn",
+      "settings": {
+        "cta_url": "https:\/\/google.com",
+        "img_outer": "shopify:\/\/shop_images\/Group_1586.png",
+        "img_middle": "shopify:\/\/shop_images\/Double-Leaf_Web-Icon_Dark-Blue.png"
+      }
+    },
+    "1f65ece2-9b4f-46d3-a01e-57e8f5181732": {
+      "type": "product-faq",
+      "blocks": {
+        "50dd4f2c-fea6-465b-a7b2-b21003c2921e": {
+          "type": "faq-top-header",
+          "settings": {
+            "title_text": "Subscriptions FAQ",
+            "show_top_header": false
+          }
+        },
+        "5c0b0121-7e9a-4772-be21-5a4f7041f0a4": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Subscriptions FAQ",
+            "title_text": "What is the purpose of x?",
+            "body_text": "The purpose is to do y"
+          }
+        },
+        "7dbf068a-6cd5-4358-bb16-47745a39d535": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Subscriptions FAQ",
+            "title_text": "What is the purpose of xy?",
+            "body_text": "The purpose of xy is to do ab"
+          }
+        },
+        "044d8178-173f-4521-a615-03077189a34a": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Subscriptions FAQ",
+            "title_text": "Hey, what about Z?",
+            "body_text": "This thing"
+          }
+        },
+        "ee80e584-f2e5-4848-871d-ea96c7305803": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Subscriptions FAQ",
+            "title_text": "Lorem Ipsum",
+            "body_text": "Dolor sit"
+          }
+        },
+        "3bcdcce1-e3d9-40a0-bf7c-6757c23437a9": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Subscriptions FAQ",
+            "title_text": "Consectetur delur",
+            "body_text": "Amet psi elet yet"
+          }
+        }
+      },
+      "block_order": [
+        "50dd4f2c-fea6-465b-a7b2-b21003c2921e",
+        "5c0b0121-7e9a-4772-be21-5a4f7041f0a4",
+        "7dbf068a-6cd5-4358-bb16-47745a39d535",
+        "044d8178-173f-4521-a615-03077189a34a",
+        "ee80e584-f2e5-4848-871d-ea96c7305803",
+        "3bcdcce1-e3d9-40a0-bf7c-6757c23437a9"
+      ],
+      "settings": {
+        "title": "FAQ",
+        "cta_text": "LEARN MORE",
+        "cta_link": "",
+        "bg_col": "",
+        "text_col": ""
+      }
+    },
+    "90f159ea-8379-414b-a0c8-277b34dbd183": {
+      "type": "call-to-action",
+      "settings": {
+        "section_title": "Try 3 pads for only £2.00",
+        "section_text": "We'll tailor the trial for you. Take our questionnaire.",
+        "button_text": "Start Questionnaire",
+        "button_link": "pre-trial-questionnaire"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "e40c4e90-3a1b-4ab6-b131-8cc78f50278d",
+    "f1ad4765-d020-4941-912e-0830219b8f8b",
+    "c841e4dd-f228-4477-ad95-10f2de66b49f",
+    "4462eb88-83a3-4543-b510-d61208104e30",
+    "df8f862d-367d-4ea5-8d3c-d960e5a050f5",
+    "6ce55eb6-ac13-44b0-a0f6-e6a7f02b72c8",
+    "b69f2fc2-f2d9-4576-b409-b84ab95e25ac",
+    "1f65ece2-9b4f-46d3-a01e-57e8f5181732",
+    "90f159ea-8379-414b-a0c8-277b34dbd183"
+  ]
+}

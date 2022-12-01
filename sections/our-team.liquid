@@ -1,0 +1,153 @@
+{% assign ss = section.settings %}
+<div style="background-color: {{ ss.section_bg }};" class="relative pb-16 sm:pb-32 lg:pb-48">
+
+<h3 class="sec-title font-cheltenham-std text-3xl w-full text-center pt-14 pb-8 md:text-4xl">{{ ss.title }}</h3>
+ 
+<div class="team-carousel__container pb-6 lg:pb-10 xl:pb-14 md:w-11/12 md:mx-auto lg-xtra:w-full lg-xtra:max-w-screen-2xl xl:px-2">
+
+    <section class="splide team-slider">
+        <div class="splide__track md:w-11/12 md:mx-auto">
+          <ul class="splide__list">
+              {% for block in section.blocks %}
+              {% assign bs = block.settings %}
+            <li class="splide__slide lg-xtra:w-1/4 lg:mb-6">{% include 'team-slide', img:bs.img, title:bs.title, subtitle:bs.subtitle, body:bs.body %}</li>
+            {% endfor %}
+          </ul>
+        </div>
+</section>
+</div>
+
+<!-- team gif -->
+<div class="mt-6 md:w-11/12 md:mx-auto lg-xtra:w-full lg-xtra:max-w-screen-2xl sm:px-12 sm:mt-14 pb-16">
+{% include 'lazy-image' image: ss.team_gif_desktop, additional_classes: 'w-full h-full hidden sm:block' %}
+{% include 'lazy-image' image: ss.team_gif_mobile, additional_classes: 'w-full h-full block sm:hidden' %}
+</div>
+
+</div>
+
+<style>
+.sec-title {
+    color: {{ ss.sec_title_col }};
+}
+.team-slider .team-member h4,
+.team-slider .team-member p {
+    color: {{ ss.title_body_col }};
+}
+.team-slider .team-member h5 {
+    color: {{ ss.subtitle_col }};
+}
+
+</style>
+
+<script>
+
+    document.addEventListener( 'DOMContentLoaded', function() {
+
+const teamSlider = new Splide( '.team-slider', {
+    type   : 'slide',
+    perPage:4,
+    perMove:1,
+    rewind:true,
+    gap:'1rem',
+    arrows:true,
+    pagination:false,
+    breakpoints: {
+        1300: {
+            perPage: 3,
+		},
+        1040: {
+			perPage: 2,
+            gap:'0rem',
+		},
+		700: {
+			perPage: 1,
+		},
+  }
+});
+
+teamSlider.mount();
+})
+</script>
+
+{% schema %}
+{
+    "name": "Meet The Team",
+    "settings": [
+    {
+        "type": "header",
+        "content": "Title"
+    },
+    {
+        "type":"textarea",
+        "label":"Title",
+        "id":"title",
+        "default":"Meet Our Team"
+    },
+    {
+        "type":"color",
+        "label":"Background Colour",
+        "id":"section_bg"
+    },
+    {
+        "type": "color",
+        "id": "sec_title_col",
+        "label": "Section Title Colour"
+    },
+    {
+        "type": "color",
+        "id": "title_body_col",
+        "label": "Card Title & Body Colour"
+    },
+    {
+        "type": "color",
+        "id": "subtitle_col",
+        "label": "Card Subtitle Colour"
+    },
+    {
+        "type":"image_picker",
+        "label":"Team Image - Desktop",
+        "id":"team_gif_desktop"
+    },
+    {
+        "type":"image_picker",
+        "label":"Team Image - Mobile",
+        "id":"team_gif_mobile"
+    }
+    ],
+    "blocks":[
+    {
+        "type":"slide",
+        "name":"Slide",
+        "settings":[
+        {
+            "type":"image_picker",
+            "label":"Image",
+            "id":"img"
+        },
+        {
+            "type":"textarea",
+            "label":"Title",
+            "id":"title"
+        },
+        {
+            "type":"textarea",
+            "label":"Subtitle",
+            "id":"subtitle"
+        },
+        {
+            "type":"textarea",
+            "label":"Body",
+            "id":"body"
+        }
+        ]
+    }
+    ],
+    "presets": [
+        {
+            "name": "Meet The Team",
+            "category": "Slideshow"
+        }
+    ]
+}
+
+{% endschema %}

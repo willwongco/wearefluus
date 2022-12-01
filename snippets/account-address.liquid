@@ -1,0 +1,24 @@
+<div style="background-color:{{ section.settings.text_bg_col }};color:{{ section.settings.text_col }};" id="addresses" class="border border-black rounded-xl w-full mb-5 md:mb-10 p-8">
+    <div class="flex flex-col md:flex-row justify-between">
+      <h1 class="block tracking-wider text-lg sm:text-xl font-cheltenham-std" >My Address</h1>
+      <a class=" text-xs pt-3 md:pt-0 sm:text-sm tracking-widest md:pl-3 font-sofia-pro-regular underline" href="/account/addresses" >Edit Your Details</a>
+    </div>
+  
+  
+    <h2 class="w-full block mt-5 mb-4 text-sm font-sofia-pro-bold" >Contact Address</h2>
+  
+    {% if customer.addresses.size > 0 %}
+    <div>
+    {% for address in customer.addresses %}
+      <div class="mb-6 font-sofia-pro-regular text-sm flex">
+        {{ address.first_name }} {{ address.last_name }}<br>
+        {{ address.address1 }} {{ address.address2 }}<br> {{ address.zip }} <br> {{ address.city }} <br>  {{ address.country }}
+      </div>
+
+    {% endfor %}
+  </div>
+    {% else %}
+    <p class="mt-5 mb-6  font-century text-sm"  >No addresses found.</p>
+    {% endif %}
+  
+  </div>

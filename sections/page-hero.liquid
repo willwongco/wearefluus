@@ -1,0 +1,273 @@
+<!-- setup settings -->
+{% assign ss = section.settings %}
+
+<!-- about us page hero image must not be cut off as it contains people (at time of development) and they all need to be shown -->
+{% if ss.about_page %}
+<div class="page-hero__container relative w-full h-full flex items-center">
+    {% if ss.section_bg_image != blank %}
+    {% include 'lazy-image' image: ss.section_bg_image, additional_classes: 'h-full w-full object-cover', container_classes:'w-full h-full hidden sm:block' %}
+    {% include 'lazy-image' image: ss.section_bg_image_mobile, additional_classes: 'h-full w-full object-cover', container_classes:'w-full h-full block sm:hidden' %}
+    {% endif %}
+    <div class="page-hero sm:max-w-650 absolute top-1/4 left-0 w-full sm:w-auto text-center sm:text-left sm:left-20 leading-tight">
+        <h1 class=" text-4.5xl font-cheltenham-std text-left pl-4 | sm:text-center sm:pl-0 lg:text-6.5xl">{{ ss.title | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="underline_text whitespace-nowrap relative">' | replace: '/em>', '/span>' | replace: '<em>', '<span class="full_stop_text relative">'}}</h1>
+        <p class="text-base font-sofia-pro">{{ ss.subtitle }}</p>
+    </div>
+</div>
+
+<style>
+    @media screen and (max-width:1024px) {
+        .underline_text::before {
+        content:url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Asset_93_1_3.png?v=1653914648');
+        position: absolute;
+        top:{{ ss.underline_top_mob }}rem;
+        left:-.5rem;
+        width:100%;
+    }
+}
+    @media screen and (min-width:1024px) {
+        .underline_text::before {
+        content:url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Asset_93_1.png?v=1653913853');
+        position: absolute;
+        top:{{ ss.underline_top_desktop }}rem;
+        left:-.75rem;
+        width:100%;
+    }
+}
+
+    .page-hero {
+        color: {{ ss.text_colour }};
+    }
+    {% if ss.section_bg_colour != blank %}
+    .page-hero__container {
+        background-color: {{ ss.section_bg_colour }};
+    }
+    {% endif %}
+
+    {% if ss.full_stop %}
+    .page-hero span.full_stop_text::after {
+        content:url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Asset_33_1.png?v=1653915893');
+        position: absolute;
+        top:0;
+    }
+    {% endif %}
+
+</style>
+
+{% else %}
+<div class="page-hero__container relative w-full h-full flex pt-24 sm:pt-0 sm:items-center bg-cover bg-no-repeat bg-center pb-36 sm:pb-0 sm:min-h-desktop-hero_tablet lg:min-h-desktop-hero">
+    <div class="page-hero max-w-650 leading-tight px-8 mx-auto md:px-0 md:mx-0 md:pl-24">
+        <h1 class="mb-6 text-4.5xl font-cheltenham-std | lg:text-6xl">{{ ss.title | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="underline_text whitespace-nowrap relative">' | replace: '/em>', '/span>' | replace: '<em>', '<span class="full_stop_text relative">'}}</h1>
+        <span class="text-base leading-6 font-sofia-pro">{{ ss.subtitle }}</span>
+    </div>
+</div>
+{% if ss.infinite_scroll %}
+<div style="background-color:{{ ss.scroll_bg_colour }};" class="overflow-hidden py-4">
+    <div class="marquee3k" 
+        data-speed="0.65"
+        data-reverse="false" 
+        data-pausable="true">
+        <div class="flex flex-row text-xl sm:text-3xl">
+            {% for block in section.blocks %}
+            <li class="flex items-center flex-row-reverse px-8"><span style="color:{{ ss.scroll_item_text_colour }};" class=" pl-1 -mb-1 sm:mb-0 sm:h-7">{{ block.settings.title }}</span><img alt="{{ block.settings.icon_mobile.alt }}" class="block sm:hidden lazyload hs-lazyload hs-id-1d5c1851" data-src="{{ block.settings.icon_mobile.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><img alt="{{ block.settings.icon_desktop.alt }}" class="hidden sm:block lazyload hs-lazyload hs-id-c629fd88" data-src="{{ block.settings.icon_desktop.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></li>
+            {% endfor %}
+        </div>
+        </div>
+</div>
+{% endif %}
+<style>
+
+.marquee3k__copy {
+        display: inline-flex !important;
+    }
+
+@media screen and (max-width:1024px) {
+        .underline_text::before {
+        content:url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Asset_93_1_3.png?v=1653914648');
+        position: absolute;
+        top:{{ ss.underline_top_mob }}rem;
+        left:-.5rem;
+        width:100%;
+    }
+}
+    @media screen and (min-width:1024px) {
+        .underline_text::before {
+        content:url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Asset_93_1.png?v=1653913853');
+        position: absolute;
+        top:{{ ss.underline_top_desktop }}rem;
+        left:-.75rem;
+        width:100%;
+    }
+}
+
+    .page-hero {
+        color: {{ ss.text_colour }};
+    }
+
+    .page-hero__container {
+    {% if ss.section_bg_colour != blank %}
+        background-color: {{ ss.section_bg_colour }};
+        {% endif %}
+        {% if ss.section_bg_image != blank %}
+        background-image: url('{{ ss.section_bg_image.src | img_url:'master' }}');
+        {% endif %}
+    }
+
+    {% if ss.section_bg_image_mobile != blank %}
+    @media screen and (max-width:768px) {
+    .page-hero__container {
+        background-image: url('{{ ss.section_bg_image_mobile.src | img_url:'master' }}');
+    }
+}
+    {% endif %}
+
+    {% if ss.full_stop %}
+    .page-hero span.full_stop_text::after {
+        content:url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Asset_33_1.png?v=1653915893');
+        position: absolute;
+        top:0;
+    }
+    {% endif %}
+
+</style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Page Hero",
+  "settings": [
+  {
+    "type": "header",
+    "content": "Checkbox for about us/our story page ONLY"
+},
+{
+    "type": "checkbox",
+    "id": "about_page",
+    "label": "Select for about us/our story page",
+    "default": false,
+    "info":"This ensures the images uploaded for the background do not become cut-off. Only use this with a short title as the text will cut off if not"
+  },
+  {
+    "type": "header",
+    "content": "Checkbox for infinite scrolling text"
+},
+{
+    "type": "checkbox",
+    "id": "infinite_scroll",
+    "label": "Select to show the infinite scrolling text (uses blocks)",
+    "default": false
+  },
+  {
+    "type": "header",
+    "content": "Checkbox for blue dot at end of title"
+},
+{
+    "type": "checkbox",
+    "id": "full_stop",
+    "label": "Select to show the blue dot at the end of the title",
+    "default": false
+  },
+  {
+    "type": "header",
+    "content": "Title"
+},
+{
+    "type":"richtext",
+    "label":"Title",
+    "id":"title",
+    "info":"Bold text will show the small blue underline | Italic text will show the blue full stop (must be last word for dot)"
+},
+{
+    "type":"text",
+    "label":"Underline Top Position Mobile",
+    "id":"underline_top_mob",
+    "default":".7"
+},
+{
+    "type":"text",
+    "label":"Underline Top Position Desktop",
+    "id":"underline_top_desktop",
+    "default":".7"
+},
+{
+    "type": "header",
+    "content": "Subtitle"
+},
+{
+    "type":"richtext",
+    "label":"Subtitle",
+    "id":"subtitle"
+},
+{
+    "type": "header",
+    "content": "Section text colour/image"
+},
+{
+    "type":"color",
+    "label":"Section Text Colour",
+    "id":"text_colour"
+},
+{
+    "type":"color",
+    "label":"Infinite Scroll Text Colour",
+    "id":"scroll_item_text_colour"
+},
+{
+    "type":"color",
+    "label":"Infinite Scroll Background Colour",
+    "id":"scroll_bg_colour"
+},
+  {
+    "type": "header",
+    "content": "Section background colour/image"
+},
+{
+    "type":"color",
+    "label":"Section Background Colour",
+    "id":"section_bg_colour"
+},
+{
+    "type":"image_picker",
+    "label":"Section Background Image Desktop",
+    "id":"section_bg_image",
+    "info":"Image Dimension: 1900W x 1250H"
+},
+{
+    "type":"image_picker",
+    "label":"Section Background Image Mobile/Tablet",
+    "id":"section_bg_image_mobile",
+    "info":"Image Dimension: "
+}
+  ],
+  "blocks":[
+      {
+      "type":"USP",
+      "name":"USP",
+      "settings":[
+      {
+        "type":"image_picker",
+        "label":"Icon - Desktop",
+        "id":"icon_desktop",
+        "info":"Icon Dimension: 25W x 25H"
+    },
+    {
+        "type":"image_picker",
+        "label":"Icon - Mobile",
+        "id":"icon_mobile",
+        "info":"Icon Dimension: 18W x 18H"
+    },
+      {
+          "type":"textarea",
+          "label":"Title",
+          "id":"title"
+      }
+      ]
+  }
+  ],
+  "presets": [
+  {
+      "category": "Hero",
+      "name": "Page Hero"
+  }
+]
+}
+{% endschema %}

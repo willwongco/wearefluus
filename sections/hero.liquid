@@ -1,0 +1,164 @@
+<div id="test" {{section.settings.hero_desktop.aspect_ratio}} class="pt-32 pb-16 md:pt-0 md:pb-0 h-full md:h-width-1/2 md:min-h-desktop-hero w-full max-h-screen bg-cover bg-center bg-no-repeat relative hero-{{ section.id }}">
+    {% if section.settings.darken %}<div class="absolute h-full w-full top-0 left-0 bg-black {% if section.settings.design == 'a' %}bg-opacity-30{% else %}bg-opacity-0{% endif %} md:block hidden"></div>{% endif %}
+    {% if section.settings.darken_mobile %}<div class="absolute h-full w-full top-0 left-0 bg-black bg-opacity-30 block md:hidden"></div>{% endif %}
+    {% include 'hero-inner' %}
+</div>
+
+{% if section.settings.hero_desktop %}
+<style>
+.hero-{{ section.id }} {
+    background-image: url({{ section.settings.hero_mobile | img_url: 'master' }});
+}
+
+@media (min-width: 768px) {
+    .hero-{{ section.id }} {
+        background-image: url({{ section.settings.hero_desktop | img_url: 'master' }});
+        {% if section.settings.hero_desktop %}height: {{ 100 | divided_by: section.settings.hero_desktop.aspect_ratio }}vw;{% endif %}
+    }
+}
+</style>
+{% endif %}
+
+{% schema %}
+{
+  "name":"Hero",
+  "settings":[
+    {
+      "type":"image_picker",
+      "id":"hero_desktop",
+      "label":"Hero Desktop",
+      "info":"2:1 image recommended"
+    },
+    {
+      "type":"image_picker",
+      "id":"hero_mobile",
+      "label":"Hero Mobile",
+      "info":"3:5 image recommended"
+    },
+    {
+      "type":"checkbox",
+      "id":"darken",
+      "label":"Darken Overlay",
+      "default":true
+    },
+    {
+      "type":"checkbox",
+      "id":"darken_mobile",
+      "label":"Darken Overlay Mobile",
+      "default":false
+    },
+    {
+      "type":"select",
+      "id":"design",
+      "label":"Design",
+      "options":[
+        {
+          "value":"a",
+          "label":"A"
+        },
+        {
+          "value":"b",
+          "label":"B"
+        }
+      ],
+      "default":"b"
+    },
+    {
+      "type":"select",
+      "id":"colour",
+      "label":"Colour",
+      "options":[
+        {
+          "value":"primary-blue",
+          "label":"Blue"
+        },
+        {
+          "value":"white",
+          "label":"White"
+        }
+      ],
+      "default":"white"
+    },
+    {
+      "type":"select",
+      "id":"btn_style",
+      "label":"Button Style",
+      "options":[
+        {
+          "value":"purple",
+          "label":"Purple"
+        },
+        {
+          "value":"white",
+          "label":"White"
+        }
+      ],
+      "default":"white"
+    },
+    {
+      "type":"header",
+      "content":"Text"
+    },
+    {
+      "type":"text",
+      "id":"title",
+      "label":"Title",
+      "info":"Add XX anywhere in the title. This will be replaced will the below text. Only available for design B"
+    },
+    {
+      "type":"text",
+      "id":"underline_title",
+      "label":"Underlined Text",
+      "info":"Underline will only show if text has not flowed onto more than one line. Only available for design B"
+    },
+    {
+      "type":"text",
+      "id":"subtitle",
+      "label":"Subtitle"
+    },
+    {
+      "type":"color",
+      "id":"text_col",
+      "label":"Text Colour"
+    },
+    {
+      "type":"text",
+      "id":"btn_text",
+      "label":"Button Text"
+    },
+    {
+      "type":"url",
+      "id":"btn_link",
+      "label":"Button Link"
+    },
+    {
+      "type":"header",
+      "content":"Second Button",
+      "info":"Only available on design B"
+    },
+    {
+      "type":"text",
+      "id":"btn_text_2",
+      "label":"Button Text"
+    },
+    {
+      "type":"url",
+      "id":"btn_link_2",
+      "label":"Button Link"
+    }
+  ],
+  "presets":[
+    {
+      "category":"Hero",
+      "name":"Hero"
+    }
+  ],
+  "templates":[
+    "index",
+    "product",
+    "page",
+    "article",
+    "collection"
+  ]
+}
+{% endschema %}

@@ -1,0 +1,190 @@
+
+<div class="customer register max-w-lg m-auto text-center px-4 relative | pb-14 sm:pb-28 xl:pb-64">
+
+    <div class="template_header pb-2">
+        <h1 class="text-center font-cheltenham-std text-4xl tracking-wider pt-10 pb-8 | sm:text-40 lg:pt-24 lg:pb-12">{{ section.settings.title }}</h1>
+      </div>
+
+      <!-- <span class="text-center px-2 text-sm sm:text-base font-century m-auto max-w-screen-sm tracking-wide leading-relaxed">{{ section.settings.subtitle }}</span> -->
+
+  {%- form 'create_customer', novalidate: 'novalidate', return_to: routes.account_url -%}
+    {%- if form.errors -%}
+      <h2 class="text-center font-cheltenham-std text-xl pb-4 underline sm:text-3xl" tabindex="-1" autofocus>
+        {{ "customer.error_heading" | t }}
+      </h2>
+      <ul> 
+        {%- for field in form.errors -%}
+          <li class="mb-4">
+            {%- if field == 'form' -%}
+              {{ form.errors.messages[field] }}
+            {%- else -%}
+              <a href="#RegisterForm-{{ field }}">
+                {{ form.errors.translated_fields[field] | capitalize }}
+                {{ form.errors.messages[field] }}
+              </a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+    <div class="field">      
+      <input
+        type="text"
+        name="customer[first_name]"
+        required
+        aria-required="true"
+        id="RegisterForm-FirstName"
+        class="placeholder-primary-blue font-sofia-pro rounded-xl outline-none py-3 w-full px-4 border border-primary-blue opacity-75" size="30"
+        {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+        autocomplete="given-name"
+        placeholder="{{ 'customer.first_name' | t }}"
+      >
+    </div>
+    <div class="field pt-4">
+      <input
+        type="text"
+        name="customer[last_name]"
+        required
+        aria-required="true"
+        id="RegisterForm-LastName"
+        class="placeholder-black font-sofia-pro rounded-xl outline-none py-3 w-full px-4 border border-primary-blue opacity-75" size="30"
+        {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+        autocomplete="family-name"
+        placeholder="{{ 'customer.last_name' | t }}"
+      >
+    </div>
+    <div class="field pt-4">      
+      <input
+        type="email"
+        name="customer[email]"
+        id="RegisterForm-email"
+        class="placeholder-black font-sofia-pro rounded-xl outline-none py-3 w-full px-4 border border-primary-blue opacity-75" size="30"
+        {% if form.email %} value="{{ form.email }}"{% endif %}
+        spellcheck="false"
+        autocapitalize="off"
+        autocomplete="email"
+        required
+        aria-required="true"
+        {% if form.errors contains 'email' %}
+          aria-invalid="true"
+          aria-describedby="RegisterForm-email-error"
+        {% endif %}
+        placeholder="{{ 'customer.email' | t }}"
+      >
+    </div>
+    <div class="field pt-4">     
+      <input
+        type="password"
+        name="customer[password]"
+        id="RegisterForm-password"
+        class="placeholder-black font-sofia-pro rounded-xl outline-none py-3 w-full px-4 border border-primary-blue opacity-75" size="30"
+        required
+        aria-required="true"
+        {% if form.errors contains 'password' %}
+          aria-invalid="true"
+          aria-describedby="RegisterForm-password-error"
+        {% endif %}
+        placeholder="{{ 'customer.password' | t }}"
+      >
+    </div>
+    <div class="flex text-sm sm:text-base gap-2 font-sofia-pro-light justify-center items-center py-4 my-4 ">
+      <p>{{ "customer.already_has_account" | t }}</p> <a class="underline font-sofia-pro-bold text-sm sm:text-base" href="{{ routes.account_login_url }}" data-login-link>{{ "customer.log_in" | t }}</a>
+  </div>
+  <div class="submit__button">
+    <!-- CTA button -->
+    <div class=" m-auto w-full">
+      <button type="submit" class="flex items-center m-auto bg-primary-blue font-sofia-pro text-white text-sm rounded-lg uppercase mr-auto tracking-widest py-4 pb-3 px-16"><span class="flex justify-center items-center">{{ 'customer.login_sign_up' | t }}</span></button>
+      </div>
+</div>
+    {%- endform -%}
+</div>
+
+<script>
+  (function(){
+    let queryString = window.location.search.replace(`%2F`, `/`).replace(`%3F`, `&`).replace(`%40`, `@`).replace(`%3D`, `=`);
+    const urlParams = new URLSearchParams(queryString);
+    const email = urlParams.get('email');
+    if( email !== null ) {
+      document.querySelector(`[name="customer[email]"]`).value = email;
+      let loginLink = document.querySelector(`[data-login-link]`);
+      loginLink.setAttribute( `href`, `${loginLink.getAttribute('href')}${window.location.search}` ) 
+    }
+  }());
+</script>
+<style>
+
+#shopify-section-register {
+  color: {{ section.settings.text_col }};
+}
+#shopify-section-register input {
+  background-color: {{ section.settings.text_input_bg_col }};
+  color: {{ section.settings.text_input_col }};
+}
+#shopify-section-register ::placeholder {
+  color: {{ section.settings.text_input_col }};
+  opacity:1;
+}
+
+{% if section.settings.section_bg_image != blank or section.settings.section_bg_colour != blank %}
+
+    #shopify-section-register {
+        {% if section.settings.section_bg_image != blank %}
+        background-image:url(' {{- section.settings.section_bg_image.src | img_url:'master' -}}');
+        background-size:cover;
+        {% else %}
+        background-color: {{- section.settings.section_bg_colour -}};
+        {% endif %}
+    }
+
+{% endif %}
+
+</style>
+
+
+{% schema %}
+{
+  "name": "Register",
+  "settings": [
+  {
+    "type": "header",
+    "content": "Title"
+},
+{
+    "type":"textarea",
+    "label":"Title",
+    "id":"title",
+    "default":"Create An Account"
+},
+  {
+    "type": "header",
+    "content": "Section colours/image"
+},
+{
+  "type":"color",
+  "label":"Text Colour",
+  "id":"text_col"
+},
+{
+  "type":"color",
+  "label":"Text Input Colour",
+  "id":"text_input_col"
+},
+{
+  "type":"color",
+  "label":"Text Input Background Colour",
+  "id":"text_input_bg_col"
+},
+{
+    "type":"color",
+    "label":"Section Background Colour",
+    "id":"section_bg_colour"
+},
+{
+    "type":"image_picker",
+    "label":"Section Background Image",
+    "id":"section_bg_image",
+    "info":"Image Dimension: 1440W x 800H"
+}
+  ]
+}
+{% endschema %}

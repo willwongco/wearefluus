@@ -1,0 +1,67 @@
+{%- assign subtotal_price = cart.items_subtotal_price | money -%}
+<div class="cart-page">
+  <script async src="https://cdn-widgetsrepository.yotpo.com/v1/loader/tIIi5nQl6K6472y86F8l2A"></script>
+<div class="max-w-screen-2xl px-6 m-auto mt-8 md:px-12">
+
+    {%- if cart.items.size > 0 -%}
+
+        <div class="flex flex-col lg:flex-row lg:gap-16">
+        <div class="mt-3 w-full lg:w-4/6">
+            {%- render 'line-item-table' -%}
+        </div>
+        <div class="mt-3 w-full lg:w-2/6">
+            {%- render 'cart-info-table' -%}
+        </div>
+
+    </div>
+
+
+    {%- else -%}
+        <div class="mt-5">
+            <h2 class=" font-cheltenham-std text-4xl">{{- 'cart.empty.copy' | t -}}</h2>
+            <div class="mt-5">
+                <a class="underline font-sofia-pro text-lg" href="{{ routes.all_products_collection_url }}">{{- 'cart.empty.continue_shopping' | t -}}</a>
+            </div>
+        </div>
+
+    {%- endif -%}
+</div>
+</div>
+<style>
+    .cart-page {
+        background-color: {{ section.settings.bg_col }};
+        color: {{ section.settings.text_col }};
+    }
+    .cart-slider_cart--page {
+        background-color: {{ section.settings.cart_slider_bg_col }} !important;
+        color: {{ section.settings.cart_slider_text_col }} !important;
+    }
+</style>
+
+{% schema %}
+{
+    "name": "Cart",
+    "settings": [
+    {
+      "type": "color",
+      "id": "bg_col",
+      "label": "Cart Section Background Colour"
+  },
+  {
+      "type": "color",
+      "id": "text_col",
+      "label": "Cart Section Text Colour"
+  },
+  {
+    "type": "color",
+    "id": "cart_slider_bg_col",
+    "label": "Cart Slider Background Colour"
+},
+{
+    "type": "color",
+    "id": "cart_slider_text_col",
+    "label": "Cart Slider Text Colour"
+}
+    ]
+}
+{% endschema %}

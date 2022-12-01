@@ -1,0 +1,118 @@
+{
+  "sections": {
+    "cart": {
+      "type": "cart",
+      "settings": {
+        "bg_col": "#ffffff",
+        "text_col": "#0e2559",
+        "cart_slider_bg_col": "#ffffff",
+        "cart_slider_text_col": "#0e2559"
+      }
+    },
+    "165288540587052e52": {
+      "type": "you-may-also-like",
+      "disabled": true,
+      "settings": {
+        "bg_col": "#ffffff",
+        "text_col": "#0e2559",
+        "collection_products": "frontpage",
+        "title": "<p>You May Also Like<\/p>",
+        "shop": "SHOP NOW",
+        "qs": "QUICK ADD",
+        "single": "Just Once",
+        "subscribe": "Subscribe",
+        "tick_1": "20% Off Regular Price",
+        "tick_2": "Skip Cancel Anytime",
+        "tick_3": "Free Shipping",
+        "cart": "Add to Cart"
+      }
+    },
+    "1653059305e9e63dfd": {
+      "type": "logo-slider",
+      "blocks": {
+        "dc69135c-d7bf-4571-a29e-710ad8868de4": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b.png"
+          }
+        },
+        "a31278c7-bdac-46c4-9d47-5768433ea4da": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5.png"
+          }
+        },
+        "4c34428d-8e13-4008-86b5-c17099dcdf14": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d.png"
+          }
+        },
+        "fa9dce31-156f-4d7e-af0e-b9edf9bf5609": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c.png"
+          }
+        },
+        "6f80debd-38e0-4d87-8ac1-f6c0a325dd4a": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621.png"
+          }
+        },
+        "b5c25475-d819-4fbc-839e-4db263cb873c": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7.png"
+          }
+        },
+        "de12cbbf-ec28-4e20-bdca-e6ba5e3664e1": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2.png"
+          }
+        },
+        "91c47f90-a24c-40af-af78-f3d8df015f48": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38.png"
+          }
+        },
+        "68b490ea-e265-471b-9ed9-c7b3e244f7bc": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11.png"
+          }
+        },
+        "19dd41e4-2cc8-436c-a729-f5713fb28405": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d.png"
+          }
+        }
+      },
+      "block_order": [
+        "dc69135c-d7bf-4571-a29e-710ad8868de4",
+        "a31278c7-bdac-46c4-9d47-5768433ea4da",
+        "4c34428d-8e13-4008-86b5-c17099dcdf14",
+        "fa9dce31-156f-4d7e-af0e-b9edf9bf5609",
+        "6f80debd-38e0-4d87-8ac1-f6c0a325dd4a",
+        "b5c25475-d819-4fbc-839e-4db263cb873c",
+        "de12cbbf-ec28-4e20-bdca-e6ba5e3664e1",
+        "91c47f90-a24c-40af-af78-f3d8df015f48",
+        "68b490ea-e265-471b-9ed9-c7b3e244f7bc",
+        "19dd41e4-2cc8-436c-a729-f5713fb28405"
+      ],
+      "settings": {
+        "title": "<p>As seen in...<\/p>",
+        "bg_col": "#ffffff",
+        "text_col": "#0e2559"
+      }
+    }
+  },
+  "order": [
+    "cart",
+    "165288540587052e52",
+    "1653059305e9e63dfd"
+  ]
+}

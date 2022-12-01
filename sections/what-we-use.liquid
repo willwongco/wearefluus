@@ -1,0 +1,194 @@
+{% assign whatWeUseBlocks = section.blocks | where: 'type', "use" %}
+{% assign whatWeDontUseBlocks = section.blocks | where: 'type', "dontUse" %}
+{% assign ss = section.settings %}
+
+<div
+style="background-color: {{ section.settings.bg_col }};"
+class="whatWeUse pt-12 pb-8 flex items-start justify-end">
+
+    <div class=" xl:pt-20 | px-6 sm:px-10 mx-auto" x-data="{ leftOpen: true, rightOpen: false }">
+        <div class="flex justify-between flex-col mx-px | sm:flex-row sm:max-w-none sm:justify-start">
+            <button @click="leftOpen = true; rightOpen = false" class=" font-cheltenham-std text-3xl border-black border rounded-lg px-3 pt-3 pb-1 max-w-max | sm:max-w-none sm:p-4 sm:pb-1 sm:mr-8 md:text-4xl" :class="leftOpen == true ? 'btn_selected_usage':'btn_unselected_usage'">{{ ss.left_title }}</button>
+            <button @click="rightOpen = true; leftOpen = false" class=" font-cheltenham-std text-3xl border-black border rounded-lg px-3 pt-3 pb-1  max-w-max mt-6 | sm:max-w-none sm:mt-0 sm:p-4 sm:pb-1 sm:ml-8 md:text-4xl" :class="rightOpen == true ? 'btn_selected_usage':'btn_unselected_usage'">{{ ss.right_title }}</button>
+        </div>
+        <div class=" font-cheltenham-std max-w-800 lg:max-w-550" x-data="{body_left_text:0}" x-show="leftOpen" >
+            <div class="flex mt-8 w-full mx-auto flex-col ">
+            {% for block in whatWeUseBlocks %}
+            {% assign bs = block.settings %}
+            <div @click="body_left_text == {{ forloop.index }} ? body_left_text = 0 : body_left_text = {{ forloop.index }}" class="transition-all flex items-center cursor-pointer justify-between pb-4" :class="body_left_text == {{ forloop.index }} ? 'mb-3' : 'border-b-2 border-black mb-6'"><p :class="body_left_text == {{ forloop.index }} ? 'accordion_title_selected':'accordion_title_unselected'" class="text-lg pr-2 | md:text-2xl">{{ bs.title_text }}</p><span  class=" transform transition-all" :class="body_left_text == {{ forloop.index }} ? 'rotate-45' : ''">{% include 'icon-plus-uses' %}</span>
+            </div>
+            <p class="transition-all text-sm accordion_body_colour font-sofia-pro-medium pr-2 mx-auto | md:text-base border-b-2 border-black w-full" :class="body_left_text == {{ forloop.index }} ? 'pb-5 mb-6 max-h-96 h-full opacity-100' : 'h-0 pointer-events-none opacity-0 max-h-0'" >{{ bs.body_text }}</p>
+             {% endfor %}
+            </div>
+        </div> 
+        <div class="font-cheltenham-std max-w-800 lg:max-w-550" x-data="{body_right_text:0}" x-show="rightOpen" >
+            <div class="flex mt-8 w-full mx-auto flex-col">
+            {% for block in whatWeDontUseBlocks %}
+            {% assign bs = block.settings %}
+            <div @click="body_right_text == {{ forloop.index }} ? body_right_text = 0 : body_right_text = {{ forloop.index }}" class="transition-all flex items-center cursor-pointer justify-between pb-4" :class="body_right_text == {{ forloop.index }} ? 'mb-3' : 'border-b-2 border-black mb-6'"><p :class="body_right_text == {{ forloop.index }} ? 'accordion_title_selected':'accordion_title_unselected'" class="text-lg pr-2 | md:text-2xl">{{ bs.title_text }}</p><span class=" transform transition-all" :class="body_right_text == {{ forloop.index }} ? 'rotate-45' : ''">{% include 'icon-plus-uses-2' %}</span>
+            </div>
+            <p class="transition-all text-sm accordion_body_colour font-sofia-pro-medium pr-2 mx-auto | md:text-base border-b-2 border-black w-full" :class="body_right_text == {{ forloop.index }} ? 'pb-5 mb-6 max-h-96 h-full opacity-100' : 'h-0 pointer-events-none opacity-0 max-h-0'" >{{ bs.body_text }}</p>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden lg:block">
+        {% include 'lazy-image' image: ss.right_img, classes: 'w-full h-full' %}
+    </div>
+
+</div>
+
+<style>
+    .btn_selected_usage {
+        color: {{ ss.btn_sel_text_color }};
+        background-color: {{ ss.btn_sel_bg_color }};
+        border-color: {{ ss.btn_sel_border_color }};
+    }
+    .btn_unselected_usage {
+        color: {{ ss.btn_text_color }};
+        background-color: {{ ss.btn_bg_color }};
+        border-color: {{ ss.btn_border_color }};
+    }
+    .accordion_title_selected {
+        color: {{ ss.accordion_sel_title_text_col }};
+    }
+    .accordion_title_unselected {
+        color: {{ ss.accordion_title_text_col }};
+    }
+    .accordion_body_colour {
+        color: {{ ss.accordion_text_col }};
+    }
+</style>
+
+
+{% schema %}
+{
+    "name": "What We Use",
+    "settings": [
+    {
+        "type":"header",
+        "content":"Section Background Colour"
+    },
+    {
+        "type": "color",
+        "id": "bg_col",
+        "label": "Background Colour"
+    },
+    {
+        "type":"header",
+        "content":"Button Colours"
+    },
+    {
+        "type": "color",
+        "id": "btn_sel_text_color",
+        "label": "Button Selected Text Colour"
+    },
+    {
+        "type": "color",
+        "id": "btn_sel_bg_color",
+        "label": "Button Selected Background Colour"
+    },
+    {
+        "type": "color",
+        "id": "btn_sel_border_color",
+        "label": "Button Selected Border Colour"
+    },
+    {
+        "type": "color",
+        "id": "btn_text_color",
+        "label": "Button Unselected Text Colour"
+    },
+    {
+        "type": "color",
+        "id": "btn_bg_color",
+        "label": "Button Unselected Background Colour"
+    },
+    {
+        "type": "color",
+        "id": "btn_border_color",
+        "label": "Button Unselected Border Colour"
+    },
+    {
+        "type":"header",
+        "content":"Accordion Colours"
+    },
+    {
+        "type": "color",
+        "id": "accordion_title_text_col",
+        "label": "Accordion Unselected Title Text Colour"
+    },
+    {
+        "type": "color",
+        "id": "accordion_sel_title_text_col",
+        "label": "Accordion Selected Title Text Colour"
+    },
+    {
+        "type": "color",
+        "id": "accordion_text_col",
+        "label": "Accordion Body Text Colour"
+    },
+    {
+        "type":"header",
+        "content":"Copy"
+    },
+        {
+            "type": "text",
+            "id": "left_title",
+            "label": "Title Button Left",
+            "default":"What We Use"
+        },
+        {
+            "type": "text",
+            "id": "right_title",
+            "label": "Title Button Right",
+            "default":"What We Don't Use"
+        },
+        {
+            "type":"image_picker",
+            "id":"right_img",
+            "label":"Right Image",
+            "info":"W-650px X H-650px"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "use",
+            "name": "What We Use",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title_text",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "body_text",
+                    "label": "Body"
+                }
+            ]
+        },
+        {
+            "type": "dontUse",
+            "name": "What We Don't Use",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title_text",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "body_text",
+                    "label": "Body"
+                }
+            ]
+        } 
+    ],
+    "presets": [
+    {
+        "name": "What We Use"
+    }
+]
+}
+{% endschema %}

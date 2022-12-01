@@ -1,0 +1,439 @@
+
+{% assign ss = section.settings %}
+
+<div 
+style="background-color: {{ ss.bg_col }};color:{{ ss.text_col }} !important;"
+x-intersect.margin.100px:enter="productSticky = false" 
+x-intersect.margin.100px:leave="productSticky = true"
+class="pb-10 productPage">
+<div class="product-page-section m-auto w-full flex flex-col lg:flex-row">
+
+    <div class="w-full max-w-800 mx-auto | lg:mx-0 lg:pr-16">
+        {%- render 'product.gallery', product: product -%}
+    </div>
+
+    <div class="max-w-800 mx-auto w-full mt-14 pl-4 lg:pl-0 pr-6 prodDetails">
+        <h1 class="font-cheltenham-std text-4xl hidden sm:block">
+        {% capture replace_text_flushable %}
+        <span class="whitespace-nowrap relative">
+            Flushable
+            {% include 'icon-underline-large' classes: 'absolute w-full -left-3 bottom-1' %}
+        </span>
+        {% endcapture %}
+            {{- product.title | replace: 'Flushable', replace_text_flushable -}}
+        </h1>
+        <!-- reviews to go here -->
+<!-- Yotpo Star Rating | product pages > Sections > product.liquid -->
+<div class="yotpo bottomLine" data-product-id="{{ product.id }}" style="padding-top:5px"></div>
+<style>.yotpo .text-m {padding-left:5px;}</style>
+<!-- End of Yotpo -->
+        
+      <!-- <div style="margin-top:.25rem !important" class="yotpo bottomLine hidden | sm:flex" data-appkey="AQylRjL9ZPR2h0n5eZloHoUO4mFl4dmaAv6o8zuZ"
+            data-domain="{{shop.permanent_domain | escape }}" data-product-id="{{ product.id }}"
+            data-product-models="{{ product.id }}" data-name="{{ product.title | escape }}"
+            data-url="{{ shop.url }}{{ product.url }}"
+            data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+            data-description="{{ product.description | escape }}"
+            data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+        </div> -->
+
+        {% capture alpine_click %}
+        {% comment %}
+            AJAX Add to cart
+        {% endcomment %}
+        if(selectedVariant) {
+            const item = {
+                'id': selectedVariant.product.id,
+                'quantity': quantity
+            }
+            if(planId) {
+                item['selling_plan'] = planId
+            }
+            fetch(window.Shopify.routes.root + 'cart/add.js', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                'items': [item]
+                })
+            })
+            .then(response => {
+                return response.json();
+            })
+            .then(response => {
+                cartSlider = true;
+                window['refresh-cart-slider']();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+        {% endcapture %}
+        
+        <div class="pb-6 productInfo">
+            {% if product != blank %}
+                {% comment %}
+                    Alpine.js script for finding selected variants and updating content accordingly
+                {% endcomment %}
+                <script>
+                    let product_{{ product.handle | replace: '-', '_' }} = [];
+                    let selling_plans = {{ product.selling_plan_groups | json }};
+                    {% for variant in product.variants %}
+                        product_{{ product.handle | replace: '-', '_' }}.push({
+                            product: JSON.parse('{{ variant | json }}'),
+                            comparePrice: '{{ variant.compare_at_price  | money }}',
+                            price: '{{ variant.price | money }}',
+                            available:'{{ variant.available }}',
+                            selling_plan: [
+                                {% for selling_plan_allocation in variant.selling_plan_allocations %}
+                                {
+                                   comparePrice: '{{ selling_plan_allocation.compare_at_price | money }}',
+                                   price:  '{{ selling_plan_allocation.price | money }}',
+                                   plan: {{ selling_plan_allocation.selling_plan | json }}
+                                },
+                                {% endfor %}
+                            ]
+                        })
+                    {% endfor %}
+                </script>
+            
+                <div x-data="{ quantity: 1, comparePrice: '{{ product.compare_at_price_min | money }}', price: '{{ product.price | money }}', selectedVariant: product_{{ product.handle | replace: '-', '_' }}[0], compareAtPrice: product_{{ product.handle | replace: '-', '_' }}[0].comparePrice, planId: null, available:product_{{ product.handle | replace: '-', '_' }}[0].available }"  class="md:flex items-center prodContainer">
+                    <div class="flex-1 md:pr-0 leading-none">
+                        <div class="flex items-end">
+                            {% comment %}
+                            Reviews
+                            <div></div>
+                            {% endcomment %}
+                        </div>
+                        <div class="{% if product.has_only_default_variant %}hidden {% endif %} sm:mt-5 prod-options" x-ref="variants">
+                            {% for product_option in product.options_with_values %}
+                                {% assign option_num = forloop.index0 %}
+                                <div class="mb-2 flex flex-wrap">
+                                    <p class="text-lg font-cheltenham-std w-full pb-3 product-option-title">{{ product_option.name }}:</p>
+                                    {% for value in product_option.values %}
+                                        <label type="radio" id="option-{{ value | handleize }}">
+                                            <input 
+                                            @click="() => {
+                                                {% comment %}
+                                                    Find all selected inputs and their variant data
+                                                    Find variant will all options
+                                                    Update price (check for price in selling plan sub)
+                                                {% endcomment %}
+                                                const options = $refs.variants.querySelectorAll('input:checked');
+                                                let optionsArr = [];
+                                                for (let i = 0; i < options.length; i++) {
+                                                    const index = options[i].getAttribute('data-option-index');
+                                                    optionsArr[parseInt(index)] = options[i].value
+                                                };
+                                                const foundVariant = product_{{ product.handle | replace: '-', '_' }}.find((x) => {
+                                                    for (let i = 0; i < optionsArr.length; i++) {
+                                                        if(x.product.options[i] != optionsArr[i]) {
+                                                            return false
+                                                        }
+                                                    }
+                                                    return true
+                                                });
+                                                selectedVariant = foundVariant ? foundVariant : null;
+                                                price = selectedVariant ? selectedVariant.price : '';
+                                                available = selectedVariant.available;
+                                                compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
+                                                {% comment %}
+                                                Update Prices
+                                                {% endcomment %}
+                                                if(planId) {
+                                                    const foundPlan = selectedVariant.selling_plan.find((x) => {
+                                                        return x.plan.id == planId
+                                                    })
+                                                    price = selectedVariant ? selectedVariant.price : '';
+                                                    compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
+                                                    if(foundPlan) {
+                                                        price = foundPlan.price ? foundPlan.price : '';
+                                                        compareAtPrice = foundPlan.comparePrice ? foundPlan.comparePrice : '';
+                                                    } else {
+                                                        price = selectedVariant ? selectedVariant.price : '';
+                                                        compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
+                                                    }
+                                                } else {
+                                                    price = selectedVariant ? selectedVariant.price : '';
+                                                    compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
+                                                }
+        
+                                                console.log(foundVariant)
+                                                console.log(planId)
+                                            }"
+                                            data-option-index="{{ option_num }}"           
+                                            class="hidden custom-input"
+                                            {% if forloop.index0 == 0 %}checked{% endif %} 
+                                            type="radio"  
+                                            id="option-{{ value | handleize }}" 
+                                            name="radio-product_{{ product_option.name | handleize }}" 
+                                            value="{{ value }}">
+                                            <div class="flex custom-input__container mr-5 cursor-pointer">
+                                                <div class="custom-input__not-checked w-5">{% include 'icon-circle' id: forloop.index0 %}</div>
+                                                <div class="custom-input__checked w-5">{% include 'icon-circle-tick' id: forloop.index0 %}</div>
+                                                <p class="text-xl leading-none pl-1">{{ value }}</p>
+                                            </div>
+                                        </label>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+        
+                        </div>
+                        
+                        <div class="hidden">
+                            <select  
+                            x-model="selectedVariant.product.id" 
+                            x-on:change="$dispatch('selectchange', {value:selectedVariant.product.id})" 
+                            id="product-select" name="id">
+                                {% for variant in product.variants %}
+                                  <option value="{{ variant.id }}"
+                                    :selected="selectedVariant.product.id == {{ variant.id }}"
+                                    {% if forloop.index == 1 %}selected="selected"{% endif %}
+                                  >
+                                    tt {{ variant.title }} - {{ variant.price | money }}
+                                  </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+        
+                        <div class="hidden justify-center flex-col mt-5 md:mt-4 w-single-product-icons max-w-full mid-mob:flex">
+                            <div class="flex justify-start">
+                            {% for icon in product.metafields.accentuate.icon limit:3 %} 
+                            <div class="w-24 h-24 rounded-full bg-white relative mr-3 mb-2">
+                                <div class="w-full h-full flex flex-col items-center justify-center px-1 ">
+                                    <img src="{{ icon[0].src }}" class="mx-auto px-2 pb-2" alt="{{ product.metafields.accentuate.text[forloop.index0] }}">
+                                    <p class="text-center text-xxs leading-none px-2">{{ product.metafields.accentuate.text[forloop.index0] }}</p>
+                                </div>
+                            </div> 
+                            {% endfor %}
+                        </div>
+                        <div class="flex justify-center w-80">
+                            {% for icon in product.metafields.accentuate.icon offset:3 %} 
+                            <div class="w-24 h-24 rounded-full bg-white relative mr-3 mb-4">
+                                <div class="w-full h-full flex flex-col items-center justify-center px-1">
+                                    <img src="{{ icon[0].src }}" class="mx-auto px-2 pb-2" alt="{{ product.metafields.accentuate.text[forloop.index0] }}">
+                                    <p class="text-center text-xxs leading-none px-2">{{ product.metafields.accentuate.text[forloop.index0] }}</p>
+                                </div>
+                            </div> 
+                            {% endfor %}
+                        </div>
+                        </div>
+                        {% for group in product.selling_plan_groups %}
+                            {% for selling_plan in group.selling_plans %}
+                                {% assign has_selling_plans = true %}
+                                {% break %}
+                            {% endfor %}
+                        {% endfor %}
+                        {% if has_selling_plans %}
+                        <div {% if product.tags contains 'hide-recharge-values' %}id="hide-freq-recharge"{%endif%} class="qty-plans-container">
+                        <div class="flex justify-start mt-6 items-center w-80 max-w-full text-xs.5 | mid-mob:mt-0">
+                            <div @click="() => {
+                                if(selectedVariant?.selling_plan) {
+                                    if(selectedVariant.selling_plan[0]) {
+                                        planId = selectedVariant.selling_plan[0].plan.id
+                                        price = selectedVariant.selling_plan[0].price ? selectedVariant.selling_plan[0].price : '';
+                                        compareAtPrice = selectedVariant.selling_plan[0].comparePrice ? selectedVariant.selling_plan[0].comparePrice : '';
+                                    }
+                                }
+                                const sellingPlan = selectedVariant?.selling_plan
+                            }" class="flex items-center justify-center cursor-pointer mr-4">
+                                <div class="rounded-full h-6 w-6 flex items-center justify-center border border-solid border-black mr-3">
+                                    <div :class="{ 'opacity-0': !planId}"  class="rounded-full w-5 h-5 bg-purple-planera"></div>
+                                </div>
+                                <p>Subscribe & Save</p>
+                            </div>
+                            <div @click="() => {
+                                planId = null;
+                                price = selectedVariant ? selectedVariant.price : '';
+                                compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
+                            }" class="flex items-center justify-center cursor-pointer">
+                                <div class="rounded-full h-6 w-6 flex items-center justify-center border border-solid border-black mr-3">
+                                    <div :class="{ 'opacity-0': planId, 'opacity-100': !planId }" class="rounded-full w-5 h-5 bg-purple-planera"></div>
+                                </div>
+                                <p>One Time Purchase</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="flex flex-wrap">
+                            {% for block in section.blocks %}
+                            <div 
+                            {% if block.settings.type == 'subscribe' %}
+                                :class="{ 'hidden': !planId, 'flex': planId }"
+                            {% else %}
+                                :class="{ 'hidden': planId, 'flex': !planId }"
+                            {% endif %}
+                            class="items-center mr-5 mt-6 md:mt-5 hidden">
+                                {% include 'icon-tick' %}
+                                <p class="ml-1 text-xs.5">{{ block.settings.text }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                        <div class="flex flex-wrap prodQty">
+                            <div class="mt-5 mb-5 mr-6 text-purple-planera">
+                                <div class="flex items-center rounded-lg border border-primary-blue w-25 sm:w-52 h-9 prodQtyContainer">
+                                    <div @click="quantity = quantity < 2 ? quantity : quantity - 1" class="leading-none text-lg flex items-center justify-center px-2 sm:px-4 h-full text-purple-planera cursor-pointer">-</div>
+                                    <div class="flex-1">
+                                        <input class="w-full bg-transparent text-center h-full" x-model="quantity">
+                                    </div>
+                                    <div @click="quantity++" class="leading-none text-lg flex items-center justify-center px-2 sm:px-4 h-full text-purple-planera cursor-pointer">+</div>
+                                </div>
+                            </div>
+                        </div>
+                        {% capture alpine_text %}
+                        available == 'true' ? 'ADD TO BAG' : 'OUT OF STOCK'
+                    {% endcapture %}
+                        {% capture alpine_text_price %}
+                        price
+                    {% endcapture %}
+                        {% include 'purchase-button-product-page' %}
+                    </div>            
+                </div>
+            {% endif %}
+        </div>
+        <div class="prodOriginalPos"></div>
+        <div class="flex justify-center flex-wrap mt-5 md:mt-4 w-single-product-icons max-w-full mid-mob:hidden">
+            {% for icon in product.metafields.accentuate.icon %} 
+            <div class="w-1/4 relative mx-3 mb-4">
+                <div class="w-22 h-22 mx-auto rounded-full bg-white flex flex-col items-center justify-center px-1">
+                    <img src="{{ icon[0].src }}" class="w-6 mx-auto pb-2" alt="{{ product.metafields.accentuate.text[forloop.index0] }}">
+                    <p class="text-center text-xxs leading-none px-1">{{ product.metafields.accentuate.text[forloop.index0] }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div x-data="{accordion_item:-1}" class="mt-2 productAccordions block border-black border-t lg:max-w-550">
+            {%- render 'product.accordions', product: product, icon:'chevron'-%}
+        </div>
+    </div>
+
+</div>
+</div>
+
+<style>
+
+.yotpo-bottomline.pull-left.star-clickable a.text-m {
+    font-size: 11px !important;
+    color: black !important;
+}
+
+    @media screen and (max-width:1024px) {
+        #thumbnail-slider .splide__track {
+            display: none !important;
+        }
+        #thumbnail-slider .splide__pagination {
+           bottom: -1.5rem !important;
+        }
+        #thumbnail-slider .splide__arrow {
+          margin-top: .75rem !important;
+        }
+        #thumbnail-slider .splide__pagination__page {
+           opacity: .6 !important;
+        }
+        #thumbnail-slider .splide__pagination__page.is-active,
+        #thumbnail-slider .splide__pagination__page {
+            background-color: #4546F4 !important;
+        }
+        #thumbnail-slider .splide__pagination__page.is-active {
+            opacity: 1 !important;
+        }
+
+    }
+    #main_product_slider li img {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+      html .yotpo-main-widget  .main-widget .bottom-line-items {
+    text-align: left !important;
+    margin-bottom: 10px;
+}
+html .yotpo-main-widget .write-first-review-button {
+    display: none !important;
+}
+{% if ss.reviews_bg_img.src != blank %}
+html .yotpo-main-widget {
+      background-position: center;
+      padding-top: 8rem;
+      padding-bottom: 5rem;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-image: url('{{ ss.reviews_bg_img.src | img_url:"master" }}');
+  }
+  @media screen and (max-width:1024px) {
+html .yotpo-main-widget {
+      padding-top: 2rem;
+  }
+}
+  {% else %}
+  html .yotpo.yotpo-main-widget {
+      padding-top: 8rem;
+      padding-bottom: 5rem;
+      background-color: {{ ss.reviews_bg_col }} !important;
+  }
+  {% endif %}
+
+  .custom-input:checked + .custom-input__container .custom-input__checked {
+      display: block;
+    }
+
+</style>
+
+
+{% schema %}
+    {
+        "name": "Product",
+        "settings":[
+        {
+            "type": "color",
+            "id": "bg_col",
+            "label": "Background Colour"
+        },
+        {
+            "type": "color",
+            "id": "text_col",
+            "label": "Text Colour"
+        },
+        {
+            "type": "color",
+            "id": "reviews_bg_col",
+            "label": "Reviews Section Background Colour"
+        },
+        {
+            "type":"image_picker",
+            "id":"reviews_bg_img",
+            "label":"Reviews Section Background Image"
+        }
+        ],
+        "blocks": [
+        {
+            "type": "text",
+            "name": "Tick Point",
+            "settings": [
+                {
+                    "type": "select",
+                    "id": "type",
+                    "label": "Type",
+                    "info": "Show this tick if subscribe or one time is selected",
+                    "options": [
+                        {
+                            "value": "one",
+                            "label": "One Time"
+                        },
+                        {
+                            "value": "subscribe",
+                            "label": "Subscribe"
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "id": "text",
+                    "label": "Tick Point Text"
+                }
+            ]
+        }
+    ]
+    }
+{% endschema %}

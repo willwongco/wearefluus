@@ -1,0 +1,146 @@
+{% assign ss = section.settings %}
+
+<div class="{{ blog.id }} blogs-slider pt-4 mt-3 md:mt-4 relative pb-4 lg:pb-8">
+    <div class="relative leading-none font-cheltenham-std text-center break-words mt-1 text-4xl mb-8 md:mb-16">
+        {{ section.settings.title | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="text-purple-planera">' }}
+    </div>
+    
+    <div class="glide md:px-9 lg:px-20 mt-18 md:mt-11 relative mb-68 pb-14" data-options='{
+        "type": "carousel",
+        "perView": 3,
+        "gap": 0,
+        "focusAt":"center",
+        "breakpoints": {
+            "1280": {
+                "perView": 2,
+                "gap": 40,
+                "focusAt":0
+            },
+            "768": {
+                "gap": 22,
+                "type": "slider",
+                "perView": 1.33,
+                "focusAt":0
+            }
+        }
+    }'>
+        <div class="glide__track pl-8 md:pl-0" data-glide-el="track">
+          <ul class="glide__slides flex xl:items-center">
+            {% for block in section.blocks %}
+            <li class="glide__slide transition-all">
+                {% assign article = articles[block.settings.article] %}
+                <div style="background-color:{{ ss.slide_bg_col }};color:{{ ss.slide_text_col }}" class="rounded-md">
+                    <a href="{{ article.url }}">
+                        <div class="p-3 pb-6 sm:p-5 md:pb-10">
+                            <div class="mb-4 md:mb-5">
+                                {% if article.image %}
+                                    {% comment %}
+                                        Set aspect ratio so slides are not the wrong height on slider init
+                                    {% endcomment %}
+                                    {% assign aspect_ratio = 'aspect-ratio: ' | append: article.image.aspect_ratio | append: '/ 1;' %}
+                                    {% include 'lazy-image' image: article.image, additional_classes: 'w-full', inline_style: aspect_ratio %}
+                                {% endif %}
+                                </div>
+                                <div class="pl-3">
+                                    <p class="text-xs mb-3.5 md:mb-4 sm:text-sm font-sofia-pro">{{ article.updated_at | date: format: 'abbreviated_date' }}</p>
+                                    <p class="font-cheltenham-std text-sm mb-2 md:text-base md:mb-3">{{ article.title }}</p>
+                                    <p class="text-xs.5 mb-5 md:mb-8 md:text-sm">
+                                        {{ article.excerpt_or_content | truncatewords: 15, '...' }}
+                                    </p>
+                                    <p class="flex items-end text-xs font-semibold md:text-sm.5"><span class="mr-2">{{ section.settings.btn }}</span> {% include 'icon-circle-plus-blog-slider' %}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            {% endfor %}
+          </ul>
+          <div class="glide__arrows hidden lg:block" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left absolute left-2.5 lg:left-6 top-1/2 -translate-y-1/2 transform" data-glide-dir="<">
+                <div>
+                    {% include 'icon-slide-arrow-left-white' %}
+                </div>
+            </button>
+            <button class="glide__arrow glide__arrow--right absolute right-2.5 lg:right-6 top-1/2 -translate-y-1/2 transform" data-glide-dir=">">
+                <div class="scale">
+                    {% include 'icon-slide-arrow-right-white' %}
+                </div>
+            </button>
+          </div>
+        </div>
+        <div class="glide__bullets flex lg:hidden items-center justify-center mt-8" data-glide-el="controls[nav]">
+            {% for block in section.blocks %}
+                <button class="glide__bullet w-3.5 h-3.5 bg-white rounded-full mx-1 border border-solid border-white" data-glide-dir="={{ forloop.index0}}"></button>
+            {% endfor %}
+          </div>
+    </div>
+</div>
+
+<style>
+    .blogs-slider {
+        background-color:{{ ss.sec_bg_col }};
+        color:{{ ss.sec_title_text_col }};
+    }
+</style>
+
+{% schema %}
+{
+    "name": "Article Slider",
+    "settings": [
+    {
+        "type":"color",
+        "id":"sec_bg_col",
+        "label":"Section Background Colour"
+    },
+    {
+        "type":"color",
+        "id":"sec_title_text_col",
+        "label":"Section Title Text Colour"
+    },
+    {
+        "type":"color",
+        "id":"slide_bg_col",
+        "label":"Slide Background Colour"
+    },
+    {
+        "type":"color",
+        "id":"slide_text_col",
+        "label":"Slide Text Colour"
+    },
+        {
+            "type": "richtext",
+            "id": "title",
+            "label": "Title",
+            "info": "Any text changed to bold will be unbolded and set to purple"
+        },
+        {
+            "type": "text",
+            "id": "btn",
+            "label": "Article Button Text",
+            "default": "READ ARTICLE"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "article",
+            "name": "Article",
+            "settings": [
+                {
+                    "type": "article",
+                    "id": "article",
+                    "label": "Article"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "Text",
+            "name": "Article Slider"
+        }
+    ],
+    "templates": [
+        "blog"
+    ]
+}
+{% endschema %}

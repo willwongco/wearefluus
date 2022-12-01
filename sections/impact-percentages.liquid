@@ -1,0 +1,91 @@
+
+<div x-data="{ showData: 0 }" class="flex border border-black md:h-96 flex-col md:flex-row overflow-hidden">
+    {% for block in section.blocks %}
+    {% assign bs = block.settings %}
+    <div @mouseover="showData = {{ forloop.index }}"
+        @mouseleave="showData = 0"
+        class="bg-no-repeat bg-cover bg-center relative transition-all duration-500" :class=" showData != 0 && showData != {{ forloop.index }} ? 'width-0 md:opacity-0':'impact-percentage__{{ forloop.index }}';" style="background-image:url('{{ bs.img.src | img_url:'master' }}')">
+        <span style="color:{{ section.settings.text_title_col }};" class=" font-sofia-pro-medium flex justify-center w-full pt-10 z-10 relative text-8xl lg:text-108">{{ bs.title }}</span>
+        <div :class="showData == {{ forloop.index }} ? 'opacity-100':'opacity-0'" class=" transition-all duration-300 ease-in-out z-10 relative pointer-events-none flex flex-col justify-center items-center px-4 pb-6 md:pb-0 md:px-8">
+        <p style="color:{{ section.settings.text_card_col }};" class="font-cheltenham-std text-5xl mb-4">{{ bs.subtitle }}</p>
+        <p style="color:{{ section.settings.text_card_col }};" class="font-sofia-pro text-sm sm:text-lg text-center max-w-800">{{ bs.body }}</p>
+    </div>
+    <div class="absolute h-full w-full left-0 top-0 bg-black transition-all duration-500" :class="showData == {{ forloop.index }} ? 'opacity-60':'opacity-0'"></div>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+        @media screen and (min-width:768px) {
+    .width-0 {
+        width: 0 !important;
+    }
+}
+    {% for block in section.blocks %}
+    @media screen and (min-width:768px) {
+    .impact-percentage__{{ forloop.index }} { 
+        width:{{ block.settings.width }}%;
+    }
+    .impact-percentage__{{ forloop.index }}:hover { 
+        width:100%;
+    }
+}
+    {% endfor %}
+</style>
+
+{% schema %}
+{
+    "name": "Impact - Percentages",
+    "settings": [
+    {
+        "type": "color",
+        "id": "text_title_col",
+        "label": "Title Text Colour"
+    },
+    {
+        "type": "color",
+        "id": "text_card_col",
+        "label": "Card Text Colour"
+    }
+    ],
+    "blocks":[
+    {
+        "type":"block",
+        "name":"block",
+        "settings":[
+        {
+            "type":"image_picker",
+            "label":"Image",
+            "id":"img"
+        },
+        {
+            "type":"text",
+            "label":"Width",
+            "id":"width"
+        },
+        {
+            "type":"textarea",
+            "label":"Title",
+            "id":"title"
+        },
+        {
+            "type":"textarea",
+            "label":"Subtitle",
+            "id":"subtitle"
+        },
+        {
+            "type":"textarea",
+            "label":"Body",
+            "id":"body"
+        }
+        ]
+    }
+    ],
+    "presets": [
+        {
+            "name": "Impact - Percentages"
+        }
+    ]
+}
+
+{% endschema %}

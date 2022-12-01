@@ -1,0 +1,21 @@
+
+<div class="grid grid-cols-3 gap-3 pb-3 pt-10 px-3.5">
+    {% for i in (0..3) %}
+        {% assign img_ref = 'img_' | append: i %}
+        {% assign link_ref = 'url_' | append: i %}
+        {% assign text_ref = 'text_' | append: i %}
+        {% if block.settings[img_ref] != blank %}
+            <div class="w-full relative">
+                <a href="{{ block.settings[link_ref] }}" >
+
+                {% include 'lazy-image' image: block.settings[img_ref], breakpoint_classes: 'w-full', additional_classes: 'w-full' %}
+                {% if block.settings[link_ref] != blank and block.settings[text_ref] != blank %}
+                <a href="{{ block.settings[link_ref] }}" class="absolute bg-white text-sm.5 min-w-28 py-2 px-4 rounded-3xl left-4 bottom-10 text-center">
+                    {{ block.settings[text_ref] }}
+                </a>
+                </a>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>

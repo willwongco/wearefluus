@@ -1,0 +1,136 @@
+  
+  <div class="pt-10 pb-20 relative ">
+   
+
+      <div class="flex w-full px-2 lg:px-0 mx-auto sm:pt-10">
+        <div class=" mx-auto w-full p-0 md:p-5">
+  
+          <div class="flex flex-col xl:flex-row max-w-7xl mx-auto w-full relative justify-center">
+            <div x-data="{dropdownOpen:false}" class="block xl:hidden w-full py-5">
+              <ul class="dropdownAccount w-full p-5">
+                <li @click="dropdownOpen = !dropdownOpen" :class="dropdownOpen ? 'rounded-bl-none rounded-br-none bg-selectDropDownAccountMenuOpen':'bg-selectDropDownAccountMenu'" class="bg-no-repeat bg-right-90% text-center font-cheltenham-std text-black text-sm sm:text-base openDropDownMenu justify-center flex flex-row items-center relative cursor-pointer w-full pt-4 pb-3 m-auto rounded-xl border border-black">Account Overview</li>
+                <ul :class="dropdownOpen ? 'block':'hidden'" class="w-full m-auto links-below-first border border-t-0 rounded-b-xl border-black pt-8 font-futuraBold">
+                <li class="cursor-pointer pb-4 text-center  text-black text-sm "><a href="#details">My Details </a></li>
+                <li class=" cursor-pointer pb-4 text-center text-black text-sm"><a href="#addresses">My Addresses</a> </li>
+                <li class=" cursor-pointer pb-4 text-center text-black text-sm"><a href="#subscription">Subscriptions</a></li>
+                <li class=" cursor-pointer pb-4 text-center text-black text-sm"><a href="#orders">My Orders</a></li>
+                <li class="cursor-pointer pb-8 text-center  text-black text-sm"><a href="/acccount/logout">Logout</a></li>
+              </ul>
+              </ul>
+            </div>
+
+            <style>
+
+ ::placeholder {
+  color:{{ section.settings.text_col }} !important;
+}
+
+#shopify-section-account input,
+#shopify-section-account select {
+  background-color:{{ section.settings.input_bg_col }} !important;
+}
+
+{% if section.settings.section_bg_image != blank %}
+#shopify-section-account {
+    background-image:url(' {{- section.settings.section_bg_image.src | img_url:'master' -}}');
+    background-size:cover;
+}
+{% else %}
+#shopify-section-account {
+    background-color: {{ section.settings.section_bg_col }};
+}
+{% endif %}
+
+            
+            </style>
+  
+            <div class="hidden xl:block w-3/12 lg:px-2">
+              {% include 'account-menu' %}
+            </div> 
+            
+            <div class="w-full xl:w-4/6 px-5 md:px-2">
+
+              <div style="background-color:{{ section.settings.text_bg_col }};color:{{ section.settings.text_col }};"  class="cusomer-new-edit rounded-xl border border-black p-8 mb-10">
+                <span id="details" class=" invisible -mt-28 pt-28 lg:-mt-64 block lg:pt-64"></span>
+                <h1 class="font-cheltenham-std text-lg sm:text-xl tracking-wider mb-5">My Details</h1>
+                {% render "account-edit-address" %}
+              </div> 
+              {% include 'account-address' %}
+              {% include 'account-subscribe' %}
+              {% include 'account-savings' %}
+              {% include 'account-orders' %}
+              <!-- {% include 'account-rewards' %} -->
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  {% schema %}
+  {
+    "name": "Account",
+    "settings": [
+    {
+      "type":"image_picker",
+      "label":"Section Background Image",
+      "id":"section_bg_image",
+      "info":"Image Dimension: 1440W x 800H"
+  },
+  {
+    "type":"color",
+    "label":"Section Background Colour",
+    "id":"section_bg_col"
+},
+    {
+      "type": "header",
+      "content": "Section Colours"
+  },
+  {
+    "type":"color",
+    "label":"Sections Text Colour",
+    "id":"text_col"
+  },
+  {
+    "type":"color",
+    "label":"Sections Input Background Colour",
+    "id":"input_bg_col"
+  },
+  {
+    "type":"color",
+    "label":"Sections background Colour",
+    "id":"text_bg_col"
+  }
+    ],
+    "blocks": [
+    {
+      "name":"stat",
+      "type":"stat",
+      "settings":[
+      {
+        "type":"image_picker",
+        "id":"stats_icon_desktop",
+        "label":"Stat Desktop Icon"
+      },
+      {
+        "type":"image_picker",
+        "id":"stats_icon_mobile",
+        "label":"Stat Mobile Icon"
+      },
+      {
+        "type": "text",
+        "id": "suffix",
+        "label": "Suffix"
+    },
+    {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle"
+    }
+      ]
+    }
+    ]
+  }
+  {% endschema %}
+  

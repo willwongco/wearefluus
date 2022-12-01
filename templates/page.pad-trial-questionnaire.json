@@ -1,0 +1,63 @@
+{
+  "sections": {
+    "1654607558eb6ca579": {
+      "type": "article-slider",
+      "disabled": true,
+      "blocks": {
+        "b752bb57-e062-4281-9ee2-13fb441d2bc6": {
+          "type": "article",
+          "settings": {
+            "article": "blogs\/no-more-dirty-bins"
+          }
+        },
+        "b21d37f8-ca95-43b0-9b61-dd04b6cd577f": {
+          "type": "article",
+          "settings": {
+            "article": "blogs\/protecting-our-planet"
+          }
+        },
+        "a81342d7-b454-457b-9322-896882acb611": {
+          "type": "article",
+          "settings": {
+            "article": "blogs\/developed-with-people"
+          }
+        }
+      },
+      "block_order": [
+        "b752bb57-e062-4281-9ee2-13fb441d2bc6",
+        "b21d37f8-ca95-43b0-9b61-dd04b6cd577f",
+        "a81342d7-b454-457b-9322-896882acb611"
+      ],
+      "settings": {
+        "bg_col": "#ffffff",
+        "title_text_col": "#0e2559",
+        "article_text_col": "#0e2559",
+        "article_bg_col": "#ffffff",
+        "title": "<p>Interested in <strong>learning more?<\/strong><\/p>",
+        "btn": "READ ARTICLE",
+        "all_btn": "SEE ALL",
+        "all_url": "shopify:\/\/blogs\/blogs"
+      }
+    },
+    "166496062264b869fe": {
+      "type": "apps",
+      "settings": {}
+    },
+    "d0503ed5-20a6-460a-9d87-0db30b0085d9": {
+      "type": "contact-us",
+      "settings": {
+        "bg_col": "#E4D3C1",
+        "text_col": "",
+        "title": "Contact Us",
+        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+        "enq_types": "Trade , General , Delivery Status , Product Enquiry , Returns",
+        "cta_text": "SEND"
+      }
+    }
+  },
+  "order": [
+    "1654607558eb6ca579",
+    "166496062264b869fe",
+    "d0503ed5-20a6-460a-9d87-0db30b0085d9"
+  ]
+}

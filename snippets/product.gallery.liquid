@@ -1,0 +1,115 @@
+
+
+<div>
+    <h1 class="font-cheltenham-std text-2.5xl block pt-10  pl-5 sm:hidden">
+        {% capture replace_text_flushable %}
+        <span class="whitespace-nowrap relative">
+            Flushable
+            {% render 'icon-underline-large' classes: 'absolute w-full -left-3 bottom-1' pattern:'90909' %}
+        </span>
+        {% endcapture %}
+            {{- product.title | replace: 'Flushable', replace_text_flushable -}}
+        </h1>
+                <!-- reviews to go here -->
+                <div style="margin-top:.25rem !important; padding-left:1.25rem !important;margin-bottom: 1.25rem !important;margin-top: -.15rem !important;" class="yotpo bottomLine block | sm:hidden" data-appkey="AQylRjL9ZPR2h0n5eZloHoUO4mFl4dmaAv6o8zuZ"
+                data-domain="{{shop.permanent_domain | escape }}" data-product-id="{{ product.id }}"
+                data-product-models="{{ product.id }}" data-name="{{ product.title | escape }}"
+                data-url="{{ shop.url }}{{ product.url }}"
+                data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+                data-description="{{ product.description | escape }}"
+                data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+    </div>
+    <div id="main_product_slider" class="splide mb-5">
+        <div class="splide__track">
+            <ul class="splide__list">
+                {% for image in product.images %}
+                <li class="splide__slide">
+                    <img class="lazy lazyload hs-lazyload hs-id-1df82818" data-src="{{ image.src | img_url: 'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+                    <!-- {% render 'img', img:image.src, type:'img', class:'m-auto magnifier', lazy:true, styles:'max-width:550px' %} -->
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div id="thumbnail-slider" class="splide m-auto max-w-650">
+        <div class="splide__track w-10/12 m-auto">
+            <ul class="splide__list">
+                {% for image in product.images %}
+                <li  class="splide__slide relative">
+             
+                    <img alt="{{ image.alt }}" class="lazy m-auto h-24 bg-white object-cover w-full rounded-xl lazyload hs-lazyload hs-id-0dad2d6b" data-src="{{ image.src | img_url: '97x92'}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+ .splide__slide:hover span img.image-zoom {
+     opacity: 0 !important;
+ }
+
+@media screen and (max-width:768px) {
+    
+ #thumbnail-slider .splide__arrow--next {
+  right: .75rem !important;
+}
+#thumbnail-slider .splide__arrow--prev {
+  left: .75rem !important;
+}
+}
+</style>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // setup
+        var main;
+        var thumbnail;
+
+        main = new Splide('#main_product_slider', {
+            perPage:1,
+            rewind: true,
+            pagination: false,
+            arrows: false,
+        });
+
+        thumbnail = new Splide('#thumbnail-slider', {
+
+            type:'slide',
+            perPage:5,
+            gap: 10,
+            rewind: true,
+            pagination: false,
+            updateOnMove:true,
+            isNavigation: true,
+            breakpoints:{
+              "1024":{
+                  perPage:1,
+                  pagination:true
+              }  ,
+              "1025":{
+                  perPage:4,
+                  pagination:false
+              }  ,
+              "1300":{
+                  perPage:3,
+                  pagination:false
+              }  ,
+              "1500":{
+                  perPage:4,
+                  pagination:false
+              }  
+            },
+            arrowPath: 'M0.244172 14.3372L12.7442 0.27468C13.0697 -0.0915601 13.5971 -0.0915601 13.9225 0.27468C14.2481 0.640921 14.2481 1.23418 13.9225 1.60033L2.84503 14.0625H39.1666C39.6273 14.0625 40 14.4819 40 15.0001C40 15.5183 39.6273 15.9376 39.1666 15.9376H2.84503L13.9225 28.3997C14.2481 28.7659 14.2481 29.3592 13.9225 29.7253C13.7598 29.9084 13.5465 30 13.3333 30C13.1201 30 12.9069 29.9084 12.7441 29.7253L0.244092 15.6628C-0.0813768 15.2967 -0.0813749 14.7034 0.244172 14.3372Z',
+        }
+        )
+
+        main.sync(thumbnail);
+        main.mount();
+        thumbnail.mount();
+
+    })
+</script>

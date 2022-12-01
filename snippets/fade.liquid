@@ -1,0 +1,9 @@
+{% unless speed %}
+{% assign speed = '500' %}
+{% endunless %}
+x-transition:enter="transition ease-out duration-{{ speed }}"
+x-transition:enter-start="opacity-0"
+x-transition:enter-end="opacity-100"
+x-transition:leave="transition ease-in duration-{{ speed }}"
+x-transition:leave-start="opacity-100"
+x-transition:leave-end="opacity-0"

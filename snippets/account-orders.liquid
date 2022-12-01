@@ -1,0 +1,45 @@
+<div style="background-color:{{ section.settings.text_bg_col }};color:{{ section.settings.text_col }};" id="orders" class="border border-black overflow-y-hidden rounded-xl w-full mb-5 md:mb-10">
+  <div class="flex w-full justify-between items-center">
+    <h1 class="w-full block text-lg sm:text-xl tracking-wider font-cheltenham-std pt-8 pl-8">Your Orders</h1>
+  </div>
+  
+  
+    {% if customer.orders.size > 0 %}
+    <div class=" overflow-x-auto">
+    <table class="table-auto pl-8 mt-8 w-full rounded-xl border-collapse overflow-x-auto whitespace-normal" cellPadding="10">
+      <thead>
+        <tr class="h-14">
+          <th class="text-left w-2/10 text-xs sm:text-sm tracking-wider p-0 pr-4 pl-4 font-sofia-pro-regular" >Order<br>Number</th>
+          <th class="text-left w-2/10 text-xs sm:text-sm tracking-wider font-sofia-pro-regular" >Date</th>
+          <th class="text-left w-2/10 text-xs sm:text-sm tracking-wider font-sofia-pro-regular pl-4">Name</th>
+          <th class="text-left w-2/10 text-xs sm:text-sm tracking-wider font-sofia-pro-regular" >Delivery Address</th>
+          <th class="w-2/10"></th>
+        </tr>
+      </thead>
+      <tbody class="pl-2">
+        {% for order in customer.orders %}
+        {% assign mod = forloop.index | modulo: 2 %}
+        {% if mod == 0 %}
+        {% assign classList = 'bg-white' %}
+        {% else %}
+        {% assign classList = 'bg-order-grey' %}
+        {% endif %}
+          <tr class="{{ classList }} rounded-b-xl">
+            <td class="text-xs font-sofia-pro pl-4">{{ order.name | remove:'#' }}            </td>
+            <td class="text-xs font-sofia-pro">{{ order.created_at | date: "%d/%m/%y" }}</td>
+            <td style="min-width: 120px;" class="text-xs font-sofia-pro uppercase pl-4">{{ order.customer.name }}</td>
+            <td style="min-width: 180px;" class="text-xs font-sofia-pro">{{ order.shipping_address.address1 }} {{ order.shipping_address.address2 }}, <br> {{ order.shipping_address.city }} {{ order.shipping_address.zip }} {{ order.shipping_address.country }} </td>
+            <td style="min-width: 220px;" class="flex min-w-">
+              <a class="transition-all border-primary-blue border rounded-lg flex justify-center items-center mx-auto my-2 bg-white px-2 pb-1 pt-2 text-center uppercase font-sofia-pro text-small text-primary-blue hover:bg-primary-blue hover:text-white" href="{{ order.customer_url }}">View Order Details</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+    {% else %}
+    <p class="text-sm mt-5 pl-8 mb-4 font-sofia-pro-regular">No orders found.</p>
+  
+    {% endif %}
+  
+  </div>

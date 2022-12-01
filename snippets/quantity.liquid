@@ -1,0 +1,45 @@
+{%- if quantity >= inventory_quantity and inventory_policy == 'deny' -%}
+    {%- assign max = true -%}
+{%- endif -%}
+
+{%- capture minus_btn -%}
+    {%- if update -%}
+        <a href="{{ routes.cart_change_url }}?line={{ line }}&quantity={{ quantity | minus: 1 }}" class="btn w-auto pl-3 pr-1">
+            {%- render 'icon-minus' -%}
+        </a>
+    {%- else -%}
+        <button type="button" data-quantity-subtract class="w-auto">
+            {%- render 'icon-minus' -%}
+        </button>
+    {%- endif -%}
+{%- endcapture -%}
+
+{%- capture add_btn -%}
+    {%- if update -%}
+        <a href="{{ routes.cart_change_url }}?line={{ line }}&quantity={{ quantity | plus: 1 }}" class="btn w-auto pr-3 pl-1">
+            {%- render 'icon-plus' -%}
+        </a>
+    {%- else -%}
+        <button type="button" data-quantity-add class="w-auto">
+            {%- render 'icon-plus' -%}
+        </button>
+    {%- endif -%}
+{%- endcapture -%}
+
+{% if cart_page %}
+
+<div class="flex border border-black items-center h-12 w-40 justify-between rounded-lg quantityContainer | sm:w-28 sm:h-9" data-quantity>
+    {{- minus_btn -}}
+    <input type="number" class="text-center font-sofia-pro-regular text-purple-planera pt-1 text-xl w-10 px-2 bg-transparent border-none | sm:text-base" name="quantity" value="{{ quantity | default: 1 }}" readonly data-quantity-input min="1">
+    {{- add_btn -}}
+</div>
+
+{% else %}
+
+<div class="flex border max-w-224 w-1/2 justify-between px-6 rounded-lg quantityContainer" data-quantity>
+    {{- minus_btn -}}
+    <input type="number" class="text-center font-futuraBold py-2 text-base w-10 px-2 bg-transparent border-none" name="quantity" value="{{ quantity | default: 1 }}" readonly data-quantity-input min="1">
+    {{- add_btn -}}
+</div>
+
+{% endif %}

@@ -1,0 +1,85 @@
+{
+  "sections": {
+    "1660126309ce135916": {
+      "type": "page-hero",
+      "settings": {
+        "about_page": false,
+        "infinite_scroll": false,
+        "full_stop": false,
+        "title": "<p>Developed in collaboration with 1,500 women<\/p>",
+        "subtitle": "",
+        "text_colour": "",
+        "scroll_item_text_colour": "",
+        "scroll_bg_colour": "",
+        "section_bg_colour": "",
+        "section_bg_image": "shopify:\/\/shop_images\/220622_Planera_Stills_S4_486_f2.jpg"
+      }
+    },
+    "1649157272b3866f67": {
+      "type": "article-blog-slider",
+      "disabled": true,
+      "blocks": {
+        "7c3c8e2f-296d-4d1f-8965-7ee3760f9c4c": {
+          "type": "article",
+          "disabled": true,
+          "settings": {
+            "article": "blogs\/developed-with-people"
+          }
+        },
+        "f40f3faa-8451-4eb1-a78b-c86c8a403898": {
+          "type": "article",
+          "disabled": true,
+          "settings": {
+            "article": "blogs\/protecting-our-planet"
+          }
+        },
+        "a1b82c94-efb6-449f-871c-e1305044b695": {
+          "type": "article",
+          "disabled": true,
+          "settings": {
+            "article": "blogs\/no-more-dirty-bins"
+          }
+        }
+      },
+      "block_order": [
+        "7c3c8e2f-296d-4d1f-8965-7ee3760f9c4c",
+        "f40f3faa-8451-4eb1-a78b-c86c8a403898",
+        "a1b82c94-efb6-449f-871c-e1305044b695"
+      ],
+      "settings": {
+        "sec_bg_col": "#d1d6e5",
+        "sec_title_text_col": "#0e2559",
+        "slide_bg_col": "#ffffff",
+        "slide_text_col": "#0e2559",
+        "title": "",
+        "btn": "READ ARTICLE"
+      }
+    },
+    "16491642941430cc31": {
+      "type": "blog-list",
+      "settings": {
+        "heading": "<p>Become a product <strong>tester<\/strong><\/p>",
+        "subheading": "",
+        "description": "<p>Passionate about perid care? Fanatical about feedback? If you love trialling new products - we want to hear from you! Sign up using our link below ans we'll contact once testing opportunities become available.<\/p>",
+        "cta_btn_text": "JOIN LAUNCHPAD",
+        "cta_btn_link": "shopify:\/\/blogs\/blogs",
+        "section_top_bg_colour": "#ffffff",
+        "topHalf_text_col": "#0e2559",
+        "filter_bg_col": "#ffffff",
+        "filter_text_col": "#0e2559",
+        "filter_active_bg_col": "#0e2559",
+        "filter_active_text_col": "#ffffff",
+        "section_bottom_bg_colour": "#d1d6e5",
+        "article_bg_col": "#ffffff",
+        "article_text_col": "#0e2559",
+        "filter_tag_btn": "Update Filter",
+        "paginate_number": 6
+      }
+    }
+  },
+  "order": [
+    "1660126309ce135916",
+    "1649157272b3866f67",
+    "16491642941430cc31"
+  ]
+}

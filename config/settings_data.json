@@ -1,0 +1,224 @@
+{
+  "current": {
+    "reviews_bg_col": "#d1d6e5",
+    "show_rw-btn": true,
+    "sections": {
+      "index-header": {
+        "type": "index-header",
+        "blocks": {
+          "ebc27e4a-1762-4818-9c4c-d2f9598e7aad": {
+            "type": "tab",
+            "settings": {
+              "tab": "Why Flushable?",
+              "img_1": "shopify:\/\/shop_images\/28_07_21_Planera_day2_MD_Machine_02_0094_50f58711-ffa1-4af1-b971-246fcb95080c.jpg",
+              "text_1": "Tech",
+              "url_1": "shopify:\/\/pages\/tech",
+              "img_2": "shopify:\/\/shop_images\/28_07_21_Planera_day2_MD_Cream_pad_hands_1596_copy_1.png",
+              "text_2": "Our Impact",
+              "url_2": "shopify:\/\/pages\/impact",
+              "img_3": "shopify:\/\/shop_images\/28_07_21_Planera_day2_MD_Group_0550_1.jpg",
+              "text_3": "Our Story",
+              "url_3": "shopify:\/\/pages\/our-story"
+            }
+          }
+        },
+        "block_order": [
+          "ebc27e4a-1762-4818-9c4c-d2f9598e7aad"
+        ],
+        "settings": {
+          "promotion_text": "Free delivery on all orders",
+          "logo": "shopify:\/\/shop_images\/FluusLogo.png",
+          "logo_white": "shopify:\/\/shop_images\/FluusLogo.png",
+          "main_menu": "main-menu",
+          "mobile_main_menu": "",
+          "colour": "offwhite"
+        }
+      },
+      "cart-slider": {
+        "type": "cart-slider",
+        "blocks": {
+          "e88f2afe-cccd-43f8-98b2-f28f6a3feecd": {
+            "type": "milestone",
+            "disabled": true,
+            "settings": {
+              "num": 0,
+              "text": "<p>Your <br\/>Order<\/p>"
+            }
+          },
+          "9e60f8c1-ebff-4df9-81d2-9fbe990841ce": {
+            "type": "milestone",
+            "disabled": true,
+            "settings": {
+              "num": 1000,
+              "text": "<p>Save 2kg<br\/>of Plastic<\/p>"
+            }
+          },
+          "956b4497-93c1-40c6-817f-00b0552115c9": {
+            "type": "milestone",
+            "disabled": true,
+            "settings": {
+              "num": 2000,
+              "text": "<p>Save 4kg of Plastic for 20% off<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "e88f2afe-cccd-43f8-98b2-f28f6a3feecd",
+          "9e60f8c1-ebff-4df9-81d2-9fbe990841ce",
+          "956b4497-93c1-40c6-817f-00b0552115c9"
+        ],
+        "settings": {
+          "bg_col": "#f7f2ec",
+          "text_col": "#0e2559",
+          "title": "Order Summary",
+          "empty_text": "Your cart is now empty - return to shop",
+          "empty_text_link": "",
+          "continue": "Continue To Shopping",
+          "checkout": "Proceed To Checkout"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "e66d3231-d7de-46b1-87e4-d432397a8b74": {
+            "type": "social",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/facebook_80f05c21-dd34-43c9-9602-624b3e42a88a.png",
+              "url": "https:\/\/www.facebook.com\/planeracare"
+            }
+          },
+          "f92ac387-288b-4935-aec9-75ef9f611702": {
+            "type": "social",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/twitter_bcc9d229-58f4-4bfe-96dd-13590314f81d.png",
+              "url": "https:\/\/twitter.com\/planeracare?lang=en"
+            }
+          },
+          "bb6d9e27-708c-47fa-af73-002fa58ed469": {
+            "type": "social",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/instagram_468fcf44-3140-4716-b3cf-064bfd74537e.png",
+              "url": "https:\/\/www.instagram.com\/planeracare\/?hl=en"
+            }
+          },
+          "59d42afa-9866-4516-bc81-9d9e30088ccf": {
+            "type": "social",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/tik-tok_1_3_12045fad-e4dd-49c2-85d0-de4187eeee86.png",
+              "url": "https:\/\/www.tiktok.com\/@planeracare"
+            }
+          },
+          "6e08bb84-a473-4ec0-ac2b-35fe67b9f898": {
+            "type": "social",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/linkedin_cab7c6c6-8d8f-450f-bf06-b8df7dc4c6c3.png",
+              "url": "https:\/\/www.linkedin.com\/company\/planeracare"
+            }
+          }
+        },
+        "block_order": [
+          "e66d3231-d7de-46b1-87e4-d432397a8b74",
+          "f92ac387-288b-4935-aec9-75ef9f611702",
+          "bb6d9e27-708c-47fa-af73-002fa58ed469",
+          "59d42afa-9866-4516-bc81-9d9e30088ccf",
+          "6e08bb84-a473-4ec0-ac2b-35fe67b9f898"
+        ],
+        "settings": {
+          "bg_col": "#0e2559",
+          "insta_btn_bg": "#d1d6e5",
+          "insta_btn_text_col": "#0e2559",
+          "sliding_text_col": "#ffffff",
+          "hashtag_title_col": "#ffffff",
+          "menu_newsletter_text_col": "#ffffff",
+          "title": "ReGeneration",
+          "insta": "@wearefluus",
+          "url": "https:\/\/www.instagram.com\/wearefluus",
+          "ticker": "Pre-order now and receive 25% off with code PREORDER25",
+          "logo": "shopify:\/\/shop_images\/Planera_Logo_650px_Dark_No_Background_2.png",
+          "menu_title_1": "Shop",
+          "menu_1": "",
+          "menu_title_2": "Help",
+          "menu_2": "",
+          "capture_title": "Join the #ReGeneration",
+          "capture_content": "Join the Planera community to get exclusive VIP offers."
+        }
+      },
+      "login": {
+        "type": "login",
+        "settings": {
+          "title": "Log in",
+          "text_col": "#0e2559",
+          "text_input_col": "#0e2559",
+          "text_input_bg_col": "#fafafa",
+          "section_bg_colour": "",
+          "section_bg_image": "shopify:\/\/shop_images\/Mask_Group_95.png"
+        }
+      },
+      "register": {
+        "type": "register",
+        "settings": {
+          "title": "Create An Account",
+          "text_col": "#0e2559",
+          "text_input_col": "#0e2559",
+          "text_input_bg_col": "#fff",
+          "section_bg_colour": "",
+          "section_bg_image": "shopify:\/\/shop_images\/Mask_Group_95.png"
+        }
+      },
+      "account": {
+        "type": "account",
+        "blocks": {
+          "5c9a366b-b118-411f-8deb-0b3689537225": {
+            "type": "stat",
+            "settings": {
+              "stats_icon_desktop": "shopify:\/\/shop_images\/Frame_691ef74e-2943-4e76-aa4f-4d405460f8ee.png",
+              "stats_icon_mobile": "shopify:\/\/shop_images\/Frame_691ef74e-2943-4e76-aa4f-4d405460f8ee.png",
+              "suffix": "kgCO2e",
+              "subtitle": "greenhouse gas emissions"
+            }
+          },
+          "51870600-9c22-4b16-a582-3d7220c05e6b": {
+            "type": "stat",
+            "settings": {
+              "stats_icon_desktop": "shopify:\/\/shop_images\/Frame-3.png",
+              "stats_icon_mobile": "shopify:\/\/shop_images\/Frame-3.png",
+              "suffix": "kg",
+              "subtitle": "microplastic from waterways"
+            }
+          },
+          "dc97c9ad-b6a1-4afa-8bc9-63536387b668": {
+            "type": "stat",
+            "settings": {
+              "stats_icon_desktop": "shopify:\/\/shop_images\/Frame-1.png",
+              "stats_icon_mobile": "shopify:\/\/shop_images\/Frame-1.png",
+              "suffix": "",
+              "subtitle": "bags worth of plastic"
+            }
+          },
+          "1ed3b87d-b299-485c-aeaa-41544c8adb8a": {
+            "type": "stat",
+            "settings": {
+              "stats_icon_desktop": "shopify:\/\/shop_images\/Frame-2.png",
+              "stats_icon_mobile": "shopify:\/\/shop_images\/Frame-2.png",
+              "suffix": "kg",
+              "subtitle": "period waste from landfill"
+            }
+          }
+        },
+        "block_order": [
+          "5c9a366b-b118-411f-8deb-0b3689537225",
+          "51870600-9c22-4b16-a582-3d7220c05e6b",
+          "dc97c9ad-b6a1-4afa-8bc9-63536387b668",
+          "1ed3b87d-b299-485c-aeaa-41544c8adb8a"
+        ],
+        "settings": {
+          "section_bg_col": "#dbe7e8",
+          "text_col": "#0e2559",
+          "input_bg_col": "#ffffff",
+          "text_bg_col": "#fafafa"
+        }
+      }
+    },
+    "content_for_index": []
+  }
+}

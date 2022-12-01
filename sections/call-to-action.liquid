@@ -1,0 +1,43 @@
+{% assign ss = section.settings %}
+
+<div class="py-20 px-5 flex-column align-center text-center">
+  <h3 class="mb-2 text-3xl bold">{{ ss.section_title }}</h3>
+  <p class="mb-10 text-md">{{ ss.section_text }}</p>
+  <div><a href="{{ ss.button_link }}" class="px-10 py-5 rounded-lg transition-all ease-out duration-300 text-md bg-purple-planera text-white hover:bg-offwhite-planera hover:text-black-planera">{{ ss.button_text }}</a></div>
+</div>
+
+{% schema %}
+{
+  "name": "Call to Action",
+  "settings": [
+    {
+      "type":"text",
+      "id":"section_title",
+      "label":"Text",
+      "default": "Some title"
+    },
+    {
+      "type":"text",
+      "id":"section_text",
+      "label":"Text",
+      "default": "Some text"
+    },
+    {
+      "type":"text",
+      "id":"button_text",
+      "label":"Button Text",
+      "default": "Button text"
+    },
+    {
+      "type": "page",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Call to Action"
+    }
+  ]
+}
+{% endschema %}

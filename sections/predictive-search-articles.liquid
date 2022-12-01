@@ -1,0 +1,24 @@
+{%- if predictive_search.performed -%}
+  <div id="predictive-search-results" class=" font-sofia-pro pt-4">
+    <ul id="predictive-search-results-list" class="predictive-search__results-list" role="listbox" aria-labelledby="predictive-search-articles">
+      {% comment %} loop through products {% endcomment %}
+      {%- for article in predictive_search.resources.articles -%}
+        <li class="predictive-search__list-item py-2 transition-all duration-150 | hover:bg-superlightgrey" role="option">
+          <a href="{{ article.url }}" class="predictive-search__item flex items-center" tabindex="-1">
+            {%- if article.image != blank -%}
+              <img alt="{{ article.image.alt }}" class="predictive-search__image h-16 w-16 object-cover lazyload hs-lazyload hs-id-08a0803a" data-src="{{ article.image | img_url: '150x' }}" height="{{ 50 | divided_by: article.image.aspect_ratio }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="50">
+            {%- endif -%}
+            <div class="predictive-search__item-content pl-5">
+              <span class="predictive-search__item-heading font-sofia-pro text-sm">{{ article.title }}</span>
+            </div>
+          </a>
+        </li>
+      {%- endfor -%}
+      <li class="predictive-search__list-item mt-3 text-sm" role="option">
+        <button class="predictive-search__item underline" tabindex="-1">
+          Search for “{{ predictive_search.terms }}”
+        </button>
+      </li>
+    </ul>
+  </div>
+{%- endif -%}

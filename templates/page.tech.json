@@ -1,0 +1,308 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-hero",
+      "blocks": {
+        "b0ab842e-5bb2-41a8-9a76-f7f80369c33e": {
+          "type": "USP",
+          "settings": {
+            "icon_desktop": "shopify:\/\/shop_images\/Frame-2.png",
+            "icon_mobile": "shopify:\/\/shop_images\/Frame_936ecf1b-87bf-4b3f-9b7c-cc627b32e543.png",
+            "title": "Water Dispersible"
+          }
+        },
+        "35999e7e-362b-4422-9bbc-321f2421f051": {
+          "type": "USP",
+          "settings": {
+            "icon_desktop": "shopify:\/\/shop_images\/Frame_17.png",
+            "icon_mobile": "shopify:\/\/shop_images\/Frame_19.png",
+            "title": "Flushable"
+          }
+        },
+        "690f582c-57de-492d-bd16-53440c821404": {
+          "type": "USP",
+          "settings": {
+            "icon_desktop": "shopify:\/\/shop_images\/Frame5.png",
+            "icon_mobile": "shopify:\/\/shop_images\/Frame5.png",
+            "title": "Degradable"
+          }
+        },
+        "43b20240-cd75-47e7-971d-f71c85189965": {
+          "type": "USP",
+          "settings": {
+            "icon_desktop": "shopify:\/\/shop_images\/Frame-3.png",
+            "icon_mobile": "shopify:\/\/shop_images\/Frame-3.png",
+            "title": "Zero Microplastics"
+          }
+        }
+      },
+      "block_order": [
+        "b0ab842e-5bb2-41a8-9a76-f7f80369c33e",
+        "35999e7e-362b-4422-9bbc-321f2421f051",
+        "690f582c-57de-492d-bd16-53440c821404",
+        "43b20240-cd75-47e7-971d-f71c85189965"
+      ],
+      "settings": {
+        "about_page": false,
+        "infinite_scroll": true,
+        "full_stop": true,
+        "title": "<p>Using science to create <em>magic<\/em><\/p>",
+        "underline_top_mob": ".7",
+        "underline_top_desktop": ".7",
+        "subtitle": "",
+        "text_colour": "#ffffff",
+        "scroll_item_text_colour": "#0e2559",
+        "scroll_bg_colour": "#ffffff",
+        "section_bg_colour": "",
+        "section_bg_image": "shopify:\/\/shop_images\/Group_1402.png",
+        "section_bg_image_mobile": "shopify:\/\/shop_images\/28_07_21_Planera_day2_MD_Machine_02_0094_1_1.png"
+      }
+    },
+    "16547654021824b84f": {
+      "type": "pad-3d-infographic",
+      "disabled": true,
+      "blocks": {
+        "7ea5a0a3-cab8-444d-a1d4-a8fe2abe67be": {
+          "type": "info-point",
+          "settings": {
+            "bg_col": "#d1d6e5",
+            "text_col": "#000000",
+            "image_pattern": "shopify:\/\/shop_images\/Mask_group_-_2022-06-09T125947.151.png",
+            "title": "Soft and Flexible",
+            "body": "Our top sheet is cushioned to be gentle on your skin and naturally absorbent so the pad feels drier during use.",
+            "info_point_layer": 1,
+            "info_point_top": 21,
+            "info_point_left": 86,
+            "info_point_top_desktop": 20,
+            "info_point_left_desktop": 89,
+            "info_point_side": false
+          }
+        },
+        "14f26a27-ed14-4220-8f4e-312cdce86b94": {
+          "type": "info-point",
+          "settings": {
+            "bg_col": "#d1d6e5",
+            "text_col": "#0e2559",
+            "image_pattern": "shopify:\/\/shop_images\/Mask_group_-_2022-06-09T125947.151.png",
+            "title": "Highly absorbent",
+            "body": "Using wood pulp fibres and our biodegradable absorbent powder, our pads are tested in our labs for up to 24 hours with a heavy flow (8ml).",
+            "info_point_layer": 2,
+            "info_point_top": 81,
+            "info_point_left": 18,
+            "info_point_top_desktop": 65,
+            "info_point_left_desktop": -25,
+            "info_point_side": true
+          }
+        },
+        "33795913-472c-49fe-9554-829976237681": {
+          "type": "info-point",
+          "settings": {
+            "bg_col": "#d1d6e5",
+            "text_col": "#0e2559",
+            "image_pattern": "shopify:\/\/shop_images\/Mask_group_-_2022-06-09T125947.151.png",
+            "title": "Patent-pending protection",
+            "body": "The top barrier blocks blood and the bottom absorbs any sweat during use, reducing humidity and providing long term protection.",
+            "info_point_layer": 5,
+            "info_point_top": 64,
+            "info_point_left": 84,
+            "info_point_top_desktop": 58,
+            "info_point_left_desktop": 88,
+            "info_point_side": false
+          }
+        }
+      },
+      "block_order": [
+        "7ea5a0a3-cab8-444d-a1d4-a8fe2abe67be",
+        "14f26a27-ed14-4220-8f4e-312cdce86b94",
+        "33795913-472c-49fe-9554-829976237681"
+      ],
+      "settings": {
+        "bg_col": "#dbe7e8",
+        "title_top_col": "#0e2559",
+        "title_left": "<p><strong>Free our planet<\/strong> from permanent waste<\/p>",
+        "left_full_stop": true,
+        "body_left": "<p>Not we only have changed the pad, we have redesigned the whole production process<\/p>",
+        "title_right": "<p>A pad that is used for 8 hours should <strong>never last 8 years<\/strong><\/p>",
+        "right_full_stop": true,
+        "body_right": "<p>We’re here to protect the planet with our innovations. That we always go a step further than a simple win. That our products restore the Earth and cut your carbon footprint.<\/p>",
+        "layer_1": "shopify:\/\/shop_images\/planera-pad-layer-1.webp",
+        "layer_1_top_desktop": 0,
+        "layer_2": "shopify:\/\/shop_images\/planera-pad-layer-2.webp",
+        "layer_2_top_desktop": 20,
+        "layer_3": "shopify:\/\/shop_images\/planera-pad-layer-3.webp",
+        "layer_3_top_desktop": 25,
+        "layer_4": "shopify:\/\/shop_images\/planera-pad-layer-4.webp",
+        "layer_4_top_desktop": 29,
+        "layer_5": "shopify:\/\/shop_images\/planera-pad-layer-5.webp",
+        "layer_5_top_desktop": 41
+      }
+    },
+    "165461403325dd31eb": {
+      "type": "tech-header",
+      "settings": {
+        "bg_col": "#0e2559",
+        "text_col": "#f7f2ec",
+        "full_stop": true,
+        "title": "<p>XX of period products are flushed. Why not make them flushable?<\/p>",
+        "circled_title": "30%"
+      }
+    },
+    "16570099750980a122": {
+      "type": "pad-info-video",
+      "settings": {
+        "bg_col": "#ffffff",
+        "title_top_col": "#0e2559",
+        "title_left": "<p>Flushable Pads are made of just <strong>3 materials<\/strong>:<\/p>",
+        "left_full_stop": false,
+        "body_left": "<p>&#10004; Super-soft topsheet made of plant fibres<br\/>&#10004; Absorbent biopolymer core that locks in blood <br\/>&#10004; Non-toxic adhesive made of tree sap<\/p>",
+        "title_right": "",
+        "right_full_stop": true,
+        "body_right": "",
+        "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/c8d5d6616204414bb28bddc4c30e2cd3.mp4"
+      }
+    },
+    "16551245337720b8e8": {
+      "type": "text-image-split",
+      "settings": {
+        "bg_col": "#ffffff",
+        "text_col": "",
+        "main_text": "<p>See it <strong>in action<\/strong><\/p>",
+        "body_text": "Our pad has be designed to only start breaking apart when it's fully submerged in water and swirled - just like when its flushed.",
+        "cta_text": "PRE-ORDER & TRY IT YOURSELF",
+        "cta_url": "shopify:\/\/products\/flushable-periods-pads",
+        "video_url": "https:\/\/youtu.be\/-wKzXlVcRsA",
+        "video_poster": "shopify:\/\/shop_images\/Screenshot_2022-04-01_at_15.39_1_49510d4c-868a-4d90-bc2b-55ab7f100c3f.png"
+      }
+    },
+    "1655127232116cd37f": {
+      "type": "flushability-tests",
+      "disabled": true,
+      "settings": {
+        "bg_col": "#ffffff",
+        "text_col": "#0e2559",
+        "title": "The Flushability Tests",
+        "left_img": "shopify:\/\/shop_images\/Rectangle_510.png",
+        "right_img": "shopify:\/\/shop_images\/Rectangle_510.png"
+      }
+    },
+    "1655128485054d1984": {
+      "type": "product-faq",
+      "blocks": {
+        "e84f960f-1f3f-4169-ae3d-bc7f2baa02ec": {
+          "type": "faq-top-header",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Bottle-Leaf_Web-Icon_Dark-Blue.png",
+            "title_text": "Science"
+          }
+        },
+        "9766be88-b5e6-4dea-b760-da4a9585b976": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Science",
+            "title_text": "Where are your pads made?",
+            "body_text": "Planera pads are made of just three materials: <br> 1. Plant Fibres - for our topsheet <br> 2. Super absorbent, biodegradable core <br> 3. Non-toxic adhesive made from tree sap"
+          }
+        },
+        "0624b2cd-fda8-4506-a04d-3d623c7edd91": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Science",
+            "title_text": "How can the pad be absorbent and flushable?",
+            "body_text": "Simply put, a toilet flush is 9 litres. The average 5-day period is 100ml. The pad needs to be soaked in water and really swirled around to break it down, conditions you’re not likely to find outside of a toilet bowl."
+          }
+        },
+        "fc70f3f8-063e-4ad1-9e09-05c530b6f8ad": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Science",
+            "title_text": "Where can I flush a Planera pad?",
+            "body_text": "We are currently certified flushable in the UK. Our materials are still fully biodegradable & water-dispersible anywhere in the world."
+          }
+        },
+        "801a1346-590e-4957-8842-72777e434071": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Science",
+            "title_text": "Is it safe to flush my Planera pad?",
+            "body_text": "Planera's pads have been successfully and independently tested in accordance with the UK's water industry specification for flushability testing (WIS 4-02-06) – so yes, you can confidently flush your pad away. <br> The pad breaks down in two parts. First, with the hydraulic action of your toilet flush, the layers of the pad get pulled apart and can start making their way down the drain line. Then, the 3mm cellulose fibres loosen and break apart. <br> These steps ensure that your pad will have disintegrated by the time it reaches your local municipal plant and can be treated along with toilet paper and sewage.  Remember! PLANERA’s sanitary pads are the only sanitary products you can safely flush away. Don’t try this with other periods products!"
+          }
+        },
+        "f3d20190-102d-4008-a398-df040996056d": {
+          "type": "faq-top-header",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/World-Leaf_Web-Icon_Dark-Blue.png",
+            "title_text": "Planet"
+          }
+        },
+        "2dc39b54-9f48-49ca-a7ac-0a8780819119": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Planet",
+            "title_text": "Will my pad pollute our waterways?",
+            "body_text": "Absolutely not. We developed our flushable pad to be safely flushed away, leaving no trace. We use only 3 materials and are 100% free from microplastics."
+          }
+        },
+        "2ba42fa7-148d-44e4-961a-566186fb0e21": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Planet",
+            "title_text": "Does a Planera pad contain microplastics?",
+            "body_text": "No, we don't believe microplastic belongs in period products, which is why our pads contain zero microplastics. Market-leading disposable pads can contain up to 90% microplastic. We don't want this against our skin or polluting our planet."
+          }
+        },
+        "42ef4e8e-8443-4d42-9821-d73fefb249f6": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Planet",
+            "title_text": "What happens to my pad once flushed?",
+            "body_text": "The pad breaks down in two parts. First, the hydraulic action of your toilet flush pulls the layers of the part apart as it starts travelling down the drain. Then, the 3mm plant fibres loosen and break apart. <br> Our materials and manufacturing process ensure that your pad will have disintegrated by the time it reaches your local municipal plant. It is then treated along with toilet paper and sewage, regenerating into clean water, fertiliser and renewable energy."
+          }
+        },
+        "0d274d1e-5595-4927-9ba0-904aa885dae9": {
+          "type": "faq-top-header",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Water-Drop_Web-Icon_Dark-Blue.png",
+            "title_text": "People"
+          }
+        },
+        "3c9dc4d6-a4c4-4193-a1f9-33f42f188201": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "People",
+            "title_text": "Are your pads suitable for vegans & vegetarians",
+            "body_text": "Yes our products are only tested on people! Therefore our pads are suitable for both vegans and vegetarians."
+          }
+        }
+      },
+      "block_order": [
+        "e84f960f-1f3f-4169-ae3d-bc7f2baa02ec",
+        "9766be88-b5e6-4dea-b760-da4a9585b976",
+        "0624b2cd-fda8-4506-a04d-3d623c7edd91",
+        "fc70f3f8-063e-4ad1-9e09-05c530b6f8ad",
+        "801a1346-590e-4957-8842-72777e434071",
+        "f3d20190-102d-4008-a398-df040996056d",
+        "2dc39b54-9f48-49ca-a7ac-0a8780819119",
+        "2ba42fa7-148d-44e4-961a-566186fb0e21",
+        "42ef4e8e-8443-4d42-9821-d73fefb249f6",
+        "0d274d1e-5595-4927-9ba0-904aa885dae9",
+        "3c9dc4d6-a4c4-4193-a1f9-33f42f188201"
+      ],
+      "settings": {
+        "title": "FAQ",
+        "cta_text": "",
+        "cta_link": "",
+        "bg_col": "#f9f7f2",
+        "text_col": "#0e2559"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16547654021824b84f",
+    "165461403325dd31eb",
+    "16570099750980a122",
+    "16551245337720b8e8",
+    "1655127232116cd37f",
+    "1655128485054d1984"
+  ]
+}

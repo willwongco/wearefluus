@@ -1,0 +1,38 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Themekit template theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Shopify",
+    "theme_documentation_url": "https:\/\/github.com\/Shopify\/themekit",
+    "theme_support_url": "https:\/\/github.com\/Shopify\/themekit\/issues"
+  },
+  {
+    "name": "Review Settings",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "reviews_bg_image",
+        "label": "Reviews Background Image",
+        "info": "As this will cover the entire section, it is recommended to use a pattern or solid colour here"
+      },
+      {
+        "type": "color",
+        "id": "reviews_bg_col",
+        "label": "Reviews Background Colour",
+        "info": "To choose a background colour instead of an image, please first remove the image selected above if applicable and then select the colour here."
+      }
+    ]
+  },
+  {
+    "name": "Hide rewards button for mobile nav menu",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_rw-btn",
+        "label": "Hide Rewards Button In Modile Nav Menu",
+        "default": true
+      }
+    ]
+  }
+]

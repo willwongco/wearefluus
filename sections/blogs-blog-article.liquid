@@ -1,0 +1,192 @@
+{% assign number_of_comments = article.comments_count %}
+{% if comment and comment.created_at %}
+  {% assign number_of_comments = article.comments_count %}
+{% endif %}
+
+<!-- get read time from tag -->
+{% for tag in article.tags %}
+{% if tag contains 'read_' %}
+{% assign read_time = tag | split:'_' | last %}
+{% break %}
+{% endif %}
+{% endfor %}
+
+<!-- get carousel images from shopify metafields -->
+{% assign carouselImgs = article.metafields.accentuate.image %}
+<!-- get carousel images background colour -->
+{% assign carouselBg = article.metafields.accentuate.slideshow_background_colour %}
+
+{% comment %} slideshow {% endcomment %}
+<div style="background-color:{{ carouselBg }};" class="pt-8 pb-8 | sm:pt-12 md:pt-20 lg:pt-28">
+    <div class="splide featured_slideshow__article max-w-1650 m-auto">
+        <div class="splide__track m-auto w-4/5">
+            <ul class="splide__list">
+              {% for img in carouselImgs %}
+                <li class="splide__slide">
+                  <img src="{{ img[0].src }}" alt="{{ img[0].alt }}">
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="article-content" class="sm:pb-6 max-w-4xl m-auto relative mb-18 | md:-mt-10 lg:-mt-16 xl:-mt-20 2xl:max-w-5xl">
+
+  <div class="blogMainContent relative m-auto pb-7 pt-12 px-4 mb-20 | md:px-10  ">
+
+    <!-- share -->
+ <div class="share-social z-10 flex-col items-center justify-center hidden | xl:flex xl:absolute xl:top-32 xl:-left-28">
+  <div class=" mb-2 | xl:mb-4">
+      <span class="font-cheltenham-std text-black text-base uppercase tracking-wide">Share</span>
+  </div>
+  <div class="flex items-center justify-center xl:flex-col">
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{canonical_url}}" target="_blank" rel="noopener" class="text-0 hidden | xl:block xl:mb-4">
+        <img alt="{{ section.settings.fb_icon_big.alt }}" class="lazyload hs-lazyload hs-id-225c0107" data-src="{{ section.settings.fb_icon_big.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{canonical_url}}" target="_blank" rel="noopener" class="text-0 hidden | xl:block xl:mb-4">
+        <img alt="{{ section.settings.fb_icon_big.alt }}" class="lazyload hs-lazyload hs-id-90bdf7cf" data-src="{{ section.settings.twitter_icon_big.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+        </a>
+      <a href="http://twitter.com/share?text=text goes here&url={{canonical_url}}" target="_blank" rel="noopener" class="ml-5 hidden | xl:block xl:ml-0 xl:mb-4 text-0">
+        <img alt="{{ section.settings.fb_icon_big.alt }}" class="lazyload hs-lazyload hs-id-0bd0c81c" data-src="{{ section.settings.pinterest_icon_big.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+      </a>
+    </div>
+    </div>
+
+    <!-- title -->
+    <h1 class="font-cheltenham-std mt-0 text-2xl leading-10 tracking-wider w-full text-center px-4 sm:text-3xl md:text-4xl"> {{ article.title }}</h1>
+
+    <!-- read time and date -->
+    <div class="flex justify-center items-center mt-2 xl:mb-8 | lg:mt-6">
+    <span class="font-sofia-pro-regular pb-5 text-sm">{% if read_time != blank %}{{ read_time }} Min Read | {% endif %}{{ article.published_at | date: "%d %^b %y" }} </span>
+    </div>
+    <!-- share-mobile -->
+<div class="share-social flex flex-col items-center justify-center mb-8 xl:hidden">
+  <div class=" mb-4">
+    <span class="font-cheltenham-std text-white text-base uppercase tracking-wide">Share</span>
+</div>
+<div class="flex items-center justify-center flex-row">
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{canonical_url}}" target="_blank" rel="noopener" class="pr-3">
+      <img alt="{{ section.settings.fb_icon_big.alt }}" class="h-11 lazyload hs-lazyload hs-id-dfcd839a" data-src="{{ section.settings.fb_icon_mobile.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{canonical_url}}" target="_blank" rel="noopener" class="pr-3">
+      <img alt="{{ section.settings.fb_icon_big.alt }}" class="h-11 lazyload hs-lazyload hs-id-640a08d4" data-src="{{ section.settings.twitter_icon_mobile.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+      </a>
+    <a href="http://twitter.com/share?text=text goes here&url={{canonical_url}}" target="_blank" rel="noopener" class="">
+      <img alt="{{ section.settings.fb_icon_big.alt }}" class="h-11 lazyload hs-lazyload hs-id-183fb7e0" data-src="{{ section.settings.pinterest_icon_mobile.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    </a>
+  </div>
+      </div>
+  {% comment %} main article content {% endcomment %}
+  <div class="flex gap-4 flex-col | md:gap-6">
+    <div class="blog-content p-4 | sm:px-10 md:px-16 lg:px-32 md:pb-20">{{ article.metafields.accentuate.main_content_copy }}</div>
+  </div>
+</div>
+
+<!-- image text splits -->
+
+{% for image_text_split in article.metafields.accentuate.image_split %}
+<div style="color:{{ article.metafields.accentuate.image_split_text_colour[forloop.index0] }};background-color:{{ article.metafields.accentuate.image_split_background_colour[forloop.index0] }}" class="img-txt-split flex items-center md:pr-6 flex-col mb-8 md:mb-16 md:{{ article.metafields.accentuate.image_split_text_alignment[forloop.index0] }}">
+  <div class="w-full {% unless article.metafields.accentuate.image_split_text_alignment[forloop.index0] == 'flex-row-reverse' %} md:pr-12 md:pl-6 lg:pl-0 {% endunless %} md:w-1/2">
+  <img class="mx-auto md:mx-0" src="{{ image_text_split[0].src }}" alt="{{ image_text_split[0].alt }}">
+</div>
+  <div class="w-full px-8 mt-14 sm:px-14 md:mt-0 md:pr-4 md:w-1/2 {% unless article.metafields.accentuate.image_split_text_alignment[forloop.index0] == 'flex-row' %} md:pr-12 md:pl-6 lg:pl-0 {% endunless %}">
+  {{ article.metafields.accentuate.image_split_text_copy[forloop.index0] }}
+</div>
+</div>
+ 
+{% endfor %}
+
+</div>
+<style>
+
+  /* blog content markdown */
+  .blogMainContent {
+    color: {{ article.metafields.accentuate.main_content_text_colour }};
+    background-color: {{ article.metafields.accentuate.main_content_background_colour }};
+  }
+  .blog-content p,
+  #article-content .img-txt-split p {
+    font-family: sofia-pro-regular;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .blog-content h2,
+  #article-content .img-txt-split h2 {
+    font-family: sofia-pro-semi-bold;
+    font-size: 24px;
+    line-height: 1.1
+  }
+
+/* media queries */
+@media screen and (max-width:768px) {
+  .blog-content h2,
+  #article-content .img-txt-split h2 {
+    font-size: 19px;
+  } 
+}
+@media screen and (max-width:768px) {
+  .blog-content p,
+  #article-content .img-txt-split p {
+    font-size: 13px;
+  }
+}
+
+</style>
+
+
+<script>
+
+  document.addEventListener( 'DOMContentLoaded', function() {
+  
+  const featuredArticleSlider = new Splide( '.featured_slideshow__article', {
+  type   : 'slide',
+  perPage:1,
+  clones:0,
+  perMove:1,
+  pagination:false,
+  arrowPath: 'M0.244172 14.3372L12.7442 0.27468C13.0697 -0.0915601 13.5971 -0.0915601 13.9225 0.27468C14.2481 0.640921 14.2481 1.23418 13.9225 1.60033L2.84503 14.0625H39.1666C39.6273 14.0625 40 14.4819 40 15.0001C40 15.5183 39.6273 15.9376 39.1666 15.9376H2.84503L13.9225 28.3997C14.2481 28.7659 14.2481 29.3592 13.9225 29.7253C13.7598 29.9084 13.5465 30 13.3333 30C13.1201 30 12.9069 29.9084 12.7441 29.7253L0.244092 15.6628C-0.0813768 15.2967 -0.0813749 14.7034 0.244172 14.3372Z',
+  });
+  featuredArticleSlider.mount();
+  
+  })
+  </script>
+
+
+{% schema %}
+{
+  "name": "article",
+  "settings":[
+  {
+    "type":"image_picker",
+    "label":"Facebook Share Image",
+    "id":"fb_icon_big"
+  },
+  {
+    "type":"image_picker",
+    "label":"Twitter Share Image",
+    "id":"twitter_icon_big"
+  },
+  {
+    "type":"image_picker",
+    "label":"Pinterest Share Image",
+    "id":"pinterest_icon_big"
+  },
+  {
+    "type":"image_picker",
+    "label":"Facebook Share Image Mobile",
+    "id":"fb_icon_mobile"
+  },
+  {
+    "type":"image_picker",
+    "label":"Twitter Share Image Mobile",
+    "id":"twitter_icon_mobile"
+  },
+  {
+    "type":"image_picker",
+    "label":"Pinterest Share Image Mobile",
+    "id":"pinterest_icon_mobile"
+  }
+  ]
+}
+{% endschema %}

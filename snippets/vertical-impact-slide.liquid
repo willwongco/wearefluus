@@ -1,0 +1,31 @@
+
+<div class="flex h-full pb-8 lg:pb-0">
+    <!-- left -->
+    <div class="w-1/2">
+        <div class="table ml-auto pl-6 lg:pl-0 lg:mr-14 max-w-425 pt-20">
+        <img alt="{{ img_left.alt }}" class="pb-8 lazyload hs-lazyload hs-id-47c6c53c" data-src="{{ img_left.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+        <p class="font-sofia-pro-medium text-sm sm:text-base pb-1">{{ title_left }}</p>
+        <p class="font-sofia-pro text-sm sm:text-base">{{ subtitle_left }}</p>
+    </div>
+    </div>
+    <!-- right -->
+    <div class="w-1/2 flex flex-col justify-between items-stretch mr-auto ml-12 pr-3 lg:pr-0 sm:ml-32 max-w-425 pt-3">
+        <!-- top -->
+        <div class="pb-10 lg:pb-0">
+            <img alt="{{ img_right_top.alt }}" class="mx-auto pb-6 lazyload hs-lazyload hs-id-9b2369f7" data-src="{{ img_right_top.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            <p class=" font-sofia-pro text-sm sm:text-base pb-2">{{ title_right_top }}</p>
+            <p class=" font-sofia-pro-medium text-sm sm:text-base pb-2">{{ subtitle_right_top }}</p>
+            <div class="text-sm sm:text-base">
+                {{ subsubtitle_right_top | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="text-purple-planera">'}}
+            </div>
+        </div>
+        <!-- bottom -->
+        <div>
+            <img alt="{{ img_right_bottom.alt }}" class="mx-auto pb-6 lazyload hs-lazyload hs-id-604008db" data-src="{{ img_right_bottom.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            <p class=" font-sofia-pro-medium text-sm sm:text-base pb-2">{{ title_right_bottom }}</p>
+            <p class=" font-sofia-pro text-sm sm:text-base pb-2">{{ subtitle_right_bottom }}</p>
+            <p class=" font-sofia-pro-medium text-sm sm:text-base pb-2">{{ subtitle_title_right_bottom }}</p>
+            <div class=" font-sofia-pro text-sm sm:text-base">{{ subtitle_title_sub_right_bottom | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="text-purple-planera">' }}</div>
+        </div>
+    </div>
+</div>

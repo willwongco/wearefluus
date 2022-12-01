@@ -1,0 +1,28 @@
+<!-- /templates/customers/activate_account.liquid -->
+<div class=" max-w-800 mx-auto px-8 pb-20 pt-10 | sm:px-8">
+    <h1 class="text-center w-full text-3xl font-cheltenham-std mt-6 mb-10 sm:mb-16 sm:text-4xl">Activate Account</h1>
+{% form 'activate_customer_password' %}
+  {{ form.errors | default_errors }}
+<div class="flex flex-col">
+  <div class="password flex flex-col mb-4">
+    <label class=" font-cheltenham-std text-lg | sm:text-xl" for="password">Password</label>
+    <input class=" font-sofia-pro-regular text-xl border pl-2 pt-3 pb-2 border-black rounded-lg" type="password" name="customer[password]">
+  </div>
+
+  <div class="password_confirm flex flex-col mb-2">
+    <label  class=" font-cheltenham-std text-lg | sm:text-xl" for="password_confirmation">Password Confirmation</label>
+    <input class=" font-sofia-pro-regular text-xl border pl-2 pt-3 pb-2 border-black rounded-lg" type="password" name="customer[password_confirmation]">
+  </div>
+</div>
+
+<div class="submit flex">
+  <div class="flex mr-4 mt-6">
+    <button type="submit" value="Activate account" class="transition-all duration-150 font-sofia-pro-regular bg-primary-blue border uppercase pb-2 pt-3 px-7 tracking-wider text-white text-sm rounded-md">Submit</button>
+  </div>
+  <div class="flex ml-4 mt-6">
+    <button type="submit" name="decline" value="Decline invitation" class="transition-all duration-150 font-sofia-pro-regular bg-primary-blue border uppercase pb-2 pt-3 px-7 tracking-wider text-white text-sm rounded-md">Decline</button>
+  </div>
+</div>
+
+{% endform %}
+</div>

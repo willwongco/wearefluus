@@ -1,0 +1,724 @@
+{% assign rows_offset = section.blocks.size | divided_by: 2 | minus: 1 %}
+{% assign rows = section.blocks.size | divided_by: 2 %}
+{% capture ticker_list %}
+
+{% for block in section.blocks %}
+    {% if block.settings.logo %}
+    <div class="w-48 lg:w-28 px-3 inline-block">
+        {% include 'lazy-image' image: block.settings.logo %}
+    </div>
+    {% endif %}
+{% endfor %}
+{% endcapture %}
+
+<div style="background-color: {{ section.settings.bg_col }};" class="overflow-hidden py-14">
+    <h4 style="color: {{ section.settings.text_col }};" class="text-3xl md:text-4xl md:mb-10 font-cheltenham-std text-center">{{ section.settings.title | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="text-purple-planera">' }}</h4>
+    <div class="overflow-hidden block md:hidden">
+        <div class="marquee3k" 
+            data-speed="0.25"
+            data-reverse="false"
+            data-pausable="true">
+            <div>
+                {{ticker_list}}
+            </div>
+        </div>
+    </div>
+    
+    <div class="hidden md:block">
+        <div 
+            @scroll.window="offset = ((-($refs.logo_1_{{ section.id | replace: '-', '_' }}.getBoundingClientRect().top - window.innerHeight) / window.innerHeight) * 20) - 10" 
+            x-data="{ offset: (-($refs.logo_1_{{ section.id | replace: '-', '_' }}.getBoundingClientRect().top - window.innerHeight) / window.innerHeight) * 20 }" 
+            x-ref="logo_1_{{ section.id | replace: '-', '_' }}"
+            :style="{ transform: offset > 11 ? 'translate3d(-11%, 0px, 0px)' : offset < -10 ? 'translate3d(-10%, 0px, 0px)' : 'translate3d(' + offset + '%, 0px, 0px)' }"
+            class="flex items-center justify-center whitespace-nowrap">
+  
+                <div class="min-w-44 mx-3 ">
+                    <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_500x.png?v=1651659068" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_500x.png?v=1651659068" data-sizes="auto" data-aspectratio="161/90" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_5000x.png?v=1651659068 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_4500x.png?v=1651659068 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_4000x.png?v=1651659068 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_3500x.png?v=1651659068 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_3000x.png?v=1651659068 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_2500x.png?v=1651659068 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_2000x.png?v=1651659068 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_1800x.png?v=1651659068 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_1600x.png?v=1651659068 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_1400x.png?v=1651659068 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_1200x.png?v=1651659068 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_1000x.png?v=1651659068 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_800x.png?v=1651659068 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_600x.png?v=1651659068 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_400x.png?v=1651659068 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_200x.png?v=1651659068 200w" height="90" width="161" class="lazyload-fade lazyautosizes lazyloaded" sizes="161px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_5000x.png?v=1651659068 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_4500x.png?v=1651659068 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_4000x.png?v=1651659068 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_3500x.png?v=1651659068 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_3000x.png?v=1651659068 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_2500x.png?v=1651659068 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_2000x.png?v=1651659068 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_1800x.png?v=1651659068 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_1600x.png?v=1651659068 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_1400x.png?v=1651659068 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_1200x.png?v=1651659068 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_1000x.png?v=1651659068 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_800x.png?v=1651659068 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_600x.png?v=1651659068 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_400x.png?v=1651659068 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_200x.png?v=1651659068 200w">
+                      </div>
+                      </div>
+                      <div class="min-w-44 mx-3 ">
+
+                      <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_500x.png?v=1651659084" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_500x.png?v=1651659084" data-sizes="auto" data-aspectratio="177/98" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_5000x.png?v=1651659084 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_4500x.png?v=1651659084 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_4000x.png?v=1651659084 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_3500x.png?v=1651659084 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_3000x.png?v=1651659084 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_2500x.png?v=1651659084 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_2000x.png?v=1651659084 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_1800x.png?v=1651659084 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_1600x.png?v=1651659084 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_1400x.png?v=1651659084 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_1200x.png?v=1651659084 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_1000x.png?v=1651659084 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_800x.png?v=1651659084 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_600x.png?v=1651659084 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_400x.png?v=1651659084 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_200x.png?v=1651659084 200w" height="98" width="177" class="lazyload-fade lazyautosizes lazyloaded" sizes="176px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_5000x.png?v=1651659084 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_4500x.png?v=1651659084 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_4000x.png?v=1651659084 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_3500x.png?v=1651659084 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_3000x.png?v=1651659084 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_2500x.png?v=1651659084 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_2000x.png?v=1651659084 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_1800x.png?v=1651659084 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_1600x.png?v=1651659084 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_1400x.png?v=1651659084 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_1200x.png?v=1651659084 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_1000x.png?v=1651659084 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_800x.png?v=1651659084 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_600x.png?v=1651659084 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_400x.png?v=1651659084 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d_200x.png?v=1651659084 200w">
+                      </div>
+                      </div>
+                      <div class="min-w-44 mx-3 ">
+
+                      <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_500x.png?v=1651659095" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_500x.png?v=1651659095" data-sizes="auto" data-aspectratio="177/98" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_5000x.png?v=1651659095 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_4500x.png?v=1651659095 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_4000x.png?v=1651659095 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_3500x.png?v=1651659095 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_3000x.png?v=1651659095 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_2500x.png?v=1651659095 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_2000x.png?v=1651659095 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1800x.png?v=1651659095 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1600x.png?v=1651659095 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1400x.png?v=1651659095 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1200x.png?v=1651659095 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1000x.png?v=1651659095 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_800x.png?v=1651659095 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_600x.png?v=1651659095 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_400x.png?v=1651659095 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_200x.png?v=1651659095 200w" height="98" width="177" class="lazyload-fade lazyautosizes lazyloaded" sizes="176px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_5000x.png?v=1651659095 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_4500x.png?v=1651659095 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_4000x.png?v=1651659095 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_3500x.png?v=1651659095 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_3000x.png?v=1651659095 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_2500x.png?v=1651659095 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_2000x.png?v=1651659095 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1800x.png?v=1651659095 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1600x.png?v=1651659095 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1400x.png?v=1651659095 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1200x.png?v=1651659095 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1000x.png?v=1651659095 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_800x.png?v=1651659095 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_600x.png?v=1651659095 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_400x.png?v=1651659095 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_200x.png?v=1651659095 200w">
+                      </div>
+                      </div>
+                      <div class="min-w-44 mx-3 ">
+
+                      <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_500x.png?v=1651659104" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_500x.png?v=1651659104" data-sizes="auto" data-aspectratio="175/98" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_5000x.png?v=1651659104 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_4500x.png?v=1651659104 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_4000x.png?v=1651659104 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_3500x.png?v=1651659104 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_3000x.png?v=1651659104 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_2500x.png?v=1651659104 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_2000x.png?v=1651659104 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_1800x.png?v=1651659104 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_1600x.png?v=1651659104 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_1400x.png?v=1651659104 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_1200x.png?v=1651659104 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_1000x.png?v=1651659104 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_800x.png?v=1651659104 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_600x.png?v=1651659104 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_400x.png?v=1651659104 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_200x.png?v=1651659104 200w" height="98" width="175" class="lazyload-fade lazyautosizes ls-is-cached lazyloaded" sizes="175px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_5000x.png?v=1651659104 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_4500x.png?v=1651659104 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_4000x.png?v=1651659104 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_3500x.png?v=1651659104 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_3000x.png?v=1651659104 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_2500x.png?v=1651659104 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_2000x.png?v=1651659104 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_1800x.png?v=1651659104 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_1600x.png?v=1651659104 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_1400x.png?v=1651659104 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_1200x.png?v=1651659104 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_1000x.png?v=1651659104 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_800x.png?v=1651659104 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_600x.png?v=1651659104 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_400x.png?v=1651659104 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621_200x.png?v=1651659104 200w">
+                      </div>
+                      </div>
+                      <div class="min-w-44 mx-3 ">
+
+                      <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_500x.png?v=1651659113" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_500x.png?v=1651659113" data-sizes="auto" data-aspectratio="177/98" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_5000x.png?v=1651659113 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_4500x.png?v=1651659113 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_4000x.png?v=1651659113 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_3500x.png?v=1651659113 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_3000x.png?v=1651659113 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_2500x.png?v=1651659113 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_2000x.png?v=1651659113 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_1800x.png?v=1651659113 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_1600x.png?v=1651659113 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_1400x.png?v=1651659113 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_1200x.png?v=1651659113 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_1000x.png?v=1651659113 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_800x.png?v=1651659113 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_600x.png?v=1651659113 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_400x.png?v=1651659113 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_200x.png?v=1651659113 200w" height="98" width="177" class="lazyload-fade lazyautosizes ls-is-cached lazyloaded" sizes="176px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_5000x.png?v=1651659113 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_4500x.png?v=1651659113 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_4000x.png?v=1651659113 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_3500x.png?v=1651659113 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_3000x.png?v=1651659113 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_2500x.png?v=1651659113 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_2000x.png?v=1651659113 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_1800x.png?v=1651659113 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_1600x.png?v=1651659113 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_1400x.png?v=1651659113 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_1200x.png?v=1651659113 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_1000x.png?v=1651659113 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_800x.png?v=1651659113 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_600x.png?v=1651659113 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_400x.png?v=1651659113 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7_200x.png?v=1651659113 200w">
+                      </div>
+                      </div>
+                      <div class="min-w-44 mx-3 ">
+
+                      <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_500x.png?v=1651659075" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_500x.png?v=1651659075" data-sizes="auto" data-aspectratio="161/90" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_5000x.png?v=1651659075 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_4500x.png?v=1651659075 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_4000x.png?v=1651659075 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_3500x.png?v=1651659075 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_3000x.png?v=1651659075 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_2500x.png?v=1651659075 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_2000x.png?v=1651659075 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_1800x.png?v=1651659075 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_1600x.png?v=1651659075 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_1400x.png?v=1651659075 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_1200x.png?v=1651659075 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_1000x.png?v=1651659075 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_800x.png?v=1651659075 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_600x.png?v=1651659075 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_400x.png?v=1651659075 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_200x.png?v=1651659075 200w" height="90" width="161" class="lazyload-fade lazyautosizes ls-is-cached lazyloaded" sizes="161px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_5000x.png?v=1651659075 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_4500x.png?v=1651659075 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_4000x.png?v=1651659075 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_3500x.png?v=1651659075 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_3000x.png?v=1651659075 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_2500x.png?v=1651659075 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_2000x.png?v=1651659075 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_1800x.png?v=1651659075 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_1600x.png?v=1651659075 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_1400x.png?v=1651659075 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_1200x.png?v=1651659075 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_1000x.png?v=1651659075 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_800x.png?v=1651659075 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_600x.png?v=1651659075 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_400x.png?v=1651659075 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5_200x.png?v=1651659075 200w">
+                      </div>
+                      </div>
+                      <div class="min-w-44 mx-3 ">
+
+                      <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_500x.png?v=1651659122" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_500x.png?v=1651659122" data-sizes="auto" data-aspectratio="175/98" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_5000x.png?v=1651659122 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_4500x.png?v=1651659122 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_4000x.png?v=1651659122 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_3500x.png?v=1651659122 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_3000x.png?v=1651659122 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_2500x.png?v=1651659122 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_2000x.png?v=1651659122 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_1800x.png?v=1651659122 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_1600x.png?v=1651659122 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_1400x.png?v=1651659122 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_1200x.png?v=1651659122 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_1000x.png?v=1651659122 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_800x.png?v=1651659122 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_600x.png?v=1651659122 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_400x.png?v=1651659122 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_200x.png?v=1651659122 200w" height="98" width="175" class="lazyload-fade lazyautosizes ls-is-cached lazyloaded" sizes="175px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_5000x.png?v=1651659122 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_4500x.png?v=1651659122 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_4000x.png?v=1651659122 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_3500x.png?v=1651659122 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_3000x.png?v=1651659122 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_2500x.png?v=1651659122 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_2000x.png?v=1651659122 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_1800x.png?v=1651659122 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_1600x.png?v=1651659122 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_1400x.png?v=1651659122 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_1200x.png?v=1651659122 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_1000x.png?v=1651659122 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_800x.png?v=1651659122 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_600x.png?v=1651659122 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_400x.png?v=1651659122 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2_200x.png?v=1651659122 200w">
+                      </div>
+                 </div>
+                 <div class="min-w-44 mx-3 ">
+
+                      <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_500x.png?v=1651659130" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_500x.png?v=1651659130" data-sizes="auto" data-aspectratio="177/98" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_5000x.png?v=1651659130 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_4500x.png?v=1651659130 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_4000x.png?v=1651659130 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_3500x.png?v=1651659130 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_3000x.png?v=1651659130 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_2500x.png?v=1651659130 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_2000x.png?v=1651659130 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_1800x.png?v=1651659130 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_1600x.png?v=1651659130 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_1400x.png?v=1651659130 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_1200x.png?v=1651659130 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_1000x.png?v=1651659130 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_800x.png?v=1651659130 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_600x.png?v=1651659130 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_400x.png?v=1651659130 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_200x.png?v=1651659130 200w" height="98" width="177" class="lazyload-fade lazyautosizes lazyloaded" sizes="176px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_5000x.png?v=1651659130 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_4500x.png?v=1651659130 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_4000x.png?v=1651659130 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_3500x.png?v=1651659130 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_3000x.png?v=1651659130 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_2500x.png?v=1651659130 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_2000x.png?v=1651659130 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_1800x.png?v=1651659130 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_1600x.png?v=1651659130 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_1400x.png?v=1651659130 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_1200x.png?v=1651659130 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_1000x.png?v=1651659130 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_800x.png?v=1651659130 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_600x.png?v=1651659130 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_400x.png?v=1651659130 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38_200x.png?v=1651659130 200w">
+                      </div>
+                </div>
+       
+        </div>
+        <div
+            @scroll.window="offset = ((-($refs.logo_2_{{ section.id | replace: '-', '_' }}.getBoundingClientRect().top - window.innerHeight) / window.innerHeight) * 20) - 10;" 
+            x-data="{ offset: (-($refs.logo_2_{{ section.id | replace: '-', '_' }}.getBoundingClientRect().top - window.innerHeight) / window.innerHeight) * 20 }" 
+            x-ref="logo_2_{{ section.id | replace: '-', '_' }}"
+            :style="{ transform: offset > 11 ? 'translate3d(-11%, 0px, 0px)' : offset < -10 ? 'translate3d(-10%, 0px, 0px)' : 'translate3d(' + -offset + '%, 0px, 0px)' }"
+            class="flex items-center justify-center whitespace-nowrap">
+
+                <div class="min-w-44 mx-3 ">
+                    <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_500x.png?v=1651659147" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_500x.png?v=1651659147" data-sizes="auto" data-aspectratio="161/90" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_5000x.png?v=1651659147 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_4500x.png?v=1651659147 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_4000x.png?v=1651659147 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_3500x.png?v=1651659147 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_3000x.png?v=1651659147 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_2500x.png?v=1651659147 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_2000x.png?v=1651659147 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_1800x.png?v=1651659147 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_1600x.png?v=1651659147 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_1400x.png?v=1651659147 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_1200x.png?v=1651659147 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_1000x.png?v=1651659147 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_800x.png?v=1651659147 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_600x.png?v=1651659147 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_400x.png?v=1651659147 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_200x.png?v=1651659147 200w" height="90" width="161" class="lazyload-fade lazyautosizes lazyloaded" sizes="161px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_5000x.png?v=1651659147 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_4500x.png?v=1651659147 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_4000x.png?v=1651659147 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_3500x.png?v=1651659147 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_3000x.png?v=1651659147 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_2500x.png?v=1651659147 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_2000x.png?v=1651659147 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_1800x.png?v=1651659147 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_1600x.png?v=1651659147 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_1400x.png?v=1651659147 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_1200x.png?v=1651659147 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_1000x.png?v=1651659147 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_800x.png?v=1651659147 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_600x.png?v=1651659147 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_400x.png?v=1651659147 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d_200x.png?v=1651659147 200w">
+                      </div>
+                      </div>
+                      <div class="min-w-44 mx-3 ">
+
+                      <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_500x.png?v=1651659095" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_500x.png?v=1651659095" data-sizes="auto" data-aspectratio="177/98" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_5000x.png?v=1651659095 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_4500x.png?v=1651659095 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_4000x.png?v=1651659095 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_3500x.png?v=1651659095 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_3000x.png?v=1651659095 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_2500x.png?v=1651659095 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_2000x.png?v=1651659095 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1800x.png?v=1651659095 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1600x.png?v=1651659095 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1400x.png?v=1651659095 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1200x.png?v=1651659095 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1000x.png?v=1651659095 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_800x.png?v=1651659095 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_600x.png?v=1651659095 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_400x.png?v=1651659095 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_200x.png?v=1651659095 200w" height="98" width="177" class="lazyload-fade lazyautosizes ls-is-cached lazyloaded" sizes="176px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_5000x.png?v=1651659095 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_4500x.png?v=1651659095 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_4000x.png?v=1651659095 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_3500x.png?v=1651659095 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_3000x.png?v=1651659095 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_2500x.png?v=1651659095 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_2000x.png?v=1651659095 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1800x.png?v=1651659095 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1600x.png?v=1651659095 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1400x.png?v=1651659095 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1200x.png?v=1651659095 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_1000x.png?v=1651659095 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_800x.png?v=1651659095 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_600x.png?v=1651659095 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_400x.png?v=1651659095 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c_200x.png?v=1651659095 200w">
+                      </div>
+                      </div>
+                      <div class="min-w-44 mx-3 ">
+
+                      <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_500x.png?v=1651659156" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_500x.png?v=1651659156" data-sizes="auto" data-aspectratio="161/90" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_5000x.png?v=1651659156 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_4500x.png?v=1651659156 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_4000x.png?v=1651659156 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_3500x.png?v=1651659156 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_3000x.png?v=1651659156 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_2500x.png?v=1651659156 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_2000x.png?v=1651659156 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_1800x.png?v=1651659156 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_1600x.png?v=1651659156 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_1400x.png?v=1651659156 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_1200x.png?v=1651659156 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_1000x.png?v=1651659156 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_800x.png?v=1651659156 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_600x.png?v=1651659156 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_400x.png?v=1651659156 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_200x.png?v=1651659156 200w" height="90" width="161" class="lazyload-fade lazyautosizes lazyloaded" sizes="161px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_5000x.png?v=1651659156 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_4500x.png?v=1651659156 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_4000x.png?v=1651659156 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_3500x.png?v=1651659156 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_3000x.png?v=1651659156 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_2500x.png?v=1651659156 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_2000x.png?v=1651659156 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_1800x.png?v=1651659156 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_1600x.png?v=1651659156 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_1400x.png?v=1651659156 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_1200x.png?v=1651659156 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_1000x.png?v=1651659156 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_800x.png?v=1651659156 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_600x.png?v=1651659156 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_400x.png?v=1651659156 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b_200x.png?v=1651659156 200w">
+                      </div>
+                      </div>
+                      <div class="min-w-44 mx-3 ">
+
+                      <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_500x.jpg?v=1661854209" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_500x.jpg?v=1661854209" data-sizes="auto" data-aspectratio="650/353" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_5000x.jpg?v=1661854209 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_4500x.jpg?v=1661854209 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_4000x.jpg?v=1661854209 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_3500x.jpg?v=1661854209 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_3000x.jpg?v=1661854209 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_2500x.jpg?v=1661854209 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_2000x.jpg?v=1661854209 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_1800x.jpg?v=1661854209 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_1600x.jpg?v=1661854209 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_1400x.jpg?v=1661854209 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_1200x.jpg?v=1661854209 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_1000x.jpg?v=1661854209 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_800x.jpg?v=1661854209 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_600x.jpg?v=1661854209 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_400x.jpg?v=1661854209 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_200x.jpg?v=1661854209 200w" height="353" width="650" class="lazyload-fade lazyautosizes lazyloaded" sizes="176px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_5000x.jpg?v=1661854209 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_4500x.jpg?v=1661854209 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_4000x.jpg?v=1661854209 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_3500x.jpg?v=1661854209 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_3000x.jpg?v=1661854209 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_2500x.jpg?v=1661854209 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_2000x.jpg?v=1661854209 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_1800x.jpg?v=1661854209 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_1600x.jpg?v=1661854209 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_1400x.jpg?v=1661854209 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_1200x.jpg?v=1661854209 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_1000x.jpg?v=1661854209 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_800x.jpg?v=1661854209 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_600x.jpg?v=1661854209 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_400x.jpg?v=1661854209 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/Womens-Health_200x.jpg?v=1661854209 200w">
+                      </div>
+                      </div>
+                      <div class="min-w-44 mx-3 ">
+
+                      <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_500x.png?v=1660739672" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_500x.png?v=1660739672" data-sizes="auto" data-aspectratio="427/118" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_5000x.png?v=1660739672 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_4500x.png?v=1660739672 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_4000x.png?v=1660739672 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_3500x.png?v=1660739672 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_3000x.png?v=1660739672 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_2500x.png?v=1660739672 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_2000x.png?v=1660739672 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_1800x.png?v=1660739672 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_1600x.png?v=1660739672 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_1400x.png?v=1660739672 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_1200x.png?v=1660739672 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_1000x.png?v=1660739672 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_800x.png?v=1660739672 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_600x.png?v=1660739672 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_400x.png?v=1660739672 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_200x.png?v=1660739672 200w" height="118" width="427" class="lazyload-fade lazyautosizes lazyloaded" sizes="176px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_5000x.png?v=1660739672 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_4500x.png?v=1660739672 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_4000x.png?v=1660739672 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_3500x.png?v=1660739672 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_3000x.png?v=1660739672 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_2500x.png?v=1660739672 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_2000x.png?v=1660739672 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_1800x.png?v=1660739672 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_1600x.png?v=1660739672 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_1400x.png?v=1660739672 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_1200x.png?v=1660739672 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_1000x.png?v=1660739672 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_800x.png?v=1660739672 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_600x.png?v=1660739672 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_400x.png?v=1660739672 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/cosmo_logo_200x.png?v=1660739672 200w">
+                      </div>
+                      </div>
+                      <div class="min-w-44 mx-3 ">
+
+                      <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_500x.png?v=1660739608" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_500x.png?v=1660739608" data-sizes="auto" data-aspectratio="225/225" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_5000x.png?v=1660739608 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_4500x.png?v=1660739608 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_4000x.png?v=1660739608 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_3500x.png?v=1660739608 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_3000x.png?v=1660739608 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_2500x.png?v=1660739608 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_2000x.png?v=1660739608 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_1800x.png?v=1660739608 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_1600x.png?v=1660739608 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_1400x.png?v=1660739608 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_1200x.png?v=1660739608 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_1000x.png?v=1660739608 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_800x.png?v=1660739608 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_600x.png?v=1660739608 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_400x.png?v=1660739608 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_200x.png?v=1660739608 200w" height="225" width="225" class="lazyload-fade lazyautosizes lazyloaded" sizes="176px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_5000x.png?v=1660739608 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_4500x.png?v=1660739608 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_4000x.png?v=1660739608 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_3500x.png?v=1660739608 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_3000x.png?v=1660739608 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_2500x.png?v=1660739608 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_2000x.png?v=1660739608 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_1800x.png?v=1660739608 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_1600x.png?v=1660739608 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_1400x.png?v=1660739608 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_1200x.png?v=1660739608 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_1000x.png?v=1660739608 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_800x.png?v=1660739608 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_600x.png?v=1660739608 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_400x.png?v=1660739608 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/metro_logo_200x.png?v=1660739608 200w">
+                      </div>
+                      </div>
+                      <div class="min-w-44 mx-3 ">
+
+                      <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_500x.png?v=1660739744" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_500x.png?v=1660739744" data-sizes="auto" data-aspectratio="318/159" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_5000x.png?v=1660739744 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_4500x.png?v=1660739744 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_4000x.png?v=1660739744 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_3500x.png?v=1660739744 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_3000x.png?v=1660739744 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_2500x.png?v=1660739744 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_2000x.png?v=1660739744 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_1800x.png?v=1660739744 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_1600x.png?v=1660739744 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_1400x.png?v=1660739744 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_1200x.png?v=1660739744 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_1000x.png?v=1660739744 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_800x.png?v=1660739744 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_600x.png?v=1660739744 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_400x.png?v=1660739744 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_200x.png?v=1660739744 200w" height="159" width="318" class="lazyload-fade lazyautosizes lazyloaded" sizes="176px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_5000x.png?v=1660739744 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_4500x.png?v=1660739744 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_4000x.png?v=1660739744 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_3500x.png?v=1660739744 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_3000x.png?v=1660739744 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_2500x.png?v=1660739744 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_2000x.png?v=1660739744 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_1800x.png?v=1660739744 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_1600x.png?v=1660739744 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_1400x.png?v=1660739744 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_1200x.png?v=1660739744 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_1000x.png?v=1660739744 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_800x.png?v=1660739744 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_600x.png?v=1660739744 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_400x.png?v=1660739744 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/OK_logo_200x.png?v=1660739744 200w">
+                      </div>
+                      </div>
+                      <div class="min-w-44 mx-3 ">
+
+                      <div class="image-element__wrap  " style=" ">
+                        <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_500x.png?v=1660739623" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_500x.png?v=1660739623" data-sizes="auto" data-aspectratio="200/200" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_5000x.png?v=1660739623 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_4500x.png?v=1660739623 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_4000x.png?v=1660739623 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_3500x.png?v=1660739623 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_3000x.png?v=1660739623 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_2500x.png?v=1660739623 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_2000x.png?v=1660739623 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_1800x.png?v=1660739623 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_1600x.png?v=1660739623 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_1400x.png?v=1660739623 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_1200x.png?v=1660739623 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_1000x.png?v=1660739623 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_800x.png?v=1660739623 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_600x.png?v=1660739623 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_400x.png?v=1660739623 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_200x.png?v=1660739623 200w" height="200" width="200" class="lazyload-fade lazyautosizes lazyloaded" sizes="176px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_5000x.png?v=1660739623 5000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_4500x.png?v=1660739623 4500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_4000x.png?v=1660739623 4000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_3500x.png?v=1660739623 3500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_3000x.png?v=1660739623 3000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_2500x.png?v=1660739623 2500w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_2000x.png?v=1660739623 2000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_1800x.png?v=1660739623 1800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_1600x.png?v=1660739623 1600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_1400x.png?v=1660739623 1400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_1200x.png?v=1660739623 1200w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_1000x.png?v=1660739623 1000w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_800x.png?v=1660739623 800w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_600x.png?v=1660739623 600w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_400x.png?v=1660739623 400w,
+                          //cdn.shopify.com/s/files/1/0609/8806/3904/files/greentech_200x.png?v=1660739623 200w">
+                      </div>
+                      </div>
+                      <div class="min-w-44 mx-3">
+                    
+
+
+
+
+
+
+
+
+
+
+                        <div class="image-element__wrap  " style=" ">
+                          <img alt="" src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_500x.png?v=1651659137" data-src="//cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_500x.png?v=1651659137" data-sizes="auto" data-aspectratio="177/98" data-srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_5000x.png?v=1651659137 5000w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_4500x.png?v=1651659137 4500w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_4000x.png?v=1651659137 4000w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_3500x.png?v=1651659137 3500w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_3000x.png?v=1651659137 3000w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_2500x.png?v=1651659137 2500w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_2000x.png?v=1651659137 2000w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_1800x.png?v=1651659137 1800w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_1600x.png?v=1651659137 1600w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_1400x.png?v=1651659137 1400w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_1200x.png?v=1651659137 1200w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_1000x.png?v=1651659137 1000w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_800x.png?v=1651659137 800w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_600x.png?v=1651659137 600w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_400x.png?v=1651659137 400w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_200x.png?v=1651659137 200w" height="98" width="177" class="lazyload-fade lazyautosizes lazyloaded" sizes="176px" srcset="//cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_5000x.png?v=1651659137 5000w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_4500x.png?v=1651659137 4500w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_4000x.png?v=1651659137 4000w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_3500x.png?v=1651659137 3500w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_3000x.png?v=1651659137 3000w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_2500x.png?v=1651659137 2500w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_2000x.png?v=1651659137 2000w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_1800x.png?v=1651659137 1800w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_1600x.png?v=1651659137 1600w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_1400x.png?v=1651659137 1400w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_1200x.png?v=1651659137 1200w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_1000x.png?v=1651659137 1000w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_800x.png?v=1651659137 800w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_600x.png?v=1651659137 600w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_400x.png?v=1651659137 400w,
+                            //cdn.shopify.com/s/files/1/0609/8806/3904/files/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11_200x.png?v=1651659137 200w">
+                        </div>
+                        
+                        
+                        
+                                        </div>
+                </div>
+               
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name": "Logo Slider Hardcoded",
+    "settings": [
+        {
+            "type": "richtext",
+            "id": "title",
+            "label": "Title",
+            "info":"Bold text that should be in purple",
+            "default": "<p>As Seen In</p>"
+        },
+        {
+            "type": "color",
+            "id": "bg_col",
+            "label": "Background Colour"
+        },
+        {
+            "type": "color",
+            "id": "text_col",
+            "label": "Text Colour"
+        }
+    ],
+    "presets": [
+        {
+            "category": "Image",
+            "name": "Logo Slider"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "logo",
+            "name": "Logo",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "logo",
+                    "label": "Logo"
+                }
+            ]
+        }
+    ],
+    "templates": [
+        "index",
+        "product",
+        "page",
+        "cart",
+        "article",
+        "collection"
+    ]
+}
+{% endschema %}

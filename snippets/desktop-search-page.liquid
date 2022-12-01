@@ -1,0 +1,21 @@
+        <!-- search input START -->
+
+        <div class="transition-all bg-white duration-150 search_function__desktop border-b border-black w-full">
+
+            <form class="flex items-center w-full pl-5 sm:pl-14" action="{{ routes.search_url }}">
+                <button type="submit" value="search"  class="transform scale-75 sm:scale-100 p-0 bg-transparent w-16  flex items-center justify-center h-10">
+                    {% render 'icon-desktop-search-big' %}
+                  </button>
+                <input class=" search-input-header__desktop search_input__search_page w-full outline-none bg-transparent text-black text-base sm:text-2xl font-futuraMedium placeholder-black border-0 p-0" type="text"
+                  placeholder="Search for products and articles"
+                  name="q"
+                  value="{{ search.terms | escape }}"
+               >
+               <div class="search_crossBtn__desktop border-black search_cross__search_page px-5 sm:px-10 border-l h-20 sm:h-32 cursor-pointer flex items-center">
+                {% render 'icon-desktop-cross-big' %}
+               </div>
+              </form>
+
+        </div>
+
+        <!-- search input END -->

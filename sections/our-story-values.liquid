@@ -1,0 +1,119 @@
+<!-- setup -->
+{% assign ss = section.settings %}
+{% assign left_items = section.blocks | where: 'type', "left_item" %}
+{% assign right_items = section.blocks | where: 'type', "right_item" %}
+
+<div style="background-color: {{ ss.section_bg }};">
+<div class="overflow-hidden pt-8 md:pt-12">
+    <div class="marquee3k" 
+        data-speed="0.65"
+        data-reverse="false" 
+        data-pausable="true">
+        <p class="mr-7 md:mr-20 md:pr-2 text-5xl md:text-9xl font-cheltenham-std text-primary-blue">{{ section.settings.title }}</p>
+    </div>
+</div>
+<div class="flex">
+<div x-data="{alignment:''}" class="flex flex-col w-full px-8 mt-10 pb-24 md:px-10 lg:pb-0 lg:mt-28 lg:px-0 lg:pl-14 lg:flex-row lg:w-9/12 lg:pr-0">
+    <div class="lg:mr-4" x-data="{index:0}">
+{%- for block in left_items -%}
+{% assign bs = block.settings %}
+<div @click="if (index == {{ forloop.index }} && alignment == 'left') {index = 0} else { index = {{ forloop.index }};alignment = 'left' }" class="border border-primary-blue rounded-lg py-3 px-3 mb-4 sm:px-4 sm:py-4">
+    <div class="flex justify-between items-center">
+        <h3 class=" font-sofia-pro-regular text-base sm:text-xl.5">{{ bs.title }}</h3>
+        <span class="transform transition-all duration-300" :class="index == {{ forloop.index }} && alignment == 'left' ? 'rotate-45' : ''">{% include 'icon-plus-uses' %}</span>
+        </div>
+    <p class="transform transition-all duration-300 text-sm pointer-events-none" :class="index == {{ forloop.index }} && alignment == 'left' ? 'opacity-100 max-h-96 pt-3' : 'opacity-0 max-h-0 pt-0'">{{ bs.body }}</p>
+</div>
+{%- endfor -%}
+</div>
+    <div class="lg:ml-4" x-data="{index:0}">
+{%- for block in right_items -%}
+{% assign bs = block.settings %}
+<div @click="if (index == {{ forloop.index }} && alignment == 'right') {index = 0} else { index = {{ forloop.index }};alignment = 'right' }" class="border border-primary-blue rounded-lg py-4 px-4 mb-4">
+    <div class="flex justify-between items-center">
+    <h3 class=" font-sofia-pro-regular text-base sm:text-xl.5">{{ bs.title }}</h3>
+    <span class="transform transition-all duration-300" :class="index == {{ forloop.index }} && alignment == 'right' ? 'rotate-45' : ''">{% include 'icon-plus-uses' %}</span>
+    </div>
+    <p class="tranform transition-all duration-300 text-sm pointer-events-none" :class="index == {{ forloop.index }} && alignment == 'right' ? 'opacity-100 max-h-96 pt-3' : 'opacity-0 max-h-0 pt-0'">{{ bs.body }}</p>
+    
+</div>
+{%- endfor -%}
+</div>
+</div>
+{% if ss.right_image != blank %}
+<div class=" w-1/4 hidden lg:block">
+{% include 'lazy-image' image: ss.right_image, additional_classes: 'mx-auto px-3'%}
+</div>
+{% endif %}
+</div>
+</div>
+
+{% schema %}
+{
+    "name": "Our Story - Values",
+    "settings": [
+    {
+        "type": "header",
+        "content": "Title"
+    },
+    {
+        "type":"textarea",
+        "label":"Rolling Title",
+        "id":"title",
+        "default":"OUR APPROACH TO"
+    },
+    {
+        "type":"color",
+        "label":"Background Colour",
+        "id":"section_bg"
+    },
+    {
+        "type":"image_picker",
+        "label":"Right Image",
+        "id":"right_image",
+        "info":"Image Dimension: W-250 x H-650"
+    }
+    ],
+    "blocks":[
+    {
+        "type":"left_item",
+        "name":"Left Item",
+        "settings":[
+        {
+            "type":"textarea",
+            "label":"Title",
+            "id":"title"
+        },
+        {
+            "type":"textarea",
+            "label":"Body",
+            "id":"body"
+        }
+        ]
+    },
+        {
+        "type":"right_item",
+        "name":"Right Item",
+        "settings":[
+        {
+            "type":"textarea",
+            "label":"Title",
+            "id":"title"
+        },
+        {
+            "type":"textarea",
+            "label":"Body",
+            "id":"body"
+        }
+        ]
+    }
+    ],
+    "presets": [
+        {
+            "name": "Our Story - Values",
+            "category": "Slideshow"
+        }
+    ]
+}
+
+{% endschema %}

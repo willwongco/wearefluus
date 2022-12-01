@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "main": {
+      "type": "searchResults",
+      "settings": {
+        "products_section_bg": "#ffffff",
+        "shop": "SHOP NOW",
+        "qs": "QUICK ADD",
+        "single": "Just Once",
+        "subscribe": "Subscribe",
+        "tick_1": "20% Off regular price",
+        "tick_2": "Skip cancel anytime",
+        "tick_3": "Free shipping",
+        "cart": "Add to Cart",
+        "articles_section_bg": "#d1d6e5",
+        "page_section_bg": "#d1d6e5"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

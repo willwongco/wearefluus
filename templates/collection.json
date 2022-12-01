@@ -1,0 +1,78 @@
+{
+  "sections": {
+    "banner": {
+      "type": "collection-header",
+      "settings": {}
+    },
+    "collection": {
+      "type": "collection-template",
+      "blocks": {
+        "1f39e582-9a30-47d3-bc8d-4c97f2c506e2": {
+          "type": "text",
+          "settings": {
+            "type": "subscribe",
+            "text": "20% Off regular price"
+          }
+        },
+        "db13d173-2406-4959-9c29-8ccf0474360b": {
+          "type": "text",
+          "settings": {
+            "type": "subscribe",
+            "text": "Skip cancel anytime"
+          }
+        },
+        "efbccb52-6f26-4945-9156-e2b955bc6956": {
+          "type": "text",
+          "settings": {
+            "type": "subscribe",
+            "text": "Free delivery"
+          }
+        },
+        "be192954-c5fd-4dc7-a340-454f5738efb3": {
+          "type": "text",
+          "settings": {
+            "type": "one",
+            "text": "One-off payment"
+          }
+        },
+        "e3bf3bd8-70c5-4c38-858c-5a0db9fd1cb5": {
+          "type": "text",
+          "settings": {
+            "type": "one",
+            "text": "Free shipping"
+          }
+        }
+      },
+      "block_order": [
+        "1f39e582-9a30-47d3-bc8d-4c97f2c506e2",
+        "db13d173-2406-4959-9c29-8ccf0474360b",
+        "efbccb52-6f26-4945-9156-e2b955bc6956",
+        "be192954-c5fd-4dc7-a340-454f5738efb3",
+        "e3bf3bd8-70c5-4c38-858c-5a0db9fd1cb5"
+      ],
+      "settings": {
+        "sec_bg_col": "#ffffff",
+        "filter_border_col": "#0e2559",
+        "filter_bg_col": "#ffffff",
+        "filter_text_col": "#0e2559",
+        "filter_sel_bg_col": "#0e2559",
+        "filter_sel_text_col": "#ffffff",
+        "filter_sel_border_col": "#0e2559",
+        "filter": "FILTER BY",
+        "limit": 3,
+        "shop": "SHOP NOW",
+        "qs": "QUICK ADD",
+        "single": "Just Once",
+        "subscribe": "Subscribe",
+        "tick_1": "Free Shipping",
+        "tick_2": "20% Off Regular Price",
+        "tick_3": "Skip Cancel Anytime",
+        "cart": "Add to Cart"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "collection"
+  ]
+}

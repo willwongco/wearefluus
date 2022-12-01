@@ -1,0 +1,59 @@
+{% assign ss = section.settings %}
+
+<h4 class=" font-cheltenham-std text-4xl w-full text-center pt-14 pb-12 sm:pt-24 sm:pb-20 px-10">{{ ss.title }}</h4>
+<div class="flex flex-col pb-24 px-10 mx-auto justify-center lg:flex-row">
+    <div class="h-full w-full max-w-600 mb-8 lg:mb-0 lg:mr-14 mx-auto">
+        {% include 'lazy-image' image: ss.left_img, additional_classes: 'h-full w-full m-auto', inline_style: aspect_ratio %}
+    </div>
+    <div class="h-full w-full max-w-600 mt-8 lg:mt-0 lg:ml-14 mx-auto">
+        {% include 'lazy-image' image: ss.right_img, additional_classes: 'h-full w-full m-auto', inline_style: aspect_ratio %}
+    </div>
+</div>
+
+<style>
+    #shopify-section-{{ section.id }} {
+        background-color: {{ ss.bg_col }};
+        color: {{ ss.text_col }};
+    }
+</style>
+
+
+{% schema %}
+{
+    "name": "Split Gifs",
+    "settings": [
+        {
+            "type":"color",
+            "id":"bg_col",
+            "label":"Background Colour"
+        },
+        {
+            "type":"color",
+            "id":"text_col",
+            "label":"Text Colour"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+          {
+            "type": "image_picker",
+            "label": "Gif/Image",
+            "id": "left_img",
+            "info": "600W x 350H"
+          },
+          {
+            "type": "image_picker",
+            "label": "Gif/Image",
+            "id": "right_img",
+            "info": "600W x 350H"
+          }
+    ],
+    "presets": [
+    {
+        "name": "Split Gifs"
+    }
+]
+}
+{% endschema %}

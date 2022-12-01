@@ -1,0 +1,81 @@
+{% comment %}
+Alpine.js script for finding selected variants and updating content accordingly
+{% endcomment %}
+<script>
+    let product_{{ product.handle | replace: '-', '_' }} =[];
+    {% for variant in product.variants %}
+            product_{{ product.handle | replace: '-', '_' }}.push({
+        product: JSON.parse('{{ variant | json }}'),
+        comparePrice: '{{ variant.compare_at_price  | money }}',
+        price: '{{ variant.price | money }}',
+        available:'{{ variant.available }}',
+        selling_plan: [
+            {% for selling_plan_allocation in variant.selling_plan_allocations %}
+            {
+                comparePrice: '{{ selling_plan_allocation.compare_at_price | money }}',
+                price:  '{{ selling_plan_allocation.price | money }}',
+                plan: {{ selling_plan_allocation.selling_plan | json }}
+            },
+            {% endfor %}
+        ]
+    })
+    {% endfor %}
+</script>
+
+
+<div  class="relative mb-12 md:mb-28"
+        x-data="{ 
+            quantity: 1, 
+            selectedVariant: product_{{ product.handle | replace: '-', '_' }}[0],  
+            price: product_{{ product.handle | replace: '-', '_' }}[0].price, 
+            compareAtPrice: product_{{ product.handle | replace: '-', '_' }}[0].comparePrice, 
+            planId: null,
+            available:product_{{ product.handle | replace: '-', '_' }}[0].available
+        }">
+    <div class="block md:hidden">
+    <div     
+        x-transition.300ms 
+        @click="quickShop = null"  
+        x-show="quickShop == '{{ product.handle }}'" 
+        class="fixed w-full h-full bg-black bg-opacity-70 top-0 left-0 z-30 md:hidden"></div>
+    </div>
+    {% include 'collection-product-qs' %}
+    {% if product.featured_image != blank %}
+    {% include 'lazy-image' image: product.featured_image, classes: 'w-full' %}
+    <div class="w-full bg-midgreen-planera px-3.5 md:px-9 pt-2 md:pt-3 pb-3 md:pb-10">
+        {% endif %}
+        {% capture replace_text_flushable %}
+        <span class="whitespace-nowrap relative">
+            Flushable
+            {% include 'icon-underline-large' classes: 'absolute w-full left-0 -bottom-1' %}
+        </span>
+        {% endcapture %}
+        <p class="font-cheltenham-std leading-snug text-xs md:text-2.5xl text-primary-blue mb-1 md:mb-3 text-center">{{
+            product.title | replace: 'Flushable', replace_text_flushable }}</p>
+        <div class="flex justify-center items-center md:mt-4 mb-2 md:mb-5">
+            {% for i in (1..5) %}
+            <div class="mr-1">
+                <div class="w-2 md:w-3">
+                    {% include 'icon-star' classes: 'w-full' %}
+                </div>
+            </div>
+            {% endfor %}
+            <p class="leading-none text-smallest md:text-xs">5.0</p>
+        </div>
+        <div>
+            <p class="text-center text-xs md:text-xl.5 font-semibold"
+                x-text="selectedVariant ? selectedVariant.price : ''"></p>
+        </div>
+        <div class="md:grid md:grid-cols-2 gap-3.5 mt-1 md:mt-5">
+            <a href="{{ product.url }}"
+                class="bg-purple-planera text-white py-2 md:py-3 rounded-lg hover:bg-offwhite-planera hover:text-black-planera w-full text-center cursor-pointer transition-all ease-out duration-300 leading-none block md:mb-0 mb-2 text-small md:text-sm">
+                {{ section.settings.shop }}
+            </a>
+            <div
+                @click="quickShop = '{{ product.handle }}'"
+                class="rounded-lg border-primary-blue py-2 md:py-3 text-center relative w-full md:mr-2 border md:text-sm uppercase flex items-center justify-center btn-second transition-all ease-out duration-300 hover:bg-black-planera hover:border-black-planera hover:text-white leading-none cursor-pointer text-small">
+                <p class="text-center">{{ section.settings.qs }}</p>
+            </div>
+        </div>
+    </div>
+</div>

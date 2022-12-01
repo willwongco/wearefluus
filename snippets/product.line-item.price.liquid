@@ -1,0 +1,25 @@
+
+<p>
+
+    {% if line_item.selling_plan_allocation.price != blank %}
+    <span class=" line-through text-base font-sofia-pro-bold">
+        {{ line_item.variant.price | money }}
+    </span>
+    <span class="font-sofia-pro-bold text-base">
+        {{- line_item.price | money -}}
+    </span>
+{% else %}
+    {% if product.compare_at_price > product.price %}
+    <span class=" line-through  text-base font-sofia-pro-bold">
+        {{- product.compare_at_price | money -}}
+    </span>
+    <span class=" text-base font-sofia-pro-bold">
+        {{- line_item.price | money -}}
+    </span>
+    {% else %}
+    <span class="  text-base font-sofia-pro-bold">
+        {{- line_item.variant.price | money -}}
+    </span>
+    {% endif %}
+</p>
+{% endif %}

@@ -1,0 +1,153 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-faq",
+      "blocks": {
+        "ec44b1c6-2d22-43f1-9eae-c8b8a38f6228": {
+          "type": "faq-top-header",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Bottle-Leaf_Web-Icon_Dark-Blue.png",
+            "title_text": "Product"
+          }
+        },
+        "4cd72156-5454-4081-b761-b0df76b5bfd3": {
+          "type": "faq-top-header",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/World-Leaf_Web-Icon_Dark-Blue.png",
+            "title_text": "Planet"
+          }
+        },
+        "33729506-4430-4399-b4fb-80a34bd88d1a": {
+          "type": "faq-top-header",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Water-Drop_Web-Icon_Dark-Blue.png",
+            "title_text": "People"
+          }
+        },
+        "9398f150-b9ba-46f3-86de-5462ccdf0a0d": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Product",
+            "title_text": "Where are your pads made?",
+            "body_text": "Our pads are currently manufactured at our site in East London. As we scale up for launch, our production will temporarily move to Italy. However in 2023, we will move production back to the UK to minimise the amount of unecessary transport. Our pads are currently manufactured at our site in East London. As we scale up for launch, our production will temporarily move to Italy. However in 2023, we will move production back to the UK to minimise the amount of unecessary transport. Our pads are currently manufactured at our site in East London. As we scale up for launch, our production will temporarily move to Italy. However in 2023, we will move production back to the UK to minimise the amount of unecessary transport. Our pads are currently manufactured at our site in East London. As we scale up for launch, our production will temporarily move to Italy. However in 2023, we will move production back to the UK to minimise the amount of unecessary transport. Our pads are currently manufactured at our site in East London. As we scale up for launch, our production will temporarily move to Italy. However in 2023, we will move production back to the UK to minimise the amount of unecessary transport."
+          }
+        },
+        "866563d6-1faa-4eaa-9d37-9813da16e276": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Product",
+            "title_text": "Is it safe to flush a Planera pad down the toilet?",
+            "body_text": "Planera’s pads have been successfully and independently tested in accordance with the UK's water industry specification for flushability testing (WIS 4-02-06) – so yes, you can confidently flush us away!   The pad breaks down in two parts; firstly, the hydraulic action of the toilet flush pulls the layers of the pad apart as it starts travelling down the drain. Then, the layers break down into 3mm pant fibres.   Our materials and manufacturing process ensure that your pad will have disintegrated by the time it reaches your local municipal plant in a few hours"
+          }
+        },
+        "2abde707-976e-4048-956e-4d9db0c8e626": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Product",
+            "title_text": "Can I flush the wrapper and peel papers?",
+            "body_text": "The wrappers and peel papers are made of the same material as our pads. Therefore they are fully water-dispersible and also biodegradable. You can flush one pad, one wrapper and three peel papers in one flush."
+          }
+        },
+        "37b40cf5-98d3-4652-82df-75ef215bc67d": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Product",
+            "title_text": "What are Planera pads made of?",
+            "body_text": "Our pads are made of just 3 materials: plant fibres, our unique biopolymer upflow(™) barrier and tree sap. Head over to our “Shop” page to learn more about what we use and what we don’t use in our pads."
+          }
+        },
+        "9af997c2-c489-46cc-ad8c-336c893d6efd": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Planet",
+            "title_text": "Is a Planera pad safe for oceans and aquatic life?",
+            "body_text": "Planera pads contain zero microplastics, therefore, they will never pollute waterways or harm aquatic life. When flushed, the pad breaks down into 3mm plant fibres and is broken down by the aerobic and anaerobic bacteria at the sewage centre before regenerating into clean water, renewable energy and fertiliser."
+          }
+        },
+        "924946cd-a255-4496-8caa-5013bf251a7d": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Planet",
+            "title_text": "Will Planera pads become microplastic?",
+            "body_text": "No Planera pads will never become microplastics! All the materials we use are 100% free from microplastic, as well as being fully biodegradable. From our research, we believe that we're the only 100% microplastic free pad on the market - so you can safely flush without worry of polluting our waterways."
+          }
+        },
+        "13fc4d19-f532-4de1-b253-1a1d7e7c1aac": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Planet",
+            "title_text": "Isn't binning better than flushing?",
+            "body_text": "Sadly, product life doesn’t end in the bin! After binning, your local council will either send the contents of your bin to landfill, or it will be incinerated (and neither are good news for the environment). Once binned, we lose control of where the pad ends up. If it gets sent to landfill, we cannot guarantee the right environment for it to biodegrade. Incineration produces harmful greenhouse gases.   Flushable pads give you back the control of where it ends up. Once flushed, the pads will biodegrade into clean water, renewable energy and fertiliser at your local water treatment centre."
+          }
+        },
+        "e6a4f727-ecb1-483b-a4ed-0f0d9a93629c": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Planet",
+            "title_text": "Have you carried out an lifecycle analysis (LCA) of your product?",
+            "body_text": "Yes we have completed an LCA of our product vs. the marketing-leading disposable pad. We found that switching to a Planera pad actually cuts your carbon emissions in half! You can also wave goodbye to permanent period waste, as a Planera pad fully degrades in 30 days, whilst the market-leading pad takes around 500 years. <br> <br> We will be looking to do more LCAs in the future to understand the impact of a Planera pad vs. other period products on the market."
+          }
+        },
+        "78c7fd82-ef1a-4af7-887a-8ae30980a3de": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "People",
+            "title_text": "Are Planera pads suitable for vegans?",
+            "body_text": "Yes - Planera pads are suitable for both vegans and vegetarians. We also never test on animals (only willing humans!)"
+          }
+        },
+        "a955c351-4f18-40ec-b5a2-ad01e6c2b508": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "People",
+            "title_text": "Are Planera pads suitable for sensitive skin?",
+            "body_text": "We are working with a vegan accredited testing lab to ensure that all of our products are suitable for sensitive skin. We will have the vaginal and skin sensitivity report by our launch in November 2022.   All materials that touch your skin are made from natural plant fibres with no added bleach, no harmful chemicals or artificial materials. Our products are also free from microplastics (including thermo-plastic glue), and the feedback from product testers has been very positive, with less rashes and itching reported."
+          }
+        },
+        "2c0fbffd-1a9f-4cf9-adac-af7f992d87c3": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "People",
+            "title_text": "Can I get a free trial pack of pads?",
+            "body_text": "Yes! All you need to do is refer a friend. Once they claim their free trial pack, you will receive an email with a link to claim your free trial pack. The more friends you refer, the more pads you will receive!"
+          }
+        },
+        "6c05bcaf-2fda-49bb-ae04-5be0ad127056": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Product",
+            "title_text": "Do you offer subscriptions?",
+            "body_text": "Yes - you can sign up to either a 30, 45, or 60 day subscription. Just select this option before you add to cart. You can skip, pause or cancel your subscription at any time via the subscription portal once you login to your account. If you have any subscription related queries, please reach out to us at hello@planera.care or through the \"Contact Us\" page on the website."
+          }
+        }
+      },
+      "block_order": [
+        "ec44b1c6-2d22-43f1-9eae-c8b8a38f6228",
+        "4cd72156-5454-4081-b761-b0df76b5bfd3",
+        "33729506-4430-4399-b4fb-80a34bd88d1a",
+        "9398f150-b9ba-46f3-86de-5462ccdf0a0d",
+        "866563d6-1faa-4eaa-9d37-9813da16e276",
+        "2abde707-976e-4048-956e-4d9db0c8e626",
+        "37b40cf5-98d3-4652-82df-75ef215bc67d",
+        "9af997c2-c489-46cc-ad8c-336c893d6efd",
+        "924946cd-a255-4496-8caa-5013bf251a7d",
+        "13fc4d19-f532-4de1-b253-1a1d7e7c1aac",
+        "e6a4f727-ecb1-483b-a4ed-0f0d9a93629c",
+        "78c7fd82-ef1a-4af7-887a-8ae30980a3de",
+        "a955c351-4f18-40ec-b5a2-ad01e6c2b508",
+        "2c0fbffd-1a9f-4cf9-adac-af7f992d87c3",
+        "6c05bcaf-2fda-49bb-ae04-5be0ad127056"
+      ],
+      "settings": {
+        "title": "FAQ",
+        "cta_text": "",
+        "cta_link": "shopify:\/\/pages\/contact",
+        "bg_col": "#fafafa",
+        "text_col": "#0e2559"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

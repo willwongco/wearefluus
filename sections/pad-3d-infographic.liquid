@@ -1,0 +1,474 @@
+<!-- animation -->
+<script></script>    
+<!-- setup -->
+{% assign ss = section.settings %}
+<div style="background-color:{{ ss.bg_col }};" class="pad-infographics">
+
+<div style="color:{{ ss.title_top_col }};" class="flex flex-col max-w-3xl pt-20 mx-auto md:pb-10 px-7 lg:px-6 lg:max-w-7xl lg:pb-16 | lg:flex-row">
+    <div class=" mb-4 sm:mb-8 lg:mb-0 lg:pr-14"> 
+        
+        <!-- title text formatting -->
+        {% assign left_title = ss.title_left %}
+        {% if ss.left_full_stop == true %}
+        {% assign last_word = ss.title_left | split:' ' | last | prepend: '<span class="full_stop_text relative">' | append: '</span>' %}
+        {% assign title = ss.title_left | split:' ' %}
+        {% assign newTitle = "" %}
+        {% for word in title %}
+          {% if forloop.last %}
+          {% assign newTitle = newTitle | append: last_word %}
+          {% else %}
+          {% assign newTitle = newTitle | append: word %}
+          {% assign newTitle = newTitle | append: " " %}
+          {% endif %}
+        {% endfor %}
+        {% assign left_title = newTitle %}
+        {% endif %}
+
+        {% assign right_title = ss.title_right %}
+        {% if ss.right_full_stop == true %}
+        {% assign last_word = ss.title_right | split:' ' | last | prepend: '<span class="full_stop_text relative">' | append: '</span>' %}
+        {% assign title = ss.title_right | split:' ' %}
+        {% assign newTitle = "" %}
+        {% for word in title %}
+          {% if forloop.last %}
+          {% assign newTitle = newTitle | append: last_word %}
+          {% else %}
+          {% assign newTitle = newTitle | append: word %}
+          {% assign newTitle = newTitle | append: " " %}
+          {% endif %}
+        {% endfor %}
+        {% assign right_title = newTitle %}
+        {% endif %}
+
+        <h3 class="font-cheltenham-std  pb-6 text-4xl xl:text-5xl">{{ left_title | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="text-purple-planera">'}}</h3>
+        <span class=" font-sofia-pro text-lg ">{{ ss.body_left }}</span>
+    </div>
+    <div>
+        <h3 class="font-cheltenham-std  pb-6 text-4xl xl:text-5xl">{{ right_title | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="text-purple-planera">'}}</h3>
+        <span class=" font-sofia-pro text-lg ">{{ ss.body_right }}</span>
+    </div>
+</div>
+
+<div class="pad-infographic-wrapper transition-all duration-300 w-full mx-auto sm:w-640 md:w-768 lg:w-1024">
+
+<div class="pad-infographic-container transition-all duration-300 relative mx-auto lg:w-2/3 pb-80% md:pb-70%">
+    <div x-data="{point_chosen:0,
+                layer_active:0}"
+    class="transition-all duration-300 absolute left-1/2 transform -translate-x-1/2 h-full w-full -mt-12 sm:-mt-24 lg:-mt-44">
+        <!-- info points -->
+    <div class="pad-infographic-points--container absolute top-0 left-0 w-full h-full z-30">
+        {% for block in section.blocks %}
+        {% assign bs = block.settings %}
+        <div class="mob_info_point info_point_{{ forloop.index }} {% if bs.info_point_side %}point_left{% else %}point_right{% endif %} absolute z-20 lg:hidden" data-aos="pad-animation-points" @click="point_chosen == {{ forloop.index }} ? point_chosen = 0: point_chosen = {{ forloop.index }}" infographic-slide--index_layer="{{ bs.info_point_layer }}">
+            {% include 'icon-plus-uses', classes:'transition-all duration-200 absolute cursor-pointer', side:side, x-class-data:forloop.index   %}
+            </div>
+        <div style="top:{{ bs.info_point_top_desktop }}%;left:{{ bs.info_point_left_desktop }}%" class="transition-all duration-300 pad-infographic-point absolute rounded-lg max-w-pad-info-point w-full p-5 z-10 hidden lg:block" :class="point_chosen != {{ forloop.index }} ? 'bg-transparent':'info_block_{{ forloop.index }}'">
+            {% if bs.info_point_side %} {% assign side = 'left-72' %} {% else %} {% assign side = '-left-14' %} {% endif %}
+            <div @click="point_chosen == {{ forloop.index }} ? point_chosen = 0: point_chosen = {{ forloop.index }}; layer_active == {{ bs.info_point_layer }} ? layer_active = 0 : layer_active = {{ bs.info_point_layer }}" data-aos="pad-animation-points">
+            {% assign img_pattern = 'info_point_desktop_' | append:forloop.index %}
+            {% include 'icon-plus-uses', classes:'transition-all duration-200 absolute cursor-pointer transform top-1/2 -translate-y-1/2 z-30', side:side, x-class-data:forloop.index, pattern:img_pattern %}
+            </div>
+            <div class="relative transform transition-all duration-300" :class="point_chosen != {{ forloop.index }} ? 'opacity-0':'opacity-100'">
+                {% if bs.info_point_side %} {% assign side = '-right-10' %} {% else %} {% assign side = '-left-10' %} {% endif %}
+                {% render 'pad-info-point-arrow', classes:'absolute transform transition-all duration-300 top-1/2 transform -translate-y-1/2', side: side, x-class-data:forloop.index %}
+            {% include 'lazy-image' image: bs.image_pattern , additional_classes: 'mx-auto pb-3' %}
+            <h3 class=" pb-3 font-cheltenham-std text-2.5xl z-10">{{ bs.title }}</h3>
+            <p class=" font-sofia-pro text-sm">{{ bs.body }}</p>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- images -->
+    <div data-aos="pad-animation" style="background-image:url('{{ ss.layer_1.src | img_url:'master' }}');" class="z-5 pad_img-layer--1 transition-all duration-200 pad_img-layer bg-contain bg-center bg-no-repeat mx-auto absolute left-1/2 transform -translate-x-1/2 top-0 w-full h-full max-w-550" :class="layer_active == 0 ? 'lg:opacity-100 lg:z-5' : layer_active == 1 ? 'lg:opacity-100 z-10' : layer_active != 0 && layer_active != 1 ? 'lg:opacity-30 lg:z-5' : ''"></div>
+    {% include 'lazy-image' image: ss.layer_1 , additional_classes: 'hidden' %}
+    <div data-aos="pad-animation" style="background-image:url('{{ ss.layer_2.src | img_url:'master' }}');" class="z-4 pad_img-layer--2 transition-all duration-200 pad_img-layer bg-contain bg-center bg-no-repeat mx-auto absolute left-1/2 transform -translate-x-1/2 w-full h-full max-w-550" :class="layer_active == 0 ? 'lg:opacity-100 lg:z-4' : layer_active == 2 ? 'lg:opacity-100 z-10' : layer_active != 0 && layer_active != 2 ? 'lg:opacity-30 lg:z-4' : ''"></div>
+    {% include 'lazy-image' image: ss.layer_2 , additional_classes: 'hidden' %}
+    <div data-aos="pad-animation" style="background-image:url('{{ ss.layer_3.src | img_url:'master' }}');" class="z-3 pad_img-layer--3 transition-all duration-200 pad_img-layer bg-contain bg-center bg-no-repeat mx-auto absolute left-1/2 transform -translate-x-1/2 w-full h-full max-w-550" :class="layer_active == 0 ? 'lg:opacity-100 lg:z-3' : layer_active == 3 ? 'lg:opacity-100 z-10' : layer_active != 0 && layer_active != 3 ? 'lg:opacity-30 lg:z-3' : ''"></div>
+    {% include 'lazy-image' image: ss.layer_3 , additional_classes: 'hidden' %}
+    <div data-aos="pad-animation" style="background-image:url('{{ ss.layer_4.src | img_url:'master' }}');" class="z-2 pad_img-layer--4 transition-all duration-200 pad_img-layer bg-contain bg-center bg-no-repeat mx-auto absolute left-1/2 transform -translate-x-1/2 w-full h-full max-w-550" :class="layer_active == 0 ? 'lg:opacity-100 lg:z-2' : layer_active == 4 ? 'lg:opacity-100 z-10' : layer_active != 0 && layer_active != 4 ? 'lg:opacity-30 lg:z-2' : ''"></div>
+    {% include 'lazy-image' image: ss.layer_4 , additional_classes: 'hidden' %}
+    <div data-aos="pad-animation" style="background-image:url('{{ ss.layer_5.src | img_url:'master' }}');" class="z-1 pad_img-layer--5 transition-all duration-200 pad_img-layer bg-contain bg-center bg-no-repeat mx-auto absolute left-1/2 transform -translate-x-1/2 w-full h-full max-w-550" :class="layer_active == 0 ? 'lg:opacity-100 lg:z-1' : layer_active == 5 ? 'lg:opacity-100 z-10' : layer_active != 0 && layer_active != 5 ? 'lg:opacity-30 lg:z-1' : ''"></div>
+    {% include 'lazy-image' image: ss.layer_5 , additional_classes: 'hidden' %}
+</div>
+  
+</div>
+</div>
+
+<!-- carousel -->
+<div class="splide pad_infographic_carousel block m-auto pb-12 pt-6 | sm:w-10/12 lg:hidden">
+    <div class="splide__track m-auto | w-7/10 sm:w-10/12">
+          <ul class="splide__list">
+              {% for block in section.blocks %}
+              {% assign bs = block.settings %}
+              <li class="splide__slide flex">
+                <div class="relative info_block_{{ forloop.index }} transform transition-all duration-300 max-w-410 mx-auto px-7 py-6 rounded-lg" :class="point_chosen != {{ forloop.index }} ? 'opacity-0':'opacity-100'">
+                {% include 'lazy-image' image: bs.image_pattern , additional_classes: 'mx-auto pb-3' %}
+                <h3 class=" pb-3 font-cheltenham-std text-2.5xl z-10">{{ bs.title }}</h3>
+                <p class=" font-sofia-pro text-sm">{{ bs.body }}</p>
+            </div>
+            </li>
+            {% endfor %}
+          </ul>
+    </div>
+  </div>
+
+</div>
+
+<style>
+
+/* animations */
+[data-aos="pad-animation"] {
+  top: 25%;
+  transition-delay: 800ms;
+  transition-duration: 600ms;
+  transition-property:top;
+}
+[data-aos="pad-animation-points"] {
+  opacity:0;
+  transition-delay: 800ms;
+  transition-duration: 800ms;
+  transition-property:opacity;
+}
+[data-aos="pad-animation-points"].aos-animate {
+  opacity:1;
+}
+[data-aos="pad-animation"].pad_img-layer--1.aos-animate {
+    top:{{ ss.layer_1_top_desktop }}%;
+}
+[data-aos="pad-animation"].pad_img-layer--2.aos-animate {
+    top:{{ ss.layer_2_top_desktop }}%;
+}
+[data-aos="pad-animation"].pad_img-layer--3.aos-animate {
+    top:{{ ss.layer_3_top_desktop }}%;
+}
+[data-aos="pad-animation"].pad_img-layer--4.aos-animate {
+    top:{{ ss.layer_4_top_desktop }}%;
+}
+[data-aos="pad-animation"].pad_img-layer--5.aos-animate {
+    top:{{ ss.layer_5_top_desktop }}%;
+}
+
+    {% for block in section.blocks %}
+    {% assign bs = block.settings %}
+    .info_point_{{ forloop.index }}.point_left {
+        top:{{ bs.info_point_top }}%;
+        left:{{ bs.info_point_left }}%;
+    }
+    @media screen and (max-width:768px) {
+    .info_point_{{ forloop.index }}.point_left {
+        top:calc({{ bs.info_point_top }}% + 3%);
+        left:calc({{ bs.info_point_left }}% + 7%);
+    }
+}
+@media screen and (max-width:450px) {
+    .info_point_{{ forloop.index }}.point_left {
+        top:calc({{ bs.info_point_top }}% + 2%);
+        left:calc({{ bs.info_point_left }}% + 9%);
+    }
+}
+    @media screen and (min-width:768px) {
+    .info_point_{{ forloop.index }}.point_left {
+        top:calc({{ bs.info_point_top }}% + 3%);
+        left:calc({{ bs.info_point_left }}% + 9%);
+    }
+}
+
+/* right side points */
+.info_point_{{ forloop.index }}.point_right {
+        top:{{ bs.info_point_top }}%;
+        left:{{ bs.info_point_left }}%;
+    }
+    @media screen and (max-width:768px) {
+    .info_point_{{ forloop.index }}.point_right {
+        top:calc({{ bs.info_point_top }}% + 9%);
+        left:calc({{ bs.info_point_left }}% - 5%);
+    }
+}
+@media screen and (max-width:640px) {
+    .info_point_{{ forloop.index }}.point_right {
+        top:calc({{ bs.info_point_top }}% + 9%);
+        left:calc({{ bs.info_point_left }}% - 8%);
+    }
+}
+    @media screen and (min-width:768px) {
+    .info_point_{{ forloop.index }}.point_right {
+        top:calc({{ bs.info_point_top }}% + 9%);
+        left:calc({{ bs.info_point_left }}% - 9%);
+    }
+}
+    {% endfor %}
+    .pad-infographics .full_stop_text::after {
+        content:url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Asset_33_1_1.png?v=1655122692');
+        position: absolute;
+        top:7%;
+        left: calc(100% + 3px);
+    }
+    @media screen and (max-width:1279px) {
+        .pad-infographics .full_stop_text::after {
+            top:4%;
+    }
+    }
+    @media screen and (max-width:1023px) {
+        .pad-infographics .full_stop_text::after {
+            top:0%;
+    }
+    }
+
+{% for block in section.blocks %}
+.info_block_{{ forloop.index }} {
+    background-color:{{ block.settings.bg_col }};
+    color:{{ block.settings.text_col }}
+}
+{% endfor %}
+
+</style>
+
+<script>
+
+    document.addEventListener( 'DOMContentLoaded', function() {
+
+const padInfographicCarousel = new Splide( '.pad_infographic_carousel', {
+    type   : 'slide',
+    perPage:1,
+    perMove:1,
+    gap:'0rem',
+    arrows:true,
+    pagination:false
+});
+
+padInfographicCarousel.on( 'mounted', function () {
+// This will be executed.
+let infographic_track = document.querySelector('.pad_infographic_carousel .splide__list')
+// fix bug: height of carousel is too big on mount so toggle overflow works to re-size the carousel back to original size
+// This bug is on Splide 
+infographic_track.style.display = "block";
+setTimeout(() => {
+    infographic_track.style.display = "flex";
+}, 500);
+
+// set opacity to .3 for all layers
+let infographic_img__layers = document.querySelectorAll('.pad_img-layer')
+
+const setAllLayersOpacity = (curr_img__layer) => {
+    if (window.innerWidth < 1024) {
+infographic_img__layers.forEach(element => {
+    element.classList.add('opacity-30')
+    element.classList.remove('z-10')
+});
+if (curr_img__layer > -1) {
+infographic_img__layers[curr_img__layer].classList.remove('opacity-30')
+  infographic_img__layers[curr_img__layer].classList.add('z-10')
+}
+}
+}
+
+setAllLayersOpacity(0);
+
+// get point currently on
+let infographic_points = document.querySelectorAll('.mob_info_point')
+// get slide index and apply styling to specific layer
+padInfographicCarousel.on( 'moved', function (destIndex) {
+      // get layer to apply changes to   
+  let curr_img__layer = infographic_points[destIndex].getAttribute('infographic-slide--index_layer') - 1;
+    setAllLayersOpacity(curr_img__layer);
+} );
+
+// set slide via click of info point
+infographic_points.forEach((element,index) => {
+    element.addEventListener('click', () => {
+  // Goes to the slide:
+    padInfographicCarousel.go( index );
+    })
+});
+} );
+padInfographicCarousel.mount();
+
+
+})
+</script>
+
+{% schema %}
+{
+    "name": "Pad - Infographic",
+    "settings": [
+    {
+        "type": "color",
+        "id": "bg_col",
+        "label": "Background Colour"
+      },
+    {
+        "type": "color",
+        "id": "title_top_col",
+        "label": "Top Titles/Subtitles Colour"
+      },
+    {
+        "type":"richtext",
+        "label":"Title - Left",
+        "id":"title_left",
+        "info":"bold text will become blue"
+    },
+    {
+        "type": "header",
+        "content": "Checkbox for blue dot at end of title - Left"
+    },
+    {
+        "type": "checkbox",
+        "id": "left_full_stop",
+        "label": "Select to show the blue dot at the end of the title",
+        "default": true
+      },
+    {
+        "type":"richtext",
+        "label":"Body - Left",
+        "id":"body_left"
+    },
+    {
+        "type":"richtext",
+        "label":"Title - Right",
+        "id":"title_right",
+        "info":"bold text will become blue"
+    },
+    {
+        "type": "header",
+        "content": "Checkbox for blue dot at end of title - Right"
+    },
+    {
+        "type": "checkbox",
+        "id": "right_full_stop",
+        "label": "Select to show the blue dot at the end of the title",
+        "default": true
+      },
+    {
+        "type":"richtext",
+        "label":"Body - Right",
+        "id":"body_right"
+    },
+    {
+        "type":"image_picker",
+        "label":"Layer 1",
+        "id":"layer_1",
+        "info":"Image Dimension: 1080W x 1080H"
+    },
+    {
+        "type":"number",
+        "id":"layer_1_top_desktop",
+        "label":"Layer 1 Distance From Top"
+    },
+    {
+        "type":"image_picker",
+        "label":"Layer 2",
+        "id":"layer_2",
+        "info":"Image Dimension: 1080W x 1080H"
+    },
+    {
+        "type":"number",
+        "id":"layer_2_top_desktop",
+        "label":"Layer 2 Distance From Top"
+    },
+    {
+        "type":"image_picker",
+        "label":"Layer 3",
+        "id":"layer_3",
+        "info":"Image Dimension: 1080W x 1080H"
+    },
+    {
+        "type":"number",
+        "id":"layer_3_top_desktop",
+        "label":"Layer 3 Distance From Top"
+    },
+    {
+        "type":"image_picker",
+        "label":"Layer 4",
+        "id":"layer_4",
+        "info":"Image Dimension: 1080W x 1080H"
+    },
+    {
+        "type":"number",
+        "id":"layer_4_top_desktop",
+        "label":"Layer 4 Distance From Top"
+    },
+    {
+        "type":"image_picker",
+        "label":"Layer 5",
+        "id":"layer_5",
+        "info":"Image Dimension: 1080W x 1080H"
+    },
+    {
+        "type":"number",
+        "id":"layer_5_top_desktop",
+        "label":"Layer 5 Distance From Top"
+    }
+    ],
+    "blocks":[
+    {
+        "type":"info-point",
+        "name":"Info Point",
+        "settings":[
+        {
+            "type": "color",
+            "id": "bg_col",
+            "label": "Background Colour"
+          },
+        {
+            "type": "color",
+            "id": "text_col",
+            "label": "Text Colour"
+          },
+        {
+            "type":"image_picker",
+            "label":"Pattern Image",
+            "id":"image_pattern",
+            "info":"Image Dimension: 215W x 50H"
+        },
+        {
+            "type":"text",
+            "label":"Title",
+            "id":"title"
+        },
+        {
+            "type":"textarea",
+            "label":"Body",
+            "id":"body"
+        },
+        {
+            "type":"number",
+            "id":"info_point_layer",
+            "label":"Layer (1-5) which point refers to"
+        },
+            {
+        "type":"number",
+        "id":"info_point_top",
+        "label":"Distance From Top - Mobile/Tablet"
+    },
+    {
+        "type":"number",
+        "id":"info_point_left",
+        "label":"Distance From left - Mobile/Tablet"
+    },
+    {
+        "type":"number",
+        "id":"info_point_top_desktop",
+        "label":"Distance From Top - Desktop"
+    },
+    {
+        "type":"number",
+        "id":"info_point_left_desktop",
+        "label":"Distance From left - Desktop"
+    },
+    {
+        "type":"checkbox",
+        "id":"info_point_side",
+        "label":"Check for left sided points",
+        "default":false
+    }
+        ]
+    }
+    ],
+    "presets": [
+        {
+            "name": "Pad - Infographic"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,158 @@
+{% assign ss = section.settings %}
+
+<div class="{{ section.id }}_text-split flex items-center justify-center m-auto w-full sm:w-11/12 flex-col-reverse py-10 pb-10 | lg:{% if ss.section_direction == "text_left" %}flex-row{% else %}flex-row-reverse{% endif %} xl:w-3/4">
+  <!-- text -->
+  <div class="w-full text-center | lg:w-1/2 {% if ss.section_direction == "text_left" %}lg:mr-5{% else %}lg:ml-5{% endif %}">
+    <h2 style="color:{{ ss.text_col }}" class=" font-cheltenham-std text-4.5xl leading-11 max-w-lg m-auto px-4 | sm:px-0 md:text-5xl lg:leading-14 lg:text-6xl">{{ ss.main_text | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="text-purple-planera">' }}</h2>
+    {% if ss.body_text != blank %}
+      <p style="color:{{ ss.text_col }}" class=" font-sofia-pro text-lg pt-10 text-center px-8">{{ ss.body_text }}</p>
+    {% endif %}
+    {% if ss.cta_text !=  blank %}
+      <button class=" transition-all font-sofia-pro tracking-wide text-sm px-12 mt-8 pb-1 pt-2 border rounded-lg border-primary-blue mb-12 hover:bg-primary-blue hover:text-white | sm:pb-2 sm:pt-3 lg:mb-0 lg:mt-12"><a href="{{ ss.cta_url }}">{{ ss.cta_text }}</a></button>
+    {% endif %}
+  </div>
+  {% if ss.section_image != blank %}
+    <div class="relative max-w-full m-auto w-full mb-14 | sm:max-w-9/10 lg:mb-0 lg:w-1/2 {% if ss.section_direction == "text_left" %}lg:ml-5{% else %}lg:mr-5{% endif %}">
+      {% include 'lazy-image' image: ss.section_image, additional_classes: 'transition duration-200 w-3/4 m-auto' %}
+    </div>
+  {% else if ss.video_url != blank %}
+    <!-- video/image poster -->
+    <div x-data="{ open:false }" class="video-container relative max-w-full m-auto w-full mb-14 | sm:max-w-9/10 lg:ml-5 lg:mb-0 lg:w-1/2">
+      <iframe @click.outside="open = false" allow="autoplay" allowfullscreen="" allowtransparency="" class="youtube_video h-1/2 z-10 w-11/12 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 fixed | lg:h-3/4 lazyload hs-id-87f419b8" data-src="https://www.youtube.com/embed/{{ ss.video_url.id }}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" plugin="true" title="video" x-show="open == true">
+      </iframe>
+      {% if ss.video_poster != blank %}
+      {% assign aspect_ratio = 'aspect-ratio: ' | append: ss.video_poster.aspect_ratio | append: '/ 1;' %}
+         {% include 'lazy-image' image: ss.video_poster, additional_classes: 'transition duration-200 h-full w-full object-cover top-0 left-0 max-w-650 m-auto', inline_style: aspect_ratio %}
+        {% unless ss.video_url == blank %}
+        <div x-show="open == false" @click="open = !open" class=" play_button absolute top-1/2 left-1/2 transform scale-75 sm:scale-100  -translate-x-1/2 -translate-y-1/2 cursor-pointer flex flex-col items-center w-full">
+         {% render 'icon-play-btn' %}
+        </div>
+        {% endunless %}
+      {% endif %}
+      <span @click="open = false" x-show="open == true" class=" youtube_video_close fixed cursor-pointer top-1/5 text-white right-12 text-4xl font-sofia-pro-medium z-20 bg-primary-blue rounded-md px-4 pt-2 pb-0 | lg:top-1/10 ">X</span>
+    </div>  
+  {% endif %}
+</div>
+
+
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: {{ ss.bg_col }};
+    border-bottom: solid 2px {{ ss.border_bottom_color }};
+    min-height: {% if ss.fixed_height == "true" %}400px{% else %}0{% endif %};
+    display: flex;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Image Text Split",
+  "settings": [
+    {
+      "type":"color",
+      "id":"bg_col",
+      "label":"Background Colour",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "text_col",
+      "label": "Text Colour",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "border_bottom_color",
+      "label": "Border Bottom Colour",
+      "default": "transparent"
+    },
+    {
+      "type": "radio",
+      "id": "section_direction",
+      "label": "Section Direction",
+      "options": [
+        {
+          "value": "text_left",
+          "label": "Text Left Side"
+        },
+        {
+          "value": "text_right",
+          "label": "Text Right Side"
+        }
+      ],
+      "default": "text_left"
+    },
+    {
+      "type": "radio",
+      "id": "fixed_height",
+      "label": "Fixed Height",
+      "options": [
+        {
+          "value": "true",
+          "label": "Yes"
+        },
+        {
+          "value": "false",
+          "label": "No"
+        }
+      ],
+      "info": "Should this section have a fixed height of 400px on Desktop? (good when using multiple of these sections together)",
+      "default": "false"
+    },
+    {
+      "type": "richtext",
+      "id": "main_text",
+      "label": "Main Left Text",
+      "info": "Bold text you wish to be purple",
+      "default":"<p>A pad that is used for 8 hours should <strong>never last 500 years.</strong></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body Copy Left"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default":"Learn More"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Url"
+    },
+    {
+    "type": "header",
+    "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "label": "Image",
+      "id": "section_image",
+      "info": "(Either this or a video, not both)"
+    },
+    {
+    "type": "header",
+    "content": "video"
+    },
+    {
+      "type": "video_url",
+      "label": "Main video (Youtube)",
+      "id": "video_url",
+      "accept": ["youtube"]
+    },
+    {
+      "type": "image_picker",
+      "label": "Video Poster (650W X 650H)",
+      "id": "video_poster",
+      "info": "this image will be displayed before a video starts. Note this is only needed if you have selected a HTML MP4/OGV file."
+    }
+  ],
+  "presets": [
+  {
+    "name": "Image Text Split"
+  }
+]
+}
+{% endschema %}

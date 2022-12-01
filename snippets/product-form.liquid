@@ -1,0 +1,83 @@
+<div class="js-init">
+    {% form 'product', product, data-product-form: '', data-product-handle: product.handle %}
+    {% unless product.has_only_default_variant %}
+      {% for option in product.options_with_values %}
+        <div class="js-enabled">
+    
+            <label for="Option{{ option.position }}">
+              {{ option.name }}
+            </label>
+    
+            {% comment %}
+              All inputs that have `name=options[Name]` will be picked up by
+              ProductForm, registered as an option input, and made available
+              at ProductForm.optionsInputs
+            {% endcomment %}
+    
+            <select
+              id="Option{{ option.position }}"
+              name="options[{{ option.name | escape }}]">
+              {% for value in option.values %}
+                <option
+                  value="{{ value | escape }}"
+                  {% if option.selected_value == value %}selected="selected"{% endif %}>
+                    {{ value }}
+                </option>
+              {% endfor %}
+            </select>
+        </div>
+      {% endfor %}
+    {% endunless %}
+    
+    {% comment %}
+      In order for this form to submit, it needs to contain an input with name="id".
+      ProductForm() will automatically create this input (or make sure it has the
+      right value set if it already exists) on form submit based on the
+      currently selected variant. However, if JS is disabled we need a fallback.
+    
+      Include a single <select> element which allows users to select all variants
+      as a fallback and present it only when JS is disabled. In addition,
+      make sure you hide the option inputs declared above, like we do with the
+      `.js-enabled` class which only shows its contents when JS is enabled.
+    {% endcomment %}
+    <noscript>
+      <select name="id">
+        {% for variant in product.variants %}
+          <option
+            {% if variant == current_variant %}selected="selected"{% endif %}
+            {% unless variant.available %}disabled="disabled"{% endunless %}
+            value="{{ variant.id }}">
+              {{ variant.title }}
+          </option>
+        {% endfor %}
+      </select>
+    </noscript>
+    
+    {% comment %}
+      Any input with `name="quantity"` will be picked up by ProductForm and
+      registered as a quantity input. If a quantity input is not included, a
+      default quantity of 1 is assumed.
+    {% endcomment %}
+    <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+    <input type="number" id="Quantity" name="quantity" value="1" min="1">
+    
+    {% comment %}
+      Line Item property inputs with `name="properties[NAME]"` will be picked up
+      by ProductForm and registered as a properties input.
+    {% endcomment %}
+    <label for="Details">{{ 'products.product.details' | t }}</label>
+    <textarea id="Details" name="properties[Details]"></textarea>
+    
+    <button
+      type="submit"
+      {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+        {{ 'products.product.add_to_cart' | t }}
+    </button>
+    
+    {% comment %}
+      Don't forget about the Dynamic Checkout buttons!
+      https://help.shopify.com/en/themes/customization/store/dynamic-checkout-buttons
+    {% endcomment %}
+    {{ form | payment_button }}
+    {% endform %}
+</div>

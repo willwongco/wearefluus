@@ -1,0 +1,11 @@
+<div x-data="{ quantity: {{ quantity }} }" class="w-20 h-6 border border-primary-blue rounded-md flex">
+<div onclick="window['quantity-selector'](-1, {{ lineId }}, {{ quantity }})" data-item-change="minus" class="flex-1 flex items-center justify-center line-item-change">
+    <p class="text-xs font-semibold">-</p>
+</div>
+<div class="flex-1">
+    <input class="w-full bg-transparent text-center" x-model="quantity">
+</div>
+<div onclick="window['quantity-selector'](1, {{ lineId }}, {{ quantity }})" data-item-change="plus" class="flex-1 flex items-center justify-center line-item-change">
+    <p class="text-xs font-semibold">+</p>
+</div>
+</div>

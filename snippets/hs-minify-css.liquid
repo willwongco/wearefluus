@@ -1,0 +1,5 @@
+{%- if request.design_mode -%}
+  {{ filename | asset_url | stylesheet_tag }}
+{%- else -%}
+  {{ filename | asset_url | append: '&enable_css_minification=1' | stylesheet_tag }}
+{%- endif -%}

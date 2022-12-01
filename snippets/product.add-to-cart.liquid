@@ -1,0 +1,66 @@
+{%- if product.available -%}
+<form action="{{ routes.cart_add_url }}" id="add-to-cart-{{ product.handle }}-{{ collection.handle }}-{{ section.id }}" method="post" data-add-to-cart>
+        <!-- sub&save/one-time benefits START -->
+
+        <!-- only show product benefits of sub and save if product has a subscription -->
+        {% if product.selected_or_first_available_selling_plan_allocation %}
+        <div class="flex prodBenefits pt-2">
+            <ul class="prod_main__benefits flex flex-wrap justify-between text-left w-full ">
+                {% for block in benefits %}
+                {% assign bs = block.settings %}
+            <li class="flex items-center gap-2 text-sm font-futuraMedium"><span class="tick">{% render 'icon-pink-tick' %}</span>{% if bs.benefit_cross %}<span class="hidden cross">{% render 'icon-pink-cross' %}</span>{% endif %}{{ bs.text }}</li>
+                {% endfor %}
+        </ul>
+            </div>
+            {% endif %}
+
+            {% assign prodDiscount = product.variants[0].price | divided_by: 100.0 | times: product.selling_plan_groups[0].selling_plans[0].price_adjustments[0].value  %}
+            {% assign subSavePrice = product.variants[0].price | minus: prodDiscount  | money %}
+
+
+        <!-- sub&save/one-time benefits END -->
+        <div class="qtyAndBtnStickyBarContainer flex items-center"></div>
+
+        {%- unless product.has_only_default_variant -%}
+            <div class="mb-5">
+                {%- for option in product.options_with_values -%}
+                    {%- case forloop.index -%}
+                        {%- when 1 -%}
+                            {%- assign selected_value = product.selected_or_first_available_variant.option1 -%}
+                        {%- when 2 -%}
+                            {%- assign selected_value = product.selected_or_first_available_variant.option2 -%}
+                        {%- when 3 -%}
+                            {%- assign selected_value = product.selected_or_first_available_variant.option3 -%}
+                    {%- endcase -%}
+
+                    <div class="{% unless forloop.first %}mt-3{% endunless %}">                
+                        <select data-add-to-cart-option>
+                            {%- for value in option.values -%}
+                                <option {% if value == selected_value %}selected{% endif %} value="{{ value }}">{{- value -}}</option>
+                            {%- endfor -%}
+                        </select>
+                    </div>
+                {%- endfor -%}
+            </div>
+        {%- endunless -%}
+        <div class="mt-5 quantityAndSellingPlans w-full flex justify-start items-center gap-4">
+            {%- render 'quantity' -%}
+        </div>
+        <div class="mt-5 addToCartBtn w-full sm:w-56">
+<!-- 
+            {% if product.available %}
+            {%- render 'btn', copy: 'product.add-to-cart.purchase', type: 'submit', data: 'data-add-to-cart-btn', icon:'buy', icon_class_list:'absolute right-10', icon_svg_class_list: 'w-3 h-3', class_list:' bg-customCheckoutGold w-full py-3 flex rounded-md justify-center flex-row-reverse items-center pr-5 gap-10 text-white font-trajan text-lg js-go-cart-add-to-cart' -%}
+            {% else %}
+            {%- render 'btn', disabled:true, copy: 'product.add-to-cart.sold-out', type: 'submit', icon:'buy', icon_class_list:'absolute right-10', icon_svg_class_list: 'w-3 h-3', class_list:'btn-disabled w-full py-3 flex rounded-md justify-center flex-row-reverse items-center pr-5 gap-10 text-white font-trajan text-lg' -%}
+            {% endif %} -->
+            {%- render 'btn', copy: 'product.add-to-cart.purchase', icon:'addToCartArrow', type: 'submit', style:'addToBag', extra_classes:'js-go-cart-add-to-cart original_submit__btn w-full sm:w-56', data: 'data-add-to-cart-btn' -%}
+            <!-- sticky product bar add to cart button - hidden by default -->
+            <button type="submit" class="hidden text-sm w-52 stickyAddToCartBtn btn btn__subSave js-go-cart-add-to-cart btn--secondary bg-orange text-white add_btn visible font-futuraMedium border-2 py-2 sm:py-.7rem rounded-lg"><span class="singlePrice hidden pr-4">{{ product.price | money }}</span><span class="saverPrice pr-4">{{ subSavePrice }}</span>{{ 'product.add-to-cart.purchase' | t | upcase }}</button>
+        </div>
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-add-to-cart-variant-id />
+        <input type="hidden" name="variants" value="{{ product.variants | json | escape }}" data-add-to-cart-variants />
+    </form>
+    <div class="original_insertBefore"></div>
+{%- else -%}
+    {%- render 'btn', style: 'disabled', copy: 'product.add-to-cart.sold-out', type: 'submit' -%}
+{%- endif -%}

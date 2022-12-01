@@ -1,0 +1,12 @@
+{% if collection.image != blank %}
+<div>
+    <div class="{% unless collection.metafields.my_fields.mobile_header == blank %}hidden sm:block{% endunless %}">
+        {% include 'lazy-image' image: collection.image, additional_classes: 'w-full' %}
+    </div>
+    {% if collection.metafields.my_fields.mobile_header != blank %}
+    <div class="block sm:hidden">
+        {% include 'lazy-image' image: collection.metafields.my_fields.mobile_header, additional_classes: 'w-full' %}
+    </div>
+    {% endif %}
+</div>
+{% endif %}

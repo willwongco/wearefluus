@@ -1,0 +1,375 @@
+{%- liquid
+    assign terms = search.terms | escape
+    assign ss = section.settings
+  -%}
+  
+  <!-- setup for blocks -->
+  {%- assign benefit_blocks = section.blocks | where: 'type', 'product_benefits' -%}
+  
+   
+  <div class="template-search relative pb-20 mb-32 {% unless search.performed and search.results_count > 0 %} template-search--empty{% endunless %} ">
+  
+      <div class="block sm:hidden">
+          <p class=" pl-7 font-cheltenham-std py-5 border-b-2 border-black"><span>{{ search.results.size }}</span> search results for <span>'{{ search.terms }}'</span> </p>
+      </div>
+  
+      {% include 'desktop-search-page' %}
+  
+    {%- if search.performed -%}
+  
+    <!-- check number of items in result -->
+    {% assign prod_count = 0 %}
+    {% assign page_count = 0 %}
+    {% assign blogs_count = 0 %}
+    {%- for item in search.results -%}
+    {%- case item.object_type -%}
+      {%- when 'product' -%}
+      {% assign prod_count = prod_count | plus:1 %}
+      {%- when 'article' -%}
+      {% assign blogs_count = blogs_count | plus:1 %}
+      {%- when 'page' -%}
+      {% assign page_count = page_count | plus:1 %}
+      {%- else -%}
+    {%- endcase -%}
+    {%- endfor -%}
+  
+  
+          <div id="search__poductContainer" style="background-color:{{ ss.products_section_bg }};" class="{% if prod_count > 0 %} mt-20 mb-14 {% else %} mt-8 {% endif %}">
+  
+              <div x-data="{ quickShop: null }">
+                  <h2 class=" font-cheltenham-std text-2.5xl pl-14 max-w-1650 w-full m-auto {% if prod_count > 0 %} mb-12 lg:mb-16 {% endif %}">{{ prod_count }} Product Results</h2>
+  
+                  {%- if prod_count > 0 -%}
+  
+                  <div class="splide featured_slideshow__products max-w-1650 ml-12 | sm:w-full sm:m-auto">
+                      <div class="splide__track m-auto pr-8! | sm:pr-0! sm:w-10/12 lg:w-11/12">
+                            <ul class="splide__list">
+                              {%- for item in search.results -%}
+                              {%- case item.object_type -%}
+                              {%- when 'product' -%}
+                              <li class="splide__slide">
+                                    {% include 'slideshow-product', product:item, benefits:benefit_blocks %}
+                              </li>
+                              {%- else -%}
+                              {%- endcase -%}
+                              {%- endfor -%}
+                            </ul>
+                      </div>
+                    </div>
+                {% endif %}
+              </div>
+              </div>
+  
+              <div id="search__blogsContainer" {% if blogs_count > 0 %} style="background-color:{{ ss.articles_section_bg }};" {% endif %} class=" {% if blogs_count > 0 %} py-16 mb-8 {% else %} pb-4 {% endif %} mt-8">
+                  <h2 class=" font-cheltenham-std text-2.5xl pl-14 max-w-1650 w-full m-auto {% if blogs_count > 0 %} mb-12 lg:mb-16 {% endif %}">{{ blogs_count }} Article Results</h2>
+  
+                  {%- if blogs_count > 0 -%}
+              <!-- slideshow -->
+              <div class="splide blog_slide_splide max-w-1650 ml-12 | sm:w-full sm:m-auto">
+                  <div class="splide__track m-auto pr-8! | sm:pr-0! sm:w-10/12 lg:w-11/12">
+                        <ul class="splide__list">
+  
+                          {%- for item in search.results -%}
+                          {%- case item.object_type -%}
+                          {% when 'article' %}
+                          <li class="splide__slide">
+                            {% assign article = item %}
+                            <div class="bg-white text-primary-blue rounded-md">
+                                <a href="{{ article.url }}">
+                                    <div class="p-2 md:p-3 pb-3 md:pb-5">
+                                        <div class="mb-4 md:mb-5">
+                                            {% if article.image %}
+                                                {% comment %}
+                                                    Set aspect ratio so slides are not the wrong height on slider init
+                                                {% endcomment %}
+                                                {% assign aspect_ratio = 'aspect-ratio: ' | append: article.image.aspect_ratio | append: '/ 1;' %}
+                                                {% include 'lazy-image' image: article.image, additional_classes: 'w-full', inline_style: aspect_ratio %}
+                                            {% endif %}
+                                            </div>
+                                            <div>
+                                                <p class="text-xs mb-3.5 md:mb-4">{{ article.updated_at | date: format: 'abbreviated_date' }}</p>
+                                                <p class="font-cheltenham-std text-sm mb-2 md:text-sm md:mb-3">{{ article.title }}</p>
+                                                <p class="text-xs.5 mb-5 md:mb-8">
+                                                    {{ article.excerpt_or_content | truncatewords: 15, '...' }}
+                                                </p>
+                                                <p class="flex items-center text-xs font-semibold"><span class="mr-2">{{ section.settings.btn }}</span> {% include 'icon-circle-plus' %}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                          {%- endcase -%}
+                          {%- endfor -%}
+                          </ul>
+                        </ul>
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+
+              <div id="search__pagesContainer" {% if page_count > 0 %} style="background-color:{{ ss.page_section_bg }};" {% endif %} class=" {% if page_count > 0 %} py-16 {% else %} pb-4 {% endif %} mt-8">
+                <h2 class=" font-cheltenham-std text-2.5xl pl-14 max-w-1650 w-full m-auto {% if page_count > 0 %} mb-12 lg:mb-16 {% endif %}">{{ page_count }} Page Results</h2>
+
+                {%- if page_count > 0 -%}
+            <!-- slideshow -->
+            <div class="splide page_slide_splide max-w-1650 ml-12 | sm:w-full sm:m-auto">
+                <div class="splide__track m-auto pr-8! | sm:pr-0! sm:w-10/12 lg:w-11/12">
+                      <ul class="splide__list">
+
+                        {%- for item in search.results -%}
+                        {%- case item.object_type -%}
+                        {% when 'page' %}
+                        {% assign page_featured__image = item.metafields.my_fields.featured_image %}
+                        <li class="splide__slide">
+                          <div class="bg-white text-primary-blue rounded-md {{ page_featured__image }}">
+                              <a href="{{ item.url }}">
+                                  <div class="p-2 md:p-3 pb-3 md:pb-5">
+                                      <div class="mb-4 md:mb-5">
+                                              {% comment %}
+                                                  Set aspect ratio so slides are not the wrong height on slider init
+                                              {% endcomment %}
+                                              {% assign aspect_ratio = 'aspect-ratio: ' | append: page_featured__image.aspect_ratio | append: '/ 1;' %}
+                                              {% include 'lazy-image' image: page_featured__image, additional_classes: 'w-full', inline_style: aspect_ratio %}
+                                          </div>
+                                          <div>
+                                              <p class="text-xs mb-3.5 md:mb-4 font-sofia-pro">{{ item.published_at | date: format: 'abbreviated_date' }}</p>
+                                              <p class="font-cheltenham-std text-base mb-2 md:text-lg md:mb-3">{{ item.title }}</p>
+                                              {% if item.content != blank %}
+                                              <p class="text-xs.5 mb-5 md:mb-8">
+                                                  {{ item.content | truncatewords: 15, '...' }}
+                                              </p>
+                                              {% endif %}
+                                              <p class="flex items-center text-xs font-sofia-pro-regular mt-4"><span class="mr-2">SEE PAGE</span> {% include 'icon-circle-plus' %}</p>
+                                      </div>
+                                  </div>
+                              </a>
+                          </div>
+                      </li>
+                        {%- endcase -%}
+                        {%- endfor -%}
+                        </ul>
+                      </ul>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+  
+
+              {% endif %}
+            </div>
+  
+  <script>
+  
+      document.addEventListener( 'DOMContentLoaded', function() {
+  
+          {% if prod_count > 0 %}
+  const featuredProdSlider = new Splide( '.featured_slideshow__products', {
+          type: 'slide',
+          perPage:3,
+          clones:0,
+          perMove:1,
+          gap:'5rem',
+          pagination:false,
+          arrowPath: 'M0.244172 14.3372L12.7442 0.27468C13.0697 -0.0915601 13.5971 -0.0915601 13.9225 0.27468C14.2481 0.640921 14.2481 1.23418 13.9225 1.60033L2.84503 14.0625H39.1666C39.6273 14.0625 40 14.4819 40 15.0001C40 15.5183 39.6273 15.9376 39.1666 15.9376H2.84503L13.9225 28.3997C14.2481 28.7659 14.2481 29.3592 13.9225 29.7253C13.7598 29.9084 13.5465 30 13.3333 30C13.1201 30 12.9069 29.9084 12.7441 29.7253L0.244092 15.6628C-0.0813768 15.2967 -0.0813749 14.7034 0.244172 14.3372Z',
+          breakpoints: {
+          680: {
+              type   : 'slide',
+              perPage:1,
+              pagination:true,
+              clones:0,
+          },
+          1300: {
+              type   : 'slide',
+              perPage:2,
+              pagination:false,
+              clones:0,
+          },
+    },
+  });
+  featuredProdSlider.mount();
+  
+  {% endif %}
+  
+  {% if page_count > 0 %}
+  
+  var pageSplide = new Splide( '.page_slide_splide' , {
+          type   : 'slide',
+          perPage: 4,
+          rewind:true,
+          perMove:1,
+          clones:0,
+          center:true,
+          gap:'2rem',
+          pagination:false,
+          breakpoints: {
+                680: {
+                  perPage: 1,
+                    clones:0,
+                    pagination:true,
+                },
+                    1030: {
+                        perPage: 2,
+                        clones:0,
+                        pagination:false,
+                    },
+                    1390: {
+                        perPage: 3,
+                        clones:0,
+                        pagination:false,
+                    },
+                    2000: {
+                        perPage: 4,
+                        gap:'1.5rem',
+                        clones:0,
+                        pagination:false,
+                    },
+              },
+          arrowPath: 'M0.244172 14.3372L12.7442 0.27468C13.0697 -0.0915601 13.5971 -0.0915601 13.9225 0.27468C14.2481 0.640921 14.2481 1.23418 13.9225 1.60033L2.84503 14.0625H39.1666C39.6273 14.0625 40 14.4819 40 15.0001C40 15.5183 39.6273 15.9376 39.1666 15.9376H2.84503L13.9225 28.3997C14.2481 28.7659 14.2481 29.3592 13.9225 29.7253C13.7598 29.9084 13.5465 30 13.3333 30C13.1201 30 12.9069 29.9084 12.7441 29.7253L0.244092 15.6628C-0.0813768 15.2967 -0.0813749 14.7034 0.244172 14.3372Z',
+            })
+            pageSplide.mount();
+  
+            {% endif %}
+  
+            {% if blogs_count > 0 %}
+  
+  var blogSplide = new Splide( '.blog_slide_splide' , {
+          type   : 'slide',
+          perPage: 4,
+          rewind:true,
+          perMove:1,
+          clones:0,
+          center:true,
+          gap:'2rem',
+          pagination:false,
+          breakpoints: {
+                680: {
+                  perPage: 1,
+                    clones:0,
+                    pagination:true,
+                },
+                    1030: {
+                        perPage: 2,
+                        clones:0,
+                        pagination:false,
+                    },
+                    1390: {
+                        perPage: 3,
+                        clones:0,
+                        pagination:false,
+                    },
+                    2000: {
+                        perPage: 4,
+                        gap:'1.5rem',
+                        clones:0,
+                        pagination:false,
+                    },
+              },
+          arrowPath: 'M0.244172 14.3372L12.7442 0.27468C13.0697 -0.0915601 13.5971 -0.0915601 13.9225 0.27468C14.2481 0.640921 14.2481 1.23418 13.9225 1.60033L2.84503 14.0625H39.1666C39.6273 14.0625 40 14.4819 40 15.0001C40 15.5183 39.6273 15.9376 39.1666 15.9376H2.84503L13.9225 28.3997C14.2481 28.7659 14.2481 29.3592 13.9225 29.7253C13.7598 29.9084 13.5465 30 13.3333 30C13.1201 30 12.9069 29.9084 12.7441 29.7253L0.244092 15.6628C-0.0813768 15.2967 -0.0813749 14.7034 0.244172 14.3372Z',
+            })
+            blogSplide.mount();
+  
+            {% endif %}
+            
+    // search results page search input finctionality
+    
+    const searchPageSearchInput = document.querySelector('.search_input__search_page')
+    const searchPageSearchCross = document.querySelector('.search_cross__search_page')
+    
+    searchPageSearchCross.addEventListener('click', (e) => {
+      searchPageSearchInput.value = '';
+    })
+  
+  })
+  </script>
+  
+  {% schema %}
+{
+    "name": "Search Results",
+    "settings": [
+    {
+        "type": "header",
+        "content": "Product Carousel Settings"
+    },
+    {
+        "type":"color",
+        "id":"products_section_bg",
+        "label":"Product Carousel Background Colour"
+    },
+        {
+            "type": "text",
+            "id": "shop",
+            "label": "Shop Button",
+            "default": "SHOP NOW"
+          },
+          {
+            "type": "header",
+            "content": "Quick Shop"
+          },
+          {
+            "type": "text",
+            "id": "qs",
+            "label": "Quick Shop Button",
+            "default": "QUICK ADD"
+          },
+          {
+            "type": "text",
+            "id": "single",
+            "label": "Single Purchase Text",
+            "default": "Just Once"
+          },
+          {
+            "type": "text",
+            "id": "subscribe",
+            "label": "Subscribe Text",
+            "default": "Subscribe"
+          },
+          {
+            "type": "text",
+            "id": "tick_1",
+            "label": "Tick Icon Text 1"
+          },
+          {
+            "type": "text",
+            "id": "tick_2",
+            "label": "Tick Icon Text 2"
+          },
+          {
+            "type": "text",
+            "id": "tick_3",
+            "label": "Tick Icon Text 3" 
+          },
+          {
+            "type": "text",
+            "id": "cart",
+            "label": "Add To Cart Button",
+            "default": "Add to Cart"
+          },
+          {
+            "type": "header",
+            "content": "Article Carousel Settings"
+        },
+        {
+            "type":"color",
+            "id":"articles_section_bg",
+            "label":"Article Carousel Background Colour"
+        },
+        {
+            "type": "header",
+            "content": "Page Carousel Settings"
+        },
+        {
+            "type":"color",
+            "id":"page_section_bg",
+            "label":"Page Carousel Background Colour"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Search Results",
+            "settings": {
+            }
+        }
+    ]
+}
+
+{% endschema %}

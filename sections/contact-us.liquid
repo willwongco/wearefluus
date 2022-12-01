@@ -1,0 +1,156 @@
+{% assign ss = section.settings %}
+<div class="contactUsSec px-4 pb-44 flex items-center lg:px-0">
+    <div class=" max-w-550 m-auto | md:mr-auto lg:ml-8 xl:ml-36 z-10">
+    <h1 class=" font-cheltenham-std text-4.5xl text-center w-full pt-10 sm:pt-20 pb-5">{{ ss.title }}</h1>
+    <p class=" font-sofia-pro text-sm text-center w-full pb-10">{{ ss.subtitle }}</p>
+    <div>
+         <!-- form -->
+         {%- form 'contact', id: 'ContactForm' -%}
+         {%- if form.posted_successfully? -%}
+           <div class="form-status font-sofia-pro-regular pb-6 text-lg form-status-list form__message" tabindex="-1" autofocus> {{ 'contact.form.success' | t }}</div>
+         {%- elsif form.errors -%}
+           <div class="form__message">
+             <h2 class="form-status caption-large text-base" role="alert" tabindex="-1" autofocus>{{ 'contact.form.error' | t }}</h2>
+           </div>
+           <ul class="form-status-list caption-large" role="list">
+             <li>
+               <a href="#ContactForm-email" class="link">
+                 {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+               </a>
+             </li>
+           </ul>
+         {%- endif -%}
+         <div class="contact__fields">
+           <div class="field pb-2">
+             <input class="field__input w-full border-0 font-sofia-pro outline-none rounded-xl pl-4 py-2 text-black" autocomplete="name" type="text" id="ContactForm-name" name="contact[{{ 'contact.form.name' | t }}]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="{{ 'contact.form.name' | t }}">
+           </div>
+           <div class="field pb-2">
+             <input 
+               autocomplete="email"
+               type="email"
+               id="ContactForm-email"
+               class="field__input w-full border-0 outline-none font-sofia-pro rounded-xl pl-4 py-2 text-black"
+               name="contact[email]"
+               spellcheck="false"
+               autocapitalize="off"
+               value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+               aria-required="true"
+               {% if form.errors contains 'email' %}
+                 aria-invalid="true"
+                 aria-describedby="ContactForm-email-error"
+               {% endif %}
+               placeholder="{{ 'contact.form.email' | t }}"
+             >
+           </div>
+         
+         <div class="field pb-2">
+           <input type="tel" id="ContactForm-phone" class="field__input outline-none w-full border-0 font-sofia-pro rounded-xl pl-4 py-2 text-black" autocomplete="tel" name="contact[{{ 'contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="{{ 'contact.form.phone' | t }}">
+         </div>
+         <div class="field pb-2">
+             <div class="request-type contact_select">
+                 <select id="request-type" placeholder="Subject" class=" w-full cursor-pointer border-0 outline-none bg-white font-sofia-pro rounded-xl pl-4 py-2 appearance-none bg-selectDropDownAccountMenu bg-right-95% bg-no-repeat" name="contact[request_type]">
+                   <option selected value="{{  'contact.form.subject' | t  }}">{{  'contact.form.subject' | t  }}</option>  
+                   {% assign enq_types = ss.enq_types | split:" , " %}
+                   {% for val in enq_types %}
+                     <option value="{{ val }}">{{ val }}</option>
+                     {% endfor %}
+                 </select>
+               </div>
+           </div>
+         <div class="field pb-8">
+           <textarea
+             rows="7"
+             id="ContactForm-body"
+             class="text-area field__input w-full border-0 outline-none font-sofia-pro rounded-xl pl-4 py-2 text-black"
+             name="contact[{{ 'contact.form.message' | t }}]"
+             placeholder="{{ 'contact.form.message' | t }}"
+           >
+             {{- form.body -}}
+           </textarea>
+         </div>
+         <div class="contact__button">
+               <!-- CTA button -->
+               <div class=" mr-auto w-full">
+                 <button type="submit" class="flex items-center bg-primary-blue text-white text-sm rounded-lg mr-auto tracking-widest py-4 pb-3 px-16"><span class="flex justify-center items-center">{{ section.settings.cta_text }}</span></button>
+                 </div>
+         </div>
+       </div>
+       {%- endform -%}
+    </div>
+</div>
+<div class=" hidden lg:block">
+    <img alt="{{ ss.img_desktop.alt }}" class="absolute object-cover top-0 right-0 w-auto min-h-900 lazyload hs-lazyload hs-id-604e8ae0" data-src="{{ ss.img_desktop.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+</div>
+</div>
+
+<style>
+    .contactUsSec {
+        background-color: {{ ss.bg_col }};
+    }
+    .contactUsSec h1,
+    .contactUsSec p
+     {
+        color: {{ ss.text_col }};
+    }
+</style>
+
+
+{% schema %}
+{
+    "name":"Contact Us",
+    "settings": 
+    [
+    {
+        "type": "header",
+        "content": "Backgrounds"
+    },
+        {
+            "type":"color",
+            "id":"bg_col",
+            "label":"Background Colour",
+            "default":"#E4D3C1"
+        },
+        {
+          "type": "color",
+          "id": "text_col",
+          "label": "Text Colour"
+      },
+        {
+        "type":"image_picker",
+        "id":"img_desktop",
+        "info":"Image Dimension to keep to: 1440W X 900H",
+        "label":"Right Image - Desktop"
+    },
+    {
+        "type":"textarea",
+        "id":"title",
+        "label":"Title",
+        "default":"Contact Us"
+    },
+    {
+        "type":"textarea",
+        "id":"subtitle",
+        "label":"Body",
+        "default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim"
+    },
+    {
+        "type":"textarea",
+        "id":"enq_types",
+        "label":"Subject Types (Follow current format to add more)",
+        "default":"Trade , General , Delivery Status , Product Enquiry , Returns"
+    },
+    {
+        "type":"text",
+        "id":"cta_text",
+        "label":"CTA button text",
+        "default":"SEND"
+    }
+    ],
+    "presets":
+    [
+    {
+        "name":"Contact"
+    }
+    ]
+}
+{% endschema %}

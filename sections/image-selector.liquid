@@ -1,0 +1,201 @@
+{% assign ss = section.settings %}
+
+{% assign id = section.id | replace: '--', '_' %}
+<div style="background-color: {{ ss.bg_col }};" x-data="{ tab: 1 }">
+    <div class="md:grid grid-cols-3 gap-1 md:px-10 px-5 lg:px-4 w-full lg:w-10/12 max-w-full mx-auto pt-3 md:pt-20 md:pb-10 pb-14">
+        <div style="color: {{ ss.text_col }};" class="col-span-3 lg:col-span-2">
+            <div class="flex items-end">
+                {% if section.settings.icon != blank %}
+                    <div class="w-24 aspect-square mr-2 xl:mr-9 mb-2 hidden lg:block">{% include 'lazy-image' image: section.settings.icon %}</div>
+                {% endif %}
+               <div>
+                    {% capture replace_text %}
+                    {% if section.settings.underline_title != blank %}
+                    <!-- <span x-data="{ tooLarge: $refs.{{id}}.getClientRects().length > 1 }" x-on:resize.window="tooLarge = $refs.{{id}}.getClientRects().length > 1" x-ref="{{id}}" class="relative"> -->
+                    <span class="relative">
+                        {{ section.settings.underline_title }}
+                        <!-- {% assign attrs = ":class='tooLarge ? &#39;hidden&#39; : &#39;block&#39;'" %} -->
+                        {% assign attrs = ":class='&#39;block&#39;'" %}
+                        {% include 'icon-underline-large' classes: 'absolute bottom-0 right-0' %}
+                    </span>
+                    {% endif %}
+                    {% endcapture %}
+                    <div class="flex items-end lg:block">
+                        {% if section.settings.icon != blank %}
+                        <div class="w-18 aspect-square block lg:hidden mr-1">{% include 'lazy-image' image: section.settings.icon %}</div>
+                        {% endif %}
+                        <p class="relative text-3xl md:text-section-title-small max-w-section-title leading-none font-cheltenham-std  md:text-left break-words">{{ section.settings.title | replace: 'XX', replace_text }}</p>
+                    </div>
+                    <div class="relative text-3xl md:text-section-title-small max-w-section-title leading-none font-cheltenham-std md:text-left break-words mt-1 lg:mt-0">{{ section.settings.title_2 | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="text-purple-planera">' }}</div>
+                    <p class="text-xs md:text-base mt-2">{{ section.settings.subtitle }}</p>
+               </div>
+            </div>
+
+            <div class="mt-9 lg:mt-9 flex lg:justify-start justify-between sm:justify-center">
+                {% for block in section.blocks %}
+                <div @click="() => {   
+                    tab = {{ forloop.index }};
+                    window['timeline'].restart();
+                    }" :class="tab == {{ forloop.index }} ? 'bg-blue-planera border-blue-planera shadow-lg' : ''" class="w-image-selector max-w-3/10 aspect-square rounded-lg border-primary-blue border border-solid flex flex-col items-center justify-center px-6 lg:mr-12 lg:ml-0 sm:mx-2 mx-0 py-4 transition-all ease-out duration-300 cursor-pointer">
+                    {% if block.settings.image_icon != blank %}<div class="w-20 max-w-full mb-3">{% include 'lazy-image' image: block.settings.image_icon %}</div>{% endif %}
+                    {% if block.settings.image_text != blank %}<p class="font-cheltenham-std text-xs md:text-lg text-center lg:px-3 leading-none md:leading-none">{{ block.settings.image_text }}</p>{% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div style="min-height: 25vw" class="relative mt-11 lg:mt-9">
+            {% render 'graph-bg' %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Image Selector",
+    "settings": [
+    {
+        "type": "color",
+        "id": "bg_col",
+        "label": "Background Colour"
+    },
+    {
+        "type": "color",
+        "id": "text_col",
+        "label": "Text Colour"
+    },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title 1",
+            "info": "Add XX anywhere in the title. This will be replaced will the below text"
+        },
+        {
+            "type": "text",
+            "id": "underline_title",
+            "label": "Underlined Text",
+            "info": "Underline will only show if text has not flowed onto more than one line"
+        },
+        {
+            "type": "richtext",
+            "id": "title_2",
+            "label": "Title 2",
+            "info": "Bold text you wish to be purple"
+        },
+        {
+            "type": "textarea",
+            "id": "subtitle",
+            "label": "Subtitle"
+        },
+        {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon",
+            "info": "1x1 Recommended"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "image",
+            "name": "Graph Select",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image_icon",
+                    "label": "Image Icon",
+                    "info": "1:1 Recommended"
+                },
+                {
+                    "type": "text",
+                    "id": "image_text",
+                    "label": "Graph Text"
+                },
+                {
+                    "type": "header",
+                    "content": "Point One"
+                },
+                {
+                    "type": "text",
+                    "id": "name_1",
+                    "label": "Point Name",
+                    "default": "Planera"
+                },
+                {
+                    "type": "range",
+                    "id": "x1_1",
+                    "label": "Starting Position",
+                    "unit": "%",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "default": 89
+                },
+                {
+                    "type": "range",
+                    "id": "x2_1",
+                    "label": "Ending Position",
+                    "unit": "%",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "default": 89
+                },
+                {
+                    "type": "color",
+                    "id": "color_1",
+                    "label": "Point Colour",
+                    "default": "#122556"
+                },
+                {
+                    "type": "header",
+                    "content": "Point Two"
+                },
+                {
+                    "type": "text",
+                    "id": "name_2",
+                    "label": "Point Name",
+                    "default": "Plastic Pads"
+                },
+                {
+                    "type": "range",
+                    "id": "x1_2",
+                    "label": "Starting Position",
+                    "unit": "%",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "default": 89
+                },
+                {
+                    "type": "range",
+                    "id": "x2_2",
+                    "label": "Ending Position",
+                    "unit": "%",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "default": 76
+                },
+                {
+                    "type": "color",
+                    "id": "color_2",
+                    "label": "Point Colour",
+                    "default": "#E37D74"
+                }
+            ]
+        }
+    ],
+    "presets": [
+    {
+        "category": "Image",
+        "name": "Image Selector"
+    }
+],
+"templates": [
+    "index",
+    "product",
+    "page",
+    "article",
+    "collection"
+]
+}
+{% endschema %}

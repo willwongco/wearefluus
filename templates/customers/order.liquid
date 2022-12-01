@@ -1,0 +1,142 @@
+<!-- /templates/customers/order.liquid -->
+
+<!-- /templates/customers/order.liquid -->
+
+<div class=" max-w-screen-xl m-auto mt-8 mb-40">
+
+    <h1 class="text-center pt-14 pb-10 font-cheltenham-std text-3xl text-black">Order Details</h1>
+  
+  <div class="px-4">
+  <a href="/account" class="bck-to-my-account"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="23" viewBox="0 0 25 23" fill="none">
+    <path d="M23.5083 11.3898C23.5083 17.3176 18.4124 22.1802 12.0539 22.1802C5.69532 22.1802 0.599464 17.3176 0.599464 11.3898C0.599464 5.46202 5.69532 0.599464 12.0539 0.599464C18.4124 0.599464 23.5083 5.46202 23.5083 11.3898Z" stroke="#122556" stroke-width="1.19893"/>
+    <g clip-path="url(#clip0_2103_2243)">
+    <path d="M20.5729 11.1843C18.4702 12.3125 15.7246 12.2546 13.2901 12.3253C10.327 12.411 7.35846 12.4292 4.39247 12.4947C4.01667 12.5041 3.78313 11.9898 4.07547 11.7862L7.37866 9.49164L7.79724 10.1714C6.26066 10.4965 4.81385 11.1539 3.55837 12.0976L3.47501 11.4918C4.87174 12.2403 6.22734 13.0397 7.54489 13.9011C7.59189 13.9296 7.63262 13.9674 7.66461 14.0121C7.6966 14.0568 7.71919 14.1076 7.731 14.1613C7.74282 14.215 7.74362 14.2705 7.73335 14.3246C7.72309 14.3786 7.70197 14.43 7.67127 14.4756C7.64058 14.5212 7.60095 14.5601 7.55479 14.59C7.50862 14.6199 7.45687 14.64 7.40268 14.6493C7.34849 14.6586 7.29297 14.6568 7.23949 14.6441C7.18601 14.6313 7.13567 14.6078 7.09153 14.575C5.77676 13.7101 4.42887 12.8937 3.04786 12.1258C2.81898 11.9988 2.76325 11.6697 2.96569 11.5203C4.33641 10.5031 5.9037 9.78198 7.56801 9.40285C7.9684 9.3118 8.31908 9.84847 7.98623 10.0837L4.70859 12.3963L4.39195 11.6867C7.11844 11.6794 9.84552 11.6659 12.5699 11.627C15.1619 11.5909 17.9669 11.7041 20.3466 10.809C20.6149 10.7065 20.8298 11.0513 20.5776 11.1857L20.5729 11.1843Z" fill="#122556"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_2103_2243">
+    <rect width="7.50803" height="16.8955" fill="white" transform="matrix(-0.288416 0.957505 0.957505 0.288416 4.5625 5.99463)"/>
+    </clipPath>
+    </defs>
+    </svg> Back to My Account</a>
+  <div class="flex flex-col pb-8 lg:flex-row w-full border-2 pt-4 rounded-xl justify-center">
+  
+  
+    <div class=" w-full flex flex-col border-b-2 pb-3 mb-8 lg:mb-0 lg:pb-0 lg:border-b-0 items-baseline lg:w-1/5 text-black">
+    <h2 class=" font-sofia-pro-regular w-full lg:mb-5 lg:border-b pb-3 pl-8 text-sm md:text-base">Payment Status</h2>
+    <p class="pl-8 font-sofia-pro text-sm md:text-base">{{ order.financial_status }}</p>
+  </div>
+  
+  
+  <div class=" w-full flex flex-col items-baseline pb-6 lg:pb-0 lg:w-1/5 text-black">
+  <h2 class=" font-sofia-pro-regular w-full lg:mb-5 lg:border-b pb-3 pl-8 text-sm md:text-base">Billing Address</h2>
+  <div class="pl-8 font-sofia-pro text-sm md:text-base">
+  <p>{{ order.billing_address.name }}</p>
+  <p>{{ order.billing_address.company }}</p>
+  <p>{{ order.billing_address.street }}</p>
+  <p>{{ order.billing_address.city }}, {{ order.billing_address.province }}</p>
+  <p>{{ order.billing_address.country }} {{ order.billing_address.zip }}</p>
+  <p>{{ order.billing_address.phone }}</p>
+
+  </div>
+  </div>
+  
+  
+  <div class=" w-full flex flex-col items-baseline pb-6 lg:pb-0 lg:w-1/4 text-black">
+  <h2 class=" font-sofia-pro-regular w-full lg:mb-5 lg:border-b pb-3 pl-8 text-sm md:text-base">Shipping Address</h2>
+  <div class="pl-8 font-sofia-pro text-sm md:text-base">
+  <p>{{ order.shipping_address.name }}</p>
+  <p>{{ order.shipping_address.company }}</p>
+  <p>{{ order.shipping_address.street }}</p>
+  <p>{{ order.shipping_address.city }}, {{ order.shipping_address.province }}</p>
+  <p>{{ order.shipping_address.country }} {{ order.shipping_address.zip }}</p>
+  <p>{{ order.shipping_address.phone }}</p>
+  </div>
+  </div>
+  
+  <div class=" w-full flex flex-col items-baseline pb-6 lg:pb-0 lg:w-1/4 text-black">
+    <h2 class=" font-sofia-pro-regular w-full lg:mb-5 lg:border-b pb-3 pl-8 text-sm md:text-base">Fullfilment status</h2>
+    <p class=" pl-8 font-sofia-pro text-sm md:text-base font-bold">{{ order.fulfillment_status }}</p>
+    </div>
+  
+  <div class=" w-full flex flex-col items-baseline pb-10 lg:pb-0 lg:w-1/5 text-black">
+  <h2 class=" font-sofia-pro-regular w-full lg:mb-5 lg:border-b pb-3 pl-8 lg:pl-0 text-sm md:text-base">Order Items</h2>
+    {% for line_item in order.line_items %}
+    <div class="flex font-sofia-pro text-sm md:text-base pl-8 lg:pl-0 flex-col">
+      <p>{{ line_item.title | link_to: line_item.product.url }}</p>
+      <p class="pt-2 text-xs font-sofia-pro md:text-sm">{{ line_item.line_price | money }}</p>
+    </div>
+    {% endfor %}
+  
+  </div>
+
+  <div class=" w-full flex flex-col items-baseline pb-6 lg:pb-0 lg:w-1/4 text-black">
+    <h2 class=" font-sofia-pro-regular w-full lg:mb-5 lg:border-b pb-3 pl-8 text-sm md:text-base">Date</h2>
+    <div class="pl-8 font-sofia-pro text-sm md:text-base">
+  
+    <p>{{ order.created_at | date: "%a, %b %d, %y"  }}</p>
+<p>{{order.order_number}}</p>
+    </div>
+    </div>
+
+
+  <div class=" w-full flex flex-col items-baseline pb-6 lg:pb-0 lg:w-1/4 text-black">
+    <h2 class=" font-sofia-pro-regular w-full lg:mb-5 lg:border-b pb-3 pl-8 text-sm md:text-base">Order # </h2>
+    <div class="pl-8 font-sofia-pro text-sm md:text-base">
+  <p>{{order.order_number}}</p>
+    </div>
+    </div>
+  
+  </div>
+  </div>
+  </div>
+  
+  
+  <!-- 
+  
+  <table class="table-auto mt-12 w-full rounded-xl block overflow-x-auto whitespace-nowrap " cellpadding="16">
+    <thead>
+      <tr class="h-14">
+        <th class="text-left w-2/10 text-xs sm:text-sm tracking-wider p-0 pr-4 pl-4 font-futuraBold" >Payment Status</th>
+        <th class="text-left w-2/10 text-xs sm:text-sm tracking-wider font-futuraBold" >Billing Address</th>
+        <th class="text-left w-2/10 text-xs sm:text-sm tracking-wider font-futuraBold">Shipping Address</th>
+        <th class="text-left w-2/10 text-xs sm:text-sm tracking-wider font-futuraBold" >Fullfilment Status</th>
+        <th class="font-futuraBold w-2/10">Order Items</th>
+      </tr>
+    </thead>
+    <tbody>
+  
+        <tr class="">
+          <td class="text-xxs-11 sm:text-xs font-futuraMedium">{{ order.financial_status }}</td>
+        
+          <td class="text-xxs-11 sm:text-xs font-futuraMedium">
+            <p>{{ order.billing_address.name }}</p>
+  <p>{{ order.billing_address.company }}</p>
+  <p>{{ order.billing_address.street }}</p>
+  <p>{{ order.billing_address.city }}, {{ order.billing_address.province }}</p>
+  <p>{{ order.billing_address.country }} {{ order.billing_address.zip }}</p>
+  <p>{{ order.billing_address.phone }}</p>
+          </td>
+  
+          <td class="text-xxs-11 sm:text-xs font-futuraMedium">
+            <p>{{ order.shipping_address.name }}</p>
+  <p>{{ order.shipping_address.company }}</p>
+  <p>{{ order.shipping_address.street }}</p>
+  <p>{{ order.shipping_address.city }}, {{ order.shipping_address.province }}</p>
+  <p>{{ order.shipping_address.country }} {{ order.shipping_address.zip }}</p>
+  <p>{{ order.shipping_address.phone }}</p>
+          </td>
+  
+          <td class="text-xxs-11 sm:text-xs font-futuraMedium">{{ order.fulfillment_status }}</td>
+  
+          <td class="text-xxs-11 sm:text-xs font-futuraMedium">
+          {% for line_item in order.line_items %}
+          <div class="flex flex-col">
+            <p>{{ line_item.title | link_to: line_item.product.url }}</p>
+            <p>{{ line_item.line_price | money }}</p>
+          </div>
+          {% endfor %}
+        </td>
+        </tr>
+  
+    </tbody>
+  </table>  -->

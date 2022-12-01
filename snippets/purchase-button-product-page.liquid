@@ -1,0 +1,5 @@
+
+<div {% if alpine_click %}@click="{{alpine_click}}"{% endif %} class="prod_button px-7 pt-4 pb-3 rounded-lg w-full md:w-fit-content text-center cursor-pointer transition-all ease-out duration-300 text-sm" :class="available == 'true' ? 'bg-purple-planera text-white hover:bg-offwhite-planera hover:text-black-planera' : 'bg-white text-black purple-planera opacity-80 pointer-events-none'">
+<span class="mr-6" {% if alpine_text_price %}x-text="{{ alpine_text_price }}"{% endif %}></span>
+<span {% if alpine_text %}x-text="{{ alpine_text }}"{% endif %}></span>
+</div>

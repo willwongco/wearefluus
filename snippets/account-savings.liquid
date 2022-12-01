@@ -1,0 +1,63 @@
+<div style="background-color:{{ section.settings.text_bg_col }};color:{{ section.settings.text_col }};" class="border border-primary-blue rounded-xl w-full mb-5 md:mb-10 p-8" id="savings">
+  
+<h2 class="font-cheltenham-std text-center text-xl sm:text-2.5xl pt-5 pb-0 | sm:pb-14">By Switching To Planera, You Have Saved</h2>
+
+<!-- logic to calculate savings based on product metafields and order prod count -->
+<!-- every prod has 4 metafields - these will be the savings amount per product for each emission type -->
+<!-- calculate savings through how many of these the customer has bought -->
+<!-- example: 
+
+    prod A has been bought a total of 5 times
+
+    Prod A Metafields plus calcs:
+    meta1:25 = 25x5=125
+    meta2:50 = 50x5 = 250
+    meta3:5  = 5x5 = 25
+    meta4:20 = 20x5 = 100
+    
+    This will be iterated for each line item product in each order for that customer
+
+-->
+{% assign emission_1_savings = 0 %}
+{% assign emission_2_savings = 0 %}
+{% assign emission_3_savings = 0 %}
+{% assign emission_4_savings = 0 %}
+
+{% for order in customer.orders %}
+
+{% for line_item in order.line_items %}
+<!-- <p class="text-white">Product qty: {{ line_item.quantity }} X {{ line_item.product.metafields.my_fields.factory_emissions_saved }} = {{ line_item.product.metafields.my_fields.factory_emissions_saved | times:line_item.quantity }}</p> -->
+
+{% assign savings_factory_product = line_item.product.metafields.my_fields.factory_emissions_saved | times:line_item.quantity %}
+{% assign emission_1_savings = emission_1_savings | plus:savings_factory_product %}
+
+{% assign savings_micro_plastics_product = line_item.product.metafields.my_fields.micro_plastic_saved | times:line_item.quantity %}
+{% assign emission_2_savings = emission_2_savings | plus:savings_micro_plastics_product %}
+
+{% assign savings_hands_product = line_item.product.metafields.my_fields.hands_saved | times:line_item.quantity %}
+{% assign emission_3_savings = emission_3_savings | plus:savings_hands_product %}
+
+{% assign savings_period_waste_product = line_item.product.metafields.my_fields.period_waste | times:line_item.quantity %}
+{% assign emission_4_savings = emission_4_savings | plus:savings_period_waste_product %}
+{% endfor %}
+{% endfor %}
+
+{% assign emissions_arr = emission_1_savings | append:',' | append:emission_2_savings | append:',' | append:emission_3_savings | append:','  | append:emission_4_savings %}
+{% assign emissions_arr = emissions_arr | split:',' %}
+
+<div class="flex flex-col flex-wrap justify-center mb-12 sm:flex-row">
+
+    {% for i in (0..3) %}
+    
+    <span style="color:{{ section.settings.text_col }};" class="flex items-baseline text-xl md:text-3xl lg:text-5xl text-transparent mr-2 font-semibold relative w-full sm:w-stat mt-10 {% if forloop.index > 2 %}mt-14 sm:mt-16 md:mt-20{% else %} mt-14 sm:mt-0 {% endif %} sm:pl-account-savings-stats xl:pl-0">
+        <span class="hidden md:block">{% include 'lazy-image' image: section.blocks[i].settings.stats_icon_desktop %}</span>         
+        <span class="block md:hidden">{% include 'lazy-image' image: section.blocks[i].settings.stats_icon_mobile %}</span>         
+        <span class="  count-up text-xl md:text-3xl lg:text-5xl mr-2 font-semibold pl-4" data-limit="{{ emissions_arr[i] }}"></span>
+         <span class="text-xs md:text-sm lg:text-xl mr-2 font-semibold">{{ section.blocks[i].settings.suffix }}</span>
+         <span class="absolute top-full left-0 sm:left-account-savings-stats-tiny xl:left-account-savings-stats text-base font-sofia-pro">{{ section.blocks[i].settings.subtitle }}</span>
+     </span>
+ 
+    {% endfor %}
+
+</div>
+</div>

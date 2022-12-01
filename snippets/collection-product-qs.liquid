@@ -1,0 +1,162 @@
+<div
+    x-transition.300ms
+    x-show="quickShop == '{{ product.handle }}'"
+    style="display: none;"
+    class="md:absolute fixed md:left-0 md:top-0 top-1/4 left-1/2 transform md:transform-none -translate-x-1/2 w-96 max-w-full md:w-full md:min-h-full border border-solid border-black rounded-sm bg-white z-40 md:z-10 flex overflow-auto md:h-full {% if product.has_only_default_variant %}pt-10{% else %}pt-5{% endif %} pb-4 md:pb-5">
+    <div class="flex h-full flex-col px-4 w-full relative">
+        <div @click="quickShop = false" class="w-6 cursor-pointer {% if product.has_only_default_variant %}-top-5{% else %}top-0{% endif %} absolute right-5 md:right-5">{% include 'icon-cross' %}</div>
+        <p class="pt-2.5 md:pt-4 text-2xl md:text-2.5xl font-cheltenham-std text-center {% if product.has_only_default_variant %}mb-8{% endif %}">{{ product.title }}</p>
+        <div class="{% if product.has_only_default_variant %}hidden {% endif %} mt-7" x-ref="variants">
+          {% for product_option in product.options_with_values %}
+              {% assign option_num = forloop.index0 %}
+              <div class="mb-4 flex justify-center flex-wrap">
+                  <p class="text-lg font-cheltenham-std w-full">{{ product_option.name }}:</p>
+                  {% for value in product_option.values %}
+                      <label type="radio" id="option-{{ value | handleize }}">
+                          <input 
+                          @click="() => {
+                            {% comment %}
+                            Find all selected inputs and their variant data
+                            Find variant will all options
+                            Update price (check for price in selling plan sub)
+                            {% endcomment %}
+                            const options = $refs.variants.querySelectorAll('input:checked');
+                            let optionsArr = [];
+                            for (let i = 0; i < options.length; i++) {
+                                const index = options[i].getAttribute('data-option-index');
+                                optionsArr[parseInt(index)] = options[i].value
+                            };
+                            const foundVariant = product_{{ product.handle | replace: '-', '_' }}.find((x) => {
+                                for (let i = 0; i < optionsArr.length; i++) {
+                                    if(x.product.options[i] != optionsArr[i]) {
+                                        return false
+                                    }
+                                }
+                                return true
+                            });
+                            selectedVariant = foundVariant ? foundVariant : null;
+                            price = selectedVariant ? selectedVariant.price : '';
+                            available = selectedVariant.available;
+                            compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
+                            {% comment %}
+                            Update Prices
+                            {% endcomment %}
+                            if(planId) {
+                                const foundPlan = selectedVariant.selling_plan.find((x) => {
+                                    return x.plan.id == planId
+                                })
+                                price = selectedVariant ? selectedVariant.price : '';
+                                compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
+                                if(foundPlan) {
+                                    price = foundPlan.price ? foundPlan.price : '';
+                                    compareAtPrice = foundPlan.comparePrice ? foundPlan.comparePrice : '';
+                                } else {
+                                    price = selectedVariant ? selectedVariant.price : '';
+                                    compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
+                                }
+                            } else {
+                                price = selectedVariant ? selectedVariant.price : '';
+                                compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
+                            }
+                          }"
+                          data-option-index="{{ option_num }}"  
+                          class="hidden custom-input"
+                          type="radio" 
+                          {% if forloop.index0 == 0 %}checked{% endif %} 
+                          id="option-{{ value | handleize }}" 
+                          name="radio-product_{{ product_option.name | handleize }}" 
+                          value="{{ value }}">
+                          <div class="flex custom-input__container mr-5 cursor-pointer">
+                              {% assign svg_id = forloop.index0 | append: product.handle %}
+                              <div class="custom-input__not-checked w-5">{% include 'icon-circle' id: svg_id %}</div>
+                              <div class="custom-input__checked w-5">{% include 'icon-circle-tick' id: svg_id %}</div>
+                              <p class="text-xl leading-none">{{ value }}</p>
+                          </div>
+                      </label>
+                  {% endfor %}
+              </div>
+          {% endfor %}
+        </div>
+        {% assign has_selling_plans = false %}
+        {% for group in product.selling_plan_groups %}
+            {% for selling_plan in group.selling_plans %}
+                {% assign has_selling_plans = true %}
+                {% break %}
+            {% endfor %}
+        {% endfor %}
+        {% if has_selling_plans %}
+        <div class="flex justify-center items-center">
+            <p :class="!planId ? 'text-purple-planera' : 'text-gray-700'" class="text-base md:text-base.5 font-bold pr-6 transition-all duration-300 ease-out">{{ section.settings.single}}</p>
+            <div 
+                @click="
+                if(planId) {
+                    planId = null;
+                    price = selectedVariant ? selectedVariant.price : '';
+                    compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
+                } else {
+                    if(selectedVariant?.selling_plan) {
+                        if(selectedVariant.selling_plan[0]) {
+                            planId = selectedVariant.selling_plan[0].plan.id
+                            price = selectedVariant.selling_plan[0].price ? selectedVariant.selling_plan[0].price : '';
+                            compareAtPrice = selectedVariant.selling_plan[0].comparePrice ? selectedVariant.selling_plan[0].comparePrice : '';
+                        }
+                    }
+                    const sellingPlan = selectedVariant?.selling_plan
+                }
+                " 
+                class="border-2 border-black rounded-3xl border-sold w-19 md:w-20 h-9 md:h-11 relative cursor-pointer">
+                <div :class="{ 'subscribe-slider -translate-x-full': planId, '-left-0.5 translate-x-0': !planId }" class="left rounded-full border-2 border-black border-solid p-1 h-full aspect-square absolute -left-0.5 top-0 transition-all ease-out transform duration-300 cursor-pointer">
+                    <div class="rounded-full bg-purple-planera w-full h-full">
+                    </div>
+                </div>
+            </div>
+            <p :class="planId ? 'text-purple-planera' : 'text-gray-700'" class="text-base md:text-base.5 font-bold pl-6 transition-all duration-300 ease-out">{{ section.settings.subscribe}}</p>
+        </div>
+        <div class="md:mt-4 mt-3.5 relative">
+            <div :class="{ 'hidden': !planId}" class="absolute right-4 top-1/2 transform -translate-y-1/2">
+                {% include 'icon-chevron' %}
+            </div>
+            <select x-bind:disabled="!planId" x-model="planId" :class="{ 'hidden': !planId}" class="w-full rounded-lg border border-solid border-black py-2.5 px-6 text-xs.5 md:text-sm text-purple-planera font-semibold">
+                {% for group in product.selling_plan_groups %}
+                {% for selling_plan in group.selling_plans %}
+                    <option class="text-purple-planera text-xs.5" value="{{ selling_plan.id }}">{{ selling_plan.name }}</option>
+                {% endfor %}
+                {% endfor %}
+            </select>
+        </div>
+        {% endif %}
+        <div class="mt-4 md:mt-3 text-purple-planera">
+            <div class="flex items-center justify-center rounded-lg border border-primary-blue w-full h-10 md:h-11">
+                <div @click="quantity = quantity < 2 ? quantity : quantity - 1" class="leading-none text-lg flex items-center justify-center px-2 sm:px-4 h-full text-purple-planera cursor-pointer">-</div>
+                <div class="w-28">
+                    <input class="w-full bg-transparent text-center h-full" x-model="quantity">
+                </div>
+                <div @click="quantity++" class="leading-none text-lg flex items-center justify-center px-2 sm:px-4 h-full text-purple-planera cursor-pointer">+</div>
+            </div>
+        </div>
+        {% if has_selling_plans %}
+        <div class="mt-2 md:mt-3 px-5 font-semibold mx-auto">
+            {% for block in section.blocks %}
+                <div 
+                {% if block.settings.type == 'subscribe' %}
+                    :class="{ 'hidden': !planId, 'flex': planId }"
+                {% else %}
+                    :class="{ 'hidden': planId, 'flex': !planId }"
+                {% endif %}
+                class="items-center mt-3 hidden">
+                {% include 'icon-tick' %}
+                <p class="ml-1 text-base">{{ block.settings.text }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="pt-4 md:pt-5 mt-auto">
+            <div
+                {% if alpine_click %}@click="{{alpine_click}}"{% endif %}
+                :class="available == 'true' ? 'bg-purple-planera text-white hover:bg-offwhite-planera hover:text-black-planera':'bg-white text-purple-planera pointer-events-none opacity-60'"
+                class="py-4 rounded-lg w-full text-center cursor-pointer transition-all ease-out duration-300 leading-none">
+                <p class="text-center"  x-text="available == 'true' ? price + ' | {{ section.settings.cart }}' : 'Out of Stock'">{{ section.settings.qs }}</p>
+            </div>
+        </div>
+    </div>
+  </div>

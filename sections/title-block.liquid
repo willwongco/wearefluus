@@ -1,0 +1,62 @@
+{% capture replace_text %}
+{% if section.settings.underline_title != blank %}
+<span class="whitespace-nowrap relative">
+    {{ section.settings.underline_title }}
+    {% include 'icon-underline-small' classes: 'w-full absolute left-0 -bottom-2' %}
+</span>
+{% endif %}
+{% endcapture %}
+
+<div style="background-color: {{ section.settings.bg_col }};" class="pt-9 pb-11">
+    <p style="color: {{ section.settings.text_col }};" class="relative text-section-title-small md:text-section-title max-w-section-title md:leading-none leading-none px-4 mx-auto font-cheltenham-std text-center md:text-left break-words">{{ section.settings.title | replace: 'XX', replace_text }} {% if section.settings.include_fullStop == true %} {% include 'icon-full-stop' classes: 'inline absolute bottom-0 md:bottom-2 md:ml-2 scale-75 transform md:scale-100' %}{% endif %}</p>
+</div>
+
+
+{% schema %}
+{
+    "name": "Title",
+    "settings": [
+    {
+        "type": "color",
+        "id": "bg_col",
+        "label": "Background Colour"
+    },
+    {
+        "type": "color",
+        "id": "text_col",
+        "label": "Text Colour"
+    },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "info": "Add XX anywhere in the title. This will be replaced will the below text"
+        },
+        {
+            "type": "text",
+            "id": "underline_title",
+            "label": "Underlined Text",
+            "info": "Underlined text will not break its line, keep this text short"
+        },
+        {
+            "type": "checkbox",
+            "id": "include_fullStop",
+            "label": "Include Full Stop",
+            "default":false
+        }
+    ],
+    "presets": [
+        {
+            "category": "Text",
+            "name": "Title Block"
+        }
+    ],
+    "templates": [
+        "index",
+        "product",
+        "page",
+        "article",
+        "collection"
+    ]
+}
+{% endschema %}

@@ -1,0 +1,638 @@
+{
+  "sections": {
+    "product": {
+      "type": "product",
+      "blocks": {
+        "2f47f9f5-fe15-4975-8cff-6f9295291732": {
+          "type": "text",
+          "settings": {
+            "type": "subscribe",
+            "text": "5% Discount"
+          }
+        },
+        "89f83d78-9b1f-4863-943a-e03308dbce4f": {
+          "type": "text",
+          "settings": {
+            "type": "subscribe",
+            "text": "Skip, Cancel or Pause"
+          }
+        },
+        "a86314f6-d799-47ba-acf7-eca150bd9feb": {
+          "type": "text",
+          "settings": {
+            "type": "subscribe",
+            "text": "Free Shipping"
+          }
+        },
+        "959259ea-ecae-4e84-9929-20c8e142cf09": {
+          "type": "text",
+          "settings": {
+            "type": "one",
+            "text": "One Time Purchase"
+          }
+        },
+        "7b71f824-c66e-4935-967a-8ec14d970e0a": {
+          "type": "text",
+          "settings": {
+            "type": "one",
+            "text": "Free Delivery"
+          }
+        },
+        "cca9a45c-1c09-4cab-b657-29511a456785": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "type": "one",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "2f47f9f5-fe15-4975-8cff-6f9295291732",
+        "89f83d78-9b1f-4863-943a-e03308dbce4f",
+        "a86314f6-d799-47ba-acf7-eca150bd9feb",
+        "959259ea-ecae-4e84-9929-20c8e142cf09",
+        "7b71f824-c66e-4935-967a-8ec14d970e0a",
+        "cca9a45c-1c09-4cab-b657-29511a456785"
+      ],
+      "settings": {
+        "bg_col": "#f9f7f2",
+        "text_col": "#0e2559",
+        "reviews_bg_col": "#f9f7f2"
+      }
+    },
+    "16527733218b9a848d": {
+      "type": "text-image-split",
+      "settings": {
+        "bg_col": "#f9f7f2",
+        "text_col": "#0e2559",
+        "main_text": "<p>Made of just<br\/><strong>3 materials<\/strong><\/p>",
+        "body_text": "Designed to be both absorbent and flushable, whilst respecting you and the planet.",
+        "cta_text": "LEARN MORE",
+        "cta_url": "shopify:\/\/pages\/tech",
+        "video_url": "https:\/\/youtu.be\/z83Baj9gFng",
+        "video_poster": "shopify:\/\/shop_images\/Screenshot_2022-08-17_at_15.32.22.png"
+      }
+    },
+    "uses": {
+      "type": "what-we-use",
+      "blocks": {
+        "5262769b-d498-4d5c-8cb2-aa678bc8c93d": {
+          "type": "use",
+          "settings": {
+            "title_text": "﻿Tree Sap (adhesive)",
+            "body_text": "We use a non-toxic, water dispersible adhesive on the wings and bottom of the pad. This sticks the pad to your underwear to keep it in place. All other pads on the market use a thermo-plastic glue. We favour tree sap as it's better for you, and for the environment."
+          }
+        },
+        "dc8a6083-24bc-46e2-ad21-cf78c51b6506": {
+          "type": "dontUse",
+          "settings": {
+            "title_text": "Fragrances",
+            "body_text": "You will never see fragrance included in our products. Fragrance poses a high risk of irritation, and we don't believe it should ever be in period products."
+          }
+        },
+        "247c08f3-18e4-48d1-86b6-c3e1e001422b": {
+          "type": "dontUse",
+          "settings": {
+            "title_text": "Dyes & Pigments",
+            "body_text": "Unlike the market-leader, we never include dyes or pigments in our pads. We only include materials that are essential to the performance of the product. Pigments and dyes are used purely for design elements."
+          }
+        },
+        "6eabc9cd-6f14-4686-a102-027817fd7721": {
+          "type": "dontUse",
+          "settings": {
+            "title_text": "Hot Melt Adhesive",
+            "body_text": "Other brands use this to hold the layers of their pad together, and to stick it to your underwear. Sadly this is essentially plastic. It's not something we will ever put in our pads. It takes over 500 years to degrade away."
+          }
+        },
+        "95626e54-fb73-4e4a-aab1-e86ff72c8037": {
+          "type": "use",
+          "settings": {
+            "title_text": "Biopolymer UpFlow™ Barrier (absorbent core)",
+            "body_text": "The high absorbency comes from our biodegradable polymer core. It quickly absorbs blood and locks it in the core. It is 100% biodegradable and can be safely flushed."
+          }
+        },
+        "641b4b77-c300-4bac-a2b8-c4cd078f62d3": {
+          "type": "use",
+          "disabled": true,
+          "settings": {
+            "title_text": "UpFlow Barrier",
+            "body_text": "Our unique UpFlow(TM) barrier works to quicky wick away moisture, keeping you dry all day long."
+          }
+        },
+        "ce836bf1-30ee-4966-971d-dc29304326eb": {
+          "type": "use",
+          "settings": {
+            "title_text": "Plant Fibres (topsheet)",
+            "body_text": "Our super-soft topsheet is made from plant fibres - it is highly breathable and soft on your skin."
+          }
+        },
+        "8854b152-fcb1-4b11-821c-0a389b83f1c0": {
+          "type": "dontUse",
+          "settings": {
+            "title_text": "Titanium Dioxide",
+            "body_text": "The market-leader states that this is used to \"make materials opaque\". It has no place in our pads as appearance is not essential to performance."
+          }
+        },
+        "7d7cb585-ab46-4a84-8e49-38e2ac2f66fd": {
+          "type": "dontUse",
+          "settings": {
+            "title_text": "Polyester",
+            "body_text": "Polyester is a synthetic fabric that's usually derived from petroleum. Other brands use this for absroption, but it is not biodegradable and can shed toxic microfibres into the environment."
+          }
+        },
+        "dbe16ec0-76e1-4fca-bcf3-299d6b7400ea": {
+          "type": "dontUse",
+          "settings": {
+            "title_text": "Cotton",
+            "body_text": "Whilst cotton is a natural resource, the sourcing and production of cotton can be both environmentally destructive and often unethical. Cotton production uses vasts amount of water and casues soil degradation. We use tree fibres instead of cotton."
+          }
+        }
+      },
+      "block_order": [
+        "5262769b-d498-4d5c-8cb2-aa678bc8c93d",
+        "dc8a6083-24bc-46e2-ad21-cf78c51b6506",
+        "247c08f3-18e4-48d1-86b6-c3e1e001422b",
+        "6eabc9cd-6f14-4686-a102-027817fd7721",
+        "95626e54-fb73-4e4a-aab1-e86ff72c8037",
+        "641b4b77-c300-4bac-a2b8-c4cd078f62d3",
+        "ce836bf1-30ee-4966-971d-dc29304326eb",
+        "8854b152-fcb1-4b11-821c-0a389b83f1c0",
+        "7d7cb585-ab46-4a84-8e49-38e2ac2f66fd",
+        "dbe16ec0-76e1-4fca-bcf3-299d6b7400ea"
+      ],
+      "settings": {
+        "bg_col": "#f9f7f2",
+        "btn_sel_text_color": "#ffffff",
+        "btn_sel_bg_color": "#4546f4",
+        "btn_sel_border_color": "#4546f4",
+        "btn_text_color": "#0e2559",
+        "btn_bg_color": "#ffffff",
+        "btn_border_color": "#0e2559",
+        "accordion_title_text_col": "#0e2559",
+        "accordion_sel_title_text_col": "#4546f4",
+        "accordion_text_col": "#0e2559",
+        "left_title": "What We Use",
+        "right_title": "What We Don't Use",
+        "right_img": "shopify:\/\/shop_images\/Mask_group_a00931ed-0ec3-4c22-8d56-852d03e81ee0.png"
+      }
+    },
+    "1652715242519c0baa": {
+      "type": "image-selector",
+      "disabled": true,
+      "blocks": {
+        "bad010a8-97eb-4324-b1c5-f2f9040199a8": {
+          "type": "image",
+          "settings": {
+            "image_icon": "shopify:\/\/shop_images\/sanitary-napkin_2.png",
+            "image_text": "Plastic Pads",
+            "name_1": "Planera",
+            "x1_1": 89,
+            "x2_1": 89,
+            "color_1": "#122556",
+            "name_2": "Plastic Pads",
+            "x1_2": 89,
+            "x2_2": 76,
+            "color_2": "#e37d74"
+          }
+        },
+        "bd2d618f-c860-4e45-b654-d97c4217c568": {
+          "type": "image",
+          "settings": {
+            "image_icon": "shopify:\/\/shop_images\/sanitary-pad.png",
+            "image_text": "Biodegradable Pads",
+            "name_1": "Planera",
+            "x1_1": 89,
+            "x2_1": 89,
+            "color_1": "#122556",
+            "name_2": "Plastic Pads",
+            "x1_2": 89,
+            "x2_2": 76,
+            "color_2": "#e37d74"
+          }
+        },
+        "ec63a3da-0677-485a-9884-b29216010b03": {
+          "type": "image",
+          "settings": {
+            "image_icon": "shopify:\/\/shop_images\/sanitary-napkin_1.png",
+            "image_text": "Reusable Pads",
+            "name_1": "Planera",
+            "x1_1": 89,
+            "x2_1": 89,
+            "color_1": "#122556",
+            "name_2": "Plastic Pads",
+            "x1_2": 89,
+            "x2_2": 76,
+            "color_2": "#e37d74"
+          }
+        }
+      },
+      "block_order": [
+        "bad010a8-97eb-4324-b1c5-f2f9040199a8",
+        "bd2d618f-c860-4e45-b654-d97c4217c568",
+        "ec63a3da-0677-485a-9884-b29216010b03"
+      ],
+      "settings": {
+        "bg_col": "#f9f7f2",
+        "text_col": "#0e2559",
+        "title": "Backed By XX",
+        "underline_title": "Science",
+        "title_2": "<p><strong><br\/>No <\/strong>MicroPlastics. <strong>No<\/strong> Waste. <strong>No<\/strong> Worries<\/p>",
+        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed \ndo eiusmod compare Planera Against",
+        "icon": "shopify:\/\/shop_images\/science_3.png"
+      }
+    },
+    "165271529830440ddb": {
+      "type": "stats",
+      "blocks": {
+        "4ae93b71-8b3c-4ad5-8cb8-af39c8bca513": {
+          "type": "stat",
+          "settings": {
+            "num": 198,
+            "suffix": "kgCO2e",
+            "subtitle": "greenhouse gas emissions",
+            "icon": "shopify:\/\/shop_images\/Factory_Web-Icon.png",
+            "icon_mob": "shopify:\/\/shop_images\/Factory_Web-Icon.png",
+            "more_title": "Emissions",
+            "more_content": "Our reusable products result in emissions savings as the emissions needed to produce products are avoided."
+          }
+        },
+        "4ae7af64-9f48-4e2d-baf7-c1a35be37c90": {
+          "type": "stat",
+          "settings": {
+            "num": 238,
+            "suffix": "kg",
+            "subtitle": "microplastic from waterways",
+            "icon": "shopify:\/\/shop_images\/Water-Drop_Web-Icon.png",
+            "icon_mob": "shopify:\/\/shop_images\/Water-Drop_Web-Icon.png",
+            "more_title": "Microplastic",
+            "more_content": "30% of period products are flushed - but none are flushable until we came along. By switching to Planera, we can stop Microplastics pollution once and for all."
+          }
+        },
+        "321327ef-ef73-413e-8f7c-9908173b0422": {
+          "type": "stat",
+          "settings": {
+            "num": 5877,
+            "suffix": "bags",
+            "subtitle": "worth of plastic",
+            "icon": "shopify:\/\/shop_images\/World-Leaf_Web-Icon.png",
+            "icon_mob": "shopify:\/\/shop_images\/World-Leaf_Web-Icon.png",
+            "more_title": "Plastic",
+            "more_content": "The market-leading brand contains up to 90% plastic. We don't want this in our underwear or polluting our planet."
+          }
+        },
+        "72cf87bf-b041-4162-91fa-9a8bd3431abf": {
+          "type": "stat",
+          "settings": {
+            "num": 264,
+            "suffix": "tonnes",
+            "subtitle": "period waste from landfill",
+            "icon": "shopify:\/\/shop_images\/Double-Leaf_Web-Icon.png",
+            "icon_mob": "shopify:\/\/shop_images\/Double-Leaf_Web-Icon.png",
+            "more_title": "Landfill Waste",
+            "more_content": "This is where the majority of period waste ends up - and where it will stay for up to 500 years. Flushing means no more landfills."
+          }
+        }
+      },
+      "block_order": [
+        "4ae93b71-8b3c-4ad5-8cb8-af39c8bca513",
+        "4ae7af64-9f48-4e2d-baf7-c1a35be37c90",
+        "321327ef-ef73-413e-8f7c-9908173b0422",
+        "72cf87bf-b041-4162-91fa-9a8bd3431abf"
+      ],
+      "settings": {
+        "bg_col": "#0e2559",
+        "stats_col": "#ffffff",
+        "more_content_text_col": "#0e2559",
+        "more_content_bg_col": "#f9f7f2",
+        "wave_col": "#0e2559",
+        "title": "By switching, together we have saved:",
+        "wave": false
+      }
+    },
+    "1655218392fe785c96": {
+      "type": "apps",
+      "settings": {}
+    },
+    "16527858448f73a21e": {
+      "type": "product-faq",
+      "blocks": {
+        "7c6e6280-f60e-4d96-b0d0-da5b8575bcd8": {
+          "type": "faq-top-header",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Bottle-Leaf_Web-Icon_Dark-Blue.png",
+            "title_text": "Science"
+          }
+        },
+        "d7ec73a1-485a-42b8-a978-eab7ae8ffac6": {
+          "type": "faq-top-header",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/World-Leaf_Web-Icon_Dark-Blue.png",
+            "title_text": "Planet"
+          }
+        },
+        "6ff026e3-fe01-4a8e-99ae-09697e6f7467": {
+          "type": "faq-top-header",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Water-Drop_Web-Icon_Dark-Blue.png",
+            "title_text": "People"
+          }
+        },
+        "7a18edb1-d90d-439b-8140-604a72617d90": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Science",
+            "title_text": "Where are Planera pads made?",
+            "body_text": "Our pads are currently manufactured at our site in East London. As we scale up for launch, our production will temporarily move to Italy. However in 2023, we will move production back to the UK to minimise the amount of unecessary transport."
+          }
+        },
+        "9f000a30-74ff-440a-aba0-a359451326ad": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Science",
+            "title_text": "How are you absorbent and flushable?",
+            "body_text": "Simply put, a toilet flush is 9 litres. The average 5-day period is 100ml. The pad needs to be soaked in water and really swirled around to break it down, conditions you’re not likely to find outside of a toilet bowl."
+          }
+        },
+        "35e1b19c-0667-4b7e-83c4-5bd5e8d24c59": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Planet",
+            "title_text": "Are you biodegradable?",
+            "body_text": "Yes we are 100% biodegradable. We are also completely microplastic free."
+          }
+        },
+        "2781f035-b13d-49e3-84eb-ddbc522a756c": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Planet",
+            "title_text": "Is flushing better than binning?",
+            "body_text": "Flushing a Planera pad guarantees that the product will disappear in 30 days due to the treatment at the water centre. If you bin any product, there is no guarantee if it ends up in landfill or gets incinerated! <br> We therefore recommend flushing over binning, wherever possible."
+          }
+        },
+        "cfdfcbd9-3804-45be-a9a5-e2de3a8d937f": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "People",
+            "title_text": "Are your pads suitable for vegans or vegetarians?",
+            "body_text": "Yes, our pads are suitable for both vegans and vegetarians. We also have never and will never test on animals (only humans test our products!)"
+          }
+        },
+        "afefa456-9c6d-4b62-883c-977593c37b16": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "People",
+            "title_text": "How long should I wear my pad for?",
+            "body_text": "We recommend wearing for up to 8 hours, or changing more regularly if you have been exercising."
+          }
+        },
+        "aa504dd1-435b-433f-bd20-04a34fa5433d": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "People",
+            "title_text": "How can I become a product tester?",
+            "body_text": "We are always looking for people to join our product testing community - LaunchPad. If you'd like to get involved, please sign up on the LaunchPad page."
+          }
+        },
+        "b1f52873-0b31-4a97-a683-70268d2d7d90": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "people",
+            "title_text": "Do you offer free trials?",
+            "body_text": "We have just launched our \"Refer a Friend\" programme which enables you to give 3 pads and get 3 pads for every friend you refer.  It's very simple to join, just head to our \"Earn Free Pads\" page and start referring!"
+          }
+        },
+        "1f4fb878-e91c-40a6-98f9-e919d3f05d30": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Science",
+            "title_text": "Where can I flush a Planera pad?",
+            "body_text": "We are currently certified flushable in the UK. Our materials are still fully biodegradable & water-dispersible anywhere in the world."
+          }
+        },
+        "c776ed6a-d1c6-45bf-819b-a92880f61198": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Planet",
+            "title_text": "Are your pads safe for oceans and marine life?",
+            "body_text": "Planera pads contain zero microplastics, therefore, they will never pollute waterways or harm aquatic life. When flushed, the pad breaks down into 3mm plant fibres and is broken down by the aerobic and anaerobic bacteria at the sewage centre before regenerating into clean water, renewable energy and fertiliser."
+          }
+        },
+        "5ea73617-8e37-4b44-851e-144e0d161caf": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "People",
+            "title_text": "How absorbent are Planera pads?",
+            "body_text": "Planera’s day pads are best suited to a medium flow. Our patented UpFlow(™) technology works by absorbing the blood from the top of the pad, and trapping it in the core where the barrier protects you. Our pads have been tested for up to 24 hours in the lab, using 8ml of blood."
+          }
+        }
+      },
+      "block_order": [
+        "7c6e6280-f60e-4d96-b0d0-da5b8575bcd8",
+        "d7ec73a1-485a-42b8-a978-eab7ae8ffac6",
+        "6ff026e3-fe01-4a8e-99ae-09697e6f7467",
+        "7a18edb1-d90d-439b-8140-604a72617d90",
+        "9f000a30-74ff-440a-aba0-a359451326ad",
+        "35e1b19c-0667-4b7e-83c4-5bd5e8d24c59",
+        "2781f035-b13d-49e3-84eb-ddbc522a756c",
+        "cfdfcbd9-3804-45be-a9a5-e2de3a8d937f",
+        "afefa456-9c6d-4b62-883c-977593c37b16",
+        "aa504dd1-435b-433f-bd20-04a34fa5433d",
+        "b1f52873-0b31-4a97-a683-70268d2d7d90",
+        "1f4fb878-e91c-40a6-98f9-e919d3f05d30",
+        "c776ed6a-d1c6-45bf-819b-a92880f61198",
+        "5ea73617-8e37-4b44-851e-144e0d161caf"
+      ],
+      "settings": {
+        "title": "FAQ",
+        "cta_text": "LEARN MORE",
+        "cta_link": "",
+        "bg_col": "#f7f2ec",
+        "text_col": "#0e2559"
+      }
+    },
+    "1655821122a0c54074": {
+      "type": "you-may-also-like",
+      "disabled": true,
+      "blocks": {
+        "57b6047c-0466-41f6-b023-6446d9dc2617": {
+          "type": "prod_benefits",
+          "settings": {
+            "type": "subscribe",
+            "text": "20% Off regular price"
+          }
+        },
+        "fcb0abe9-32ae-4e77-ab51-f966c17ee092": {
+          "type": "prod_benefits",
+          "settings": {
+            "type": "subscribe",
+            "text": "Skip cancel anytime"
+          }
+        },
+        "44f21d37-4179-4d20-b2b7-a0cd40bfe2fb": {
+          "type": "prod_benefits",
+          "settings": {
+            "type": "subscribe",
+            "text": "Free shipping"
+          }
+        },
+        "a151bda4-4759-4c7a-a60b-28798f160ae5": {
+          "type": "prod_benefits",
+          "settings": {
+            "type": "one",
+            "text": "One Time Payment"
+          }
+        },
+        "4c07981d-8e73-4350-b65c-61a70255a351": {
+          "type": "prod_benefits",
+          "settings": {
+            "type": "one",
+            "text": "Free Shipping"
+          }
+        }
+      },
+      "block_order": [
+        "57b6047c-0466-41f6-b023-6446d9dc2617",
+        "fcb0abe9-32ae-4e77-ab51-f966c17ee092",
+        "44f21d37-4179-4d20-b2b7-a0cd40bfe2fb",
+        "a151bda4-4759-4c7a-a60b-28798f160ae5",
+        "4c07981d-8e73-4350-b65c-61a70255a351"
+      ],
+      "settings": {
+        "bg_col": "#ffffff",
+        "text_col": "#0e2559",
+        "collection_products": "frontpage",
+        "title": "<p>You May Also Like<\/p>",
+        "shop": "SHOP NOW",
+        "qs": "QUICK ADD",
+        "single": "Just Once",
+        "subscribe": "Subscribe",
+        "tick_1": "",
+        "tick_2": "",
+        "tick_3": "",
+        "cart": "Add to Cart"
+      }
+    },
+    "1652781568a8223d63": {
+      "type": "logo-slider",
+      "blocks": {
+        "bc86ca3c-8249-4984-aeab-0cfbd186df8e": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b.png"
+          }
+        },
+        "f14e4b23-c48d-475b-a703-a73dcf6a784b": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5.png"
+          }
+        },
+        "305653bf-1749-45c4-a21a-9996a2ae4d75": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d.png"
+          }
+        },
+        "62473efc-4f79-41b7-b864-41190dbadc1b": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c.png"
+          }
+        },
+        "6c7540ef-a8d4-41f6-a5b5-698b70ab98a6": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621.png"
+          }
+        },
+        "4d0b3ed9-6bc2-4fcd-9496-4ac38eaaddd5": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7.png"
+          }
+        },
+        "4be80172-eb0f-45d6-9705-522626cde91f": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2.png"
+          }
+        },
+        "02378f3d-709a-4eaa-8469-5f93ca75c95c": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38.png"
+          }
+        },
+        "303f77b2-ee59-4e3a-a4d6-37a21d2f550a": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11.png"
+          }
+        },
+        "be0a28cd-0614-498a-b3aa-00475780338a": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d.png"
+          }
+        },
+        "abc9ebff-581b-44ae-b8a8-add88a19cb00": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b.png"
+          }
+        },
+        "cc695bad-bace-47d4-acd2-40e40f35cdaa": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5.png"
+          }
+        },
+        "d937c410-a0e2-4a7e-b186-3aec2f57dd7a": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d.png"
+          }
+        },
+        "d5d4269a-2833-4ea6-ae38-47132b0aa6f5": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c.png"
+          }
+        }
+      },
+      "block_order": [
+        "bc86ca3c-8249-4984-aeab-0cfbd186df8e",
+        "f14e4b23-c48d-475b-a703-a73dcf6a784b",
+        "305653bf-1749-45c4-a21a-9996a2ae4d75",
+        "62473efc-4f79-41b7-b864-41190dbadc1b",
+        "6c7540ef-a8d4-41f6-a5b5-698b70ab98a6",
+        "4d0b3ed9-6bc2-4fcd-9496-4ac38eaaddd5",
+        "4be80172-eb0f-45d6-9705-522626cde91f",
+        "02378f3d-709a-4eaa-8469-5f93ca75c95c",
+        "303f77b2-ee59-4e3a-a4d6-37a21d2f550a",
+        "be0a28cd-0614-498a-b3aa-00475780338a",
+        "abc9ebff-581b-44ae-b8a8-add88a19cb00",
+        "cc695bad-bace-47d4-acd2-40e40f35cdaa",
+        "d937c410-a0e2-4a7e-b186-3aec2f57dd7a",
+        "d5d4269a-2833-4ea6-ae38-47132b0aa6f5"
+      ],
+      "settings": {
+        "title": "<p>As seen in:<\/p>",
+        "bg_col": "#ffffff",
+        "text_col": "#0e2559"
+      }
+    }
+  },
+  "order": [
+    "product",
+    "16527733218b9a848d",
+    "uses",
+    "1652715242519c0baa",
+    "165271529830440ddb",
+    "1655218392fe785c96",
+    "16527858448f73a21e",
+    "1655821122a0c54074",
+    "1652781568a8223d63"
+  ]
+}

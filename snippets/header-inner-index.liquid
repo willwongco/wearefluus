@@ -1,0 +1,152 @@
+{% assign opp_colour = 'white' %}
+{% if section.settings.colour == 'white' %}
+  {% assign opp_colur = 'primary-blue' %}
+{% endif %}  
+
+<div 
+{% comment %}
+  # Alpine Vars
+  scrollUp: Whether the page is being scrolled up
+  visible: Show bg color to menu on menu hover
+  subMenu: Index of the navigation tab selected
+  mobileMenu: Mobile menu opened
+  dropdown: Index of mobile dropdown selected
+{% endcomment %}
+x-data="{ 
+  lastScrollTop: document.documentElement.scrollTop, 
+  visible: false, 
+  scrollUp: true, 
+  minimumThreshold:false,
+  subMenu: 0 }" 
+@scroll.window="(e) => {
+var st = window.pageYOffset || document.documentElement.scrollTop; 
+lastScrollTop = lastScrollTop ? lastScrollTop : st;
+if (st >= lastScrollTop){
+  scrollUp = false;
+} else {
+  scrollUp = true;
+}
+if (lastScrollTop >= 54) {
+  minimumThreshold = true
+} else {
+  minimumThreshold = false
+}
+lastScrollTop = st <= 0 ? 0 : st;
+}" 
+
+ class="h-18 w-full mt-8 transition-all duration-500 ease-out m">
+<div 
+{%  comment %}
+  class="pt-2 pb-2 h-14 w-full fixed top-8 transform transition-all duration-300 ease-out z-20 border-b border-{{ section.settings.colour }}" 
+  {%  endcomment %}
+:class="{
+  'translate-y-0': !visible && scrollUp, 
+  '-translate-y-18': !visible && !scrollUp && minimumThreshold, 
+  'bg-{{ section.settings.colour }} border-none': ((scrollUp && !visible) || !minimumThreshold || mobileMenu) && dropdown == -1,
+  'bg-{{ opp_colour }} border-none': dropdown > -1,
+  'header--mobile-open': mobileMenu,
+  {% if section.settings.colour == 'white' %}'secondary-colour'{% else %}'main-colour'{% endif %}: ((scrollUp && !visible) || !minimumThreshold || mobileMenu) && dropdown == -1,
+  {% if section.settings.colour == 'white' %}'main-colour'{% else %}'secondary-colour'{% endif %}: !((scrollUp && !visible) || !minimumThreshold || mobileMenu) || dropdown > -1 }" 
+x-data="{ dropdown: -1 }"
+  >
+<div class="w-full h-full relative">
+  <div class="px-5 md:px-2 lg:px-20 flex justify-between h-full items-center md:h-14">
+    <div class="block md:hidden flex-1">
+      <div :class="{'header__icons--{{ opp_colour }}': !(mobileMenu || dropdown > 0), 'header__icons--{{ section.settings.colour }}': mobileMenu || dropdown > 0 }" class="header__icons" x-show="subMenu == 0" @click="mobileMenu = !mobileMenu">
+        {% include 'icon-menu' %}
+      </div>
+      <div x-show="subMenu !== 0" class="header__mobile-icon" style="display: none;" @click="subMenu = 0">
+        <div>{% include 'icon-cross' %}</div>
+      </div>
+    </div>
+
+    <a href="/" class="flex items-center flex-1 md:flex-none w-40 test">
+      {% if section.settings.logo %}
+        <img alt="{{ section.settings.logo.alt }}" class="mx-auto md:mx-0 absolute transition-all duration-300 ease-out opacity-0 left-1/2 transform -translate-x-1/2 md:left-auto md:translate-x-0 header__main-img lazyload hs-lazyload hs-id-32ebc13e" data-src="{{ section.settings.logo | img_url }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="width:90px;"/>
+        <img alt="{{ section.settings.logo.alt }}" class="mx-auto md:mx-0 absolute transition-all duration-300 ease-out opacity-0 left-1/2 transform -translate-x-1/2 md:left-auto md:translate-x-0 header__secondary-img lazyload hs-lazyload hs-id-c96cc514" data-src="{{ section.settings.logo | img_url }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="width:90px;"/>
+      {% endif %}
+    </a>
+    <div class="flex-1 md:flex hidden justify-between menu color-white h-full">
+      {% if section.settings.main_menu %}
+      {% for link in linklists[section.settings.main_menu].links %}
+        <div @mouseover="dropdown = {{ forloop.index0 }}" @mouseleave="dropdown = -1" 
+          class="flex-1 text-center h-full text-{{ section.settings.colour }} flex items-center justify-center transition-colors duration-300 ease-out md:text-sm lg:text-base header__text">
+          {% if link.url == '#' %}
+          <p class="leading-none">{{ link.title }}</p>
+          {% else %}
+          <a class="leading-none" href="{{ link.url }}">{{ link.title }}</a>
+          {% endif %}
+        </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+    <div class="flex-1 md:flex-none md:w-40 justify-end flex items-center header__icons header__icon">
+      <!-- <a class="ml-6 hidden md:block" href="#">{% include 'icon-present-white' %}</a> -->
+      <a class="ml-6 hidden md:block" href="/account">{% include 'icon-account' %}</a>
+      <p @click="cartSlider = true" class="ml-6 flex items-center">{% include 'icon-bag' %} {% if cart.item_count > 0 %}<div class="rounded-full w-6 h-6 bg-white ml-1 text-xs text-center flex items-center justify-center">{{ cart.item_count  }}</div>{% endif %}</p>
+    </div>
+  </div>
+  {% for link in linklists[section.settings.main_menu].links %}
+    {% assign link_title = link.title | downcase %}
+    {% assign index = forloop.index0 %}
+    {% for block in section.blocks %}
+      {% assign tab_check = block.settings.tab | downcase %}
+      {% if tab_check == link_title %}
+      <div @mouseover="dropdown = {{ index }}" @mouseleave="dropdown = -1" {% include 'fade' speed: '300' %} x-show="dropdown == {{ index }}" style="display: none;" class="absolute w-full bg-white z-10">
+        {% include 'header-tab' %}
+      </div>
+      {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  <div x-show="dropdown != -1" style="display: none;" x-transition:enter.duration.300ms x-transition.opacity  class="fixed bg-black bg-opacity-70 w-screen h-screen"></div>
+  <div x-transition:enter.duration.300ms x-transition.opacity x-show="mobileMenu" style="display: none;" class="fixed w-full h-screen top-18 left-0 bg-white overflow-scroll flex flex-col">
+      {% for link in linklists[section.settings.mobile_main_menu].links %}
+        {% assign child_list_handle = link.title | handleize %}
+        {% if linklists[child_list_handle].links == blank %}
+          <a x-show="subMenu == 0" class="h-12 border-b border-solid border-gray-planera text-xl text-primary-blue pl-10 w-full flex items-center overflow-scroll" href="{{ link.url }}">{{ link.title }}</a>
+        {% else %}
+          <div 
+            @click="subMenu = subMenu == 0 ? {{ forloop.index }} : 0"  
+            x-show="subMenu == 0 || subMenu == {{ forloop.index }}" 
+            :class="{ 'border-t border-b-0': subMenu == {{ forloop.index }}, 'border-b border-t-0': subMenu !== {{ forloop.index }} }" class="w-full relative border-b border-solid border-gray-planera text-xl text-primary-blue transition ease-out duration-500">
+              <div class="h-12 flex items-center pl-10 w-full relative">
+                <p>{{ link.title }}</p>
+                <div class="transition-all ease-out duration-500 absolute top-1/2 -translate-y-1/2 right-5" :class="{ 'rotate-180 transform': subMenu == {{ forloop.index }} }">
+                  {% include 'icon-chevron' %}
+                </div>                  
+              </div>
+              <div
+                x-show="subMenu == {{ forloop.index }}" class="mt-4">
+                {% for childlink in linklists[child_list_handle].links %}
+                  <a class="pl-10 text-primary-blue mb-4 w-full text-base block" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                {% endfor %}
+              </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+      <div :class="{ 'mt-auto': subMenu != 0 }" class="flex w-full h-12 mb-22">
+        {% if settings.show_rw-btn != true %}
+        <a href="#" class="w-1/2 flex items-center justify-center border-primary-blue border border-l-0 border-r-0 header__mobile-icon">
+          {% include 'icon-present' %}
+          <p class="ml-2">Rewards</p>
+        </a>
+        {%endif%}
+        <a href="/account"  {% if settings.show_rw-btn != true %}class="w-1/2 flex items-center justify-center border-primary-blue border border-r-0 header__mobile-icon" {%else%}class="w-full flex items-center justify-center border-primary-blue border border-r-0 header__mobile-icon" {%endif%}>
+          {% include 'icon-account' %}
+          <p class="ml-2">Account</p>
+        </a>
+      </div>
+  </div>
+</div>
+{% if template == 'product' %}
+<div
+class="prodStickyBar transition-all duration-150 pl-6 border-b border-black bg-white opacity-0 pointer-events-none hidden xl:flex">
+<div class="flex justify-center items-center left-stickyProdBar" :class=" screenWidth <= 1280 ? 'hide':'' ">
+  {%- render 'lazy-image', image: product.featured_image, additional_classes:'w-20 h-20 rounded-xl' -%}
+<span class=" font-cheltenham-std text-2xl pt-3 text-primary-blue max-w-125 pl-3 mr-10">{{ product.title }}</span>
+</div>
+</div>
+{% endif %}
+</div>
+</div>

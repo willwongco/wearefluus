@@ -1,0 +1,278 @@
+{% assign ss = section.settings %}
+<div class="impact_vertical__section">
+<h2 class=" font-cheltenham-std text-5xl w-full text-center leading-tight pt-12 pb-1">{{ ss.title | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="text-purple-planera">'}}</h2>
+<span class=" font-cheltenham-std text-3xl w-full text-center">{{ ss.subtitle | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="impact_subtitle underline_text whitespace-nowrap relative">' }}</span>
+
+    <div class="vertical-carousel__container pt-10">
+
+    <section class="splide vertical-slider">
+        <span class="vertical_line__dotted absolute left-1/2 transform -translate-x-1/2 h-full overflow-hidden">
+            <img alt="timeline dashed line" class="lazyload hs-lazyload hs-id-0cb35333" data-src="{{ 'dashed-squiggly-line.png' | asset_img_url: 'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          </span>
+        <div class="splide__track">
+          <ul class="splide__list">
+              {% for block in section.blocks %}
+              {% assign bs = block.settings %}
+            <li class="splide__slide">{% include 'vertical-impact-slide', img_left:bs.img_left, title_left:bs.title_left,subtitle_left:bs.subtitle_left,img_right_top:bs.img_right_top,title_right_top:bs.title_right_top,subtitle_right_top:bs.subtitle_right_top,subsubtitle_right_top:bs.subsubtitle_right_top,img_right_bottom:bs.img_right_bottom,title_right_bottom:bs.title_right_bottom,subtitle_right_bottom:bs.subtitle_right_bottom,subtitle_title_right_bottom:bs.subtitle_title_right_bottom,subtitle_title_sub_right_bottom:bs.subtitle_title_sub_right_bottom %}</li>           
+            {% endfor %}
+          </ul>
+        </div>
+</section>
+</div>
+</div>
+<style>
+
+    .impact_vertical__section {
+    background-color: {{ ss.bg_col }};
+    }
+    .impact_vertical__section h2.font-cheltenham-std,
+    .impact_vertical__section span.font-cheltenham-std {
+    color: {{ ss.title_col }};
+    }
+    .vertical-slider li *:not(span) {
+    color: {{ ss.slide_text_col }};
+    }
+    .impact_vertical__section .splide__arrow  {
+    bottom: 4rem !important;
+    }
+    .vertical-slider .splide__arrow--prev,
+    .vertical-slider .splide__arrow--next  {
+            left: 7% !important;
+            right: unset !important;
+        }
+    .vertical-slider .splide__arrow--prev {
+        background-image: url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Group_1585.svg?v=1664360894') !important;
+    }
+    .vertical-slider .splide__arrow--next {
+        background-image: url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Group_1411.svg?v=1664311187') !important;
+    }
+
+    .vertical_line__dotted {
+        left: 50%;
+        top: 0;
+    }
+    @media screen and (max-width:1023px) {
+    .vertical-carousel__container .splide.is-initialized .splide__list {
+        display: block !important;
+    }
+    .vertical_line__dotted {
+        display: none;
+    }
+    .vertical-carousel__container {
+        background-repeat: repeat-y;
+        background-position: center;
+      background-image: url("{{ 'dashed-squiggly-line-mobile.png' | asset_img_url: 'master' }});");
+    }
+}
+    @media screen and (max-width:640px) {
+        .impact_subtitle.underline_text::before {
+        content:url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Asset_47_3.png?v=1654600403');
+        position: absolute;
+        top:.2rem;
+        left:-.5rem;
+        width:100%;
+    }
+}
+@media screen and (max-width:640px) {
+    .vertical-carousel__container {
+      background-image: url("{{ 'dashed-straight-line.png' | asset_img_url: 'master' }});");
+    }
+}
+    @media screen and (min-width:640px) {
+        .impact_subtitle.underline_text::before {
+        content:url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Asset_47_2.png?v=1654600105');
+        position: absolute;
+        top:.3rem;
+        left:-.75rem;
+        width:100%;
+    }
+}
+
+</style>
+
+<script>
+
+    document.addEventListener( 'DOMContentLoaded', function() {
+
+const timelineSlider = new Splide( '.vertical-slider', {
+    type   : 'slide',
+    perPage:1,
+    perMove:1,
+    rewind:true,
+    direction: 'ttb',
+    height   : '43rem',
+    gap:'0rem',
+    arrows:true,
+    pagination:false,
+    breakpoints: {
+        3000: {
+            direction: 'ttb',
+            height   : '43rem',
+        }
+    },
+    breakpoints: {
+        1023: {
+            destroy:true
+        }
+    },
+});
+
+timelineSlider.on( 'mounted', function () {
+    timelineSlider.on( 'moved', function (destIndex) {
+  // This will be executed.
+  switch (destIndex) {
+      case value:
+          
+          break;
+  
+      default:
+          break;
+  }
+  console.log(destIndex)
+} );
+
+} );
+timelineSlider.mount();
+})
+</script>
+
+
+{% schema %}
+{
+    "name": "Vertical Slide - Impact",
+    "settings": [
+    {
+        "type": "header",
+        "content": "Background Colour"
+    },
+    {
+        "type":"color",
+        "label":"Background Colour",
+        "id":"bg_col"
+    },
+    {
+        "type":"color",
+        "label":"Section Title Colour",
+        "id":"title_col"
+    },
+    {
+        "type":"color",
+        "label":"Slide Text Colour",
+        "id":"slide_text_col"
+    },
+    {
+        "type": "header",
+        "content": "Title"
+    },
+    {
+        "type":"richtext",
+        "label":"Title",
+        "id":"title",
+        "default":"<p>Over 10 Years And Counting</p>",
+        "info":"Bold text will show the circle"
+    },
+    {
+        "type": "header",
+        "content": "SubTitle"
+    },
+    {
+        "type":"richtext",
+        "label":"Subtitle",
+        "id":"subtitle",
+        "default":"<p>The Planet Pad Life Cycle</p>",
+        "info":"Bold text will have the underline image"
+    }
+    ],
+    "blocks":[
+    {
+        "type":"vertical-slide",
+        "name":"Vertical Slide",
+        "settings":[
+        {
+            "type": "header",
+            "content": "Left Side"
+        },
+        {
+            "type":"image_picker",
+            "label":"Left Main Image",
+            "id":"img_left"
+        },
+        {
+            "type":"textarea",
+            "label":"Left Title",
+            "id":"title_left"
+        },
+        {
+            "type":"textarea",
+            "label":"Left Subtitle",
+            "id":"subtitle_left"
+        },
+        {
+            "type": "header",
+            "content": "Right Side"
+        },
+        {
+            "type": "header",
+            "content": "Top Half"
+        },
+        {
+            "type":"image_picker",
+            "label":"Image",
+            "id":"img_right_top"
+        },
+        {
+            "type":"textarea",
+            "label":"Title",
+            "id":"title_right_top"
+        },
+        {
+            "type":"textarea",
+            "label":"Subtitle Title",
+            "id":"subtitle_right_top"
+        },
+        {
+            "type":"richtext",
+            "label":"Subtitle Text",
+            "id":"subsubtitle_right_top"
+        },
+        {
+            "type": "header",
+            "content": "Lower Half"
+        },
+        {
+            "type":"image_picker",
+            "label":"Image",
+            "id":"img_right_bottom"
+        },
+        {
+            "type":"textarea",
+            "label":"Title",
+            "id":"title_right_bottom"
+        },
+        {
+            "type":"textarea",
+            "label":"Subtitle",
+            "id":"subtitle_right_bottom"
+        },
+        {
+            "type":"textarea",
+            "label":"Subtitle Title",
+            "id":"subtitle_title_right_bottom"
+        },
+        {
+            "type":"richtext",
+            "label":"Subtitle Text",
+            "id":"subtitle_title_sub_right_bottom"
+        }
+        ]
+    }
+    ],
+    "presets": [
+        {
+            "name": "Vertical Slide - Impact",
+            "category": "Slideshow"
+        }
+    ]
+}
+
+{% endschema %}

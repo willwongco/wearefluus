@@ -1,0 +1,209 @@
+<!-- /templates/customers/addresses.liquid -->
+<!-- /templates/customers/addresses.liquid -->
+
+<div class="login-parent my-16 relative">
+
+    <h1
+      class="uppercase text-center font-cheltenham-std text-xl md:text-3xl pt-10 mb-8 relative w-44 md:w-64 mx-auto {{page.title}} ">
+      {{ "customer.addresses.addresses" | t }}</h1>
+  
+    <div class="addNewAddress m-auto w-full text-center">
+      <button
+        class="transition-all mx-auto mt-4 mb-8 text-sm pt-4 pb-3 px-16 uppercase tracking-wider rounded-lg bg-primary-blue border border-transparent font-sofia-pro text-white hover:text-primary-blue hover:bg-white hover:border-primary-blue">{{
+        "customer.addresses.add_new_address" | t }}</button>
+    </div>
+  
+    <div class="newAddress mt-3 hidden">
+  
+      <h1 class="uppercase text-center font-cheltenham-std text-xl md:text-3xl relative w-42 md:w-64 mx-auto {{page.title}} ">
+        New Address</h1>
+  
+      <div class=" max-w-screen-md m-auto pt-3 pb-16 px-4">
+  
+        {% form 'customer_address', customer.new_address %}
+  
+        {{ form.errors | default_errors }}
+  
+        <div class=" flex">
+  
+          <input type="text" class="font-sofia-pro mr-2 rounded-xl outline-none py-4 mt-4 w-full px-4 border" value=""
+            name="address[first_name]" placeholder="First Name" size="30" />
+  
+          <input type="text" class="font-sofia-pro ml-2 rounded-xl outline-none py-4 mt-4 w-full px-4 border" value=""
+            name="address[last_name]" placeholder="Last Name" size="30" />
+  
+        </div>
+  
+        <input type="text" class="font-sofia-pro rounded-xl outline-none py-4 mt-4 w-full px-4 border" value=""
+          name="address[company]" placeholder="Company" />
+  
+        <input type="text" class="font-sofia-pro rounded-xl outline-none py-4 mt-4 w-full px-4 border" value=""
+          name="address[address1]" placeholder="Address 1" />
+  
+        <input type="text" class="font-sofia-pro rounded-xl outline-none py-4 mt-4 w-full px-4 border" value=""
+          name="address[address2]" placeholder="Address 2" />
+  
+        <input type="text" class="font-sofia-pro rounded-xl outline-none py-4 mt-4 w-full px-4 border" value=""
+          name="address[city]" placeholder="City" />
+  
+        <div>
+  
+          <div class="select">
+            <select class="font-sofia-pro rounded-xl outline-none py-4 mt-4 w-full px-4 border country_selector"
+              id="AddressCountryNew" name="address[country]" data-default="{{ form.country }}" autocomplete="country">
+              {{ all_country_option_tags }}
+            </select>
+          </div>
+        </div>
+        <div id="AddressProvinceContainerNew" style="display: none">
+          <label for="AddressProvinceNew">{{ 'customer.addresses.province' | t }}</label>
+          <div class="select">
+            <select id="AddressProvinceNew" name="address[province]" data-default="{{ form.province }}"
+              autocomplete="address-level1">
+            </select>
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+              <use href="#icon-caret" />
+            </svg>
+          </div>
+        </div>
+        <div class="field">
+          <input type="text" class="font-sofia-pro rounded-xl outline-none py-4 mt-4 w-full px-4 border"
+            id="AddressZipNew" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters"
+            autocomplete="postal-code" placeholder="{{ 'customer.addresses.zip' | t }}">
+        </div>
+        <div class="field">
+          <input type="tel" class="font-sofia-pro rounded-xl outline-none py-4 mt-4 w-full px-4 border"
+            id="AddressPhoneNew" name="address[phone]" value="{{ form.phone }}" autocomplete="tel"
+            placeholder="{{ 'customer.addresses.phone' | t }}">
+        </div>
+        <div
+          class="set_as_default_address flex flex-row-reverse justify-end items-center text-base outline-none mt-4">
+          {{ form.set_as_default_checkbox }}
+          <label class="pl-1 pr-4" for="address_default_address_new">{{ 'customer.addresses.set_as_default' | t }}</label>
+        </div>
+  
+        <div class=" m-auto w-full text-center">
+          <button
+            class=" transition-all mx-auto mt-4 mb-8 text-sm pt-4 pb-3 px-16 uppercase tracking-wider rounded-lg bg-primary-blue border border-transparent font-sofia-pro text-white hover:text-primary-blue hover:bg-white hover:border-primary-blue"
+            type="submit" value="Submit">{{ "customer.submit" | t }}</button>
+        </div>
+        {% endform %}
+  
+      </div>
+  
+    </div>
+  
+    <div class="Addresses">
+      <ul class=" max-w-3xl m-auto font-sofia-pro" role="list">
+        {%- for address in customer.addresses -%}
+        <li data-address>
+          {%- if address == customer.default_address -%}
+          <h2 class=" font-cheltenham-std text-xl underline text-center mb-3">{{ 'customer.addresses.default' | t }}</h2>
+          {%- endif -%}
+          <div class="w-full text-center">
+            {{ address | format_address }}
+            <div class="flex justify-center my-6 flex-col tiny:flex-row">
+  
+              <button class="editAddress w-1/2 mx-auto transition-all mt-4 mb-2 text-sm pt-4 pb-3 uppercase tracking-wider rounded-lg bg-primary-blue border border-transparent font-sofia-pro text-white hover:text-primary-blue hover:bg-white hover:border-primary-blue tiny:mr-2 tiny:px-16 tiny:w-auto tiny:mx-0 tiny:mb-8"
+                type="button" id="EditFormButton_{{ address.id }}"
+                aria-label="{{ 'customer.addresses.edit_address' | t }} {{ forloop.index }}"
+                aria-controls="EditAddress_{{ address.id }}" aria-expanded="false" data-address-id="{{ address.id }}">
+                {{ 'customer.addresses.edit' | t }}
+              </button>
+              <form class="address-delete-form" method="post" action="/account/addresses/{{ address.id }}">
+                <input type="hidden" name="_method" value="delete">
+
+                <button class=" transition-all w-1/2 mt-4 mb-8 text-sm pt-4 pb-3 uppercase tracking-wider rounded-lg bg-white border border-primary-blue font-sofia-pro text-primary-blue hover:text-white hover:bg-primary-blue hover:border-primary-blue tiny:ml-2 tiny:px-16 tiny:w-auto"
+                  type="submit" aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
+                  data-target="{{ address.url }}" data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}">
+                  {{ 'customer.addresses.delete' | t }}
+                </button>
+              </form>
+            </div>
+          </div>
+          <div class="editAddressContainer px-4 hidden max-w-450 m-auto mb-12" id="EditAddress_{{ address.id }}">
+            <h2 class="text-center font-cheltenham-std text-xl md:text-3xl uppercase mb-8 mt-12">{{
+              'customer.addresses.edit_address' | t }}</h2>
+            {%- form 'customer_address', address -%}
+            <div class="field mb-2">
+              <input class="font-sofia-pro rounded-xl outline-none py-4 mt-2 w-full px-4 border" type="text"
+                id="AddressFirstName_{{ form.id }}" name="address[name]"
+                value="{{ form.first_name }} {{ form.last_name }}" autocomplete="given-name"
+                placeholder="{{ 'customer.addresses.first_name' | t }}">
+  
+            </div>
+            <div class="field mb-2">
+              <input class="font-sofia-pro rounded-xl outline-none py-4 mt-2 w-full px-4 border" type="text"
+                id="AddressCompany_{{ form.id }}" name="address[company]" value="{{ form.company }}"
+                autocomplete="organization" placeholder="{{ 'customer.addresses.company' | t }}">
+            </div>
+            <div class="field mb-2">
+              <input class="font-sofia-pro rounded-xl outline-none py-4 mt-2 w-full px-4 border" type="text"
+                id="AddressAddress1_{{ form.id }}" name="address[address1]" value="{{ form.address1 }}"
+                autocomplete="address-line1" placeholder="{{ 'customer.addresses.address1' | t }}">
+            </div>
+            <div class="field mb-2">
+              <input class="font-sofia-pro rounded-xl outline-none py-4 mt-2 w-full px-4 border" type="text"
+                id="AddressAddress2_{{ form.id }}" name="address[address2]" value="{{ form.address2 }}"
+                autocomplete="address-line2" placeholder="{{ 'customer.addresses.address2' | t }}">
+            </div>
+            <div class="field mb-2">
+              <input class="font-sofia-pro rounded-xl outline-none py-4 mt-2 w-full px-4 border" type="tel"
+                id="AddressPhone_{{ form.id }}" name="address[phone]" value="{{ form.phone }}" autocomplete="tel">
+            </div>
+            <div class="field mb-2">
+              <input class="font-sofia-pro rounded-xl outline-none py-4 mt-2 w-full px-4 border" type="text"
+                id="AddressZip_{{ form.id }}" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters"
+                autocomplete="postal-code" placeholder="{{ 'customer.addresses.zip' | t }}">
+            </div>
+            <div class="field mb-2">
+              <div class="select">
+                <select class="country_selector font-sofia-pro rounded-xl outline-none py-4 mt-2 w-full px-4 border"
+                  id="AddressCountry_{{ form.id }}" name="address[country]" data-address-country-select
+                  data-default="{{ address.country }}" data-form-id="{{ form.id }}" autocomplete="country">
+                  {{ all_country_option_tags }}
+                </select>
+              </div>
+            </div>
+            <div id="AddressProvinceContainer_{{ form.id }}" style="display:none;">
+              <div class="select">
+                <select class="font-sofia-pro rounded-xl outline-none py-4 mt-2 w-full px-4 border"
+                  id="AddressProvince_{{ form.id }}" name="address[province]" data-default="{{ form.province }}"
+                  autocomplete="address-level1">
+                </select>
+              </div>
+            </div>
+            <div
+              class="font-futuraBold set_as_default_address flex flex-row-reverse justify-end items-center text-base outline-none mt-4">
+              {{ form.set_as_default_checkbox }}
+              <label class="pl-1 pr-4 w-auto">{{ 'customer.addresses.set_as_default' | t }}</label>
+            </div>
+            <div class="flex justify-center xl:justify-start mt-6">
+              <button class="transition-all mx-auto mt-4 mb-8 text-sm pt-4 pb-3 px-16 uppercase tracking-wider rounded-lg bg-primary-blue border border-transparent font-sofia-pro text-white hover:text-primary-blue hover:bg-white hover:border-primary-blue">{{
+                'customer.addresses.update' | t }}</button>
+            </div>
+            {%- endform -%}
+          </div>
+        </li>
+        {%- endfor -%}
+      </ul>
+  
+    </div>
+  </div>
+  
+  <script>
+    let addNewAddress = document.querySelector('.addNewAddress button')
+    let newAddressContainer = document.querySelector('.newAddress')
+    let editAddress = document.querySelectorAll('button.editAddress')
+    let editAddressContainer = document.querySelectorAll('.editAddressContainer')
+    addNewAddress.addEventListener('click', (e) => {
+      e.preventDefault();
+      newAddressContainer.classList.toggle('hidden')
+    })
+    for (let i = 0; i < editAddress.length; i++) {
+      editAddress[i].addEventListener('click', (e) => {
+        e.preventDefault();
+        editAddressContainer[i].classList.toggle('hidden')
+      })
+    }
+  </script>

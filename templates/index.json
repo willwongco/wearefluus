@@ -1,0 +1,796 @@
+{
+  "sections": {
+    "165132504359d5119d": {
+      "type": "hero",
+      "settings": {
+        "hero_desktop": "shopify:\/\/shop_images\/220622_Planera_Stills_S15_1747_f4_72b71fa8-46d5-4108-81e8-b11da86b6098.jpg",
+        "hero_mobile": "shopify:\/\/shop_images\/220622_Planera_Stills_S15_1747_f4.jpg",
+        "darken": false,
+        "darken_mobile": false,
+        "design": "b",
+        "colour": "primary-blue",
+        "btn_style": "purple",
+        "title": "World's Only Certified Flushable Pads",
+        "underline_title": "Flushable Pads",
+        "subtitle": "Fuss-free period care without the waste. <br> Pre-order now for delivery in January '23",
+        "text_col": "#0e2559",
+        "btn_text": "PRE-ORDER",
+        "btn_link": "shopify:\/\/products\/flushable-periods-pads",
+        "btn_text_2": "GET FREE PADS",
+        "btn_link_2": "shopify:\/\/pages\/refer"
+      }
+    },
+    "165564564811a85362": {
+      "type": "ticker",
+      "blocks": {
+        "896d07f0-3b86-4cf3-829d-584fd76e034c": {
+          "type": "item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Frame_936ecf1b-87bf-4b3f-9b7c-cc627b32e543.png",
+            "text": "Water Dispersible"
+          }
+        },
+        "cf7623c8-1cc3-4ec8-9aaf-b8d4ae29ffff": {
+          "type": "item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Frame2.png",
+            "text": "UpFlow™ Barrier"
+          }
+        },
+        "762a927d-7e7c-4db2-b112-c5c4ca227749": {
+          "type": "item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Frame3.png",
+            "text": "100% Flushable"
+          }
+        },
+        "e9d23628-47aa-420a-b042-f2f956a12556": {
+          "type": "item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Frame4.png",
+            "text": "Zero Microplastics"
+          }
+        },
+        "9a1a9efa-a973-4f5d-94a7-dc893dfbd655": {
+          "type": "item",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/Frame5.png",
+            "text": "Biodegradable"
+          }
+        }
+      },
+      "block_order": [
+        "896d07f0-3b86-4cf3-829d-584fd76e034c",
+        "cf7623c8-1cc3-4ec8-9aaf-b8d4ae29ffff",
+        "762a927d-7e7c-4db2-b112-c5c4ca227749",
+        "e9d23628-47aa-420a-b042-f2f956a12556",
+        "9a1a9efa-a973-4f5d-94a7-dc893dfbd655"
+      ],
+      "settings": {
+        "bg_col": "#ffffff",
+        "text_col": "#0e2559"
+      }
+    },
+    "16513353919198b3cc": {
+      "type": "stats",
+      "blocks": {
+        "fb2e0590-2928-40f1-81fa-171d0005410f": {
+          "type": "stat",
+          "settings": {
+            "num": 198,
+            "suffix": "kgCO2e",
+            "subtitle": "greenhouse gas emissions",
+            "icon": "shopify:\/\/shop_images\/Factory_Web-Icon.png",
+            "icon_mob": "shopify:\/\/shop_images\/Factory_Web-Icon.png",
+            "more_title": "Emissions",
+            "more_content": "There is currently no sustainable route of disposal for period products. Switching to Planera cuts your carbon footprint in half."
+          }
+        },
+        "4dc9cc97-3d67-4de9-8c17-b8aaf14c9715": {
+          "type": "stat",
+          "settings": {
+            "num": 238,
+            "suffix": "kg",
+            "subtitle": "microplastic from waterways",
+            "icon": "shopify:\/\/shop_images\/Water-Drop_Web-Icon.png",
+            "icon_mob": "shopify:\/\/shop_images\/Water-Drop_Web-Icon.png",
+            "more_title": "Microplastics",
+            "more_content": "30% of period products are flushed - but none are flushable until we came along.By switching to Planera, we can stop Microplastics pollution once and for all."
+          }
+        },
+        "ea94a7ca-65da-408e-b330-cb975d732877": {
+          "type": "stat",
+          "settings": {
+            "num": 5877,
+            "suffix": "bags",
+            "subtitle": "worth of plastic",
+            "icon": "shopify:\/\/shop_images\/World-Leaf_Web-Icon.png",
+            "icon_mob": "shopify:\/\/shop_images\/World-Leaf_Web-Icon.png",
+            "more_title": "Plastic",
+            "more_content": "The market-leading brand contains up to 90% plastic. We don't want this in our underwear or polluting our planet."
+          }
+        },
+        "18edc45d-41b1-41c0-a525-b714c35c7193": {
+          "type": "stat",
+          "settings": {
+            "num": 264,
+            "suffix": "kg",
+            "subtitle": "period waste from landfill",
+            "icon": "shopify:\/\/shop_images\/Double-Leaf_Web-Icon.png",
+            "icon_mob": "shopify:\/\/shop_images\/Double-Leaf_Web-Icon.png",
+            "more_title": "Landfill Waste",
+            "more_content": "This is where the majority of period waste ends up - and where it will stay for up to 500 years. Flushing means no more landfills."
+          }
+        }
+      },
+      "block_order": [
+        "fb2e0590-2928-40f1-81fa-171d0005410f",
+        "4dc9cc97-3d67-4de9-8c17-b8aaf14c9715",
+        "ea94a7ca-65da-408e-b330-cb975d732877",
+        "18edc45d-41b1-41c0-a525-b714c35c7193"
+      ],
+      "settings": {
+        "bg_col": "#0e2559",
+        "stats_col": "#ffffff",
+        "more_content_text_col": "#0e2559",
+        "more_content_bg_col": "#e1e7d5",
+        "wave_col": "#0e2559",
+        "title": "By switching, together we have saved:",
+        "wave": false
+      }
+    },
+    "1651530820ad2cbf02": {
+      "type": "title-block",
+      "disabled": true,
+      "settings": {
+        "bg_col": "#f7f2ec",
+        "text_col": "#0e2559",
+        "title": "XX should I switch?",
+        "underline_title": "Why",
+        "include_fullStop": false
+      }
+    },
+    "166083267542597007": {
+      "type": "page-hero",
+      "disabled": true,
+      "settings": {
+        "about_page": true,
+        "infinite_scroll": false,
+        "full_stop": false,
+        "title": "",
+        "underline_top_mob": ".7",
+        "underline_top_desktop": ".7",
+        "subtitle": "",
+        "text_colour": "",
+        "scroll_item_text_colour": "",
+        "scroll_bg_colour": "",
+        "section_bg_colour": "",
+        "section_bg_image": "shopify:\/\/shop_images\/Screenshot_2022-08-18_at_13.15.05.png",
+        "section_bg_image_mobile": "shopify:\/\/shop_images\/Screenshot_2022-08-18_at_13.15.05.png"
+      }
+    },
+    "165564718391119f31": {
+      "type": "spinner-btn",
+      "settings": {
+        "cta_url": "shopify:\/\/pages\/tech",
+        "img_outer": "shopify:\/\/shop_images\/Group_1586.png",
+        "img_middle": "shopify:\/\/shop_images\/Group_1544.png"
+      }
+    },
+    "1651588789bd4e8e42": {
+      "type": "single-product",
+      "blocks": {
+        "6601787c-4cf5-4ab8-8eb6-24e893d60f6b": {
+          "type": "text",
+          "settings": {
+            "type": "subscribe",
+            "text": "5% off regular price"
+          }
+        },
+        "3fe13bfa-ffd3-4d02-95ba-92519725df73": {
+          "type": "text",
+          "settings": {
+            "type": "subscribe",
+            "text": "Skip cancel anytime"
+          }
+        },
+        "e3257810-8be8-46b5-88db-e5b7ebe08d2d": {
+          "type": "text",
+          "settings": {
+            "type": "subscribe",
+            "text": "Free shipping"
+          }
+        },
+        "c96ae6fb-418f-41a9-91df-c8f71e3eb7bb": {
+          "type": "text",
+          "settings": {
+            "type": "one",
+            "text": "One time purchase"
+          }
+        },
+        "c69d93a3-d0a6-43fc-b228-af07836f30ed": {
+          "type": "text",
+          "settings": {
+            "type": "one",
+            "text": "Free Shipping"
+          }
+        }
+      },
+      "block_order": [
+        "6601787c-4cf5-4ab8-8eb6-24e893d60f6b",
+        "3fe13bfa-ffd3-4d02-95ba-92519725df73",
+        "e3257810-8be8-46b5-88db-e5b7ebe08d2d",
+        "c96ae6fb-418f-41a9-91df-c8f71e3eb7bb",
+        "c69d93a3-d0a6-43fc-b228-af07836f30ed"
+      ],
+      "settings": {
+        "bg_col": "#f7f2ec",
+        "text_col": "#0e2559",
+        "title": "Why should I switch?",
+        "circled_title": "",
+        "subtitle": "<p><br\/><\/p><p>Ready for fuss-free periods without the waste? Pre-order yours today, and as a thank you, we'll give you <strong>25% off<\/strong> with code: <strong>PREORDER25<\/strong><\/p>",
+        "floating": "",
+        "product": "flushable-periods-pads"
+      }
+    },
+    "1651533711ce683de3": {
+      "type": "image-selector",
+      "disabled": true,
+      "blocks": {
+        "a398bcf2-668f-4a47-a114-b3de5a76cac3": {
+          "type": "image",
+          "settings": {
+            "image_icon": "shopify:\/\/shop_images\/sanitary-napkin_2.png",
+            "image_text": "Leading Disposable Pad",
+            "name_1": "Planera",
+            "x1_1": 89,
+            "x2_1": 61,
+            "color_1": "#122556",
+            "name_2": "Plastic Pads",
+            "x1_2": 89,
+            "x2_2": 76,
+            "color_2": "#e37d74"
+          }
+        },
+        "e13a7f70-6b14-49a2-a206-4e4d52a36d6c": {
+          "type": "image",
+          "settings": {
+            "image_icon": "shopify:\/\/shop_images\/sanitary-pad.png",
+            "image_text": "Organic Cotton Pads",
+            "name_1": "Planera",
+            "x1_1": 71,
+            "x2_1": 36,
+            "color_1": "#122556",
+            "name_2": "Plastic Pads",
+            "x1_2": 100,
+            "x2_2": 52,
+            "color_2": "#e37d74"
+          }
+        },
+        "3170a1ff-0061-43ee-9384-c26ca67f346b": {
+          "type": "image",
+          "settings": {
+            "image_icon": "shopify:\/\/shop_images\/sanitary-napkin_1.png",
+            "image_text": "Disposable Bamboo Pads",
+            "name_1": "Test",
+            "x1_1": 95,
+            "x2_1": 8,
+            "color_1": "#122556",
+            "name_2": "Planera",
+            "x1_2": 69,
+            "x2_2": 32,
+            "color_2": "#e37d74"
+          }
+        }
+      },
+      "block_order": [
+        "a398bcf2-668f-4a47-a114-b3de5a76cac3",
+        "e13a7f70-6b14-49a2-a206-4e4d52a36d6c",
+        "3170a1ff-0061-43ee-9384-c26ca67f346b"
+      ],
+      "settings": {
+        "bg_col": "#f7f2ec",
+        "text_col": "#0e2559",
+        "title": "Backed XX",
+        "underline_title": "By Science",
+        "title_2": "",
+        "subtitle": "See how Planera pads compare to the others",
+        "icon": "shopify:\/\/shop_images\/science-3.gif"
+      }
+    },
+    "1651613848323012b8": {
+      "type": "testimonials",
+      "blocks": {
+        "118932d6-fd69-4c1c-befa-ede1d728a71c": {
+          "type": "testimonial",
+          "settings": {
+            "bg_col": "#f8f1ed",
+            "text_col": "#0e2559",
+            "img": "shopify:\/\/shop_images\/Mask_group_6.png",
+            "stars": 5,
+            "quote": "It just makes sense to make pads flushable. I don't need to deal with dirty bins anymore.",
+            "name": "Chloe, 28"
+          }
+        },
+        "4706bb0a-53a9-4a2d-99b9-0ba8d042572c": {
+          "type": "testimonial",
+          "settings": {
+            "bg_col": "#f8f1ed",
+            "text_col": "#0e2559",
+            "img": "shopify:\/\/shop_images\/Mask_group_4.png",
+            "stars": 5,
+            "quote": "As a busy Mum, these flushable pads are such a game-changer! I don't have to trade off sustainability for convenience.",
+            "name": "Mary, 35"
+          }
+        },
+        "242e9015-4406-4ada-a08b-7d1d772cbcc1": {
+          "type": "testimonial",
+          "settings": {
+            "bg_col": "#f8f1ed",
+            "text_col": "#0e2559",
+            "img": "shopify:\/\/shop_images\/Mask_group_5.png",
+            "stars": 5,
+            "quote": "The comfort and all round convenience makes it the perfect addition to my period care.",
+            "name": "Margaux, 30"
+          }
+        },
+        "9efa3a61-77fd-47ad-8737-1c71aeabb9c0": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "bg_col": "#e1e7d5",
+            "text_col": "#0e2559",
+            "img": "shopify:\/\/shop_images\/Mask_group_6.png",
+            "stars": 5,
+            "quote": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua. Ut enim ad",
+            "name": "Ekin"
+          }
+        },
+        "b828e2cc-3f5e-42b0-8c74-a34a692cdef2": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "bg_col": "#f8f1ed",
+            "text_col": "#0e2559",
+            "img": "shopify:\/\/shop_images\/Mask_group_4.png",
+            "stars": 5,
+            "quote": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua. Ut enim ad",
+            "name": "Ekin"
+          }
+        }
+      },
+      "block_order": [
+        "118932d6-fd69-4c1c-befa-ede1d728a71c",
+        "4706bb0a-53a9-4a2d-99b9-0ba8d042572c",
+        "242e9015-4406-4ada-a08b-7d1d772cbcc1",
+        "9efa3a61-77fd-47ad-8737-1c71aeabb9c0",
+        "b828e2cc-3f5e-42b0-8c74-a34a692cdef2"
+      ],
+      "settings": {
+        "bg_col": "#ffffff",
+        "text_col": "#0e2559",
+        "title": "Hear why our community found XX",
+        "underlined_title": "love at first flush"
+      }
+    },
+    "16618606694616feee": {
+      "type": "product-faq",
+      "blocks": {
+        "ea3256b6-8194-4151-8b6f-ce91d82c6ce5": {
+          "type": "faq-top-header",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Bottle-Leaf_Web-Icon_Dark-Blue.png",
+            "title_text": "Product",
+            "show_top_header": true
+          }
+        },
+        "fa4a37c4-00dc-4c61-aea1-ee711817c340": {
+          "type": "faq-top-header",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/World-Leaf_Web-Icon_Dark-Blue.png",
+            "title_text": "Planet",
+            "show_top_header": true
+          }
+        },
+        "f9d82082-46f3-41f2-b64b-f8f1568cfb2c": {
+          "type": "faq-top-header",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Water-Drop_Web-Icon_Dark-Blue.png",
+            "title_text": "People",
+            "show_top_header": true
+          }
+        },
+        "4c2bde2d-a33f-4888-b241-e03e16a95d09": {
+          "type": "faq-item",
+          "disabled": true,
+          "settings": {
+            "tab_content_header": "Product",
+            "title_text": "Is it safe to flush my Planera pad down the toilet?",
+            "body_text": "Planera’s pads have been successfully and independently tested in accordance with the UK's water industry specification for flushability testing (WIS 4-02-06) – so yes, you can confidently flush us away! <br> <br> The pad breaks down in two parts; firstly, the hydraulic action of the toilet flush pulls the layers of the pad apart as it starts travelling down the drain. Then, the layers break down into 3mm pant fibres. <br> <br> Our materials and manufacturing process ensure that your pad will have disintegrated by the time it reaches your local municipal plant in a few hours. It is then treated along with toilet paper and sewage, regenerating into clean water, fertiliser and renewable energy. Don’t try this with other period products!"
+          }
+        },
+        "dd051c95-6a7f-4a18-99a3-f3343db74d82": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Product",
+            "title_text": "Can I flush the wrapper and peel papers?",
+            "body_text": "The wrappers and peel papers are made of the same material as our pads. Therefore they are fully water-dispersible and also biodegradable. You can flush one pad, one wrapper and three peel papers in one flush."
+          }
+        },
+        "88e827a3-4be7-4bcd-83c1-c4265255e92d": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "People",
+            "title_text": "Are these suitable for people with sensitive skin?",
+            "body_text": "We are working with a vegan accredited testing lab to ensure that all of our products are suitable for sensitive skin. We will have the vaginal and skin sensitivity report by our launch in November 2022. <br> <br> All materials that touch your skin are made from natural plant fibres with no added bleach, no harmful chemicals or artificial materials. Our products are also free from microplastics (including thermo-plastic glue), and the feedback from product testers has been very positive, with less rashes and itching reported."
+          }
+        },
+        "cc3b89bd-e572-4716-91c2-b8685394bafd": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Product",
+            "title_text": "How much blood do they absorb?",
+            "body_text": "Our pads have been tested for 24 hours in the lab, using 8ml of blood. An average 5 day period is estimated at 20-35ml of blood (whilst a heavy flow is more like 40-80ml), so our pads provide good protection for a medium flow. We don’t recommend wearing a pad for 24 hours, this is just for our testing protocol!"
+          }
+        },
+        "519dcec3-5ddd-4935-9424-fef9cc2551f0": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Product",
+            "title_text": "What are Planera pads made of?",
+            "body_text": "Our pads are made of just 3 materials: plant fibres, our unique biopolymer upflow(™) barrier and tree sap. Head over to our “Shop” page to learn more about what we use and what we don’t use in our pads."
+          }
+        },
+        "4f3a8bdb-c975-4190-924b-232f3ff9be26": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Planet",
+            "title_text": "Is your pad safe for oceans and aquatic life?",
+            "body_text": "Planera pads contain zero microplastics, therefore, they will never pollute waterways or harm aquatic life. When flushed, the pad breaks down into 3mm plant fibres and is broken down by the aerobic and anaerobic bacteria at the sewage centre before regenerating into clean water, renewable energy and fertiliser."
+          }
+        },
+        "59666fcb-2623-4b00-b8e7-3de739baff8d": {
+          "type": "faq-item",
+          "settings": {
+            "tab_content_header": "Planet",
+            "title_text": "Surely binning a pad is always better?",
+            "body_text": "Sadly, product life doesn’t end in the bin! After binning, your local council will either send the contents of your bin to landfill, or it will be incinerated (and neither are good news for the environment). Once binned, we lose control of where the pad ends up. If it gets sent to landfill, we cannot guarantee the right environment for it to biodegrade. Incineration produces harmful greenhouse gases. <br> <br> Flushable pads give you back the control of where it ends up. Once flushed, the pads will biodegrade into clean water, renewable energy and fertiliser at your local water treatment centre."
+          }
+        },
+        "9e09d607-fee5-4d70-8852-6e2cf8d8ae35": {
+          "type": "faq-item",
+          "disabled": true,
+          "settings": {
+            "tab_content_header": "Product",
+            "title_text": "How is it absorbent and flushable?",
+            "body_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "ea3256b6-8194-4151-8b6f-ce91d82c6ce5",
+        "fa4a37c4-00dc-4c61-aea1-ee711817c340",
+        "f9d82082-46f3-41f2-b64b-f8f1568cfb2c",
+        "4c2bde2d-a33f-4888-b241-e03e16a95d09",
+        "dd051c95-6a7f-4a18-99a3-f3343db74d82",
+        "88e827a3-4be7-4bcd-83c1-c4265255e92d",
+        "cc3b89bd-e572-4716-91c2-b8685394bafd",
+        "519dcec3-5ddd-4935-9424-fef9cc2551f0",
+        "4f3a8bdb-c975-4190-924b-232f3ff9be26",
+        "59666fcb-2623-4b00-b8e7-3de739baff8d",
+        "9e09d607-fee5-4d70-8852-6e2cf8d8ae35"
+      ],
+      "settings": {
+        "title": "FAQ",
+        "cta_text": "LEARN MORE",
+        "cta_link": "",
+        "bg_col": "",
+        "text_col": ""
+      }
+    },
+    "16643137361915266f": {
+      "type": "yotpo-custom-widget",
+      "disabled": true,
+      "settings": {}
+    },
+    "165165903343668781": {
+      "type": "logo-slider",
+      "blocks": {
+        "6d6e1717-0ac0-4056-b620-cec3773d894e": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-mayor-of-london_480x_1.png"
+          }
+        },
+        "821a35a1-d645-4426-8de4-1891eb7d6d3d": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5.png"
+          }
+        },
+        "78ae3312-8a48-47af-9841-d553a08b35e4": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d.png"
+          }
+        },
+        "c4fb051d-894f-483f-8dc6-5a64838dd4c6": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c.png"
+          }
+        },
+        "2a41dc4d-a376-491a-84f0-17eca6a9732a": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621.png"
+          }
+        },
+        "3c19a5cb-cacc-4248-93f6-99a78bd6337e": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7.png"
+          }
+        },
+        "26cf1962-a2ab-4b4c-abf2-664c0e48080d": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5.png"
+          }
+        },
+        "52315353-9400-44f0-a28d-7282c59d4b21": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2.png"
+          }
+        },
+        "78584fa4-6d0e-43a3-bd66-5b00c96dc77f": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38.png"
+          }
+        },
+        "f7edecc6-a7ea-495f-9eda-8b2731f4efec": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d.png"
+          }
+        },
+        "56b72f00-fbfa-420d-88c9-674b1cabc28f": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c.png"
+          }
+        },
+        "9db7f27e-b24e-4431-a36a-92008121a85c": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b.png"
+          }
+        },
+        "4437c5bc-e43b-41fb-b6f1-05c46eaf5237": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Womens-Health.jpg"
+          }
+        },
+        "9b412c61-bdb5-49b8-9ef5-304d5842a517": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/cosmo_logo.png"
+          }
+        },
+        "6ad6df14-0800-4641-806c-af81247a86b0": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d.png"
+          }
+        },
+        "c15b9423-6167-4d1a-8217-f994ea292288": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/metro_logo.png"
+          }
+        },
+        "b42a1f15-c47c-4662-92f1-d49092549bbd": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/OK_logo.png"
+          }
+        },
+        "af7dc6aa-6d45-4b40-881b-bead7b883288": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/greentech.png"
+          }
+        },
+        "84f4fe87-6cc6-4293-b3b9-624d960b382b": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11.png"
+          }
+        },
+        "fc182c63-85f8-47b2-875b-46f9e61d37c6": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/white_square_website.png"
+          }
+        },
+        "5f0878d5-9bed-402a-9f45-b47d02c7fbc4": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/white_square_website.png"
+          }
+        },
+        "6c0eedf0-640b-4ddf-b8fd-f1ba892ceea8": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/white_square_website.png"
+          }
+        }
+      },
+      "block_order": [
+        "6d6e1717-0ac0-4056-b620-cec3773d894e",
+        "821a35a1-d645-4426-8de4-1891eb7d6d3d",
+        "78ae3312-8a48-47af-9841-d553a08b35e4",
+        "c4fb051d-894f-483f-8dc6-5a64838dd4c6",
+        "2a41dc4d-a376-491a-84f0-17eca6a9732a",
+        "3c19a5cb-cacc-4248-93f6-99a78bd6337e",
+        "26cf1962-a2ab-4b4c-abf2-664c0e48080d",
+        "52315353-9400-44f0-a28d-7282c59d4b21",
+        "78584fa4-6d0e-43a3-bd66-5b00c96dc77f",
+        "f7edecc6-a7ea-495f-9eda-8b2731f4efec",
+        "56b72f00-fbfa-420d-88c9-674b1cabc28f",
+        "9db7f27e-b24e-4431-a36a-92008121a85c",
+        "4437c5bc-e43b-41fb-b6f1-05c46eaf5237",
+        "9b412c61-bdb5-49b8-9ef5-304d5842a517",
+        "6ad6df14-0800-4641-806c-af81247a86b0",
+        "c15b9423-6167-4d1a-8217-f994ea292288",
+        "b42a1f15-c47c-4662-92f1-d49092549bbd",
+        "af7dc6aa-6d45-4b40-881b-bead7b883288",
+        "84f4fe87-6cc6-4293-b3b9-624d960b382b",
+        "fc182c63-85f8-47b2-875b-46f9e61d37c6",
+        "5f0878d5-9bed-402a-9f45-b47d02c7fbc4",
+        "6c0eedf0-640b-4ddf-b8fd-f1ba892ceea8"
+      ],
+      "settings": {
+        "title": "<p>As Seen In<\/p>",
+        "bg_col": "#ffffff",
+        "text_col": "#0e2559"
+      }
+    },
+    "1651683459079903ec": {
+      "type": "article-slider",
+      "disabled": true,
+      "blocks": {
+        "9775ea24-aa4d-4ae9-927e-9f861fb59b99": {
+          "type": "article",
+          "settings": {
+            "article": "blogs\/no-more-dirty-bins"
+          }
+        },
+        "07162166-8f22-49e1-b4f2-0a612b23f396": {
+          "type": "article",
+          "settings": {
+            "article": "blogs\/no-more-dirty-bins"
+          }
+        },
+        "3fd72de5-823e-451a-afa3-9733f7235e12": {
+          "type": "article",
+          "settings": {
+            "article": "blogs\/no-more-dirty-bins"
+          }
+        }
+      },
+      "block_order": [
+        "9775ea24-aa4d-4ae9-927e-9f861fb59b99",
+        "07162166-8f22-49e1-b4f2-0a612b23f396",
+        "3fd72de5-823e-451a-afa3-9733f7235e12"
+      ],
+      "settings": {
+        "bg_col": "#d1d6e5",
+        "title_text_col": "#0e2559",
+        "article_text_col": "#0e2559",
+        "article_bg_col": "#ffffff",
+        "title": "<p>Our <strong>Community<\/strong><\/p>",
+        "btn": "READ ARTICLE",
+        "all_btn": "SEE ALL",
+        "all_url": "shopify:\/\/blogs\/blogs"
+      }
+    },
+    "16644451340f625229": {
+      "type": "logo-hardcoded-v2",
+      "disabled": true,
+      "blocks": {
+        "396cb2b3-df4b-458a-a86a-e086ca8d8f58": {
+          "type": "logo",
+          "settings": {}
+        },
+        "599643ed-6b62-4fdb-918e-dec1880daf2f": {
+          "type": "logo",
+          "settings": {}
+        },
+        "038d3752-bdcf-493f-a13e-8422307744c8": {
+          "type": "logo",
+          "settings": {}
+        },
+        "d29c46e8-cced-445d-b4f0-7e6655e24d20": {
+          "type": "logo",
+          "settings": {}
+        },
+        "58a9d0d3-f917-42fd-bbe3-262eeff576cb": {
+          "type": "logo",
+          "settings": {}
+        },
+        "09b44b0c-961a-44f0-a1d9-17e517a63737": {
+          "type": "logo",
+          "settings": {}
+        },
+        "c32e844a-d242-4d79-b687-80aa029dd833": {
+          "type": "logo",
+          "settings": {}
+        },
+        "b0fd200d-2a42-4b25-a4bf-a8dba9e3293c": {
+          "type": "logo",
+          "settings": {}
+        },
+        "c62c2fb5-edba-40ea-8606-eb29814906ac": {
+          "type": "logo",
+          "settings": {}
+        },
+        "47334d18-ca33-4fc7-8018-5974e79e527c": {
+          "type": "logo",
+          "settings": {}
+        },
+        "3d416e9f-6889-42a6-ad5d-c80ee9194569": {
+          "type": "logo",
+          "settings": {}
+        },
+        "8d9040c0-599f-4da0-b40b-8dcc857d79a2": {
+          "type": "logo",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "396cb2b3-df4b-458a-a86a-e086ca8d8f58",
+        "599643ed-6b62-4fdb-918e-dec1880daf2f",
+        "038d3752-bdcf-493f-a13e-8422307744c8",
+        "d29c46e8-cced-445d-b4f0-7e6655e24d20",
+        "58a9d0d3-f917-42fd-bbe3-262eeff576cb",
+        "09b44b0c-961a-44f0-a1d9-17e517a63737",
+        "c32e844a-d242-4d79-b687-80aa029dd833",
+        "b0fd200d-2a42-4b25-a4bf-a8dba9e3293c",
+        "c62c2fb5-edba-40ea-8606-eb29814906ac",
+        "47334d18-ca33-4fc7-8018-5974e79e527c",
+        "3d416e9f-6889-42a6-ad5d-c80ee9194569",
+        "8d9040c0-599f-4da0-b40b-8dcc857d79a2"
+      ],
+      "settings": {
+        "title": "<p>As Seen In<\/p>",
+        "bg_col": "",
+        "text_col": ""
+      }
+    }
+  },
+  "order": [
+    "165132504359d5119d",
+    "165564564811a85362",
+    "16513353919198b3cc",
+    "1651530820ad2cbf02",
+    "166083267542597007",
+    "165564718391119f31",
+    "1651588789bd4e8e42",
+    "1651533711ce683de3",
+    "1651613848323012b8",
+    "16618606694616feee",
+    "16643137361915266f",
+    "165165903343668781",
+    "1651683459079903ec",
+    "16644451340f625229"
+  ]
+}

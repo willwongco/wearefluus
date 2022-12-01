@@ -1,0 +1,94 @@
+<!-- setup -->
+{% assign ss = section.settings %}
+
+{% capture replace_text %}
+{% if section.settings.circled_title != blank %}
+<span class="whitespace-nowrap relative">
+    {{ section.settings.circled_title }}
+    {% include 'icon-circled-text-tech' classes: 'absolute right-0 bottom-0 hidden lg:block' %}
+    {% include 'icon-circled-text-tech-small' classes: 'absolute -left-5 -top-2 block lg:hidden ' %}
+</span>
+{% endif %}
+{% endcapture %}
+
+<div style="background-color:{{ ss.bg_col }};" class="pb-10 pt-14 lg:pb-14 lg:pt-20">
+    <h2 style="color:{{ ss.text_col }};" class=" text-3xl font-cheltenham-std px-8 sm:px-12 text-center | lg:text-6xl">{{ ss.title | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="underline_text whitespace-nowrap relative">' | replace: '/em>', '/span>' | replace: '<em>', '<span class="full_stop_text relative">' | replace: 'XX', replace_text }}</h2>
+</div>
+
+<style>
+    @media screen and (max-width:1024px) {
+        .underline_text::before {
+        content:url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Asset_72_2.png?v=1654614746');
+        position: absolute;
+        top:.5rem;
+        left:0rem;
+        width:100%;
+    }
+}
+    @media screen and (min-width:1024px) {
+        .underline_text::before {
+        content:url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Asset_72_1.png?v=1654614706');
+        position: absolute;
+        top:.75rem;
+        left:.25rem;
+        width:100%;
+    }
+}
+    {% if ss.full_stop %}
+    span.full_stop_text::after {
+        content:url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Asset_33_1.png?v=1653915893');
+        position: absolute;
+        top:0;
+    }
+    {% endif %}
+</style>
+
+
+
+{% schema %}
+{
+    "name": "Tech Page Text Header",
+    "settings": [
+    {
+        "type": "color",
+        "id": "bg_col",
+        "label": "Background Colour"
+      },
+    {
+        "type": "color",
+        "id": "text_col",
+        "label": "Text Colour"
+      },
+    {
+        "type": "header",
+        "content": "Checkbox for blue dot at end of title"
+    },
+    {
+        "type": "checkbox",
+        "id": "full_stop",
+        "label": "Select to show the blue dot at the end of the title",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Copy"
+    },
+    {
+        "type":"richtext",
+        "label":"Title",
+        "id":"title",
+        "info":"Bold text will show the blue underline image | Italic text will show the blue full stop (must be last word for dot) | Add XX anywhere in the title. This will be replaced with the below text"
+    },
+        {
+            "type": "text",
+            "id": "circled_title",
+            "label": "Circled Text"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Tech Page Text Header"
+        }
+    ]
+}
+{% endschema %}

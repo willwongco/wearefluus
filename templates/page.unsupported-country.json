@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "61160638-c8d6-4cb4-94c8-76c92ca6ffcb": {
+      "type": "call-to-action",
+      "settings": {
+        "section_title": "Unsupported Country",
+        "section_text": "Some more text here",
+        "button_text": "Sign up 123",
+        "button_link": "contact"
+      }
+    }
+  },
+  "order": [
+    "61160638-c8d6-4cb4-94c8-76c92ca6ffcb"
+  ]
+}

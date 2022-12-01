@@ -1,0 +1,117 @@
+<!doctype html>
+<head>
+{% include 'hyperspeed-imports' %}
+
+{% render 'hs-critical-css' %}
+
+  {%- liquid
+    assign redirect_url = false
+    if customer.metafields.launch_pad.day.value == true or customer.metafields.launch_pad.liner.value == true or customer.metafields.launch_pad.plus.value == true
+      case template.name
+        when 'index' or 'product' or 'page' or 'cart' or 'search' or 'blog' or 'article' or 'account'
+          if customer.metafields.launch_pad.day.value == true
+            assign redirect_url = '/cart/42526559240352:1'
+          endif
+          if customer.metafields.launch_pad.liner.value == true
+            assign redirect_url = '/cart/42526559273120:1'
+          endif
+          if customer.metafields.launch_pad.plus.value == true
+            assign redirect_url = '/cart/42526559338656:1'
+          endif
+      endcase
+    endif
+
+    if template.name == 'product'
+      if product.handle == 'launch-pad-day-pad' or product.handle == 'launch-pad-liner' or product.handle == 'launch-pad-plus'
+        echo '<script>window.location.href = `/`;</script>'
+      endif
+    endif
+  -%}
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  
+  {%- if settings.favicon != blank -%}
+  <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
+  {%- endif -%}
+
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {% render 'meta-tags' %}
+
+  {{ content_for_header }} <!-- Header hook for plugins -->
+  {% render 'hs-defer-css' with filename: 'style.min.css', pages: 'collection,index,product' | split: ',', minify: false, local: true %}
+  {% render 'hs-defer-css' with filename: 'custom.css', pages: 'collection,index,product' | split: ',', minify: true, local: true %}
+  <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script async src="{{ 'bundle.min.js' | asset_url }}"></script>
+  {% if template contains 'product' or template contains 'cart' or template contains 'article' or template contains 'about' or template contains 'impact' or template contains 'tech' or template contains 'search' %}
+  {% render 'hs-defer-css' with filename: 'splide.min.css', pages: 'collection,index,product' | split: ',', minify: false, local: true %}
+  <script src="{{ 'splide.min.js' | asset_url }}"></script>
+  {% endif %}
+  <!-- template will equal to blank whilst on recharge tools/recurring/get-subscription-access which needs jquery support -->
+  {% if template contains 'blog' or template == blank %}
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  {% endif %}
+  <!--script for loyalty rewards-->
+  <script async src="https://cdn-widgetsrepository.yotpo.com/v1/loader/tIIi5nQl6K6472y86F8l2A"></script>
+  <!--script for loyalty rewards-->
+  <!-- Yotpo JavaScript > Layout > theme.liquid -->
+<script type="text/javascript">
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/AQylRjL9ZPR2h0n5eZloHoUO4mFl4dmaAv6o8zuZ/widget.js";var t=document.getElementsByTagName("script")[0
+];t.parentNode.insertBefore(e,t)})();
+</script>
+<!-- End of Yotpo JavaScript -->
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RFS52Z');</script>
+<!-- End Google Tag Manager -->
+Additionally, paste this code immediately after the opening <body> tag:
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RFS52Z"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Start of LittledataLayer -->
+{% include 'LittledataLayer' %}
+<!-- End of LittledataLayer -->
+</head>
+<body :class="{ 'h-full overflow-hidden': mobileMenu }" x-data="{ mobileMenu: false, cartSlider: false, productSticky: false, screenWidth: window.innerWidth }" class="{{ template }}">
+  {%- if redirect_url -%}
+    <script>
+      window.location.href = {{ redirect_url | json }};
+    </script>
+  {%- else -%}
+    <main class="font-sofia-pro text-primary-blue {% if template != 'index' %}pt-14{% else %}overflow-hidden relative{% endif %}" role="main">
+      {% section 'index-header' %}
+      {% section 'cart-slider' %}
+      {{ content_for_layout }}
+      {% section 'footer' %}
+    </main>
+  {%- endif -%}
+
+  <script>
+    // Makes sure that users from non-UK cannot order from us
+    const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if(userTimezone != 'Europe/London' && userTimezone != 'Europe/Dublin'){
+      console.log('User is not in the UK. Do redirect.');
+    }
+  </script>
+<!--Gorgias Chat Widget Start--><script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=23655"></script>
+<script id="gorgias-chat-shopify-install">!function(_){_.SHOPIFY_PERMANENT_DOMAIN="{{shop.permanent_domain}}",_.SHOPIFY_CUSTOMER_ID="{{customer.id}}",_.SHOPIFY_CUSTOMER_EMAIL="{{customer.email}}"}(window||{});</script><!--Gorgias Chat Widget End-->
+</body>
+</html>

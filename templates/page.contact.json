@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main": {
+      "type": "contact-us",
+      "settings": {
+        "bg_col": "#fff",
+        "text_col": "#0e2559",
+        "img_desktop": "shopify:\/\/shop_images\/28_07_21_Planera_day2_MD_Water_0984.jpg",
+        "title": "Contact Us",
+        "subtitle": "Have a question for us? Just complete the form below and we'll get back to you.",
+        "enq_types": "General , Delivery Status , Product Enquiry , Returns , Order Query , Careers , Wholesale",
+        "cta_text": "SEND"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

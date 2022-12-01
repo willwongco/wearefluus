@@ -1,0 +1,19 @@
+{%- comment -%}
+- secondary: (boolean) Type of button (colour)
+- btn_text: (text) Button text
+- btn_link: (text) Button href
+- classes: (text) Custom classes to add
+{%- endcomment -%}
+
+
+{% if secondary %}
+<a {% if styles %} style="" {% endif %} class="rounded-button border-primary-blue py-2 text-primary-blue bg-offyellow-planera text-center px-7 relative w-full md:mr-2 border text-sm uppercase flex items-center justify-center btn-second transition-all ease-out duration-300 hover:bg-black-planera hover:border-black-planera hover:text-white {{ classes }}" href="{{ btn_link }}">
+    <p class="text-center">{{ btn_text }}</p>
+    <div class="absolute right-2 top-1/2 -translate-y-1/2 transform">{% include 'icon-arrow' classes: 'transition-all ease-out duration-300' %}</div>
+</a>
+{% else %}
+<a {% if styles %} style="" {% endif %} class="rounded-button border-purple-planera bg-purple-planera text-white py-2 text-center px-5 relative border text-sm uppercase flex items-center justify-center btn-main hover:bg-offwhite-planera hover:border-offwhite-planera hover:text-black-planera transition-all ease-out duration-300 {{ classes }}" href="{{ btn_link }}">
+    <p class="text-center">{{ btn_text }}</p>
+    <div class="absolute right-2 top-1/2 -translate-y-1/2 transform">{% include 'icon-arrow' classes: 'transition-all ease-out duration-300' %}</div>
+</a>
+{% endif %}

@@ -1,0 +1,163 @@
+<!-- setup -->
+{% assign ss = section.settings %}
+<div style="background-color:{{ ss.bg_col }};" class="pad-infographics">
+
+<div style="color:{{ ss.title_top_col }};" class="flex flex-col max-w-3xl pt-20 mx-auto md:pb-10 px-7 lg:px-6 lg:max-w-7xl lg:pb-16 | lg:flex-row">
+    <div class=" mb-4 sm:mb-8 lg:mb-0 lg:pr-14">
+        
+        <!-- title text formatting -->
+        {% assign left_title = ss.title_left %}
+        {% if ss.left_full_stop == true %}
+        {% assign last_word = ss.title_left | split:' ' | last | prepend: '<span class="full_stop_text relative">' | append: '</span>' %}
+        {% assign title = ss.title_left | split:' ' %}
+        {% assign newTitle = "" %}
+        {% for word in title %}
+          {% if forloop.last %}
+          {% assign newTitle = newTitle | append: last_word %}
+          {% else %}
+          {% assign newTitle = newTitle | append: word %}
+          {% assign newTitle = newTitle | append: " " %}
+          {% endif %}
+        {% endfor %}
+        {% assign left_title = newTitle %}
+        {% endif %}
+
+        {% assign right_title = ss.title_right %}
+        {% if ss.right_full_stop == true %}
+        {% assign last_word = ss.title_right | split:' ' | last | prepend: '<span class="full_stop_text relative">' | append: '</span>' %}
+        {% assign title = ss.title_right | split:' ' %}
+        {% assign newTitle = "" %}
+        {% for word in title %}
+          {% if forloop.last %}
+          {% assign newTitle = newTitle | append: last_word %}
+          {% else %}
+          {% assign newTitle = newTitle | append: word %}
+          {% assign newTitle = newTitle | append: " " %}
+          {% endif %}
+        {% endfor %}
+        {% assign right_title = newTitle %}
+        {% endif %}
+
+        <h3 class="font-cheltenham-std  pb-6 text-4xl xl:text-5xl">{{ left_title | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="text-purple-planera">'}}</h3>
+        <span class=" font-sofia-pro text-lg ">{{ ss.body_left }}</span>
+    </div>
+    <div>
+        <h3 class="font-cheltenham-std  pb-6 text-4xl xl:text-5xl">{{ right_title | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="text-purple-planera">'}}</h3>
+        <span class=" font-sofia-pro text-lg ">{{ ss.body_right }}</span>
+    </div>
+</div>
+
+<div class="pad-infographic-wrapper transition-all duration-300 w-full mx-auto mt-8">
+
+          <div class="video-container relative max-w-full m-auto w-full pb-14">
+            <video autoplay muted loop playsinline class="mx-auto max-w-7xl w-full">
+              <source src="{{ ss.video_url }}" type="video/mp4">
+            </video>
+          </div>
+
+</div>
+
+</div>
+
+<style>
+
+
+    .pad-infographics .full_stop_text::after {
+        content:url('https://cdn.shopify.com/s/files/1/0609/8806/3904/files/Asset_33_1_1.png?v=1655122692');
+        position: absolute;
+        top:7%;
+        left: calc(100% + 3px);
+    }
+    @media screen and (max-width:1279px) {
+        .pad-infographics .full_stop_text::after {
+            top:4%;
+    }
+    }
+    @media screen and (max-width:1023px) {
+        .pad-infographics .full_stop_text::after {
+            top:0%;
+    }
+    }
+
+</style>
+
+{% schema %}
+{
+    "name": "Pad - Info and video",
+    "settings": [
+    {
+        "type": "color",
+        "id": "bg_col",
+        "label": "Background Colour"
+      },
+    {
+        "type": "color",
+        "id": "title_top_col",
+        "label": "Top Titles/Subtitles Colour"
+      },
+    {
+        "type":"richtext",
+        "label":"Title - Left",
+        "id":"title_left",
+        "info":"bold text will become blue"
+    },
+    {
+        "type": "header",
+        "content": "Checkbox for blue dot at end of title - Left"
+    },
+    {
+        "type": "checkbox",
+        "id": "left_full_stop",
+        "label": "Select to show the blue dot at the end of the title",
+        "default": true
+      },
+    {
+        "type":"richtext",
+        "label":"Body - Left",
+        "id":"body_left"
+    },
+    {
+        "type":"richtext",
+        "label":"Title - Right",
+        "id":"title_right",
+        "info":"bold text will become blue"
+    },
+    {
+        "type": "header",
+        "content": "Checkbox for blue dot at end of title - Right"
+    },
+    {
+        "type": "checkbox",
+        "id": "right_full_stop",
+        "label": "Select to show the blue dot at the end of the title",
+        "default": true
+      },
+    {
+        "type":"richtext",
+        "label":"Body - Right",
+        "id":"body_right"
+    },
+    {
+        "type": "header",
+        "content": "video"
+      },
+      {
+        "type": "url",
+        "label": "Main video (MP4)",
+        "info":"Upload video via shopify files and copy the url link and paste it here",
+        "id": "video_url"
+      },
+      {
+        "type": "image_picker",
+        "label": "Video Poster (650W X 650H)",
+        "id": "video_poster",
+        "info": "this image will be displayed before a video starts. Note this is only needed if you have selected a HTML MP4/OGV file."
+      }
+    ],
+    "presets": [
+        {
+            "name": "Pad - Info and video"
+        }
+    ]
+}
+{% endschema %}

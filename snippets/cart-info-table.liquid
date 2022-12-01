@@ -1,0 +1,32 @@
+<table class="w-full">
+    <thead>
+        <tr class=" border-customCartLineGrey hidden lg:block sm:border-b">
+            <td class="pb-2 font-cheltenham-std tracking-wide text-xl">
+                {{- 'cart.total' | t -}}
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+            <tr class="">
+                <td class="flex flex-col ">
+                    <div class="flex justify-between pt-8 pb-4">
+                  <p class=" font-sofia-pro-bold text-base sm:text-lg font-bold">{{- 'cart.subtotal' | t -}}</p>
+                  <p class="font-sofia-pro-bold text-base sm:text-lg">{{ cart.items_subtotal_price | money }}</p>
+                </div>
+                <div class="flex justify-between pt-4 pb-8 border-b border-customCartLineGrey">
+                  <p class="font-sofia-pro-bold text-base sm:text-lg">{{- 'cart.shipping' | t -}}</p>
+                  <p class="font-sofia-pro text-base sm:text-lg ">{{- 'cart.shipping_calculated' | t -}}</p>
+                </div>
+                <div class="flex justify-between py-8">
+                    <p class="font-sofia-pro text-base sm:text-lg">{{- 'cart.total' | t -}}</p>
+                    <p class="font-sofia-pro-bold text-base sm:text-lg">{{ cart.total_price | money }}</p>
+                  </div>
+                  <div class="w-full">
+                    <a class=" font-sofia-pro-regular text-base bg-purple-planera flex items-center justify-center rounded-lg text-white w-full pt-4 pb-3 tracking-wider uppercase" href="/checkout">{{- 'cart.checkout' | t -}}</a>
+                    </div>
+                    <a class="py-8" href="/"><span class="font-sofia-pro-regular underline text-base">{{- 'cart.continue' | t -}}</span></a>
+                </td>
+
+            </tr>
+    </tbody>
+  </table>

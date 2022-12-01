@@ -1,0 +1,10 @@
+<div style="background-color:{{ section.settings.text_bg_col }};color:{{ section.settings.text_col }};" class="border border-black rounded-xl w-full mb-5 md:mb-10 p-8" id="subscription">
+      <h1 class="w-full block font-cheltenham-std text-lg sm:text-xl"  href="#">Subscribe & Save</h1>
+    {% if customer.tags contains 'Active Subscriber' %}
+    <p class="text-sm mt-4 font-sofia-pro-regular" >You have active subscriptions. Go to your customer portal to manage your subscribtion</p>
+    {% else %}
+    <p class="text-sm mt-4 font-sofia-pro-regular leading-5" >You don’t currently have any active subscriptions. You can add a subscription by selecting the Subscribe & Save option on your favourite products.</p>
+    {%endif%}
+
+    <a class="flex max-w-capture-content w-full text-center justify-center tracking-widest items-center mt-6 uppercase rounded-md pt-4 pb-3 font-sofia-pro-regular bg-purple-planera text-white text-sm" href="tools/recurring/login">Manage My Subscriptions</a>
+  </div>

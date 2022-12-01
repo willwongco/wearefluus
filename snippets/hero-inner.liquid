@@ -1,0 +1,41 @@
+{% assign id = section.id | replace: '--', '_' %}
+
+{% case section.settings.design %}
+{% when 'b' %}
+<div class="h-full flex items-center justify-start align-middle md:text-{{ section.settings.colour }} md:px-20 z-10">
+    <div class="w-full max-w-3xl px-6 md:px-0">
+        {% if section.settings.title %}
+            {% capture replace_text %}
+                {% if section.settings.underline_title != blank %}
+                <span x-data="{ tooLarge: $refs.{{id}}.getClientRects().length > 1 }" x-on:resize.window="tooLarge = $refs.{{id}}.getClientRects().length > 1" x-ref="{{id}}" class="relative">
+                    {{ section.settings.underline_title }}
+                    {% assign attrs = ":class='tooLarge ? &#39;hidden&#39; : &#39;block&#39;'" %}
+                    {% include 'icon-underline-extra-large' classes: 'absolute -bottom-3 right-0 w-full' %}
+                </span>
+                {% endif %}
+            {% endcapture %}
+
+            <h1 style="color: {{ section.settings.text_col }};" class="text-5xl font-cheltenham-std text-left md:text-6xl lg:text-7xl leading-tight md:leading-none xl:pr-14 pr-0">
+                {{ section.settings.title | replace: 'XX', replace_text }}
+            </h1>{% endif %}
+            {% if section.settings.subtitle %}<p style="color: {{ section.settings.text_col }};" class="md:text-xl text-left text-sm mt-6 md:mt-8 lg:pr-40">{{ section.settings.subtitle }}</p>{% endif %}
+            <div class="mt-3 md:mt-7">
+                {% include 'primary-content-cta' btn_style: section.settings.btn_style, btn_text: section.settings.btn_text, btn_link: section.settings.btn_link, classes: 'w-fit-content md:mr-12 md:inline-block block mb-7 md:mb-0 min-w-44 max-w-full', text_align: 'left', large: true %}
+                {% if section.settings.btn_text_2 %}
+                {% include 'primary-content-cta' btn_style: section.settings.btn_style, btn_text: section.settings.btn_text_2, btn_link: section.settings.btn_link_2, classes: 'w-fit-content md:mr-12 md:inline-block block md:mb-0 min-w-44 max-w-full', text_align: 'left', large: true %}
+                {% endif %}
+            </div>
+    </div>
+</div>
+{% when 'a' %}
+<div class="h-full flex items-center justify-center align-middle text-primary-blue md:text-{{ section.settings.colour }} py-20 z-10">
+    <div class="md:w-8/12 w-full px-6 md:px-1 z-10">
+        {% if section.settings.title %}<h1 class="text-3xl tiny:text-5xl font-cheltenham-std text-left md:text-center md:text-6xl lg:text-7.5xl md:px-5 leading-tight tiny:leading-12 md:leading-none xl:pr-14 tiny:pr-10 pr-0">{{ section.settings.title }}</h1>{% endif %}
+        <hr class="mt-4 mb-3 hidden md:block"/>
+        {% if section.settings.subtitle %}<p class="md:text-xl text-left md:text-center text-sm md:px-5 xl:pr-14 tiny:pr-14 pr-0 mt-7 md:mt-0">{{ section.settings.subtitle }}</p>{% endif %}
+        <div class="mt-14 md:mt-7">
+            {% include 'primary-content-cta' btn_style: section.settings.btn_style, btn_text: section.settings.btn_text, btn_link: section.settings.btn_link, classes: 'w-fit-content md:mx-auto', text_align: 'left', large: true %}
+        </div>
+    </div>
+</div>
+{% endcase %}

@@ -1,0 +1,231 @@
+{% assign ss = section.settings %}
+{% capture alpine_click %}
+{% comment %}
+    AJAX Add to cart
+{% endcomment %}
+if(selectedVariant) {
+    const item = {
+      'id': selectedVariant.product.id,
+      'quantity': quantity
+  }
+  if(planId) {
+      item['selling_plan'] = planId
+  }
+  fetch(window.Shopify.routes.root + 'cart/add.js', {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+      'items': [item]
+      })
+  })
+  .then(response => {
+      return response.json();
+  })
+  .then(response => {
+      cartSlider = true;
+      window['refresh-cart-slider']();
+  })
+  .catch((error) => {
+      console.error('Error:', error);
+  });
+}
+{% endcapture %}
+<div style="background-color: {{ section.settings.sec_bg_col }};">
+<div  x-data="{ quickShop: null }" class="pt-5 md:pt-12 max-w-full w-collection px-6 mx-auto">
+  {% if collection.all_tags.size > 0 %}
+  <div class="flex flex-wrap md:px-6 items-center">
+    <p class="font-cheltenham-std text-lg pr-4 leading-none w-full md:w-auto mb-2 md:mb-0">{{ section.settings.filter }}</p>
+    {% for tag in collection.all_tags %}
+    {% if current_tags contains tag %}
+      {% capture tag_link %}
+      <div class="filter_selected relative px-5 py-1 md:py-2 border-solid border rounded-lg text-base mr-4 mb-2 md:mb-0">
+        <div class="absolute -top-2 -right-2">{% include 'icon-cross-circle' %}</div>
+        {{tag}}
+      </div>
+      {% endcapture %}
+      {{ tag_link | link_to_remove_tag: tag }}
+    {% else %}
+      {% capture tag_link %}
+      <div class="filter_unselected relative px-5 py-1 md:py-2 border-solid border rounded-lg text-base mr-4 mb-2 md:mb-0">
+        {{tag}}
+      </div>
+      {% endcapture %}
+      {{ tag_link | link_to_add_tag: tag }}
+    {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% paginate collection.products by section.settings.limit %}
+  <div class="mt-8 md:mt-24 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-6.5 md:gap-x-10 lg:gap-x-18 relative rounded-sm">
+    {% for product in collection.products %}
+      {% include 'collection-product' product: product %}
+    {% endfor %}
+  </div>
+
+  {% if paginate.pages > 1 %}
+  <div class="mt-8">
+    {{ paginate | default_pagination }}
+  </div>
+  {% endif %}
+  {% endpaginate %}
+</div>
+</div>
+
+<style>
+  .filter_selected {
+    background-color: {{ ss.filter_sel_bg_col }};
+    color: {{ ss.filter_sel_text_col }};
+    border-color: {{ ss.filter_sel_border_col }};
+  }
+  .filter_unselected {
+    background-color: {{ ss.filter_bg_col }};
+    color: {{ ss.filter_text_col }};
+    border-color: {{ ss.filter_border_col }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Collection Page",
+  "settings": [
+  {
+    "type": "header",
+    "content": "Section Colours"
+  },
+  {
+    "type": "color",
+    "id": "sec_bg_col",
+    "label": "Section Background Colour"
+},
+{
+  "type": "header",
+  "content": "Filter Colours"
+},
+{
+  "type": "color",
+  "id": "filter_border_col",
+  "label": "Filter Border Colour"
+},
+{
+  "type": "color",
+  "id": "filter_bg_col",
+  "label": "Filter Background Colour"
+},
+{
+  "type": "color",
+  "id": "filter_text_col",
+  "label": "Filter Text Colour"
+},
+{
+  "type": "color",
+  "id": "filter_sel_bg_col",
+  "label": "Filter Selected Background Colour"
+},
+{
+  "type": "color",
+  "id": "filter_sel_text_col",
+  "label": "Filter Selected Text Colour"
+},
+{
+  "type": "color",
+  "id": "filter_sel_border_col",
+  "label": "Filter Selected Border Colour"
+},
+    {
+      "type": "text",
+      "id": "filter",
+      "label": "Filter By Text",
+      "default": "FILTER BY"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "Products per Page",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "text",
+      "id": "shop",
+      "label": "Shop Button",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "header",
+      "content": "Quick Shop"
+    },
+    {
+      "type": "text",
+      "id": "qs",
+      "label": "Quick Shop Button",
+      "default": "QUICK ADD"
+    },
+    {
+      "type": "text",
+      "id": "single",
+      "label": "Single Purchase Text",
+      "default": "Just Once"
+    },
+    {
+      "type": "text",
+      "id": "subscribe",
+      "label": "Subscribe Text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "text",
+      "id": "tick_1",
+      "label": "Tick Icon Text 1"
+    },
+    {
+      "type": "text",
+      "id": "tick_2",
+      "label": "Tick Icon Text 2"
+    },
+    {
+      "type": "text",
+      "id": "tick_3",
+      "label": "Tick Icon Text 3" 
+    },
+    {
+      "type": "text",
+      "id": "cart",
+      "label": "Add To Cart Button",
+      "default": "Add to Cart"
+    }
+  ],
+  "blocks": [
+  {
+      "type": "text",
+      "name": "Tick Point",
+      "settings": [
+          {
+              "type": "select",
+              "id": "type",
+              "label": "Type",
+              "info": "Show this tick if subscribe or one time is selected",
+              "options": [
+                  {
+                      "value": "one",
+                      "label": "One Time"
+                  },
+                  {
+                      "value": "subscribe",
+                      "label": "Subscribe"
+                  }
+              ]
+          },
+          {
+              "type": "text",
+              "id": "text",
+              "label": "Tick Point Text"
+          }
+      ]
+  }
+]
+}
+{% endschema %}

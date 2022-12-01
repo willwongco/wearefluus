@@ -1,0 +1,121 @@
+{% assign whatWeUseBlocks = section.blocks | where: 'type', "use" %}
+{% assign whatWeDontUseBlocks = section.blocks | where: 'type', "dontUse" %}
+{% assign ss = section.settings %}
+
+<div class="whatWeUse bg-top bg-cover pt-12 pb-32">
+
+    <div class=" px-4 | sm:px-10 lg:w-5/6 lg:m-auto" x-data="{ leftOpen: true, rightOpen: false }">
+        <div class="flex justify-between flex-col max-w-410 mx-px | sm:flex-row sm:max-w-none sm:justify-start">
+            <button @click="leftOpen = true; rightOpen = false" class=" font-cheltenham-std text-4xl border-black border rounded-lg px-3 pt-3 pb-1 max-w-max | sm:max-w-none sm:p-4 sm:pb-1 sm:mr-4 md:text-4xl" :class="leftOpen == true ? 'text-white bg-purple-planera border-purple-planera':'text-primary-blue bg-white'">{{ ss.left_title }}</button>
+            <button @click="rightOpen = true; leftOpen = false" class=" font-cheltenham-std text-4xl border-black border rounded-lg px-3 pt-3 pb-1  max-w-max mt-6 | sm:max-w-none sm:mt-0 sm:p-4 sm:pb-1 sm:ml-4 md:text-4xl" :class="rightOpen == true ? 'text-white bg-purple-planera border-purple-planera':'text-primary-blue bg-white'">{{ ss.right_title }}</button>
+        </div>
+        <div class=" font-cheltenham-std" x-data="{body_left_text:0}" x-show="leftOpen" >
+            <div class="flex mt-8 w-full mx-auto flex-col | sm:flex-row sm:flex-wrap sm:mx-px sm:max-w-3xl">
+            {% for block in whatWeUseBlocks %}
+            {% assign bs = block.settings %}
+            <div @click="body_left_text == {{ forloop.index }} ? body_left_text = 0 : body_left_text = {{ forloop.index }}" class="flex justify-start items-center cursor-pointer mb-6 {% unless forloop.last %}mr-4 sm:mr-7{% endunless %}"><p :class="body_left_text == {{ forloop.index }} ? 'text-purple-planera':''" class=" text-3xl pr-2 | md:text-4xl">{{ bs.title_text }}</p><span  class=" transform transition-all" :class="body_left_text == {{ forloop.index }} ? 'rotate-45' : ''">{% include 'icon-plus-uses' %}</span></div>
+            {% endfor %}
+            </div>
+            <div>
+                {% for block in whatWeUseBlocks %}
+                {% assign bs = block.settings %}
+                <p class="text-sm text-primary-blue font-sofia-pro-medium mt-4 pr-2 mx-auto | sm:mx-px sm:max-w-2xl md:mt-8 md:text-lg" x-show="body_left_text == {{ forloop.index }}" >{{ bs.body_text }}</p>
+                {% endfor %}
+            </div>
+        </div> 
+        <div class="font-cheltenham-std" x-data="{body_right_text:0}" x-show="rightOpen" >
+            <div class="flex mt-8 w-full mx-auto flex-col | sm:flex-row sm:flex-wrap sm:mx-px sm:max-w-3xl">
+            {% for block in whatWeDontUseBlocks %}
+            {% assign bs = block.settings %}
+            <div @click="body_right_text == {{ forloop.index }} ? body_right_text = 0 : body_right_text = {{ forloop.index }}" class="flex justify-start items-center cursor-pointer mb-6 {% unless forloop.last %} mr-4 sm:mr-7{% endunless %}"><p :class="body_right_text == {{ forloop.index }} ? 'text-purple-planera':''" class=" text-3xl pr-2 | md:text-4xl">{{ bs.title_text }}</p><span class=" transform transition-all" :class="body_right_text == {{ forloop.index }} ? 'rotate-45' : ''">{% include 'icon-plus-uses-2' %}</span></div>
+            {% endfor %}
+            </div>
+            <div>
+                {% for block in whatWeDontUseBlocks %}
+                {% assign bs = block.settings %}
+                <p class="text-sm text-primary-blue font-sofia-pro-medium mt-4 pr-2 mx-auto | sm:mx-px sm:max-w-2xl md:mt-8 md:text-lg" x-show="body_right_text == {{ forloop.index }}" >{{ bs.body_text }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    @media screen and (min-width:768px) {
+        .whatWeUse {
+            background-image: url('{{ ss.bg_desktop.src | img_url:'master' }}');
+        }
+    }
+    @media screen and (max-width:768px) {
+        .whatWeUse {
+            background-image: url('{{ ss.bg_mobile.src | img_url:'master' }}');
+        }
+    }
+</style>
+
+{% schema %}
+{
+    "name": "What We Use",
+    "settings": [
+        {
+            "type": "text",
+            "id": "left_title",
+            "label": "Title Button Left",
+            "default":"What We Use"
+        },
+        {
+            "type": "text",
+            "id": "right_title",
+            "label": "Title Button Right",
+            "default":"What We Don't Use"
+        },
+        {
+            "type":"image_picker",
+            "id":"bg_desktop",
+            "label":"Desktop Background Image",
+            "info":"W-2800px X H-900px"
+        },
+        {
+            "type":"image_picker",
+            "id":"bg_mobile",
+            "label":"Mobile Background Image",
+            "info":"W-375px X H-800px"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "use",
+            "name": "What We Use",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title_text",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "body_text",
+                    "label": "Body"
+                }
+            ]
+        },
+        {
+            "type": "dontUse",
+            "name": "What We Don't Use",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title_text",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "body_text",
+                    "label": "Body"
+                }
+            ]
+        } 
+    ]
+}
+{% endschema %}

@@ -1,0 +1,56 @@
+<table class="w-full">
+    <thead>
+        <tr class=" font-cheltenham-std tracking-wide text-xl sm:border-b">
+            <td class="pb-2 hidden pl-0 | sm:table-cell lg:pl-32">
+                {{- 'line-item-table.heading.product' | t -}}
+            </td>
+            <td class="pb-2 hidden | lg:table-cell">
+                {{- 'line-item-table.heading.price' | t -}}
+            </td>
+            <td class="pb-2 hidden text-center | sm:table-cell">
+                {{- 'line-item-table.heading.quantity' | t -}}
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {%- for item in cart.items -%}
+            <tr class="border-b">
+                <td class="lg:w-7/12 py-3">
+                    <div class="lg:flex items-center">
+                        <div class="w-32 | lg:w-24 lg:h-24">
+                            <a href="{{ item.url }}">
+                            {%- render 'lazy-image', image: item.image, additional_classes:'cartLineitemImg' -%}
+                        </a>
+                        </div>
+                        <div class="w-130% flex flex-col mt-5 | sm:w-full lg:mt-0 lg:pl-10">
+                        <h3 class="font-cheltenham-std text-base">{{- item.title -}}</h3>
+                        <div class="block pt-3 | lg:hidden">
+                        {%- render 'product.line-item.price', product: item.product, line_item:item -%}
+                        </div>
+                        {% unless item.properties == empty %}
+                        <ul class="pt-2 font-futuraMedium text-sm text-darkGrey">
+                            {% for property in item.properties %}
+                            <li>{{ property.first }}: {{ property.last }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endunless %}
+                        {% unless item.selling_plan_allocation.selling_plan.name == blank %}
+                        <div style="width: 120%;" class="flex font-futuraMedium text-sm text-darkGrey pt-2">
+                        <span class="pr-2">Subscription: </span>
+                        <span> {{ item.selling_plan_allocation.selling_plan.name }}</span>
+                        </div>
+                        {% endunless %}
+                        <a class="font-futuraMedium pt-4 pb-2 underline text-xs | lg:pt-2 lg:pb-0" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">Remove</a>
+                    </div>
+                    </div>
+                </td>
+                <td class="lg:w-4/12 py-2 hidden | lg:table-cell">
+                    {%- render 'product.line-item.price', product: item.product, line_item:item -%}
+                </td>
+                <td class="flex pt-26 w-36 mt-14 lg:w-2/12 py-2 | md:mt-0 sm:table-cell sm:w-28 sm:pt-0">
+                    {%- render 'quantity.update', cart_page:true, line: forloop.index, quantity: item.quantity, inventory_quantity: item.variant.inventory_quantity, inventory_policy: item.variant.inventory_policy -%}
+                </td>
+            </tr>
+        {%- endfor -%}
+    </tbody>
+</table>
