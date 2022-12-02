@@ -1,159 +1,149 @@
-<div class="h-8 bg-black text-white text-center flex items-center justify-center w-full fixed top-0 z-30 uppercase text-sm">
+{%- comment -%}
+  <div class="h-8 bg-black text-white text-center flex items-center justify-center w-full fixed top-0 z-30 uppercase text-sm">
   <p>{{ section.settings.promotion_text }}</p>
-</div>
+  </div>
+{%- endcomment -%}
 
 {% comment %}
   Index page design
 {% endcomment %}
 {% comment %}
-{% if template.name == 'index' %}
+  {% if template.name == 'index' %}
   {% include 'header-inner-index' %}
-{% else %}
+  {% else %}
   {% include 'header-inner' %}
-{% endif %}
+  {% endif %}
 {% endcomment %}
 {% if template == blank %}
-<style>
-.flex {
-  display: flex;
-  flex: inherit;
-}
-.rc_layout__container {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-.rc_layout__container input {
-  border: 1px solid black;
-    border-radius: 0.25rem;
-    padding: 0.25rem 0.5rem;
-    margin-bottom: 0.75rem;
-}
-</style>
-{% include 'header-inner-index' %}
+  <style>
+    .flex {
+      display: flex;
+      flex: inherit;
+    }
+    .rc_layout__container {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+    .rc_layout__container input {
+      border: 1px solid black;
+      border-radius: 0.25rem;
+      padding: 0.25rem 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+  </style>
+  {% include 'header-inner-index' %}
 
 {% else %}
-{% include 'header-inner-index' %}
+  {% include 'header-inner-index' %}
 {% endif %}
 {% schema %}
-{
-  "name": "Header",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Promotion Banner"
-    },
-    {
-      "type": "text",
-      "id": "promotion_text",
-      "label": "Promotion Text",
-      "default": "Free shipping on all orders over £25"
-    },
-    {
-      "type": "header",
-      "content": "Header"
-    },
-    {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Logo"
-    },
-    {
-      "type": "link_list",
-      "id": "main_menu",
-      "label": "Main Menu"
-    },
-    {
-      "type": "link_list",
-      "id": "mobile_main_menu",
-      "label": "Mobile Main Menu"
-    },
-    {
-      "type": "header",
-      "content": "Colours",
-      "info": "This applies to the homepage only"
-    },
-    {
-      "type": "select",
-      "id": "colour",
-      "label": "Colour",
-      "options": [
-        {
-          "value": "primary-blue",
-          "label": "Blue"
-        },
-        {
-          "value": "white",
-          "label": "White"
-        },
-        {
-          "value": "offwhite",
-          "label": "Off-White"
-        }
-      ],
-      "default": "white"
-    }
-  ],
-  "blocks": [
-    {
-      "name": "Menu Tab",
-      "type": "tab",
-      "settings": [
-        {
-          "type": "text",
-          "id": "tab",
-          "label": "Tab Title",
-          "info": "Enter the text of the menu item you'd like this tab to feature under (e.g. our story)"
-        },
-        {
-          "type": "image_picker",
-          "id": "img_1",
-          "label": "Image 1", 
-          "info": "It's recommended to keep all images the same size. At least 600px width is ideal"
-        },
-        {
-          "type": "text",
-          "id": "text_1",
-          "label": "Btn Text 1"
-        },
-        {
-          "type": "url",
-          "id": "url_1",
-          "label": "Link 1"
-        },
-        {
-          "type": "image_picker",
-          "id": "img_2",
-          "label": "Image 2", 
-          "info": "It's recommended to keep all images the same size. At least 600px width is ideal"
-        },
-        {
-          "type": "text",
-          "id": "text_2",
-          "label": "Btn Text 2"
-        },
-        {
-          "type": "url",
-          "id": "url_2",
-          "label": "Link 2"
-        },
-        {
-          "type": "image_picker",
-          "id": "img_3",
-          "label": "Image 3", 
-          "info": "It's recommended to keep all images the same size. At least 600px width is ideal"
-        },
-        {
-          "type": "text",
-          "id": "text_3",
-          "label": "Btn Text 3"
-        },
-        {
-          "type": "url",
-          "id": "url_3",
-          "label": "Link 3"
-        }
-      ]
-    }
-  ]
-}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Promotion Banner"
+      },
+      {
+        "type": "text",
+        "id": "promotion_text",
+        "label": "Promotion Text",
+        "default": "Free shipping on all orders over £25"
+      },
+      {
+        "type": "header",
+        "content": "Header"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      }, {
+        "type": "link_list",
+        "id": "main_menu",
+        "label": "Main Menu"
+      }, {
+        "type": "link_list",
+        "id": "mobile_main_menu",
+        "label": "Mobile Main Menu"
+      }, {
+        "type": "header",
+        "content": "Colours",
+        "info": "This applies to the homepage only"
+      }, {
+        "type": "select",
+        "id": "colour",
+        "label": "Colour",
+        "options": [
+          {
+            "value": "primary-blue",
+            "label": "Blue"
+          }, {
+            "value": "white",
+            "label": "White"
+          }, {
+            "value": "offwhite",
+            "label": "Off-White"
+          }
+        ],
+        "default": "white"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Menu Tab",
+        "type": "tab",
+        "settings": [
+          {
+            "type": "text",
+            "id": "tab",
+            "label": "Tab Title",
+            "info": "Enter the text of the menu item you'd like this tab to feature under (e.g. our story)"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_1",
+            "label": "Image 1",
+            "info": "It's recommended to keep all images the same size. At least 600px width is ideal"
+          },
+          {
+            "type": "text",
+            "id": "text_1",
+            "label": "Btn Text 1"
+          },
+          {
+            "type": "url",
+            "id": "url_1",
+            "label": "Link 1"
+          }, {
+            "type": "image_picker",
+            "id": "img_2",
+            "label": "Image 2",
+            "info": "It's recommended to keep all images the same size. At least 600px width is ideal"
+          }, {
+            "type": "text",
+            "id": "text_2",
+            "label": "Btn Text 2"
+          }, {
+            "type": "url",
+            "id": "url_2",
+            "label": "Link 2"
+          }, {
+            "type": "image_picker",
+            "id": "img_3",
+            "label": "Image 3",
+            "info": "It's recommended to keep all images the same size. At least 600px width is ideal"
+          }, {
+            "type": "text",
+            "id": "text_3",
+            "label": "Btn Text 3"
+          }, {
+            "type": "url",
+            "id": "url_3",
+            "label": "Link 3"
+          }
+        ]
+      }
+    ]
+  }
 {% endschema %}
