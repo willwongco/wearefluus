@@ -1,15 +1,13 @@
-{%- comment -%}
-  <div>
+<div>
   <div class="overflow-hidden">
-  {% if section.settings.img_outer %}
-  <a href="{{ section.settings.cta_url }}" class="absolute -right-12 -translate-y-1/4 sm:-translate-y-1/5 transform">
-  {% include 'lazy-image' image: section.settings.img_outer, breakpoint_classes: 'rotate', additional_classes: 'lg:w-80 w-52' %}
-  {% include 'lazy-image' image: section.settings.img_middle, breakpoint_classes: '', additional_classes: 'w-32 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:w-48' %}
-  </a>
-  {% endif %}
+    {% if section.settings.img_outer %}
+      <a href="{{ section.settings.cta_url }}" class="absolute -right-12 -translate-y-1/4 sm:-translate-y-1/5 transform">
+        {% include 'lazy-image' image: section.settings.img_outer, breakpoint_classes: 'rotate', additional_classes: 'lg:w-80 w-52' %}
+        {% include 'lazy-image' image: section.settings.img_middle, breakpoint_classes: '', additional_classes: 'w-32 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:w-48' %}
+      </a>
+    {% endif %}
   </div>
-  </div>
-{%- endcomment -%}
+</div>
 
 {% schema %}
   {
