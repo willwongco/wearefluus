@@ -5,7 +5,7 @@
 {% assign wave_col = section.settings.wave_col %}
 
 
-<div style="background-color:{{ bg_col }};" class="relative w-full">
+<div style="background-color:{{ bg_col }};" class="relative w-full custom_stats">
   {% if section.settings.wave %}
     <div class="absolute footer-wave left-0 w-full hero-wave hidden md:block">{% include 'icon-wave', wave_col:wave_col %}</div>
   {% endif %}
