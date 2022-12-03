@@ -2,12 +2,10 @@
 
 {% capture replace_text %}
   {% if section.settings.circled_title != blank %}
-    {%- comment -%}
-      <span class="whitespace-nowrap relative custom_single_product_title">
+    <span class="whitespace-nowrap relative custom_single_product_title">
       {{ section.settings.circled_title }}
       {% include 'icon-circled-text' classes: 'absolute w-25 right-0 -bottom-1' %}
-      </span>
-    {%- endcomment -%}
+    </span>
   {% endif %}
 {% endcapture %}
 
