@@ -1,4 +1,4 @@
-<div id="test" {{section.settings.hero_desktop.aspect_ratio}} class="pt-32 pb-16 md:pt-0 md:pb-0 h-full md:h-width-1/2 md:min-h-desktop-hero w-full max-h-screen bg-cover bg-center bg-no-repeat relative hero-{{ section.id }} custom_hero_section">
+<div id="test" {{section.settings.hero_desktop.aspect_ratio}} class="pt-32 pb-16 md:pt-0 md:pb-0 h-full md:h-width-1/2 md:min-h-desktop-hero w-full max-h-screen bg-cover bg-center bg-no-repeat relative hero-{{ section.id }}">
   {% if section.settings.darken %}
     <div class="absolute h-full w-full top-0 left-0 bg-black {% if section.settings.design == 'a' %}bg-opacity-30{% else %}bg-opacity-0{% endif %} md:block hidden"></div>
   {% endif %}
