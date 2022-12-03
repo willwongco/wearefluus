@@ -33,18 +33,18 @@
           <li class="glide__slide">
             <div style="background-color: {{ block.settings.bg_col }};color: {{ block.settings.text_col }};" class="pt-6 pb-8 h-full custom_testimonials_container">
               {% if block.settings.img != blank %}
-                <div class="w-24 md:w-25 m-auto">
+                {%- comment -%} <div class="w-24 md:w-25 m-auto">
                   {%- comment -%}
                     {% include 'lazy-image' image: block.settings.img %}
                   {%- endcomment -%}
-                </div>
+                </div> {%- endcomment -%}
                 <div class="flex justify-center items-center mt-3">
                   {% for i in (1..block.settings.stars) %}
-                    <div class="mr-1">
+                    {%- comment -%} <div class="mr-1">
                       {%- comment -%}
                         {% include 'icon-star' %}
                       {%- endcomment -%}
-                    </div>
+                    </div> {%- endcomment -%}
                   {% endfor %}
                   <p class="leading-none text-xs">{{ block.settings.stars }}.0</p>
                 </div>
