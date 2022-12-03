@@ -67,8 +67,8 @@
         "9a1a9efa-a973-4f5d-94a7-dc893dfbd655"
       ],
       "settings": {
-        "bg_col": "#ffffff",
-        "text_col": "#0e2559"
+        "bg_col": "#0858ff",
+        "text_col": "#f5f5f5"
       }
     },
     "16513353919198b3cc": {
@@ -491,7 +491,8 @@
     "16643137361915266f": {
       "type": "yotpo-custom-widget",
       "disabled": true,
-      "settings": {}
+      "settings": {
+      }
     },
     "165165903343668781": {
       "type": "logo-slider",
@@ -709,51 +710,63 @@
       "blocks": {
         "396cb2b3-df4b-458a-a86a-e086ca8d8f58": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+          }
         },
         "599643ed-6b62-4fdb-918e-dec1880daf2f": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+          }
         },
         "038d3752-bdcf-493f-a13e-8422307744c8": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+          }
         },
         "d29c46e8-cced-445d-b4f0-7e6655e24d20": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+          }
         },
         "58a9d0d3-f917-42fd-bbe3-262eeff576cb": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+          }
         },
         "09b44b0c-961a-44f0-a1d9-17e517a63737": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+          }
         },
         "c32e844a-d242-4d79-b687-80aa029dd833": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+          }
         },
         "b0fd200d-2a42-4b25-a4bf-a8dba9e3293c": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+          }
         },
         "c62c2fb5-edba-40ea-8606-eb29814906ac": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+          }
         },
         "47334d18-ca33-4fc7-8018-5974e79e527c": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+          }
         },
         "3d416e9f-6889-42a6-ad5d-c80ee9194569": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+          }
         },
         "8d9040c0-599f-4da0-b40b-8dcc857d79a2": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+          }
         }
       },
       "block_order": [
