@@ -4,48 +4,53 @@
 {% assign more_content_bg_col = section.settings.more_content_bg_col %}
 {% assign wave_col = section.settings.wave_col %}
 
-{%- comment -%}
-  <div style="background-color:{{ bg_col }};" class="relative w-full">
-  {% if section.settings.wave %}<div class="absolute footer-wave left-0 w-full hero-wave hidden md:block">{% include 'icon-wave', wave_col:wave_col %}</div>{% endif %}
-  {% if section.settings.title %}
-  <h2 style="color: {{ stats_text_col }};" class="text-3xl md:text-4.5xl font-cheltenham-std text-center md:mt-0 pt-12 {% if template contains 'product' %} md:pt-16 {% else %} md:pt-14 {% endif %} mb-9 md:mb-0">{{ section.settings.title }}</h2>
-  <div x-data="{ card: 0 }" class="max-w-6xl w-full px-3 md:px-8 grid grid-cols-1 md:grid-cols-2 md:mt-20 md:mx-auto lg:pr-0">
-  {% for block in section.blocks %}
-  {% assign mod = forloop.index | modulo: 2 %}
-  <div :style="card == {{ forloop.index }} ? 'color: {{ more_content_bg_col }}':''"@click="card = card == {{ forloop.index }} ? 0 : {{ forloop.index }}" class="md:rounded-none rounded-lg group mb-4 md:mb-16 w-full flex relative transition-all ease-out duration-300 {% if mod == 0 %}md:justify-start{% endif %} md:bg-transparent">
-  <div style="background-color: {{ more_content_bg_col }}" :class="{'opacity-100' : card == {{ forloop.index }}}"  class="rounded-lg left-0 top-1/2 -translate-y-1/2 transform absolute h-full md:h-44 w-full flex items-center justify-center md:py-14 {% if mod == 0 %}md:ml-2{% else %}md:mr-2{% endif %} z-10 opacity-0 md:opacity-0 md:group-hover:opacity-100 transition ease-out duration-300">
-  <div style="color: {{ more_content_text_col }}" class="px-2 md:px-4 lg:px-14">
-  <p class="text-xs md:text-lg font-semibold mb-1">{{ block.settings.more_title }}</p>
-  <p class="text-xs md:text-lg">{{ block.settings.more_content }}</p>
-  </div>
-  </div>
-  <div class="relative w-full bg-transparent py-5 px-5 md:rounded-none rounded-lg overflow-hidden lg:mx-0 md:mx-auto">
-  <div class="flex md:w-full {% if mod == 0 %}md:flex-start{% endif %}">
-  <div class="md:w-14 mr-2 hidden md:block w-14">
-  {% include 'lazy-image' image: block.settings.icon %}
-  </div>
-  <div class="md:w-14 mr-2 block md:hidden w-16">
-  {% include 'lazy-image' image: block.settings.icon_mob %}
-  </div>
-  <div class="md:pt-2 lg:pt-0">
-  <p>
-  <span style="color:transparent;" class="text-7xl md:text-3xl lg:text-7xl text-transparent mr-2 font-semibold relative">
-  {{ block.settings.num }}
-  <span style="color:{{ stats_text_col }};" class="count-up absolute left-0 top-0 text-7xl md:text-3xl lg:text-7xl mr-2 font-semibold" data-limit="{{ block.settings.num }}"></span>
-  </span>
 
-  {% if block.settings.suffix != blank %}<span style="color:{{ stats_text_col }};" class="text-xl lg:text-2xl xl:text-3xl md:text-2xl {{ block.settings.suffix }}">{{ block.settings.suffix }}</span>{% endif %}
-  </p>
-  <p style="color:{{ stats_text_col }};" class="text-lg lg:text-2xl md:text-base count-up-text flex-{{ block.settings.suffix }}"><span class="hidden mobile-{{ block.settings.suffix }}">{{ block.settings.suffix }}</span> {{ block.settings.subtitle }}</p>
-  </div>
-  </div>
-  </div>
-  </div>
-  {% endfor %}
-  </div>
+<div style="background-color:{{ bg_col }};" class="relative w-full">
+  {% if section.settings.wave %}
+    <div class="absolute footer-wave left-0 w-full hero-wave hidden md:block">{% include 'icon-wave', wave_col:wave_col %}</div>
   {% endif %}
-  </div>
-{%- endcomment -%}
+  {% if section.settings.title %}
+    <h2 style="color: {{ stats_text_col }};" class="text-3xl md:text-4.5xl font-cheltenham-std text-center md:mt-0 pt-12 {% if template contains 'product' %} md:pt-16 {% else %} md:pt-14 {% endif %} mb-9 md:mb-0">{{ section.settings.title }}</h2>
+    <div x-data="{ card: 0 }" class="max-w-6xl w-full px-3 md:px-8 grid grid-cols-1 md:grid-cols-2 md:mt-20 md:mx-auto lg:pr-0">
+      {% for block in section.blocks %}
+        {% assign mod = forloop.index | modulo: 2 %}
+        <div :style="card == {{ forloop.index }} ? 'color: {{ more_content_bg_col }}':''" @click="card = card == {{ forloop.index }} ? 0 : {{ forloop.index }}" class="md:rounded-none rounded-lg group mb-4 md:mb-16 w-full flex relative transition-all ease-out duration-300 {% if mod == 0 %}md:justify-start{% endif %} md:bg-transparent">
+          <div style="background-color: {{ more_content_bg_col }}" :class="{'opacity-100' : card == {{ forloop.index }}}" class="rounded-lg left-0 top-1/2 -translate-y-1/2 transform absolute h-full md:h-44 w-full flex items-center justify-center md:py-14 {% if mod == 0 %}md:ml-2{% else %}md:mr-2{% endif %} z-10 opacity-0 md:opacity-0 md:group-hover:opacity-100 transition ease-out duration-300">
+            <div style="color: {{ more_content_text_col }}" class="px-2 md:px-4 lg:px-14">
+              <p class="text-xs md:text-lg font-semibold mb-1">{{ block.settings.more_title }}</p>
+              <p class="text-xs md:text-lg">{{ block.settings.more_content }}</p>
+            </div>
+          </div>
+          <div class="relative w-full bg-transparent py-5 px-5 md:rounded-none rounded-lg overflow-hidden lg:mx-0 md:mx-auto">
+            <div class="flex md:w-full {% if mod == 0 %}md:flex-start{% endif %}">
+              <div class="md:w-14 mr-2 hidden md:block w-14">
+                {% include 'lazy-image' image: block.settings.icon %}
+              </div>
+              <div class="md:w-14 mr-2 block md:hidden w-16">
+                {% include 'lazy-image' image: block.settings.icon_mob %}
+              </div>
+              <div class="md:pt-2 lg:pt-0">
+                <p>
+                  <span style="color:transparent;" class="text-7xl md:text-3xl lg:text-7xl text-transparent mr-2 font-semibold relative">
+                    {{ block.settings.num }}
+                    <span style="color:{{ stats_text_col }};" class="count-up absolute left-0 top-0 text-7xl md:text-3xl lg:text-7xl mr-2 font-semibold" data-limit="{{ block.settings.num }}"></span>
+                  </span>
+
+                  {% if block.settings.suffix != blank %}
+                    <span style="color:{{ stats_text_col }};" class="text-xl lg:text-2xl xl:text-3xl md:text-2xl {{ block.settings.suffix }}">{{ block.settings.suffix }}</span>
+                  {% endif %}
+                </p>
+                <p style="color:{{ stats_text_col }};" class="text-lg lg:text-2xl md:text-base count-up-text flex-{{ block.settings.suffix }}">
+                  <span class="hidden mobile-{{ block.settings.suffix }}">{{ block.settings.suffix }}</span>
+                  {{ block.settings.subtitle }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
 
 {% schema %}
   {
