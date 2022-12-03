@@ -10,7 +10,7 @@
     <div class="absolute footer-wave left-0 w-full hero-wave hidden md:block">{% include 'icon-wave', wave_col:wave_col %}</div>
   {% endif %}
   {% if section.settings.title %}
-    <h2 style="color: {{ stats_text_col }};" class="text-3xl md:text-4.5xl font-cheltenham-std text-center md:mt-0 pt-12 {% if template contains 'product' %} md:pt-16 {% else %} md:pt-14 {% endif %} mb-9 md:mb-0">{{ section.settings.title }}</h2>
+    <h2 style="color: {{ stats_text_col }};" class="text-3xl md:text-4.5xl font-cheltenham-std text-center md:mt-0 pt-12 {% if template contains 'product' %} md:pt-16 {% else %} md:pt-14 {% endif %} mb-9 md:mb-0 custom_stats_title">{{ section.settings.title }}</h2>
     <div x-data="{ card: 0 }" class="max-w-6xl w-full px-3 md:px-8 grid grid-cols-1 md:grid-cols-2 md:mt-20 md:mx-auto lg:pr-0">
       {% for block in section.blocks %}
         {% assign mod = forloop.index | modulo: 2 %}
