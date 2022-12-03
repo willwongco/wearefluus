@@ -1,69 +1,65 @@
-<div style="background-color: {{ section.settings.bg_col }};" class="overflow-hidden py-5 md:py-6">
-  <div class="marquee3k" 
-      data-speed="0.25"
-      data-reverse="false">
-      <div>
-        <div class="flex items-center justify-center">
-          {% for block in section.blocks %}
+<div style="background-color: {{ section.settings.bg_col }};" class="overflow-hidden py-5 md:py-6 custom_ticker">
+  <div class="marquee3k" data-speed="0.25" data-reverse="false">
+    <div>
+      <div class="flex items-center justify-center">
+        {% for block in section.blocks %}
           {% if block.settings.img != blank and block.settings.text != blank %}
             <div class="mr-6 md:mr-12 flex items-center justify-center">
               {% include 'lazy-image' image: block.settings.img, breakpoint_classes: 'w-4 md:w-7 mr-1.5' %}
               <p style="color: {{ section.settings.text_col }};" class="text-xl md:text-3xl whitespace-nowrap">{{ block.settings.text }}</p>
             </div>
           {% endif %}
-          {% endfor %}
-        </div>
+        {% endfor %}
       </div>
+    </div>
   </div>
 </div>
 
 
 {% schema %}
-{
+  {
     "name": "Ticker",
     "settings": [
-    {
-      "type": "color",
-      "id": "bg_col",
-      "label": "Background Colour"
-  },
-  {
-      "type": "color",
-      "id": "text_col",
-      "label": "Text Colour"
-  }
+      {
+        "type": "color",
+        "id": "bg_col",
+        "label": "Background Colour"
+      }, {
+        "type": "color",
+        "id": "text_col",
+        "label": "Text Colour"
+      }
     ],
     "presets": [
-        {
-            "category": "Text",
-            "name": "Ticker"
-        }
+      {
+        "category": "Text",
+        "name": "Ticker"
+      }
     ],
     "blocks": [
-        {
-          "type": "item",
-          "name": "Ticker Item",
-          "settings": [
-            {
-              "type": "image_picker",
-              "id": "img",
-              "label": "Icon",
-              "info": "1x1 Image"
-            },
-            {
-              "type": "text",
-              "id": "text",
-              "label": "Text"
-            }
-          ]
-        }
+      {
+        "type": "item",
+        "name": "Ticker Item",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Icon",
+            "info": "1x1 Image"
+          }, {
+            "type": "text",
+            "id": "text",
+            "label": "Text"
+          }
+        ]
+      }
     ],
     "templates": [
-        "index",
-        "product",
-        "page",
-        "article",
-        "collection"
+      "index",
+      "product",
+      "page",
+      "article",
+      "collection"
     ]
-}
+  }
 {% endschema %}
