@@ -12,34 +12,59 @@
   <p style="color: {{ section.settings.text_col }};" class="text-4xl font-cheltenham-std text-center">{{ section.settings.title | replace: 'XX', replace_text }}</p>
 
   <div class="glide px-9 lg:px-20 mt-18 md:mt-11 relative" data-options='{
-                    "type": "carousel",
-                    "perView": 4,
-                    "gap": 25,
-                    "breakpoints": {
-                        "1536": {
-                            "perView": 3
-                        },
-                        "1280": {
-                            "perView": 2
-                        },
-                        "768": {
-                            "perView": 1
-                        }
-                    }
-                }'>
+                                "type": "carousel",
+                                "perView": 4,
+                                "gap": 25,
+                                "breakpoints": {
+                                    "1536": {
+                                        "perView": 3
+                                    },
+                                    "1280": {
+                                        "perView": 2
+                                    },
+                                    "768": {
+                                        "perView": 1
+                                    }
+                                }
+                            }'>
     <div class="glide__track" data-glide-el="track">
       <ul class="glide__slides flex glide__slides--equal-height">
         {% for block in section.blocks %}
-          <li class="glide__slide"></li>
+          <li class="glide__slide">
+
+            <div style="background-color: {{ block.settings.bg_col }};color: {{ block.settings.text_col }};" class="pt-6 pb-8 h-full">
+              {% if block.settings.img != blank %}
+                <div class="w-24 md:w-25 m-auto">
+                  {% include 'lazy-image' image: block.settings.img %}
+                </div>
+                <div class="flex justify-center items-center mt-3">
+                  {% for i in (1..block.settings.stars) %}
+                    <div class="mr-1">
+                      {% include 'icon-star' %}
+                    </div>
+                  {% endfor %}
+                  <p class="leading-none text-xs">{{ block.settings.stars }}.0</p>
+                </div>
+              {% endif %}
+              <div class="px-3 max-w-full w-56 sm:w-72 text-center m-auto mt-3 md:text-sm.5 text-xs.5 leading-tight relative">
+                <div class="absolute -left-2 top-0">{% include 'icon-apostrophe' %}</div>
+                <p>{{ block.settings.quote }}</p>
+                <div class="absolute -right-2 bottom-0 rotate-180 transform">{% include 'icon-apostrophe' %}</div>
+              </div>
+              <p class="mt-4 text-center">-{{ block.settings.name }}-</p>
+            </div>
+
+
+          </li>
         {% endfor %}
       </ul>
       <div class="glide__arrows" data-glide-el="controls">
         <button class="glide__arrow glide__arrow--left absolute left-2.5 lg:left-6 top-1/2 translate-y-1/2 transform" data-glide-dir="<">
-                                    <div>
-                                        {% include 'icon-slide-arrow-left' %}
-                                    </div>
-                                </button>
-                                <button class=" glide__arrow glide__arrow--right absolute right-2.5 lg:right-6 top-1/2 translate-y-1/2 transform" data-glide-dir=">">
+                                                        <div>
+                                                            {% include 'icon-slide-arrow-left' %}
+                                                        </div>
+                                                    </button>
+                                                    <button class=" glide__arrow glide__arrow--right absolute right-2.5 lg:right-6 top-1/2 translate-y-1/2 transform" data-glide-dir=">">
           <div class="scale">
             {% include 'icon-slide-arrow-right' %}
           </div>
