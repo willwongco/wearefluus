@@ -170,13 +170,11 @@
                                                                                                                                                                                                                                                                                                             console.log(foundVariant)
                                                                                                                                                                                                                                                                                                             console.log(planId)
                                                                                                                                                                                                                                                                                                         }" data-option-index="{{ option_num }}" class="hidden custom-input" type="radio" {% if forloop.index0 == 0 %}checked{% endif %} id="option-{{ value | handleize }}" name="radio-product_{{ product_option.name | handleize }}" value="{{ value }}">
-                  {%- comment -%}
-                    <div class="flex custom-input__container mr-5 cursor-pointer">
+                  <div class="flex custom-input__container mr-5 cursor-pointer">
                     <div class="custom-input__not-checked w-5">{% include 'icon-circle' id: forloop.index0 %}</div>
                     <div class="custom-input__checked w-5">{% include 'icon-circle-tick' id: forloop.index0 %}</div>
                     <p class="text-xl leading-none">{{ value }}</p>
-                    </div>
-                  {%- endcomment -%}
+                  </div>
                 </label>
               {% endfor %}
             </div>
