@@ -1,24 +1,22 @@
 {% assign ss = section.settings %}
 
-{%- comment -%}
-  {% capture replace_text %}
+{% capture replace_text %}
   {% if section.settings.circled_title != blank %}
-  <span class="whitespace-nowrap relative">
-  {{ section.settings.circled_title }}
-  {% include 'icon-circled-text' classes: 'absolute w-25 right-0 -bottom-1' %}
-  </span>
+    <span class="whitespace-nowrap relative">
+      {{ section.settings.circled_title }}
+      {% include 'icon-circled-text' classes: 'absolute w-25 right-0 -bottom-1' %}
+    </span>
   {% endif %}
-  {% endcapture %}
+{% endcapture %}
 
-  {% capture replace_text_flushable %}
+{% capture replace_text_flushable %}
   {% if section.settings.circled_title != blank %}
-  <span class="whitespace-nowrap relative">
-  Flushable
-  {% include 'icon-underline-large' classes: 'absolute w-full left-0 -bottom-1' %}
-  </span>
+    <span class="whitespace-nowrap relative">
+      Flushable
+      {% include 'icon-underline-large' classes: 'absolute w-full left-0 -bottom-1' %}
+    </span>
   {% endif %}
-  {% endcapture %}
-{%- endcomment -%}
+{% endcapture %}
 
 {% capture alpine_click %}
   {% comment %}
