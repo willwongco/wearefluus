@@ -380,7 +380,6 @@
         "ea3256b6-8194-4151-8b6f-ce91d82c6ce5": {
           "type": "faq-top-header",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Bottle-Leaf_Web-Icon_Dark-Blue.png",
             "title_text": "Product",
             "show_top_header": true
           }
@@ -388,7 +387,6 @@
         "fa4a37c4-00dc-4c61-aea1-ee711817c340": {
           "type": "faq-top-header",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/World-Leaf_Web-Icon_Dark-Blue.png",
             "title_text": "Planet",
             "show_top_header": true
           }
@@ -396,7 +394,6 @@
         "f9d82082-46f3-41f2-b64b-f8f1568cfb2c": {
           "type": "faq-top-header",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Water-Drop_Web-Icon_Dark-Blue.png",
             "title_text": "People",
             "show_top_header": true
           }
