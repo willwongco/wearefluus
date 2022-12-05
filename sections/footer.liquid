@@ -47,6 +47,10 @@
             {% endif %}
             {% if section.settings.logo_bg %}
               <div class="footer__logo-bg" style="background-image: url({{ section.settings.logo_bg | img_url:  '1200x' }});"></div>
+
+              <div class="footer__logo-svg">
+                {%- render 'logo-fluus' -%}
+              </div>
             {% endif %}
 
         </div>
