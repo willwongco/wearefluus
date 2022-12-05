@@ -1,3 +1,3 @@
-<div {% if alpine_text %}x-text="{{ alpine_text }}"{% endif %} {% if alpine_click %}@click="{{alpine_click}}"{% endif %} class="px-7 pt-4 pb-3 rounded-full w-full md:w-fit-content text-center cursor-pointer transition-all ease-out duration-300 text-sm" :class="available == 'true' ? 'bg-purple-planera text-white hover:bg-offwhite-planera hover:text-black-planera' : 'bg-white text-black purple-planera opacity-80 pointer-events-none font-abc-favorit-mono'">
+<div {% if alpine_text %}x-text="{{ alpine_text }}"{% endif %} {% if alpine_click %}@click="{{alpine_click}}"{% endif %} class="px-7 pt-4 pb-3 rounded-full w-full md:w-fit-content text-center cursor-pointer transition-all ease-out duration-300 text-sm font-abc-favorit-mono" :class="available == 'true' ? 'bg-purple-planera text-white hover:bg-offwhite-planera hover:text-black-planera' : 'bg-white text-black purple-planera opacity-80 pointer-events-none'">
     {{ text }}
 </div>
