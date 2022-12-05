@@ -45,6 +45,10 @@
             {% if section.settings.logo %}
                 {% include 'lazy-image' image: section.settings.logo %}
             {% endif %}
+            {% if section.settings.logo_bg %}
+              <div class="footer__logo-bg" style="background-image: url({{ section.settings.logo_bg | img_url:  '1200x' }});"></div>
+            {% endif %}
+
         </div>
         <div class="w-full md:w-1/2 lg:w-footer-menu h-auto md:flex hidden">
             <div style="color:{{ section.settings.menu_newsletter_text_col }};" class="md:max-w-1/2 pr-10 lg:pr-20 text-base.5">
