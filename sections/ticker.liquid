@@ -6,7 +6,7 @@
           {% if block.settings.img != blank and block.settings.text != blank %}
             <div class="mr-6 md:mr-12 flex items-center justify-center">
               {% comment %}{% include 'lazy-image' image: block.settings.img, breakpoint_classes: 'w-4 md:w-7 mr-1.5' %}{% endcomment %}
-              <p style="color: {{ section.settings.text_col }};" class="text-xl md:text-3xl whitespace-nowrap font-abc-favorit-mono">{{ block.settings.text }}</p>
+              <p style="color: {{ section.settings.text_col }};" class="text-md md:text-md whitespace-nowrap font-abc-favorit-mono">{{ block.settings.text }}</p>
             </div>
           {% endif %}
         {% endfor %}
