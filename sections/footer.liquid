@@ -97,7 +97,7 @@
             {% else %}
             <div class="flex flex-row md:max-w-xl rounded-lg border-white border mt-5">
                 <input type="hidden" name="contact[tags]" value="newsletter">
-                <input type="email" class="bg-transparent border-0 outline-none text-sm font-sofia-pro h-9 w-full text-black placeholder-white pl-4 pt-1" name="contact[email]"
+                <input type="email" class="bg-transparent border-0 outline-none text-sm font-sofia-pro h-9 w-full text-black placeholder-black pl-4 pt-1" name="contact[email]"
                     id="Email" value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
                     placeholder="{{ 'footer.newsletter.form_email_placeholder' | t }}" autocorrect="off" autocapitalize="off">
                 <div class="mr-auto max-w-140px w-full flex">
