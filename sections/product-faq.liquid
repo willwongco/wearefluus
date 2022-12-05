@@ -14,7 +14,7 @@
             {% assign faq_svg_small_id = 'faq_underline_small' | append:forloop.index %}
             <div
              @click="topHeaderTab = {{ forloop.index }}"
-             class="{% unless forloop.last %}mr-4{% endunless %}{% if block.settings.show_top_header == false %}hidden{% endif %} mt-5 flex items-center cursor-pointer text-4xl | sm:mr-10 lg:mt-0 md:text-6xl">
+             class="{% unless forloop.last %}mr-4{% endunless %}{% if block.settings.show_top_header == false %}hidden{% endif %} mt-5 flex items-center cursor-pointer text-4xl | sm:mr-10 lg:mt-0 md:text-6xl" :class="topHeaderTab == {{ forloop.index }} ? 'active':''">
               {%- unless block.settings.icon == blank -%}
                 <img
                  alt="{{ block.settings.icon.alt }}"
