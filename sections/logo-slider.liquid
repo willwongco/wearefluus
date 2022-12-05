@@ -54,13 +54,15 @@
     </div>
 
     <div class="hidden md:block">
-      {% for block in section.blocks %}
-        {% if block.settings.logo %}
-          <div class="w-48 lg:w-28 px-3 inline-block image-element__item">
-            {% include 'lazy-image' image: block.settings.logo %}
-          </div>
-        {% endif %}
-      {% endfor %}
+      <div class="text-center">
+        {% for block in section.blocks %}
+          {% if block.settings.logo %}
+            <div class="w-48 lg:w-28 px-3 inline-block image-element__item">
+              {% include 'lazy-image' image: block.settings.logo %}
+            </div>
+          {% endif %}
+        {% endfor %}
+        </div>
     </div>
   </div>
 </div>
