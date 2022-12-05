@@ -42,6 +42,14 @@
     width: 100%
   }
   */
+
+  .glide__bullet--testmonials .glide__bullet {
+    background-color: #0858FF;
+    opacity: .5;
+  }
+  .glide__bullet--testmonials .glide__bullet--active {
+    opacity: 1;
+  }
 {% endstylesheet %}
 
 <div style="background-color: {{ section.settings.bg_col }};" class="pb-14 pt-5 md:pt-14 mt-12 md:mt-2">
@@ -101,10 +109,18 @@
           </li>
         {% endfor %}
       </ul>
-
-      <div class="glide__bullets flex items-center justify-center mt-5" data-glide-el="controls[nav]">
+      {% comment %}
+      <div class="glide__arrows" data-glide-el="controls">
+        <button class="glide__arrow glide__arrow--left absolute left-2.5 lg:left-6 top-1/2 translate-y-1/2 transform" data-glide-dir="<">
+          <div class="scale">
+            {% include 'icon-slide-arrow-right' %}
+          </div>
+        </button>
+      </div>
+      {% endcomment %}
+      <div class="glide__bullets glide__bullet--testmonials flex items-center justify-center mt-5" data-glide-el="controls[nav]">
         {% for block in section.blocks %}
-          <button class="glide__bullet w-3.5 h-3.5 bg-gray-400 rounded-full mx-1 border border-solid border-gray-400" data-glide-dir="={{ forloop.index0}}"></button>
+          <button class="glide__bullet w-3.5 h-3.5 rounded-full mx-1" data-glide-dir="={{ forloop.index0}}"></button>
         {% endfor %}
       </div>
     </div>
