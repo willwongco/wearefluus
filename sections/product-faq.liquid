@@ -1,3 +1,14 @@
+{% stylesheet %}
+
+.faq__item__caret svg {
+  fill: currentColor;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+{% endstylesheet %}
+
 {% assign FAQ_Headers = section.blocks | where: 'type', "faq-top-header" %}
 {% assign FAQ_Items = section.blocks | where: 'type', "faq-item" %}
 {% assign ss = section.settings %}
