@@ -171,6 +171,7 @@
     },
     "165564718391119f31": {
       "type": "spinner-btn",
+      "disabled": true,
       "settings": {
         "cta_url": "shopify:\/\/pages\/tech",
         "img_outer": "shopify:\/\/shop_images\/Group_1586.png",
