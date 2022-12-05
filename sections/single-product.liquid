@@ -56,7 +56,7 @@ if(selectedVariant) {
 {% endcapture %}
 
 <div style="background-color: {{ ss.bg_col }};color:{{ ss.text_col }} !important;" class="pt-36 md:pt-16 md:pb-14 pb-20">
-    <h3 class="text-4xl px-3 text-center font-cheltenham-std">{{ section.settings.title | replace: 'XX', replace_text }}</h3>
+    <h3 class="text-4xl px-3 text-center">{{ section.settings.title | replace: 'XX', replace_text }}</h3>
     <div class="px-3 w-single-product-subtitle max-w-full text-xs.5 md:text-lg text-center mx-auto hidden md:block">{{ section.settings.subtitle }}</div>
     <div class="px-3 w-single-product-subtitle max-w-full text-xs.5 md:text-lg text-center mx-auto block md:hidden pt-6"><p class="text-xs.5 sm:text-base">{{ section.settings.subtitle | strip_html }}</p></div>
     {% assign product = all_products[section.settings.product] %}
