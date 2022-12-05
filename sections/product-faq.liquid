@@ -41,9 +41,10 @@
               {% assign bs_content = faq_item.settings %}
               {% if bs_content.tab_content_header == bs_header.title_text %}
                 {% assign icon_pattern = 'faq_point' | append:forloop.index %}
-                <div @click="faq_item == {{ forloop.index }} ? faq_item = 0 : faq_item = {{ forloop.index }}" class="flex justify-between items-center cursor-pointer mb-5 mt-3 | sm:mb-6 sm:mt-5"><p class=" text-xl pr-2 w-full">{{ bs_content.title_text }}</p><span  class=" transform transition-all" :class="faq_item == {{ forloop.index }} ? 'rotate-45' : ''">{% include 'icon-plus-uses', pattern:icon_pattern %}</span></div>
+                <div @click="faq_item == {{ forloop.index }} ? faq_item = 0 : faq_item = {{ forloop.index }}" class="flex justify-between items-center cursor-pointer mb-5 mt-3 | sm:mb-6 sm:mt-5"><p class=" text-xl pr-2 w-full">{{ bs_content.title_text }}</p><span  class=" transform transition-all" :class="faq_item == {{ forloop.index }} ? 'rotate-45' : ''">{% include 'icon-caret-up', pattern:icon_pattern %}</span></div>
+
                 <div class=" border-b-2 border-primary-blue">
-                    <p :class="faq_item == {{ forloop.index }} ? 'max-h-full mb-5 md:mt-2' : 'max-h-0 h-0 opacity-0 mb-0 pointer-events-none mt-0'" class="transform transition-all text-base pr-2 mx-auto | sm:mx-px md:max-w-2xl" x-transition >{{ bs_content.body_text }}</p>
+                  <p :class="faq_item == {{ forloop.index }} ? 'max-h-full mb-5 md:mt-2' : 'max-h-0 h-0 opacity-0 mb-0 pointer-events-none mt-0'" class="transform transition-all text-base pr-2 mx-auto | sm:mx-px md:max-w-2xl" x-transition >{{ bs_content.body_text }}</p>
                 </div>
               {% endif %}
             {% endfor %}
@@ -52,10 +53,11 @@
         {% endfor %}
         <!-- <button class=" transition-all font-sofia-pro tracking-wide text-sm px-12 mt-8 pb-1 pt-2 border rounded-lg border-primary-blue mb-12 hover:bg-primary-blue hover:text-white | sm:pb-2 sm:pt-3 lg:mb-0 lg:mt-12"><a href="{{ ss.cta_url }}">{{ ss.cta_text }}</a></button> -->
     </div>
+
     {% if ss.img_desktop != blank %}
     <div class="">
-        <img alt="{{ ss.img_desktop.alt }}" class="absolute min-w-350 bottom-0 right-0 w-auto hidden md:block lazyload hs-lazyload hs-id-3a2be27d" data-src="{{ ss.img_desktop.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
-        <img alt="{{ ss.img_mobile.alt }}" class="absolute top-0 right-0 w-auto mt-20 block md:hidden lazyload hs-lazyload hs-id-5e153e0a" data-src="{{ ss.img_mobile.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+      <img alt="{{ ss.img_desktop.alt }}" class="absolute min-w-350 bottom-0 right-0 w-auto hidden md:block lazyload hs-lazyload hs-id-3a2be27d" data-src="{{ ss.img_desktop.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+      <img alt="{{ ss.img_mobile.alt }}" class="absolute top-0 right-0 w-auto mt-20 block md:hidden lazyload hs-lazyload hs-id-5e153e0a" data-src="{{ ss.img_mobile.src | img_url:'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
     </div>
     {% endif %}
 </div>
