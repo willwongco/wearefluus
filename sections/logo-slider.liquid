@@ -2,6 +2,10 @@
   .image-element__item {
     vertical-align: middle;
   }
+  .image-element__item {
+    width: 160px;
+    max-width: 100%;
+  }
 {% endstylesheet %}
 
 {% assign rows_offset = section.blocks.size | divided_by: 2 | minus: 1 %}
@@ -57,7 +61,7 @@
       <div class="text-center">
         {% for block in section.blocks %}
           {% if block.settings.logo %}
-            <div class="w-48 lg:w-28 px-3 inline-block image-element__item">
+            <div class="{% comment %}w-48 lg:w-28 {% endcomment %}px-3 inline-block image-element__item">
               {% include 'lazy-image' image: block.settings.logo %}
             </div>
           {% endif %}
