@@ -4,7 +4,7 @@
 {% capture ticker_list %}
   {% for block in section.blocks %}
     {% if block.settings.logo %}
-      <div class="w-48 lg:w-28 px-3 inline-block">
+      <div class="w-48 lg:w-28 px-3 inline-block image-element__item">
         {% include 'lazy-image' image: block.settings.logo %}
       </div>
     {% endif %}
