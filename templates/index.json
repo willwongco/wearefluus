@@ -492,6 +492,178 @@
       "settings": {
       }
     },
+    "logo-slider": {
+      "type": "logo-slider",
+      "disabled": true,
+      "blocks": {
+        "6d6e1717-0ac0-4056-b620-cec3773d894e": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-mayor-of-london_480x_1.png"
+          }
+        },
+        "821a35a1-d645-4426-8de4-1891eb7d6d3d": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5.png"
+          }
+        },
+        "78ae3312-8a48-47af-9841-d553a08b35e4": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d.png"
+          }
+        },
+        "c4fb051d-894f-483f-8dc6-5a64838dd4c6": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c.png"
+          }
+        },
+        "2a41dc4d-a376-491a-84f0-17eca6a9732a": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-imperial-college-london_480x_7355eaf1-5c64-4cf1-896a-d53240987621.png"
+          }
+        },
+        "3c19a5cb-cacc-4248-93f6-99a78bd6337e": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-msduk-innovation-challenge-2018-winner_480x_7c651a8b-9ae8-4499-ae60-7e099c1eecf7.png"
+          }
+        },
+        "26cf1962-a2ab-4b4c-abf2-664c0e48080d": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_MSDUK_480x_fe22aedd-1ea8-4136-a7ac-c724d5cd41c5.png"
+          }
+        },
+        "52315353-9400-44f0-a28d-7282c59d4b21": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-the-althea-foundation-2017-winner_480x_adaa8052-45e7-4d60-b55e-80acb14888a2.png"
+          }
+        },
+        "78584fa4-6d0e-43a3-bd66-5b00c96dc77f": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_Ted_x_Cambridge_480x_b1b45a93-8563-4c99-8732-b1a1c2221c38.png"
+          }
+        },
+        "f7edecc6-a7ea-495f-9eda-8b2731f4efec": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-green-tech-alliance_480x_31beeb60-31ad-4191-872f-4fcaf2fedf9d.png"
+          }
+        },
+        "56b72f00-fbfa-420d-88c9-674b1cabc28f": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-exeter-cityfurures_480x_b339916e-fd8c-4477-90d3-bbc1bd7b6d7c.png"
+          }
+        },
+        "9db7f27e-b24e-4431-a36a-92008121a85c": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-mayor-of-london_480x_1_0acaabc9-f9e6-420b-9b2e-e0eeb711800b.png"
+          }
+        },
+        "4437c5bc-e43b-41fb-b6f1-05c46eaf5237": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Womens-Health.jpg"
+          }
+        },
+        "9b412c61-bdb5-49b8-9ef5-304d5842a517": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/cosmo_logo.png"
+          }
+        },
+        "6ad6df14-0800-4641-806c-af81247a86b0": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-european-union_480x_011b0c42-b93f-4952-ad2b-a370e1fac41d.png"
+          }
+        },
+        "c15b9423-6167-4d1a-8217-f994ea292288": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/metro_logo.png"
+          }
+        },
+        "b42a1f15-c47c-4662-92f1-d49092549bbd": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/OK_logo.png"
+          }
+        },
+        "af7dc6aa-6d45-4b40-881b-bead7b883288": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/greentech.png"
+          }
+        },
+        "84f4fe87-6cc6-4293-b3b9-624d960b382b": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/SA_WW_480x_f1014c23-320e-4330-8b3d-def8eb876a11.png"
+          }
+        },
+        "fc182c63-85f8-47b2-875b-46f9e61d37c6": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/white_square_website.png"
+          }
+        },
+        "5f0878d5-9bed-402a-9f45-b47d02c7fbc4": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/white_square_website.png"
+          }
+        },
+        "6c0eedf0-640b-4ddf-b8fd-f1ba892ceea8": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/white_square_website.png"
+          }
+        }
+      },
+      "block_order": [
+        "6d6e1717-0ac0-4056-b620-cec3773d894e",
+        "821a35a1-d645-4426-8de4-1891eb7d6d3d",
+        "78ae3312-8a48-47af-9841-d553a08b35e4",
+        "c4fb051d-894f-483f-8dc6-5a64838dd4c6",
+        "2a41dc4d-a376-491a-84f0-17eca6a9732a",
+        "3c19a5cb-cacc-4248-93f6-99a78bd6337e",
+        "26cf1962-a2ab-4b4c-abf2-664c0e48080d",
+        "52315353-9400-44f0-a28d-7282c59d4b21",
+        "78584fa4-6d0e-43a3-bd66-5b00c96dc77f",
+        "f7edecc6-a7ea-495f-9eda-8b2731f4efec",
+        "56b72f00-fbfa-420d-88c9-674b1cabc28f",
+        "9db7f27e-b24e-4431-a36a-92008121a85c",
+        "4437c5bc-e43b-41fb-b6f1-05c46eaf5237",
+        "9b412c61-bdb5-49b8-9ef5-304d5842a517",
+        "6ad6df14-0800-4641-806c-af81247a86b0",
+        "c15b9423-6167-4d1a-8217-f994ea292288",
+        "b42a1f15-c47c-4662-92f1-d49092549bbd",
+        "af7dc6aa-6d45-4b40-881b-bead7b883288",
+        "84f4fe87-6cc6-4293-b3b9-624d960b382b",
+        "fc182c63-85f8-47b2-875b-46f9e61d37c6",
+        "5f0878d5-9bed-402a-9f45-b47d02c7fbc4",
+        "6c0eedf0-640b-4ddf-b8fd-f1ba892ceea8"
+      ],
+      "settings": {
+        "title": "<p>As Seen In<\/p>",
+        "bg_col": "#ffffff",
+        "text_col": "#0e2559"
+      }
+    },
     "165165903343668781": {
       "type": "logo-slider",
       "disabled": true,
@@ -801,6 +973,7 @@
     "1651613848323012b8",
     "16618606694616feee",
     "16643137361915266f",
+    "logo-slider",
     "165165903343668781",
     "1651683459079903ec",
     "16644451340f625229"
