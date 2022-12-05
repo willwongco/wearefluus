@@ -1,367 +1,402 @@
 {% assign ss = section.settings %}
 
 {% capture replace_text %}
-  {% if section.settings.circled_title != blank %}
-    <span class="whitespace-nowrap relative">
-      {{ section.settings.circled_title }}
-      {% include 'icon-circled-text' classes: 'absolute w-25 right-0 -bottom-1' %}
-    </span>
-  {% endif %}
+{% if section.settings.circled_title != blank %}
+<span class="whitespace-nowrap relative">
+    {{ section.settings.circled_title }}
+    {% include 'icon-circled-text' classes: 'absolute w-25 right-0 -bottom-1' %}
+</span>
+{% endif %}
 {% endcapture %}
 
 {% capture replace_text_flushable %}
-  {% if section.settings.circled_title != blank %}
-    <span class="whitespace-nowrap relative">
-      Flushable
-      {% include 'icon-underline-large' classes: 'absolute w-full left-0 -bottom-1' %}
-    </span>
-  {% endif %}
+{% if section.settings.circled_title != blank %}
+<span class="whitespace-nowrap relative">
+    Flushable
+    {% include 'icon-underline-large' classes: 'absolute w-full left-0 -bottom-1' %}
+</span>
+{% endif %}
 {% endcapture %}
 
 {% capture alpine_click %}
-  {% comment %}
+{% comment %}
     AJAX Add to cart
-  {% endcomment %}
-  if(selectedVariant) {
-  const item = {
-                                  'id': selectedVariant.product.id,
-                                  'quantity': quantity
-                              }
-                              if(planId) {
-                                  item['selling_plan'] = planId
-                              }
-                              fetch(window.Shopify.routes.root + 'cart/add.js', {
-                                  method: 'POST',
-                                  headers: {
-                                  'Content-Type': 'application/json'
-                                  },
-                                  body: JSON.stringify({
-                                  'items': [item]
-                                  })
-                              })
-                              .then(response => {
-                                  return response.json();
-                              })
-                              .then(response => {
-                                  cartSlider = true;
-                                  window['refresh-cart-slider']();
-                              })
-                              .catch((error) => {
-                                  console.error('Error:', error);
-                              });
-                          }{% endcapture %}
+{% endcomment %}
+if(selectedVariant) {
+    const item = {
+        'id': selectedVariant.product.id,
+        'quantity': quantity
+    }
+    if(planId) {
+        item['selling_plan'] = planId
+    }
+    fetch(window.Shopify.routes.root + 'cart/add.js', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+        'items': [item]
+        })
+    })
+    .then(response => {
+        return response.json();
+    })
+    .then(response => {
+        cartSlider = true;
+        window['refresh-cart-slider']();
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+{% endcapture %}
 {% capture alpine_text %}
-  available == 'true' ? 'ADD TO BAG' : 'OUT OF STOCK'
+    available == 'true' ? 'ADD TO BAG' : 'OUT OF STOCK'
 {% endcapture %}
 
 <div style="background-color: {{ ss.bg_col }};color:{{ ss.text_col }} !important;" class="pt-36 md:pt-16 md:pb-14 pb-20">
-  <h3 class="text-4xl px-3 text-center font-cheltenham-std custom_single_product_title">{{ section.settings.title | replace: 'XX', replace_text }}</h3>
-  <div class="px-3 w-single-product-subtitle max-w-full text-xs.5 md:text-lg text-center mx-auto hidden md:block custom_single_product_txt">{{ section.settings.subtitle }}</div>
-  <div class="px-3 w-single-product-subtitle max-w-full text-xs.5 md:text-lg text-center mx-auto block md:hidden pt-6">
-    <p class="text-xs.5 sm:text-base">{{ section.settings.subtitle | strip_html }}</p>
-  </div>
-  {% assign product = all_products[section.settings.product] %}
-  {% if product != blank %}
-    {% comment %}
-      Alpine.js script for finding selected variants and updating content accordingly
-    {% endcomment %}
-    <script>
-      let product_ {{ product.handle | replace: '-', '_' }} = [];
-      let selling_plans = {{ product.selling_plan_groups | json }};{% for variant in product.variants %}product_ {{ product.handle | replace: '-', '_' }}.push({
-          product: JSON.parse('{{ variant | json }}'),
-          comparePrice: '{{ variant.compare_at_price  | money }}',
-          price: '{{ variant.price | money }}',
-          available:'{{ variant.available }}',
-          selling_plan: [{% for selling_plan_allocation in variant.selling_plan_allocations %}{
-                comparePrice: '{{ selling_plan_allocation.compare_at_price | money }}',
-                price: '{{ selling_plan_allocation.price | money }}',
-                plan: {{ selling_plan_allocation.selling_plan | json }}
-              },{% endfor %}]
-        }){% endfor %}
-    </script>
-    <div x-data="{
-                                                                                          quantity: 1,
-                                                                                          selectedVariant: product_{{ product.handle | replace: '-', '_' }}[0],
-                                                                                          price: product_{{ product.handle | replace: '-', '_' }}[0].price,
-                                                                                          compareAtPrice: product_{{ product.handle | replace: '-', '_' }}[0].comparePrice,
-                                                                                          planId: null,
-                                                                                          available:product_{{ product.handle | replace: '-', '_' }}[0].available }" }"  class=" md:flex mt-16 md:mt-14 items-center">
-      <div class="md:w-single-product-img w-full relative mb-5 md:mb-0">
-        {% if section.settings.floating != blank %}
-          <div class="w-40 absolute -top-20 left-1/10">
-            <div class="relative pb-2">
-              <p class="font-lindsey-pro text-purple-planera text-xl text-center leading-tight">{{ section.settings.floating }}</p>
-              <div class="absolute -bottom-full left-1/2 -translate-x-1/2 transform">{% include 'icon-arrow-down' %}</div>
-            </div>
-          </div>
-        {% endif %}
-        {% if product.featured_image %}
-          {% include 'lazy-image' image: product.featured_image, breakpoint_classes: 'w-full' %}
-        {% endif %}
-      </div>
-      <div style="color:{{ ss.text_col }} !important;" class="flex-1 md:pl-6 lg:pl-11 pl-4 pr-4 md:pr-0 leading-none">
-        <p class="font-cheltenham-std text-2.5xl mb-3 custom_single_product_lable">{{ product.title  }}</p>
-        <div class="flex items-end">
-          {% comment %}
-            Reviews
-            <div></div>
-          {% endcomment %}
-          <!-- reviews to go here -->
-          <div class="yotpo bottomLine" data-appkey="AQylRjL9ZPR2h0n5eZloHoUO4mFl4dmaAv6o8zuZ" data-domain="{{shop.permanent_domain | escape }}" data-product-id="{{ product.id }}" data-product-models="{{ product.id }}" data-name="{{ product.title | escape }}" data-url="{{ shop.url }}{{ product.url }}" data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}" data-description="{{ product.description | escape }}" data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}"></div>
-          <div class=" pl-4 flex items-baseline pt-3">
-            {% if product.compare_at_price_min != 0 and product.compare_at_price_min != product.price_min %}
-              <p class="text-sm.5 pr-1 line-through" x-text="compareAtPrice"></p>
-            {% endif %}
-            <p class="text-lg leading-none font-semibold" x-text="price"></p>
-          </div>
-        </div>
-        <div class="{% if product.has_only_default_variant %}hidden {% endif %} mt-5" x-ref="variants">
-          {% for product_option in product.options_with_values %}
-            {% assign option_num = forloop.index0 %}
-            <div class="mb-2 flex flex-wrap">
-              <p class="text-lg font-cheltenham-std w-full">{{ product_option.name }}:</p>
-              {% for value in product_option.values %}
-                <label type="radio" id="option-{{ value | handleize }}">
-                  <input @click="() => {
-                                                                                                                                                                                                                                                                                                            {% comment %}
-                                                                                                                                                                                                                                                                                                                Find all selected inputs and their variant data
-                                                                                                                                                                                                                                                                                                                Find variant will all options
-                                                                                                                                                                                                                                                                                                                Update price (check for price in selling plan sub)
-                                                                                                                                                                                                                                                                                                            {% endcomment %}
-                                                                                                                                                                                                                                                                                                            const options = $refs.variants.querySelectorAll('input:checked');
-                                                                                                                                                                                                                                                                                                            let optionsArr = [];
-                                                                                                                                                                                                                                                                                                            for (let i = 0; i < options.length; i++) {
-                                                                                                                                                                                                                                                                                                                const index = options[i].getAttribute('data-option-index');
-                                                                                                                                                                                                                                                                                                                optionsArr[parseInt(index)] = options[i].value
-                                                                                                                                                                                                                                                                                                            };
-                                                                                                                                                                                                                                                                                                            const foundVariant = product_{{ product.handle | replace: '-', '_' }}.find((x) => {
-                                                                                                                                                                                                                                                                                                                for (let i = 0; i < optionsArr.length; i++) {
-                                                                                                                                                                                                                                                                                                                    if(x.product.options[i] != optionsArr[i]) {
-                                                                                                                                                                                                                                                                                                                        return false
-                                                                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                                                                return true
-                                                                                                                                                                                                                                                                                                            });
-                                                                                                                                                                                                                                                                                                            selectedVariant = foundVariant ? foundVariant : null;
-                                                                                                                                                                                                                                                                                                            price = selectedVariant ? selectedVariant.price : '';
-                                                                                                                                                                                                                                                                                                            available = selectedVariant.available;
-                                                                                                                                                                                                                                                                                                            compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
-                                                                                                                                                                                                                                                                                                            {% comment %}
-                                                                                                                                                                                                                                                                                                            Update Prices
-                                                                                                                                                                                                                                                                                                            {% endcomment %}
-                                                                                                                                                                                                                                                                                                            if(planId) {
-                                                                                                                                                                                                                                                                                                                const foundPlan = selectedVariant.selling_plan.find((x) => {
-                                                                                                                                                                                                                                                                                                                    return x.plan.id == planId
-                                                                                                                                                                                                                                                                                                                })
-                                                                                                                                                                                                                                                                                                                price = selectedVariant ? selectedVariant.price : '';
-                                                                                                                                                                                                                                                                                                                compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
-                                                                                                                                                                                                                                                                                                                if(foundPlan) {
-                                                                                                                                                                                                                                                                                                                    price = foundPlan.price ? foundPlan.price : '';
-                                                                                                                                                                                                                                                                                                                    compareAtPrice = foundPlan.comparePrice ? foundPlan.comparePrice : '';
-                                                                                                                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                                                                                                                    price = selectedVariant ? selectedVariant.price : '';
-                                                                                                                                                                                                                                                                                                                    compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
-                                                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                                                                                                                price = selectedVariant ? selectedVariant.price : '';
-                                                                                                                                                                                                                                                                                                                compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
-                                                                                                                                                                                                                                                                                                            }
-                    
-                                                                                                                                                                                                                                                                                                            console.log(foundVariant)
-                                                                                                                                                                                                                                                                                                            console.log(planId)
-                                                                                                                                                                                                                                                                                                        }" data-option-index="{{ option_num }}" class="hidden custom-input" type="radio" {% if forloop.index0 == 0 %}checked{% endif %} id="option-{{ value | handleize }}" name="radio-product_{{ product_option.name | handleize }}" value="{{ value }}">
-                  <div class="flex custom-input__container mr-5 cursor-pointer">
-                    <div class="custom-input__not-checked w-5">{% include 'icon-circle' id: forloop.index0 %}</div>
-                    <div class="custom-input__checked w-5">{% include 'icon-circle-tick' id: forloop.index0 %}</div>
-                    <p class="text-xl leading-none">{{ value }}</p>
-                  </div>
-                </label>
-              {% endfor %}
-            </div>
-          {% endfor %}
-
-        </div>
-
-        <div class="hidden">
-          <select x-model="selectedVariant.product.id" x-on:change="$dispatch('selectchange', {value:selectedVariant.product.id})" id="product-select" name="id">
+    <h3 class="text-4xl px-3 text-center font-cheltenham-std">{{ section.settings.title | replace: 'XX', replace_text }}</h3>
+    <div class="px-3 w-single-product-subtitle max-w-full text-xs.5 md:text-lg text-center mx-auto hidden md:block">{{ section.settings.subtitle }}</div>
+    <div class="px-3 w-single-product-subtitle max-w-full text-xs.5 md:text-lg text-center mx-auto block md:hidden pt-6"><p class="text-xs.5 sm:text-base">{{ section.settings.subtitle | strip_html }}</p></div>
+    {% assign product = all_products[section.settings.product] %}
+    {% if product != blank %}
+        {% comment %}
+            Alpine.js script for finding selected variants and updating content accordingly
+        {% endcomment %}
+        <script>
+            let product_{{ product.handle | replace: '-', '_' }} = [];
+            let selling_plans = {{ product.selling_plan_groups | json }};
             {% for variant in product.variants %}
-              <option value="{{ variant.id }}" :selected="selectedVariant.product.id == {{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}>
-                {{ variant.title }} - {{ variant.price | money }}
-              </option>
+                product_{{ product.handle | replace: '-', '_' }}.push({
+                    product: JSON.parse('{{ variant | json }}'),
+                    comparePrice: '{{ variant.compare_at_price  | money }}',
+                    price: '{{ variant.price | money }}',
+                    available:'{{ variant.available }}',
+                    selling_plan: [
+                        {% for selling_plan_allocation in variant.selling_plan_allocations %}
+                        {
+                           comparePrice: '{{ selling_plan_allocation.compare_at_price | money }}',
+                           price:  '{{ selling_plan_allocation.price | money }}',
+                           plan: {{ selling_plan_allocation.selling_plan | json }}
+                        },
+                        {% endfor %}
+                    ]
+                })
             {% endfor %}
-          </select>
-        </div>
-
-        <div class="flex justify-evenly flex-wrap mt-5 md:mt-4 w-single-product-icons max-w-full">
-          {% for icon in product.metafields.accentuate.icon %}
-            <div class="w-20 h-20 rounded-full sm:bg-white relative mr-3 mb-4">
-              <div class="w-full h-full flex flex-col items-center justify-center px-1">
-                <img src="{{ icon[0].src }}" class="w-6 mx-auto" alt="{{ product.metafields.accentuate.text[forloop.index0] }}">
-                <p class="text-center text-small leading-none pt-2">{{ product.metafields.accentuate.text[forloop.index0] }}</p>
-              </div>
+        </script>
+        <div x-data="{ 
+            quantity: 1, 
+            selectedVariant: product_{{ product.handle | replace: '-', '_' }}[0],  
+            price: product_{{ product.handle | replace: '-', '_' }}[0].price, 
+            compareAtPrice: product_{{ product.handle | replace: '-', '_' }}[0].comparePrice, 
+            planId: null,
+            available:product_{{ product.handle | replace: '-', '_' }}[0].available }"  
+        }"  class="md:flex mt-16 md:mt-14 items-center">
+            <div class="md:w-single-product-img w-full relative mb-5 md:mb-0">
+                {% if section.settings.floating != blank %}
+                    <div class="w-40 absolute -top-20 left-1/10">
+                        <div class="relative pb-2">
+                            <p class="font-lindsey-pro text-purple-planera text-xl text-center leading-tight">{{ section.settings.floating }}</p>
+                            <div class="absolute -bottom-full left-1/2 -translate-x-1/2 transform">{% include 'icon-arrow-down' %}</div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if product.featured_image %}
+                {% include 'lazy-image' image: product.featured_image, breakpoint_classes: 'w-full' %}
+                {% endif %}
             </div>
-          {% endfor %}
-        </div>
-        {% for group in product.selling_plan_groups %}
-          {% for selling_plan in group.selling_plans %}
-            {% assign has_selling_plans = true %}
-            {% break %}
-          {% endfor %}
-        {% endfor %}
-        {% if has_selling_plans %}
-          <div class="flex items-center justify-between w-80 max-w-full text-xs.5">
-            <div @click="() => {
-                                                                                                                                                                                                              if(selectedVariant?.selling_plan) {
-                                                                                                                                                                                                                  if(selectedVariant.selling_plan[0]) {
-                                                                                                                                                                                                                      planId = selectedVariant.selling_plan[0].plan.id
-                                                                                                                                                                                                                      price = selectedVariant.selling_plan[0].price ? selectedVariant.selling_plan[0].price : '';
-                                                                                                                                                                                                                      compareAtPrice = selectedVariant.selling_plan[0].comparePrice ? selectedVariant.selling_plan[0].comparePrice : '';
-                                                                                                                                                                                                                  }
-                                                                                                                                                                                                              }
-                                                                                                                                                                                                              const sellingPlan = selectedVariant?.selling_plan
-                                                                                                                                                                                                          }" class="flex items-center justify-center cursor-pointer">
-              <div class="rounded-full h-6 w-6 flex items-center justify-center border border-solid border-black mr-3">
-                <div :class="{ 'opacity-0': !planId}" class="rounded-full w-5 h-5 bg-purple-planera"></div>
-              </div>
-              <p>Subscribe & Save</p>
-            </div>
-            <div @click="() => {
-                                                                                                                                                                                                              planId = null;
-                                                                                                                                                                                                              price = selectedVariant ? selectedVariant.price : '';
-                                                                                                                                                                                                              compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
-                                                                                                                                                                                                          }" class="flex items-center justify-center cursor-pointer">
-              <div class="rounded-full h-6 w-6 flex items-center justify-center border border-solid border-black mr-3">
-                <div :class="{ 'opacity-0': planId, 'opacity-100': !planId }" class="rounded-full w-5 h-5 bg-purple-planera"></div>
-              </div>
-              <p>One Time Purchase</p>
-            </div>
-          </div>
-        {% endif %}
-        <div class="flex flex-wrap">
-          {% for block in section.blocks %}
-            <div {% if block.settings.type == 'subscribe' %}
-              :class="{ 'hidden': !planId, 'flex': planId }"
-              {% else %}
-              :class="{ 'hidden': planId, 'flex': !planId }"
-              {% endif %}
-              class="items-center mr-5 mt-6 md:mt-5 hidden">
-              {% include 'icon-tick' %}
-              <p class="ml-1 text-xs.5">{{ block.settings.text }}</p>
-            </div>
-          {% endfor %}
-        </div>
-        <div class="flex flex-wrap">
-          <div class="mt-5 mb-5 mr-6 text-purple-planera">
-            <div class="flex items-center rounded-lg border border-primary-blue w-25 sm:w-52 h-9">
-              <div @click="quantity = quantity < 2 ? quantity : quantity - 1" class="leading-none text-lg flex items-center justify-center px-2 sm:px-4 h-full text-purple-planera cursor-pointer">-</div>
-              <div class="flex-1">
-                <input class="w-full bg-transparent text-center h-full" x-model="quantity">
-              </div>
-              <div @click="quantity++" class="leading-none text-lg flex items-center justify-center px-2 sm:px-4 h-full text-purple-planera cursor-pointer">+</div>
-            </div>
-          </div>
-          {% if has_selling_plans %}
-            <div :class="{ 'opacity-0 max-h-0': !planId, 'my-5': planId }" class="">
-              <select x-bind:disabled="!planId" x-model="planId" class="w-52 border border-black-planera border-solid text-purple-planera rounded-lg h-9 bg-transparent pl-2">
-                {% for group in product.selling_plan_groups %}
-                  {% for selling_plan in group.selling_plans %}
-                    <option class="text-purple-planera text-xs.5" value="{{ selling_plan.id }}">{{ selling_plan.name }}</option>
-                  {% endfor %}
-                {% endfor %}
-              </select>
-            </div>
-          {% endif %}
-        </div>
-        {% include 'purchase-button' %}
-
-      </div>
+            <div  style="color:{{ ss.text_col }} !important;" class="flex-1 md:pl-6 lg:pl-11 pl-4 pr-4 md:pr-0 leading-none">
+                <p class="font-cheltenham-std text-2.5xl mb-3">{{ product.title  }}</p>
+                <div class="flex items-end">
+                    {% comment %}
+                    Reviews
+                    <div></div>
+                    {% endcomment %}
+                    <!-- reviews to go here -->
+                <div class="yotpo bottomLine" data-appkey="AQylRjL9ZPR2h0n5eZloHoUO4mFl4dmaAv6o8zuZ"
+                data-domain="{{shop.permanent_domain | escape }}" data-product-id="{{ product.id }}"
+                data-product-models="{{ product.id }}" data-name="{{ product.title | escape }}"
+                data-url="{{ shop.url }}{{ product.url }}"
+                data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+                data-description="{{ product.description | escape }}"
+                data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
     </div>
-  {% endif %}
+                    <div class=" pl-4 flex items-baseline pt-3">
+                        {% if product.compare_at_price_min != 0 and product.compare_at_price_min != product.price_min %}
+                        <p class="text-sm.5 pr-1 line-through" x-text="compareAtPrice"></p>
+                        {% endif %} 
+                        <p class="text-lg leading-none font-semibold" x-text="price"></p>
+                    </div>
+                </div>
+                <div class="{% if product.has_only_default_variant %}hidden {% endif %} mt-5" x-ref="variants">
+                    {% for product_option in product.options_with_values %}
+                        {% assign option_num = forloop.index0 %}
+                        <div class="mb-2 flex flex-wrap">
+                            <p class="text-lg font-cheltenham-std w-full">{{ product_option.name }}:</p>
+                            {% for value in product_option.values %}
+                                <label type="radio" id="option-{{ value | handleize }}">
+                                    <input 
+                                    @click="() => {
+                                        {% comment %}
+                                            Find all selected inputs and their variant data
+                                            Find variant will all options
+                                            Update price (check for price in selling plan sub)
+                                        {% endcomment %}
+                                        const options = $refs.variants.querySelectorAll('input:checked');
+                                        let optionsArr = [];
+                                        for (let i = 0; i < options.length; i++) {
+                                            const index = options[i].getAttribute('data-option-index');
+                                            optionsArr[parseInt(index)] = options[i].value
+                                        };
+                                        const foundVariant = product_{{ product.handle | replace: '-', '_' }}.find((x) => {
+                                            for (let i = 0; i < optionsArr.length; i++) {
+                                                if(x.product.options[i] != optionsArr[i]) {
+                                                    return false
+                                                }
+                                            }
+                                            return true
+                                        });
+                                        selectedVariant = foundVariant ? foundVariant : null;
+                                        price = selectedVariant ? selectedVariant.price : '';
+                                        available = selectedVariant.available;
+                                        compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
+                                        {% comment %}
+                                        Update Prices
+                                        {% endcomment %}
+                                        if(planId) {
+                                            const foundPlan = selectedVariant.selling_plan.find((x) => {
+                                                return x.plan.id == planId
+                                            })
+                                            price = selectedVariant ? selectedVariant.price : '';
+                                            compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
+                                            if(foundPlan) {
+                                                price = foundPlan.price ? foundPlan.price : '';
+                                                compareAtPrice = foundPlan.comparePrice ? foundPlan.comparePrice : '';
+                                            } else {
+                                                price = selectedVariant ? selectedVariant.price : '';
+                                                compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
+                                            }
+                                        } else {
+                                            price = selectedVariant ? selectedVariant.price : '';
+                                            compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
+                                        }
+
+                                        console.log(foundVariant)
+                                        console.log(planId)
+                                    }"
+                                    data-option-index="{{ option_num }}"  
+                                    class="hidden custom-input"
+                                    type="radio" 
+                                    {% if forloop.index0 == 0 %}checked{% endif %} 
+                                    id="option-{{ value | handleize }}" 
+                                    name="radio-product_{{ product_option.name | handleize }}" 
+                                    value="{{ value }}">
+                                    <div class="flex custom-input__container mr-5 cursor-pointer">
+                                        <div class="custom-input__not-checked w-5">{% include 'icon-circle' id: forloop.index0 %}</div>
+                                        <div class="custom-input__checked w-5">{% include 'icon-circle-tick' id: forloop.index0 %}</div>
+                                        <p class="text-xl leading-none">{{ value }}</p>
+                                    </div>
+                                </label>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+
+                </div>
+                
+                <div class="hidden">
+                    <select  
+                    x-model="selectedVariant.product.id" 
+                    x-on:change="$dispatch('selectchange', {value:selectedVariant.product.id})" 
+                    id="product-select" name="id">
+                        {% for variant in product.variants %}
+                          <option value="{{ variant.id }}"
+                            :selected="selectedVariant.product.id == {{ variant.id }}"
+                            {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                          >
+                            {{ variant.title }} - {{ variant.price | money }}
+                          </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="flex justify-evenly flex-wrap mt-5 md:mt-4 w-single-product-icons max-w-full">
+                    {% for icon in product.metafields.accentuate.icon %} 
+                    <div class="w-20 h-20 rounded-full sm:bg-white relative mr-3 mb-4">
+                        <div class="w-full h-full flex flex-col items-center justify-center px-1">
+                            <img src="{{ icon[0].src }}" class="w-6 mx-auto" alt="{{ product.metafields.accentuate.text[forloop.index0] }}">
+                            <p class="text-center text-small leading-none pt-2">{{ product.metafields.accentuate.text[forloop.index0] }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% for group in product.selling_plan_groups %}
+                    {% for selling_plan in group.selling_plans %}
+                        {% assign has_selling_plans = true %}
+                        {% break %}
+                    {% endfor %}
+                {% endfor %}
+                {% if has_selling_plans %}
+                <div class="flex items-center justify-between w-80 max-w-full text-xs.5">
+                    <div @click="() => {
+                        if(selectedVariant?.selling_plan) {
+                            if(selectedVariant.selling_plan[0]) {
+                                planId = selectedVariant.selling_plan[0].plan.id
+                                price = selectedVariant.selling_plan[0].price ? selectedVariant.selling_plan[0].price : '';
+                                compareAtPrice = selectedVariant.selling_plan[0].comparePrice ? selectedVariant.selling_plan[0].comparePrice : '';
+                            }
+                        }
+                        const sellingPlan = selectedVariant?.selling_plan
+                    }" class="flex items-center justify-center cursor-pointer">
+                        <div class="rounded-full h-6 w-6 flex items-center justify-center border border-solid border-black mr-3">
+                            <div :class="{ 'opacity-0': !planId}"  class="rounded-full w-5 h-5 bg-purple-planera"></div>
+                        </div>
+                        <p>Subscribe & Save</p>
+                    </div>
+                    <div @click="() => {
+                        planId = null;
+                        price = selectedVariant ? selectedVariant.price : '';
+                        compareAtPrice = selectedVariant ? selectedVariant.comparePrice : '';
+                    }" class="flex items-center justify-center cursor-pointer">
+                        <div class="rounded-full h-6 w-6 flex items-center justify-center border border-solid border-black mr-3">
+                            <div :class="{ 'opacity-0': planId, 'opacity-100': !planId }" class="rounded-full w-5 h-5 bg-purple-planera"></div>
+                        </div>
+                        <p>One Time Purchase</p>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="flex flex-wrap">
+                    {% for block in section.blocks %}
+                    <div 
+                    {% if block.settings.type == 'subscribe' %}
+                        :class="{ 'hidden': !planId, 'flex': planId }"
+                    {% else %}
+                        :class="{ 'hidden': planId, 'flex': !planId }"
+                    {% endif %}
+                    class="items-center mr-5 mt-6 md:mt-5 hidden">
+                        {% include 'icon-tick' %}
+                        <p class="ml-1 text-xs.5">{{ block.settings.text }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="flex flex-wrap">
+                    <div class="mt-5 mb-5 mr-6 text-purple-planera">
+                        <div class="flex items-center rounded-lg border border-primary-blue w-25 sm:w-52 h-9">
+                            <div @click="quantity = quantity < 2 ? quantity : quantity - 1" class="leading-none text-lg flex items-center justify-center px-2 sm:px-4 h-full text-purple-planera cursor-pointer">-</div>
+                            <div class="flex-1">
+                                <input class="w-full bg-transparent text-center h-full" x-model="quantity">
+                            </div>
+                            <div @click="quantity++" class="leading-none text-lg flex items-center justify-center px-2 sm:px-4 h-full text-purple-planera cursor-pointer">+</div>
+                        </div>
+                    </div>
+                    {% if has_selling_plans %}
+                    <div :class="{ 'opacity-0 max-h-0': !planId, 'my-5': planId }" class="">
+                        <select x-bind:disabled="!planId" x-model="planId" class="w-52 border border-black-planera border-solid text-purple-planera rounded-lg h-9 bg-transparent pl-2">
+                            {% for group in product.selling_plan_groups %}
+                            {% for selling_plan in group.selling_plans %}
+                                <option class="text-purple-planera text-xs.5" value="{{ selling_plan.id }}">{{ selling_plan.name }}</option>
+                            {% endfor %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% endif %}
+                </div>
+                {% include 'purchase-button' %}
+
+            </div>            
+        </div>
+    {% endif %}
 </div>
 
 
 {% schema %}
-  {
+{
     "name": "Single Product",
     "settings": [
-      {
+    {
         "type": "color",
         "id": "bg_col",
         "label": "Background Colour"
-      },
-      {
+    },
+    {
         "type": "color",
         "id": "text_col",
         "label": "Text Colour"
-      },
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Title",
-        "info": "Add XX anywhere in the title. This will be replaced will the below text"
-      },
-      {
-        "type": "text",
-        "id": "circled_title",
-        "label": "Circled Text",
-        "info": "Circled text can be a maximum of 100px wide"
-      }, {
-        "type": "richtext",
-        "id": "subtitle",
-        "label": "Subtitle"
-      }, {
-        "type": "text",
-        "id": "floating",
-        "label": "Floating Text",
-        "default": "The world's first flushable pad"
-      }, {
-        "type": "header",
-        "content": "Product"
-      }, {
-        "type": "product",
-        "id": "product",
-        "label": "Product"
-      }
+    },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "info": "Add XX anywhere in the title. This will be replaced will the below text"
+        },
+        {
+            "type": "text",
+            "id": "circled_title",
+            "label": "Circled Text",
+            "info": "Circled text can be a maximum of 100px wide"
+        },
+        {
+            "type": "richtext",
+            "id": "subtitle",
+            "label": "Subtitle"
+        },
+        {
+            "type": "text",
+            "id": "floating",
+            "label": "Floating Text",
+            "default": "The world's first flushable pad"
+        },
+        {
+            "type": "header",
+            "content": "Product"
+        },
+        {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+        }
     ],
     "presets": [
-      {
-        "category": "Product",
-        "name": "Single Product"
-      }
+        {
+            "category": "Product",
+            "name": "Single Product"
+        }
     ],
     "blocks": [
-      {
-        "type": "text",
-        "name": "Tick Point",
-        "settings": [
-          {
-            "type": "select",
-            "id": "type",
-            "label": "Type",
-            "info": "Show this tick if subscribe or one time is selected",
-            "options": [
-              {
-                "value": "one",
-                "label": "One Time"
-              }, {
-                "value": "subscribe",
-                "label": "Subscribe"
-              }
-            ]
-          }, {
+        {
             "type": "text",
-            "id": "text",
-            "label": "Tick Point Text"
-          }
-        ]
-      }
+            "name": "Tick Point",
+            "settings": [
+                {
+                    "type": "select",
+                    "id": "type",
+                    "label": "Type",
+                    "info": "Show this tick if subscribe or one time is selected",
+                    "options": [
+                        {
+                            "value": "one",
+                            "label": "One Time"
+                        },
+                        {
+                            "value": "subscribe",
+                            "label": "Subscribe"
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "id": "text",
+                    "label": "Tick Point Text"
+                }
+            ]
+        }
     ],
     "templates": [
-      "index",
-      "product",
-      "page",
-      "article",
-      "collection"
+        "index",
+        "product",
+        "page",
+        "article",
+        "collection"
     ]
-  }
+}
 {% endschema %}
