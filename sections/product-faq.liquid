@@ -16,7 +16,7 @@
         </div> 
         {% for faq_header in FAQ_Headers %}
         {% assign bs_header = faq_header.settings %}
-        <div class=" font-sofia-pro-regular w-full" x-data="{faq_item:0}" x-show="topHeaderTab == {{ forloop.index }}">
+        <div class="w-full" x-data="{faq_item:0}" x-show="topHeaderTab == {{ forloop.index }}">
             <div class="flex flex-col mt-8 w-full mx-auto | sm:mx-px sm:max-w-3xl">
             {% for faq_item in FAQ_Items %}
               {% assign bs_content = faq_item.settings %}
@@ -24,7 +24,7 @@
                 {% assign icon_pattern = 'faq_point' | append:forloop.index %}
                 <div @click="faq_item == {{ forloop.index }} ? faq_item = 0 : faq_item = {{ forloop.index }}" class="flex justify-between items-center cursor-pointer mb-5 mt-3 | sm:mb-6 sm:mt-5"><p class=" text-xl pr-2 w-full">{{ bs_content.title_text }}</p><span  class=" transform transition-all" :class="faq_item == {{ forloop.index }} ? 'rotate-45' : ''">{% include 'icon-plus-uses', pattern:icon_pattern %}</span></div>
                 <div class=" border-b-2 border-primary-blue">
-                    <p :class="faq_item == {{ forloop.index }} ? 'max-h-full mb-5 md:mt-2' : 'max-h-0 h-0 opacity-0 mb-0 pointer-events-none mt-0'" class="transform transition-all text-base font-sofia-pro-medium pr-2 mx-auto | sm:mx-px md:max-w-2xl" x-transition >{{ bs_content.body_text }}</p>
+                    <p :class="faq_item == {{ forloop.index }} ? 'max-h-full mb-5 md:mt-2' : 'max-h-0 h-0 opacity-0 mb-0 pointer-events-none mt-0'" class="transform transition-all text-base pr-2 mx-auto | sm:mx-px md:max-w-2xl" x-transition >{{ bs_content.body_text }}</p>
                 </div>
               {% endif %}
             {% endfor %}
