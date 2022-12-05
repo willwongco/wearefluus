@@ -1,12 +1,15 @@
 {% assign wave_col = section.settings.wave_col %}
 
-<div class="marquee3k -mb-2.5 sm:-mb-3 overflow-hidden" 
-data-speed="2"
-data-reverse="false">
-<div class="relative -ml-px">
-    <div class="left-0 w-full footer-wave">{% include 'icon-wave-footer-animate', wave_col:wave_col %}</div>
-</div>
-</div>
+{% comment %}
+  <div
+   class="marquee3k -mb-2.5 sm:-mb-3 overflow-hidden"
+   data-speed="2"
+   data-reverse="false">
+    <div class="relative -ml-px">
+      <div class="left-0 w-full footer-wave">{% include 'icon-wave-footer-animate', wave_col:wave_col %}</div>
+    </div>
+  </div>
+{% endcomment %}
 
 <div style="background-color:{{ section.settings.bg_col }};" class="relative pt-10 pb-8">
     <!-- <div class="absolute left-0 w-full footer-wave">{% include 'icon-wave-footer', wave_col:wave_col %}</div> -->
