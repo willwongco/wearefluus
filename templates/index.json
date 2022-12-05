@@ -130,11 +130,11 @@
         "18edc45d-41b1-41c0-a525-b714c35c7193"
       ],
       "settings": {
-        "bg_col": "#0e2559",
+        "bg_col": "#0858ff",
         "stats_col": "#ffffff",
-        "more_content_text_col": "#0e2559",
-        "more_content_bg_col": "#e1e7d5",
-        "wave_col": "#0e2559",
+        "more_content_text_col": "#ffffff",
+        "more_content_bg_col": "#0858ff",
+        "wave_col": "#0858ff",
         "title": "By switching, together we have saved:",
         "wave": false
       }
