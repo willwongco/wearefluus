@@ -28,7 +28,6 @@
         "settings": {
           "promotion_text": "Free delivery on all orders",
           "logo": "shopify:\/\/shop_images\/FluusLogo.png",
-          "logo_white": "shopify:\/\/shop_images\/FluusLogo.png",
           "main_menu": "main-menu",
           "mobile_main_menu": "",
           "colour": "offwhite"
@@ -124,17 +123,16 @@
           "6e08bb84-a473-4ec0-ac2b-35fe67b9f898"
         ],
         "settings": {
-          "bg_col": "#0e2559",
-          "insta_btn_bg": "#d1d6e5",
-          "insta_btn_text_col": "#0e2559",
-          "sliding_text_col": "#ffffff",
-          "hashtag_title_col": "#ffffff",
-          "menu_newsletter_text_col": "#ffffff",
+          "bg_col": "#e6e0de",
+          "insta_btn_bg": "#212121",
+          "insta_btn_text_col": "#212121",
+          "sliding_text_col": "#212121",
+          "hashtag_title_col": "#212121",
+          "menu_newsletter_text_col": "#212121",
           "title": "ReGeneration",
           "insta": "@wearefluus",
           "url": "https:\/\/www.instagram.com\/wearefluus",
           "ticker": "Pre-order now and receive 25% off with code PREORDER25",
-          "logo": "shopify:\/\/shop_images\/Planera_Logo_650px_Dark_No_Background_2.png",
           "menu_title_1": "Shop",
           "menu_1": "",
           "menu_title_2": "Help",
@@ -219,6 +217,8 @@
         }
       }
     },
-    "content_for_index": []
+    "content_for_index": [
+
+    ]
   }
 }
