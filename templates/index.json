@@ -486,7 +486,7 @@
         "cta_text": "LEARN MORE",
         "cta_link": "",
         "bg_col": "",
-        "text_col": ""
+        "text_col": "#212121"
       }
     },
     "16643137361915266f": {
@@ -497,6 +497,7 @@
     },
     "165165903343668781": {
       "type": "logo-slider",
+      "disabled": true,
       "blocks": {
         "6d6e1717-0ac0-4056-b620-cec3773d894e": {
           "type": "logo",
