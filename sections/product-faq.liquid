@@ -16,13 +16,13 @@
                @click="topHeaderTab = {{ forloop.index }}"
                class="{% unless forloop.last %}mr-4{% endunless %}{% if block.settings.show_top_header == false %}hidden{% endif %} mt-5 flex items-center font-cheltenham-std cursor-pointer text-4xl | sm:mr-10 lg:mt-0 md:text-6xl">
 
-               <img
-                alt="{{ block.settings.icon.alt }}"
-                class="-mt-4 pr-3 transform scale-75 md:scale-100 lazyload hs-lazyload hs-id-a503d456"
-                data-src="{{ block.settings.icon.src | img_url:'51x51' }}"
-                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+                <img
+                 alt="{{ block.settings.icon.alt }}"
+                 class="-mt-4 pr-3 transform scale-75 md:scale-100 lazyload hs-lazyload hs-id-a503d456"
+                 data-src="{{ block.settings.icon.src | img_url:'51x51' }}"
+                 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
 
-               <p class="relative">{{ block.settings.title_text }}<span class="absolute bottom-0 left-0 w-full" :class="topHeaderTab == {{ forloop.index }} ? 'block':'hidden'">{% render 'icon-underline-faq', id:faq_svg_id %}{% render 'icon-faq-underline-small', id:faq_svg_small_id %}</span></p>
+                <p class="relative">{{ block.settings.title_text }}<span class="absolute bottom-0 left-0 w-full" :class="topHeaderTab == {{ forloop.index }} ? 'block':'hidden'">{% render 'icon-underline-faq', id:faq_svg_id %}{% render 'icon-faq-underline-small', id:faq_svg_small_id %}</span></p>
               </div>
             {% endfor %} 
         </div> 
