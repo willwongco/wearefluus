@@ -1,5 +1,10 @@
 {% assign id = section.id | replace: '-', '_' %}
 
+{% stylesheet %}
+
+
+{% endstylesheet %}
+
 <div style="background-color: {{ section.settings.bg_col }};" class="pb-14 pt-5 md:pt-14 mt-12 md:mt-2">
   {% capture replace_text %}
     {% if section.settings.underlined_title != blank %}
@@ -24,6 +29,9 @@
                                                                                                         },
                                                                                                         "768": {
                                                                                                             "perView": 2
+                                                                                                        },
+                                                                                                        "480": {
+                                                                                                            "perView": 1
                                                                                                         }
                                                                                                     }
                                                                                                 }'>
