@@ -95,7 +95,7 @@
             <p class="m-auto mt-3 mb-4 font-sofia-pro-regular text-base text-center">{{ 'footer.newsletter.form-success' | t }}
             </p>
             {% else %}
-            <div class="flex flex-row md:max-w-xl rounded-lg border-white border mt-5">
+            <div class="flex flex-row md:max-w-xl rounded-lg border-black border mt-5">
                 <input type="hidden" name="contact[tags]" value="newsletter">
                 <input type="email" class="bg-transparent border-0 outline-none text-sm font-abc-favorit-mono h-9 w-full text-black placeholder-black pl-4 pt-1" name="contact[email]"
                     id="Email" value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
