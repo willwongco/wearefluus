@@ -23,7 +23,12 @@
                  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
               {%- endunless -%}
 
-              <p class="relative">{{ block.settings.title_text }}<span class="absolute bottom-0 left-0 w-full" :class="topHeaderTab == {{ forloop.index }} ? 'block':'hidden'">{% render 'icon-underline-faq', id:faq_svg_id %}{% render 'icon-faq-underline-small', id:faq_svg_small_id %}</span></p>
+              <p class="relative">
+                {{ block.settings.title_text }}
+                {% comment %}
+                  <span class="absolute bottom-0 left-0 w-full" :class="topHeaderTab == {{ forloop.index }} ? 'block':'hidden'">{% render 'icon-underline-faq', id:faq_svg_id %}{% render 'icon-faq-underline-small', id:faq_svg_small_id %}</span>
+                {% endcomment %}
+              </p>
             </div>
           {% endfor %}
         </div> 
