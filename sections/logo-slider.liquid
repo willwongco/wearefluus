@@ -24,7 +24,45 @@
     <h4 style="color: {{ section.settings.text_col }};" class="text-3xl md:text-4xl md:mb-10 font-cheltenham-std text-center">{{ section.settings.title | replace: '/strong>', '/span>' | replace: '<strong>', '<span class="text-purple-planera">' }}</h4>
 
     <div class="overflow-hidden block md:hidden">
-      {{ ticker_list }}
+
+      <div
+       class="glide px-9 lg:px-20 mt-18 md:mt-11 relative"
+       data-options='{
+        "type": "carousel",
+        "perView": 4,
+        "gap": 25,
+        "breakpoints": {
+          "1536": {
+            "perView": 4
+          },
+          "1280": {
+            "perView": 3
+          },
+          "768": {
+            "perView": 2
+          },
+          "480": {
+            "perView": 1
+          }
+        }
+      }'>
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides flex glide__slides--equal-height">
+            {% for block in section.blocks %}
+              <li class="glide__slide image-element__item  image-element__item--slide">
+                {% include 'lazy-image' image: block.settings.logo %}
+              </li>
+            {% endfor %}
+          </ul>
+
+          <div class="glide__bullets glide__bullet--testmonials flex items-center justify-center mt-5" data-glide-el="controls[nav]">
+            {% for block in section.blocks %}
+              <button class="glide__bullet w-3.5 h-3.5 rounded-full mx-1" data-glide-dir="={{ forloop.index0}}"></button>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
 
     <div class="hidden md:block">
