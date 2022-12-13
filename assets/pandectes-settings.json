@@ -1,11 +1,11 @@
 {
   "store": {
     "plan": "basic",
-    "theme": "Charle QA 1 (3 Oct) ilya-dev",
+    "theme": "wearefluus\/main",
     "primaryLocale": "en",
     "adminMode": false
   },
-  "tsPublished": 1664960720,
+  "tsPublished": 1670943915,
   "declaration": {
     "showPurpose": false,
     "showProvider": false,
@@ -15,7 +15,9 @@
     "languageMode": "Single",
     "fallbackLanguage": "en",
     "languageDetection": "browser",
-    "languagesSupported": []
+    "languagesSupported": [
+
+    ]
   },
   "texts": {
     "managed": {
@@ -30,6 +32,9 @@
       },
       "linkText": {
         "en": "Learn more"
+      },
+      "imprintText": {
+        "en": "Imprint"
       },
       "preferencesButtonText": {
         "en": "Preferences"
@@ -234,6 +239,7 @@
     "fadeInTimeout": 0,
     "defaultBlocked": 7,
     "showLink": true,
+    "showImprintLink": false,
     "enabled": true,
     "cookie": {
       "name": "_pandectes_gdpr",
@@ -245,14 +251,14 @@
     "dismissOnTimeout": false,
     "palette": {
       "popup": {
-        "background": "#FAF2ED",
+        "background": "#FFFFFF",
         "backgroundForCalculations": {
           "a": 1,
-          "b": 237,
-          "g": 242,
-          "r": 250
+          "b": 255,
+          "g": 255,
+          "r": 255
         },
-        "text": "#0E2559"
+        "text": "#000000"
       },
       "button": {
         "background": "transparent",
@@ -273,10 +279,11 @@
       }
     },
     "content": {
-      "href": "https:\/\/planera.care\/pages\/privacy-policy",
+      "href": "https:\/\/wearefluus.myshopify.com\/policies\/privacy-policy",
+      "imprintHref": "\/",
       "close": "&#10005;",
       "target": "",
-      "logo": "<img class=\"cc-banner-logo\" style=\"height: 40px;\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0609\/8806\/3904\/t\/14\/assets\/pandectes-logo.png?v=1662050631\" alt=\"Planera\" \/>"
+      "logo": "<img class=\"cc-banner-logo\" style=\"height: 40px;\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0686\/1268\/6112\/t\/6\/assets\/pandectes-logo.png?v=1670943905\" alt=\"wearefluus\" \/>"
     },
     "window": "<div role=\"dialog\" aria-live=\"polite\" aria-label=\"cookieconsent\" aria-describedby=\"cookieconsent:desc\" id=\"pandectes-banner\" class=\"cc-window-wrapper cc-top-wrapper\"><div class=\"pd-cookie-banner-window cc-window {{classes}}\"><!--googleoff: all-->{{children}}<!--googleon: all--><\/div><\/div>",
     "compliance": {
@@ -291,7 +298,7 @@
     "revokable": true,
     "animateRevokable": false,
     "revokableReset": false,
-    "revokableLogoUrl": "https:\/\/cdn.shopify.com\/s\/files\/1\/0609\/8806\/3904\/t\/14\/assets\/pandectes-reopen-logo.png?v=1662460837",
+    "revokableLogoUrl": "https:\/\/cdn.shopify.com\/s\/files\/1\/0686\/1268\/6112\/t\/6\/assets\/pandectes-reopen-logo.png?v=1669882917",
     "revokablePlacement": "bottom-left",
     "revokableMarginHorizontal": 15,
     "revokableMarginVertical": 15,
@@ -305,15 +312,16 @@
   "geolocation": {
     "brOnly": false,
     "caOnly": false,
-    "euOnly": false
+    "euOnly": false,
+    "canadaOnly": false
   },
   "dsr": {
     "guestsSupport": false,
     "accessSectionDownloadReportAuto": false
   },
   "banner": {
-    "resetTs": 1662050629,
-    "extraCss": "        .cc-banner-logo {max-width: 24em!important;}    @media(min-width: 768px) {.cc-window.cc-floating{max-width: 24em!important;width: 24em!important;}}    .cc-message, .cc-header, .cc-logo {text-align: left}    .cc-window-wrapper{z-index: 2147483647;}    .cc-window{z-index: 2147483647;font-family: inherit;}    .cc-header{font-family: inherit;}    .pd-cp-ui{font-family: inherit; background-color: #FAF2ED;color:#0E2559;}    .pd-cp-btn{}    input + .pd-cp-preferences-slider{background-color: rgba(14, 37, 89, 0.3)}    .pd-cp-scrolling-section::-webkit-scrollbar{background-color: rgba(14, 37, 89, 0.3)}    input:checked + .pd-cp-preferences-slider{background-color: rgba(14, 37, 89, 1)}    .pd-cp-scrolling-section::-webkit-scrollbar-thumb {background-color: rgba(14, 37, 89, 1)}    .pd-cp-ui-close{color:#0E2559;}    .pd-cp-preferences-slider:before{background-color: #FAF2ED}    .pd-cp-title:before {border-color: #0E2559!important}    .pd-cp-preferences-slider{background-color:#0E2559}    .pd-cp-toggle{color:#0E2559!important}    @media(max-width:699px) {.pd-cp-ui-close-top svg {fill: #0E2559}}    .pd-cp-toggle:hover,.pd-cp-toggle:visited,.pd-cp-toggle:active{color:#0E2559!important}    .pd-cookie-banner-window {box-shadow: 0 0 18px rgb(0 0 0 \/ 20%);}  ",
+    "resetTs": 1670943904,
+    "extraCss": "        .cc-banner-logo {max-width: 24em!important;}    @media(min-width: 768px) {.cc-window.cc-floating{max-width: 24em!important;width: 24em!important;}}    .cc-message, .cc-header, .cc-logo {text-align: left}    .cc-window-wrapper{z-index: 2147483647;}    .cc-window{z-index: 2147483647;font-family: inherit;}    .cc-header{font-family: inherit;}    .pd-cp-ui{font-family: inherit; background-color: #FFFFFF;color:#000000;}    .pd-cp-btn{}    input + .pd-cp-preferences-slider{background-color: rgba(0, 0, 0, 0.3)}    .pd-cp-scrolling-section::-webkit-scrollbar{background-color: rgba(0, 0, 0, 0.3)}    input:checked + .pd-cp-preferences-slider{background-color: rgba(0, 0, 0, 1)}    .pd-cp-scrolling-section::-webkit-scrollbar-thumb {background-color: rgba(0, 0, 0, 1)}    .pd-cp-ui-close{color:#000000;}    .pd-cp-preferences-slider:before{background-color: #FFFFFF}    .pd-cp-title:before {border-color: #000000!important}    .pd-cp-preferences-slider{background-color:#000000}    .pd-cp-toggle{color:#000000!important}    @media(max-width:699px) {.pd-cp-ui-close-top svg {fill: #000000}}    .pd-cp-toggle:hover,.pd-cp-toggle:visited,.pd-cp-toggle:active{color:#000000!important}    .pd-cookie-banner-window {box-shadow: 0 0 18px rgb(0 0 0 \/ 20%);}  ",
     "customJavascript": null,
     "showPoweredBy": false,
     "isActive": true,
@@ -332,18 +340,18 @@
     "0": [
       {
         "name": "keep_alive",
-        "domain": "planera.care",
+        "domain": "wearefluus.myshopify.com",
         "path": "\/",
         "provider": "Shopify",
         "firstParty": true,
-        "retention": "14 day(s)",
+        "retention": "30 minute(s)",
         "purpose": {
           "en": "Used in connection with buyer localization."
         }
       },
       {
         "name": "secure_customer_sig",
-        "domain": "planera.care",
+        "domain": "wearefluus.myshopify.com",
         "path": "\/",
         "provider": "Shopify",
         "firstParty": true,
@@ -354,7 +362,7 @@
       },
       {
         "name": "localization",
-        "domain": "planera.care",
+        "domain": "wearefluus.myshopify.com",
         "path": "\/",
         "provider": "Shopify",
         "firstParty": true,
@@ -364,19 +372,8 @@
         }
       },
       {
-        "name": "cart_currency",
-        "domain": "planera.care",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "14 day(s)",
-        "purpose": {
-          "en": "The cookie is necessary for the secure checkout and payment function on the website. This function is provided by shopify.com."
-        }
-      },
-      {
         "name": "_secure_session_id",
-        "domain": "planera.care",
+        "domain": "wearefluus.myshopify.com",
         "path": "\/",
         "provider": "Shopify",
         "firstParty": true,
@@ -389,7 +386,7 @@
     "1": [
       {
         "name": "_orig_referrer",
-        "domain": ".planera.care",
+        "domain": ".wearefluus.myshopify.com",
         "path": "\/",
         "provider": "Shopify",
         "firstParty": true,
@@ -400,7 +397,7 @@
       },
       {
         "name": "_landing_page",
-        "domain": ".planera.care",
+        "domain": ".wearefluus.myshopify.com",
         "path": "\/",
         "provider": "Shopify",
         "firstParty": true,
@@ -411,7 +408,7 @@
       },
       {
         "name": "_y",
-        "domain": ".planera.care",
+        "domain": ".wearefluus.myshopify.com",
         "path": "\/",
         "provider": "Shopify",
         "firstParty": true,
@@ -422,7 +419,7 @@
       },
       {
         "name": "_s",
-        "domain": ".planera.care",
+        "domain": ".wearefluus.myshopify.com",
         "path": "\/",
         "provider": "Shopify",
         "firstParty": true,
@@ -433,7 +430,7 @@
       },
       {
         "name": "_shopify_y",
-        "domain": ".planera.care",
+        "domain": ".wearefluus.myshopify.com",
         "path": "\/",
         "provider": "Shopify",
         "firstParty": true,
@@ -444,7 +441,7 @@
       },
       {
         "name": "_shopify_s",
-        "domain": ".planera.care",
+        "domain": ".wearefluus.myshopify.com",
         "path": "\/",
         "provider": "Shopify",
         "firstParty": true,
@@ -452,89 +449,16 @@
         "purpose": {
           "en": "Shopify analytics."
         }
-      },
-      {
-        "name": "_shopify_sa_p",
-        "domain": ".planera.care",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "30 minute(s)",
-        "purpose": {
-          "en": "Shopify analytics relating to marketing & referrals."
-        }
-      },
-      {
-        "name": "_shopify_sa_t",
-        "domain": ".planera.care",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "30 minute(s)",
-        "purpose": {
-          "en": "Shopify analytics relating to marketing & referrals."
-        }
-      },
-      {
-        "name": "VISITOR_INFO1_LIVE",
-        "domain": ".youtube.com",
-        "path": "\/",
-        "provider": "Google",
-        "firstParty": false,
-        "retention": "180 day(s)",
-        "purpose": {
-          "en": "A cookie that YouTube sets that measures your bandwidth to determine whether you get the new player interface or the old."
-        }
       }
     ],
-    "2": [],
+    "2": [
+
+    ],
     "4": [
-      {
-        "name": "YSC",
-        "domain": ".youtube.com",
-        "path": "\/",
-        "provider": "Google",
-        "firstParty": false,
-        "retention": "Session",
-        "purpose": {
-          "en": "Registers a unique ID to keep statistics of what videos from YouTube the user has seen."
-        }
-      }
+
     ],
     "8": [
-      {
-        "name": "_sp_ses.12af",
-        "domain": "planera.care",
-        "path": "\/",
-        "provider": "Unknown",
-        "firstParty": true,
-        "retention": "30 minute(s)",
-        "purpose": {
-          "en": ""
-        }
-      },
-      {
-        "name": "pixel",
-        "domain": ".yotpo.com",
-        "path": "\/",
-        "provider": "Unknown",
-        "firstParty": false,
-        "retention": "1 year(s)",
-        "purpose": {
-          "en": ""
-        }
-      },
-      {
-        "name": "_sp_id.12af",
-        "domain": "planera.care",
-        "path": "\/",
-        "provider": "Unknown",
-        "firstParty": true,
-        "retention": "1 year(s)",
-        "purpose": {
-          "en": ""
-        }
-      }
+
     ]
   },
   "blocker": {
@@ -564,12 +488,22 @@
     },
     "defaultBlocked": 7,
     "patterns": {
-      "whiteList": [],
+      "whiteList": [
+
+      ],
       "blackList": {
-        "1": [],
-        "2": [],
-        "4": [],
-        "8": []
+        "1": [
+
+        ],
+        "2": [
+
+        ],
+        "4": [
+
+        ],
+        "8": [
+
+        ]
       }
     }
   }
