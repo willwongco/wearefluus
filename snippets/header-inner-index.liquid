@@ -100,7 +100,7 @@ x-data="{ dropdown: -1 }"
       {% endif %}
     {% endfor %}
   {% endfor %}
-  <div x-show="dropdown != -1" style="display: none;" x-transition:enter.duration.300ms x-transition.opacity  class="fixed bg-black bg-opacity-70 w-screen h-screen"></div>
+  <div x-show="dropdown != -1" style="display: none;" x-transition:enter.duration.300ms x-transition.opacity  class="fixed _bg-black _bg-opacity-70 w-screen h-screen"></div>
   <div x-transition:enter.duration.300ms x-transition.opacity x-show="mobileMenu" style="display: none;" class="fixed w-full h-screen top-18 left-0 bg-white overflow-scroll flex flex-col">
       {% for link in linklists[section.settings.mobile_main_menu].links %}
         {% assign child_list_handle = link.title | handleize %}
