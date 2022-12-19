@@ -61,11 +61,30 @@
         "reviews_bg_col": "#f9f7f2"
       }
     },
+    "1655218392fe785c96": {
+      "type": "apps",
+      "blocks": {
+        "fd4c92a7-c712-4cd0-8def-51bf845c57b8": {
+          "type": "shopify:\/\/apps\/recharge-subscriptions\/blocks\/subscription-widget\/371eed76-0b44-4869-9813-730372ea378e",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "fd4c92a7-c712-4cd0-8def-51bf845c57b8"
+      ],
+      "settings": {
+      }
+    },
     "16527733218b9a848d": {
       "type": "text-image-split",
       "settings": {
         "bg_col": "#f9f7f2",
         "text_col": "#0e2559",
+        "border_bottom_color": "transparent",
+        "section_direction": "text_left",
+        "fixed_height": "false",
         "main_text": "<p>Made of just<br\/><strong>3 materials<\/strong><\/p>",
         "body_text": "Designed to be both absorbent and flushable, whilst respecting you and the planet.",
         "cta_text": "LEARN MORE",
@@ -310,10 +329,6 @@
         "wave": false
       }
     },
-    "1655218392fe785c96": {
-      "type": "apps",
-      "settings": {}
-    },
     "16527858448f73a21e": {
       "type": "product-faq",
       "blocks": {
@@ -321,21 +336,24 @@
           "type": "faq-top-header",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Bottle-Leaf_Web-Icon_Dark-Blue.png",
-            "title_text": "Science"
+            "title_text": "Science",
+            "show_top_header": true
           }
         },
         "d7ec73a1-485a-42b8-a978-eab7ae8ffac6": {
           "type": "faq-top-header",
           "settings": {
             "icon": "shopify:\/\/shop_images\/World-Leaf_Web-Icon_Dark-Blue.png",
-            "title_text": "Planet"
+            "title_text": "Planet",
+            "show_top_header": true
           }
         },
         "6ff026e3-fe01-4a8e-99ae-09697e6f7467": {
           "type": "faq-top-header",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Water-Drop_Web-Icon_Dark-Blue.png",
-            "title_text": "People"
+            "title_text": "People",
+            "show_top_header": true
           }
         },
         "7a18edb1-d90d-439b-8140-604a72617d90": {
@@ -622,17 +640,34 @@
         "bg_col": "#ffffff",
         "text_col": "#0e2559"
       }
+    },
+    "16714671652261b0ea": {
+      "type": "apps",
+      "blocks": {
+        "f6669929-83cb-4041-a83e-942b776e8f88": {
+          "type": "shopify:\/\/apps\/recharge-subscriptions\/blocks\/subscription-widget\/371eed76-0b44-4869-9813-730372ea378e",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "f6669929-83cb-4041-a83e-942b776e8f88"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
     "product",
+    "1655218392fe785c96",
     "16527733218b9a848d",
     "uses",
     "1652715242519c0baa",
     "165271529830440ddb",
-    "1655218392fe785c96",
     "16527858448f73a21e",
     "1655821122a0c54074",
-    "1652781568a8223d63"
+    "1652781568a8223d63",
+    "16714671652261b0ea"
   ]
 }
