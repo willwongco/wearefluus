@@ -1,5 +1,5 @@
 <div class="js-init">
-    {% form 'product', product, data-product-form: '', data-product-handle: product.handle %}
+    {% form 'product', product, data-productid: product.id, data-product-form: '', data-product-handle: product.handle %}
     {% unless product.has_only_default_variant %}
       {% for option in product.options_with_values %}
         <div class="js-enabled">
@@ -30,7 +30,7 @@
     {% endunless %}
     
     {% comment %}
-      In order for this form to submit, it needs to contain an input with name="id".
+      In order for this form to submit, it needs to contain an input with name="id" data-productid="{{ product.id }}".
       ProductForm() will automatically create this input (or make sure it has the
       right value set if it already exists) on form submit based on the
       currently selected variant. However, if JS is disabled we need a fallback.
@@ -41,7 +41,7 @@
       `.js-enabled` class which only shows its contents when JS is enabled.
     {% endcomment %}
     <noscript>
-      <select name="id">
+      <select name="id" data-productid="{{ product.id }}">
         {% for variant in product.variants %}
           <option
             {% if variant == current_variant %}selected="selected"{% endif %}

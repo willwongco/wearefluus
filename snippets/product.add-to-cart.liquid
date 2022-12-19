@@ -57,7 +57,7 @@
             <!-- sticky product bar add to cart button - hidden by default -->
             <button type="submit" class="hidden text-sm w-52 stickyAddToCartBtn btn btn__subSave js-go-cart-add-to-cart btn--secondary bg-orange text-white add_btn visible font-futuraMedium border-2 py-2 sm:py-.7rem rounded-lg"><span class="singlePrice hidden pr-4">{{ product.price | money }}</span><span class="saverPrice pr-4">{{ subSavePrice }}</span>{{ 'product.add-to-cart.purchase' | t | upcase }}</button>
         </div>
-        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-add-to-cart-variant-id />
+        <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}" data-add-to-cart-variant-id />
         <input type="hidden" name="variants" value="{{ product.variants | json | escape }}" data-add-to-cart-variants />
     </form>
     <div class="original_insertBefore"></div>

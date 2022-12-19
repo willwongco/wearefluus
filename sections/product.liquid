@@ -185,7 +185,7 @@ class="pb-10 productPage">
                             <select  
                             x-model="selectedVariant.product.id" 
                             x-on:change="$dispatch('selectchange', {value:selectedVariant.product.id})" 
-                            id="product-select" name="id">
+                            id="product-select" name="id" data-productid="{{ product.id }}">
                                 {% for variant in product.variants %}
                                   <option value="{{ variant.id }}"
                                     :selected="selectedVariant.product.id == {{ variant.id }}"
