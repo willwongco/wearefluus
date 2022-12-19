@@ -22,7 +22,7 @@
         {% assign hover_text = 'black-planera' %}
         {% assign hover_bg = 'gray-planera' %}
         {% assign rounded = 'lg' %}
-        {% assign large_padding = '12' %}
+        {% assign large_padding = '10' %}
 {% endcase %}
 
 <a class="font-abc-favorit-mono rounded-{{ rounded }} bg-{{ bg }} border-{{ bg }} text-{{ text }} {% if large %}py-2{% else %}py-2{% endif %} text-center {% if large %}px-6 md:px-{{ large_padding }}{% else %}px-5{% endif %} relative border text-md flex {% if text_align == 'left' %}items-start{% else %}items-center{% endif %} justify-center btn-main hover:bg-{{ hover_bg }} hover:border-{{ hover_bg }} hover:text-{{ hover_text }} transition-all ease-out duration-300 {{ classes }} {{ fill }}" href="{{ btn_link }}">
