@@ -23,7 +23,7 @@
           <p style="color: {{ section.settings.text_col }};" class="md:text-xl text-left text-sm mt-6 md:mt-8 lg:pr-40">{{ section.settings.subtitle }}</p>
         {% endif %}
         <div class="mt-3 md:mt-7">
-          {% include 'primary-content-cta' btn_style: section.settings.btn_style, btn_text: section.settings.btn_text, btn_link: section.settings.btn_link, classes: 'w-fit-content md:mr-12 md:inline-block block mb-7 md:mb-0 min-w-44 max-w-full custom_hero_btn', text_align: 'left', large: true %}
+          {% include 'primary-content-cta' btn_style: section.settings.btn_style, btn_text: section.settings.btn_text, btn_link: section.settings.btn_link, classes: 'w-fit-content md:mr-4 md:inline-block block mb-7 md:mb-0 min-w-44 max-w-full custom_hero_btn', text_align: 'left', large: true %}
           {% if section.settings.btn_text_2 %}
             {% include 'primary-content-cta' btn_style: section.settings.btn_style, btn_text: section.settings.btn_text_2, btn_link: section.settings.btn_link_2, classes: 'w-fit-content md:mr-12 md:inline-block block md:mb-0 min-w-44 max-w-full custom_hero_btn', text_align: 'left', large: true %}
           {% endif %}
