@@ -30,7 +30,7 @@
                             <div class="md:pt-2 lg:pt-0">
                                 <p>
                                     <span style="display: inline-block; color:transparent;" class="text-7xl md:text-3xl lg:text-7xl text-transparent mr-2 font-abc-favorit-mono relative">
-                                        <span>{{ block.settings.num }}</span>
+                                        <span>{{ block.settings.num }}{% if block.settings > 999 %},{% endif %}</span>
                                         <span style="color:{{ stats_text_col }};" class="count-up absolute left-0 top-0 text-7xl md:text-3xl lg:text-7xl mr-2 font-abc-favorit-mono" data-limit="{{ block.settings.num }}"></span>
                                     </span>
                                     
