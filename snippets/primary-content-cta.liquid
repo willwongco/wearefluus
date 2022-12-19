@@ -25,7 +25,7 @@
         {% assign large_padding = '12' %}
 {% endcase %}
 
-<a class="font-abc-favorit-mono rounded-{{ rounded }} bg-{{ bg }} border-{{ bg }} text-{{ text }} {% if large %}py-3{% else %}py-2{% endif %} text-center {% if large %}px-6 md:px-{{ large_padding }}{% else %}px-5{% endif %} relative border text-sm flex {% if text_align == 'left' %}items-start{% else %}items-center{% endif %} justify-center btn-main hover:bg-{{ hover_bg }} hover:border-{{ hover_bg }} hover:text-{{ hover_text }} transition-all ease-out duration-300 {{ classes }} {{ fill }}" href="{{ btn_link }}">
+<a class="font-abc-favorit-mono rounded-{{ rounded }} bg-{{ bg }} border-{{ bg }} text-{{ text }} {% if large %}py-2{% else %}py-2{% endif %} text-center {% if large %}px-6 md:px-{{ large_padding }}{% else %}px-5{% endif %} relative border text-md flex {% if text_align == 'left' %}items-start{% else %}items-center{% endif %} justify-center btn-main hover:bg-{{ hover_bg }} hover:border-{{ hover_bg }} hover:text-{{ hover_text }} transition-all ease-out duration-300 {{ classes }} {{ fill }}" href="{{ btn_link }}">
     <p class="{% if text_align == 'left' and btn_style == 'white' %}text-left mr-5{% else %}text-center{% endif %}">{{ btn_text }}</p>
     {% unless btn_style == 'purple' %}<div class="absolute right-2 top-1/2 -translate-y-1/2 transform">{% include 'icon-arrow' classes: 'transition-all ease-out duration-300' %}</div>{% endunless %}
 </a>
