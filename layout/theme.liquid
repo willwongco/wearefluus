@@ -96,7 +96,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       window.location.href = {{ redirect_url | json }};
     </script>
   {%- else -%}
-    <main class="text-primary-blue {% if template != 'index' %}pt-14{% else %}overflow-hidden relative{% endif %}" role="main">
+    <main class="text-primary-blue {% if template != 'index' and true == false %}pt-14{% else %}overflow-hidden relative{% endif %}" role="main">
       {% section 'index-header' %}
       {% section 'cart-slider' %}
       {{ content_for_layout }}
